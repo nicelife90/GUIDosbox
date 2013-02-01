@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items>
+  <item>
+    <content>
+      <![CDATA[<span class="title">Help</span>
+  <span class="subtitle">Menus</span>
+  <p align="justify">In the "File" menu, you may find the language options, available languages happen to be English or french at the momment. Every application launchable from GUIDosBox can be found in the "Aplications" menu. The "Help" menu lists evey application and their use.
+  <span class="subtitle">Applications</span>
+  <p align="justify">An online presentation is available on <a href="http://www.en.kobixxe.com/produits" target="_parent">kobixxe.com/products</a>  finally, tutorials found on the previous page will describe how to use or obtain help for every module.
+]]>
+    </content>
+  </item>
+</items>

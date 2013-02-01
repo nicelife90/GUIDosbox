@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6358C54E-D276-4240-8925-DAD9EE59FFBD}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>GUIDosbox.My.MyApplication</StartupObject>
+    <RootNamespace>GUIDosbox</RootNamespace>
+    <AssemblyName>GUIDosbox</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Yanick\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>false</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>GUIDosbox.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>GUIDosbox.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>GUIDosBox.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>E520648F59C0BA0221B170E081E381B1EC5D39FE</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>GUIDosbox_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>Custom</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.DirectoryServices" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Windows.Forms.Design" />
+    <Import Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssocApp.Designer.vb">
+      <DependentUpon>AssocApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AssocApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AttribApp.Designer.vb">
+      <DependentUpon>AttribApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AttribApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaclsApp.Designer.vb">
+      <DependentUpon>CaclsApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CaclsApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CHKDSkApp.Designer.vb">
+      <DependentUpon>CHKDSkApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CHKDSkApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CompApp.Designer.vb">
+      <DependentUpon>CompApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CompApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CP.designer.vb">
+      <DependentUpon>CP.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CP.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>CompactApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CompactApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HelpApp.Designer.vb">
+      <DependentUpon>HelpApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="HelpApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="CMDConsole.Designer.vb">
+      <DependentUpon>CMDConsole.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CMDConsole.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RDApp.designer.vb">
+      <DependentUpon>RDApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="RDApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SUBSTApp.designer.vb">
+      <DependentUpon>SUBSTApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SUBSTApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SystemInfoApp.designer.vb">
+      <DependentUpon>SystemInfoApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SystemInfoApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TracertApp.designer.vb">
+      <DependentUpon>TracertApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TracertApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TypeApp.designer.vb">
+      <DependentUpon>TypeApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TypeApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhereApp.designer.vb">
+      <DependentUpon>WhereApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WhereApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WhoamiApp.designer.vb">
+      <DependentUpon>WhoamiApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="WhoamiApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="XCopyApp.designer.vb">
+      <DependentUpon>XCopyApp.vb</DependentUpon>
+    </Compile>
+    <Compile Include="XCopyApp.vb">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="AssocApp.resx">
+      <DependentUpon>AssocApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AttribApp.resx">
+      <DependentUpon>AttribApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaclsApp.resx">
+      <DependentUpon>CaclsApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CHKDSkApp.resx">
+      <DependentUpon>CHKDSkApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompactApp.resx">
+      <DependentUpon>CompactApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CompApp.resx">
+      <DependentUpon>CompApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CP.resx">
+      <DependentUpon>CP.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HelpApp.resx">
+      <DependentUpon>HelpApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CMDConsole.resx">
+      <DependentUpon>CMDConsole.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RDApp.resx">
+      <DependentUpon>RDApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SUBSTApp.resx">
+      <DependentUpon>SUBSTApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SystemInfoApp.resx">
+      <DependentUpon>SystemInfoApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TracertApp.resx">
+      <DependentUpon>TracertApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TypeApp.resx">
+      <DependentUpon>TypeApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhereApp.resx">
+      <DependentUpon>WhereApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WhoamiApp.resx">
+      <DependentUpon>WhoamiApp.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="XCopyApp.resx">
+      <DependentUpon>XCopyApp.vb</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="My Project\app.manifest">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\AttribApp.datasource" />
+    <None Include="My Project\DataSources\ControlPanel.datasource" />
+    <None Include="My Project\DataSources\GUIDosbox.My.MyApplication.datasource" />
+    <None Include="My Project\DataSources\GUIDosbox.My.MySettings.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="ShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Flash\Assoc.swf" />
+    <Content Include="Flash\Attrib.swf" />
+    <Content Include="Flash\CHKDSK.swf" />
+    <Content Include="Flash\CMDConsol.swf" />
+    <Content Include="Flash\compact.swf" />
+    <Content Include="Flash\CompApp.swf" />
+    <Content Include="Flash\headerGUIDOSBOX.swf" />
+    <Content Include="Flash\help.swf" />
+    <Content Include="Flash\Menu_EN_GuiDosBox.swf" />
+    <Content Include="Flash\Menu_GuiDosBox.swf" />
+    <Content Include="Flash\page_1.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Flash\page_10.xml" />
+    <Content Include="Flash\page_2.xml" />
+    <Content Include="Flash\page_20.xml" />
+    <Content Include="Flash\page_3.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Flash\page_30.xml" />
+    <Content Include="Flash\style.css" />
+    <Content Include="Flash\style2.css" />
+    <Content Include="Flash\swfobject.js" />
+    <Content Include="Flash\Where.swf" />
+    <Content Include="Flash\WHOAMI.swf" />
+    <Content Include="Flash\XCOPY.swf" />
+    <Content Include="GUIDosBox.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 et x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
