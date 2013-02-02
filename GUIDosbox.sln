@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GUIDosbox", "GUIDosbox\GUIDosbox.vbproj", "{6358C54E-D276-4240-8925-DAD9EE59FFBD}"
 EndProject
 Global

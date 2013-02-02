@@ -26,8 +26,7 @@ Partial Class CompactApp
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
-        Me.TextReturn = New System.Windows.Forms.TextBox()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
         Me.GBMode = New System.Windows.Forms.GroupBox()
         Me.OptU = New System.Windows.Forms.RadioButton()
         Me.OptC = New System.Windows.Forms.RadioButton()
@@ -40,20 +39,19 @@ Partial Class CompactApp
         Me.OptF = New System.Windows.Forms.CheckBox()
         Me.OptI = New System.Windows.Forms.CheckBox()
         Me.OptA = New System.Windows.Forms.CheckBox()
-        Me.lblResultat = New System.Windows.Forms.Label()
         Me.RealPath = New System.Windows.Forms.TextBox()
         Me.btnPathFichier = New System.Windows.Forms.Button()
         Me.lblCommande = New System.Windows.Forms.Label()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
+        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GBMode.SuspendLayout()
         Me.GBDossier.SuspendLayout()
         Me.GBOptions.SuspendLayout()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnHelp
@@ -83,23 +81,12 @@ Partial Class CompactApp
         Me.btnBack.Text = "Retour"
         Me.btnBack.UseVisualStyleBackColor = True
         '
-        'TextReturn
+        'txtCmdExec
         '
-        Me.TextReturn.BackColor = System.Drawing.SystemColors.WindowText
-        Me.TextReturn.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextReturn.Location = New System.Drawing.Point(12, 172)
-        Me.TextReturn.Multiline = True
-        Me.TextReturn.Name = "TextReturn"
-        Me.TextReturn.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextReturn.Size = New System.Drawing.Size(459, 238)
-        Me.TextReturn.TabIndex = 4
-        '
-        'CommandReturn
-        '
-        Me.CommandReturn.Location = New System.Drawing.Point(117, 416)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(354, 20)
-        Me.CommandReturn.TabIndex = 5
+        Me.txtCmdExec.Location = New System.Drawing.Point(117, 416)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(354, 20)
+        Me.txtCmdExec.TabIndex = 5
         '
         'GBMode
         '
@@ -225,15 +212,6 @@ Partial Class CompactApp
         Me.OptA.Text = "/A"
         Me.OptA.UseVisualStyleBackColor = True
         '
-        'lblResultat
-        '
-        Me.lblResultat.AutoSize = True
-        Me.lblResultat.Location = New System.Drawing.Point(9, 156)
-        Me.lblResultat.Name = "lblResultat"
-        Me.lblResultat.Size = New System.Drawing.Size(136, 13)
-        Me.lblResultat.TabIndex = 9
-        Me.lblResultat.Text = "Résultat de la commande : "
-        '
         'RealPath
         '
         Me.RealPath.Location = New System.Drawing.Point(117, 130)
@@ -268,25 +246,9 @@ Partial Class CompactApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(90, 471)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(219, 23)
-        Me.ProgressBar1.TabIndex = 14
-        '
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'AxShockwaveFlash1
-        '
-        Me.AxShockwaveFlash1.Enabled = True
-        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(0, -1)
-        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
-        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(487, 47)
-        Me.AxShockwaveFlash1.TabIndex = 15
         '
         'chkbxLangue
         '
@@ -300,6 +262,23 @@ Partial Class CompactApp
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(9, 157)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(462, 253)
+        Me.myConsole.TabIndex = 17
+        '
+        'flashHeader
+        '
+        Me.flashHeader.Enabled = True
+        Me.flashHeader.Location = New System.Drawing.Point(-1, 0)
+        Me.flashHeader.Name = "flashHeader"
+        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.flashHeader.Size = New System.Drawing.Size(487, 40)
+        Me.flashHeader.TabIndex = 18
+        '
         'CompactApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -307,19 +286,17 @@ Partial Class CompactApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(484, 499)
         Me.ControlBox = False
+        Me.Controls.Add(Me.flashHeader)
+        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.AxShockwaveFlash1)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.lblCommande)
         Me.Controls.Add(Me.btnPathFichier)
         Me.Controls.Add(Me.RealPath)
-        Me.Controls.Add(Me.lblResultat)
         Me.Controls.Add(Me.GBOptions)
         Me.Controls.Add(Me.GBDossier)
         Me.Controls.Add(Me.GBMode)
-        Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.TextReturn)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnHelp)
@@ -333,7 +310,7 @@ Partial Class CompactApp
         Me.GBDossier.PerformLayout()
         Me.GBOptions.ResumeLayout(False)
         Me.GBOptions.PerformLayout()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -341,8 +318,7 @@ Partial Class CompactApp
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
-    Friend WithEvents TextReturn As System.Windows.Forms.TextBox
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
     Friend WithEvents GBMode As System.Windows.Forms.GroupBox
     Friend WithEvents OptU As System.Windows.Forms.RadioButton
     Friend WithEvents OptC As System.Windows.Forms.RadioButton
@@ -355,14 +331,13 @@ Partial Class CompactApp
     Friend WithEvents OptF As System.Windows.Forms.CheckBox
     Friend WithEvents OptI As System.Windows.Forms.CheckBox
     Friend WithEvents OptA As System.Windows.Forms.CheckBox
-    Friend WithEvents lblResultat As System.Windows.Forms.Label
     Friend WithEvents RealPath As System.Windows.Forms.TextBox
     Friend WithEvents btnPathFichier As System.Windows.Forms.Button
     Friend WithEvents lblCommande As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
+    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

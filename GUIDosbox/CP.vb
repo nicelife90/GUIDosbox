@@ -1,4 +1,8 @@
-﻿Public Class CP
+﻿Option Strict On
+
+Public Class CP
+
+#Region "Barre de menu"
 
     Private Sub AttribToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AttribToolStripMenuItem.Click
         Me.Hide()
@@ -30,7 +34,7 @@
         AssocApp.Show()
     End Sub
 
-    Private Sub AideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AideToolStripMenuItem.Click
+    Private Sub AideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         HelpApp.Show()
         Me.Hide()
     End Sub
@@ -83,21 +87,22 @@
         Me.Hide()
         WhereApp.Show()
     End Sub
-
-    Private Sub CONVERTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CONVERTToolStripMenuItem.Click
-
+    Private Sub ToolStripAide_Click(sender As Object, e As EventArgs) Handles ToolStripAide.Click
+        Me.Hide()
+        HelpApp.Show()
     End Sub
+#End Region
+
+#Region "Changement de langue"
 
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
 
         'Changement de langue des mot du menus
-
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
 
             chkbxLangue.Text = "Français"
             FichierToolStripMenuItem.Text = "Fichier"
-            ToolStripMenuItem2.Text = "Aide"
-            AideToolStripMenuItem.Text = "Ouvrir l'aide"
+            ToolStripAide.Text = "Aide"
             QuiterToolStripMenuItem.Text = "Quitter"
             EnglishToolStripMenuItem.Text = "Anglais"
             FrançaisToolStripMenuItem.Text = "Français"
@@ -107,8 +112,7 @@
         Else
             chkbxLangue.Text = "English" ' boite PAS cochée=EN 
             FichierToolStripMenuItem.Text = "File"
-            ToolStripMenuItem2.Text = "Help"
-            AideToolStripMenuItem.Text = "Open Help"
+            ToolStripAide.Text = "Help"
             QuiterToolStripMenuItem.Text = "Quit"
             FrançaisToolStripMenuItem.Text = "French"
             EnglishToolStripMenuItem.Text = "English"
@@ -161,14 +165,61 @@
         FlashCPFR.Hide()
         FlashCPEN.Show()
 
+    End Sub
+
+#End Region
+
+    Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
+        'Préparation de l'interface d'utilisateur
+        Try
+            'Déclaration des chemins pour les nouveaux fichiers 
+            Dim MovieENPath As String = System.IO.Path.GetTempPath & "\" & "Menu_EN_GuiDosBox.swf"
+            Dim MovieFRPath As String = System.IO.Path.GetTempPath & "\" & "Menu_GuiDosBox.swf"
+            Dim Xml1Path As String = System.IO.Path.GetTempPath & "\" & "page_1.xml"
+            Dim Xml2Path As String = System.IO.Path.GetTempPath & "\" & "page_2.xml"
+            Dim Xml3Path As String = System.IO.Path.GetTempPath & "\" & "page_3.xml"
+            Dim Xml10Path As String = System.IO.Path.GetTempPath & "\" & "page_10.xml"
+            Dim Xml20Path As String = System.IO.Path.GetTempPath & "\" & "page_20.xml"
+            Dim Xml30Path As String = System.IO.Path.GetTempPath & "\" & "page_30.xml"
+            Dim StylePath As String = System.IO.Path.GetTempPath & "\" & "style.css"
+            Dim Style2Path As String = System.IO.Path.GetTempPath & "\" & "style2.css"
+            Dim HeaderPath As String = System.IO.Path.GetTempPath & "\" & "headerGUIDOSBOX.swf"
+
+            'Création des nouveaux fichiers à partir des resources
+            My.Computer.FileSystem.WriteAllBytes(MovieENPath, My.Resources.Menu_EN_GuiDosBox, False)
+            My.Computer.FileSystem.WriteAllBytes(MovieFRPath, My.Resources.Menu_GuiDosBox, False)
+            My.Computer.FileSystem.WriteAllText(Xml1Path, My.Resources.page_1, False)
+            My.Computer.FileSystem.WriteAllText(Xml2Path, My.Resources.page_2, False)
+            My.Computer.FileSystem.WriteAllText(Xml3Path, My.Resources.page_3, False)
+            My.Computer.FileSystem.WriteAllText(Xml10Path, My.Resources.page_10, False)
+            My.Computer.FileSystem.WriteAllText(Xml20Path, My.Resources.page_20, False)
+            My.Computer.FileSystem.WriteAllText(Xml30Path, My.Resources.page_30, False)
+            My.Computer.FileSystem.WriteAllText(StylePath, My.Resources.style, False)
+            My.Computer.FileSystem.WriteAllText(Style2Path, My.Resources.style2, False)
+            My.Computer.FileSystem.WriteAllBytes(HeaderPath, My.Resources.headerGUIDOSBOX, False)
+
+            'Affichage du menu en francais
+            FlashCPFR.LoadMovie(0, MovieFRPath)
+            FlashCPFR.Menu = False
+            FlashCPFR.Play()
+
+            'Affichage du menu en anglais
+            FlashCPEN.LoadMovie(0, MovieENPath)
+            FlashCPEN.Play()
+
+            'Affichage du header
+            FlashHeader.LoadMovie(0, HeaderPath)
+            FlashHeader.Play()
+
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message, _
+                   MsgBoxStyle.Information, My.Application.GetType.Name)
+        End Try
 
     End Sub
 
-    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
 
-    End Sub
 
-    Private Sub CP_Load(sender As System.Object, e As System.EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class

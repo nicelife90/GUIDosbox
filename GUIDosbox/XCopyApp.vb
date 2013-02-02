@@ -1,92 +1,37 @@
-﻿Imports System.Text
+﻿Option Strict On
 
 Public Class XCopyApp
 
-    Public Function ProcessXCopy(ByVal arg As String) 'fonction process start 2 work whit
-        Dim XCopyArguments As String = arg
-        Dim XCopyProcess As New Process()    'déclaration des variable
-        Dim XCopyStartInfo As New ProcessStartInfo()
+    Private Sub xcopyApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Démmarage de la console
+        myConsole.StartConsole()
 
-        XCopyStartInfo.FileName = "CMD.exe "   'fichier à démarrer
+        'Loading du header flash.
+        Try
+            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "xcopy.swf"
+            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.xcopy, False)
+            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "xcopy.swf")
+            flashHeader.Play()
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
+                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
+                   MsgBoxStyle.Information, My.Application.GetType.Name)
+        End Try
 
-        'écrit la sortie des erreur dans le flux (stream)
-        XCopyStartInfo.RedirectStandardError = True
-        'écrit la sortie standard dans le flux
-        XCopyStartInfo.RedirectStandardOutput = True
-        'écrit les entrer dans le flux
-        XCopyStartInfo.RedirectStandardInput = True
-        'ne pas utiliser le shell de windows
-        XCopyStartInfo.UseShellExecute = False
-        'ne pas faire voir de fenêtre
-        XCopyStartInfo.CreateNoWindow = True
-        'argument à insérer
-        XCopyStartInfo.Arguments = "/D /c XCOPY " + XCopyArguments
-
-        XCopyProcess.EnableRaisingEvents = True
-        XCopyProcess.StartInfo = XCopyStartInfo
-
-        'convertie le texte pour un affichage compatible sur windows
-        XCopyProcess.StartInfo.StandardOutputEncoding = Encoding.GetEncoding("cp437")
-        'début du process cmd.exe & xcope.exe
-        XCopyProcess.Start()
-        'déclaration de la variable pour le flux de sortie
-        Dim XcopySuccessful As String = ""
-        'lecture du résultat
-        XcopySuccessful = XCopyProcess.StandardOutput.ReadToEnd
-
-        'période de délais avant la fin du processus
-        XCopyProcess.WaitForExit(15000)
-
-        'affichage du flux 
-        Return XcopySuccessful
-    End Function
-
-    Private Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
-        Me.Close()
-        CP.Show()
+        'Option par défaut
+        OptC.Checked = True
+        OptE.Checked = True
+        OptY.Checked = True
     End Sub
+   
+    Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-    Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFichier.Click
-        OpenFileDialog1.Title = "Rechercher un fichier"  'attribut du openfiledialoge ex. titre, directory, start
-        OpenFileDialog1.InitialDirectory = "C:\"
-        OpenFileDialog1.ShowDialog()
-
-    End Sub
-
-    Private Sub OpenFileDialog1_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
-        Dim strm As System.IO.Stream                            'fonction openfiledialoge
-        strm = OpenFileDialog1.OpenFile()                       'qui permet de voir les fichier et de sélectionner une source
-        PathSource.Text = OpenFileDialog1.FileName.ToString()   '**'
-        If Not (strm Is Nothing) Then                           '**'
-            'insert code to read the file data
-            strm.Close()
-        End If
-    End Sub
-
-    Private Sub Button2_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossierSource.Click
-        Dim folderDlg As New FolderBrowserDialog    'attribut de la fonction FolderBrowserDialoge
-        folderDlg.ShowNewFolderButton = True
-        If (folderDlg.ShowDialog() = DialogResult.OK) Then
-            PathSource.Text = folderDlg.SelectedPath
-            Dim root As Environment.SpecialFolder = folderDlg.RootFolder
-        End If
-    End Sub
-
-    Private Sub Button3_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossierDest.Click
-        Dim folderDlg2 As New FolderBrowserDialog    'attribut de la fonction FolderBrowserDialoge
-        folderDlg2.ShowNewFolderButton = True
-        If (folderDlg2.ShowDialog() = DialogResult.OK) Then
-            PathDestination.Text = folderDlg2.SelectedPath
-            Dim root As Environment.SpecialFolder = folderDlg2.RootFolder
-        End If
-    End Sub
-
-    Private Sub Apply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-
+        'Déclaration des variables et constantes.
+        Const App As String = "XCOPY "
         Dim Args1 As String = ""
         Dim ArgsD As String = ""
         Dim Args2 As String = ""
-        Dim Args3 As String = ""            'Déclaration des variables
+        Dim Args3 As String = ""
         Dim Args4 As String = ""
         Dim Args5 As String = ""
         Dim Args6 As String = ""
@@ -218,50 +163,61 @@ Public Class XCopyApp
             Args16 = ""
         End If
 
-
         'source
-        source = " " & """" & PathSource.Text & """" 'affectation du path à la variable source
+        source = " " & """" & PathSource.Text & """"
         'destination
-        destination = """" & PathDestination.Text & """" ' affectation du path à la variable destination
+        destination = """" & PathDestination.Text & """"
 
-        TextReturns.Text = ProcessXCopy(source & " " & destination _
-                + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9 + Args10 _
-                + Args11 + Args12 + Args13 + Args14 + Args15 + Args16) 'Lancement de la commande
+        'Envoi de la commande.
+        myConsole.SendCommand(App + source & " " & destination + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9 + Args10 _
+                + Args11 + Args12 + Args13 + Args14 + Args15 + Args16)
 
+        'Affichage de la commande exécuté.
         CommandReturn.Text = ("xcopy.exe " & source & " " & destination _
                 + Args1 + ArgsD + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9 + Args10 _
                 + Args11 + Args12 + Args13 + Args14 + Args15 + Args16) 'affichage de la commande éxécuter
 
-        PathDestination.Text = " " 'effacement du champ destination
-        PathSource.Text = " "     'effacement du champ source
+        'Reset des champs textes.
+        PathDestination.Text = Nothing
+        PathSource.Text = Nothing
 
-        Dim l As Integer = 0 'progressbar1
-        ProgressBar1.Maximum = 100000
-        ProgressBar1.Minimum = 0
-        ProgressBar1.Value = 0
 
-        For l = ProgressBar1.Minimum To ProgressBar1.Maximum
-            ProgressBar1.Value = l
-        Next
 
     End Sub
 
-    Private Sub xcopyApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        OptC.Checked = True
-        OptE.Checked = True   'établissement des valeurs recommander
-        OptY.Checked = True
-
+    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+        'Affichage de l'aide
+        myConsole.SendCommand("xcopy /?")
     End Sub
 
-    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
-        TextReturns.Text = ProcessXCopy(" /?") 'lancement de la commande pour l'aide
+    Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
+        'Fermeture de la console et retour au cp.
+        myConsole.CloseConsole("xcopy")
+        Me.Close()
+        CP.Show()
     End Sub
 
-    Private Sub ClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+    Private Sub btnFichier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFichier.Click
+        'Sélection d'un fichier.
+        OpenFileDialog1.ShowDialog()
+        PathSource.Text = OpenFileDialog1.FileName.ToString()
+    End Sub
 
-        'déclaration de la variable ctl
+    Private Sub btnDossierSource_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossierSource.Click
+        'Sélection d'un fichier
+        FolderBrowserDialog1.ShowDialog()
+        PathSource.Text = FolderBrowserDialog1.SelectedPath
+    End Sub
+
+    Private Sub btnDossierDest_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossierDest.Click
+        'Sélection d'un fichier.
+        FolderBrowserDialog2.ShowDialog()
+        PathDestination.Text = FolderBrowserDialog2.SelectedPath
+    End Sub
+
+    Private Sub btnClearButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+        'Reset des textbox.
         Dim ctl As Control
-        'boucle dans textbox pour effacer les champ
         For Each ctl In Controls
             If TypeOf ctl Is TextBox Then
                 ctl.Text = ""
@@ -269,7 +225,7 @@ Public Class XCopyApp
         Next
     End Sub
 
-
+#Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
             chkbxLangue.Text = "Français"
@@ -299,4 +255,6 @@ Public Class XCopyApp
 
         End If
     End Sub
+#End Region
+    
 End Class

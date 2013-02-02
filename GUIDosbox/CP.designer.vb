@@ -46,17 +46,16 @@ Partial Class CP
         Me.RToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhoamiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XcopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AideToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripAide = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.FlashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPEN = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.HeaderFlashFR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashCPFR, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.FlashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashCPEN, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -66,7 +65,7 @@ Partial Class CP
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.WindowText
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripMenuItem2})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripAide})
         Me.MenuStrip1.Location = New System.Drawing.Point(-2, 37)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -246,23 +245,14 @@ Partial Class CP
         Me.XcopyToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.XcopyToolStripMenuItem.Text = "XCOPY"
         '
-        'ToolStripMenuItem2
+        'ToolStripAide
         '
-        Me.ToolStripMenuItem2.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ToolStripMenuItem2.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AideToolStripMenuItem})
-        Me.ToolStripMenuItem2.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ToolStripMenuItem2.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(44, 24)
-        Me.ToolStripMenuItem2.Text = "Aide"
-        '
-        'AideToolStripMenuItem
-        '
-        Me.AideToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.AideToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.AideToolStripMenuItem.Name = "AideToolStripMenuItem"
-        Me.AideToolStripMenuItem.Size = New System.Drawing.Size(143, 22)
-        Me.AideToolStripMenuItem.Text = "Ouvrir l'aide"
+        Me.ToolStripAide.BackColor = System.Drawing.SystemColors.WindowText
+        Me.ToolStripAide.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.ToolStripAide.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ToolStripAide.Name = "ToolStripAide"
+        Me.ToolStripAide.Size = New System.Drawing.Size(44, 24)
+        Me.ToolStripAide.Text = "Aide"
         '
         'HeaderFlashFR
         '
@@ -295,14 +285,14 @@ Partial Class CP
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'AxShockwaveFlash1
+        'FlashHeader
         '
-        Me.AxShockwaveFlash1.Enabled = True
-        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(-5, -3)
-        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
-        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(728, 58)
-        Me.AxShockwaveFlash1.TabIndex = 8
+        Me.FlashHeader.Enabled = True
+        Me.FlashHeader.Location = New System.Drawing.Point(-5, -3)
+        Me.FlashHeader.Name = "FlashHeader"
+        Me.FlashHeader.OcxState = CType(resources.GetObject("FlashHeader.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.FlashHeader.Size = New System.Drawing.Size(728, 58)
+        Me.FlashHeader.TabIndex = 8
         '
         'FlashCPEN
         '
@@ -320,7 +310,7 @@ Partial Class CP
         Me.BackColor = System.Drawing.SystemColors.WindowText
         Me.ClientSize = New System.Drawing.Size(705, 470)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.AxShockwaveFlash1)
+        Me.Controls.Add(Me.FlashHeader)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.HeaderFlashFR)
         Me.Controls.Add(Me.FlashCPFR)
@@ -338,15 +328,14 @@ Partial Class CP
         Me.MenuStrip1.PerformLayout()
         CType(Me.HeaderFlashFR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FlashCPFR, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.FlashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FlashCPEN, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents ToolStripMenuItem2 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AideToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripAide As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FichierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents QuiterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HeaderFlashFR As AxShockwaveFlashObjects.AxShockwaveFlash
@@ -355,7 +344,7 @@ Partial Class CP
     Friend WithEvents LangueToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FrançaisToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EnglishToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents FlashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents FlashCPEN As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AssocToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
