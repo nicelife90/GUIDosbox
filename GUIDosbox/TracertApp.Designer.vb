@@ -22,12 +22,13 @@ Partial Class TracertApp
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TracertApp))
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.OptADV = New System.Windows.Forms.CheckBox()
+        Me.TextReturns = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.ADVCommand = New System.Windows.Forms.TextBox()
         Me.btnEnvoi = New System.Windows.Forms.Button()
@@ -35,26 +36,24 @@ Partial Class TracertApp
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.GBForce = New System.Windows.Forms.GroupBox()
-        Me.Opt6 = New System.Windows.Forms.CheckBox()
-        Me.Opt4 = New System.Windows.Forms.CheckBox()
         Me.GBIpv6 = New System.Windows.Forms.GroupBox()
-        Me.txtSourceIPv6 = New System.Windows.Forms.TextBox()
-        Me.OptR = New System.Windows.Forms.CheckBox()
-        Me.OptS = New System.Windows.Forms.CheckBox()
         Me.OptD = New System.Windows.Forms.CheckBox()
         Me.DelaiMS = New System.Windows.Forms.NumericUpDown()
         Me.GBTimeout = New System.Windows.Forms.GroupBox()
         Me.OptW = New System.Windows.Forms.CheckBox()
         Me.OptJ = New System.Windows.Forms.CheckBox()
+        Me.OptS = New System.Windows.Forms.CheckBox()
+        Me.OptR = New System.Windows.Forms.CheckBox()
+        Me.txtSourceIPv6 = New System.Windows.Forms.TextBox()
         Me.txtAddresse = New System.Windows.Forms.TextBox()
         Me.GBHops = New System.Windows.Forms.GroupBox()
-        Me.SautsMax = New System.Windows.Forms.NumericUpDown()
         Me.OptH = New System.Windows.Forms.CheckBox()
+        Me.SautsMax = New System.Windows.Forms.NumericUpDown()
+        Me.Opt4 = New System.Windows.Forms.CheckBox()
+        Me.Opt6 = New System.Windows.Forms.CheckBox()
         Me.lblAddresse = New System.Windows.Forms.Label()
         Me.GBHotes = New System.Windows.Forms.GroupBox()
         Me.txtListeHotes = New System.Windows.Forms.TextBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GBForce.SuspendLayout()
         Me.GBIpv6.SuspendLayout()
         CType(Me.DelaiMS, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -62,7 +61,6 @@ Partial Class TracertApp
         Me.GBHops.SuspendLayout()
         CType(Me.SautsMax, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBHotes.SuspendLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnHelp
@@ -112,6 +110,26 @@ Partial Class TracertApp
         Me.OptADV.TabIndex = 10
         Me.OptADV.Text = "Mode avancé"
         Me.OptADV.UseVisualStyleBackColor = True
+        '
+        'TextReturns
+        '
+        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
+        Me.TextReturns.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
+        Me.TextReturns.Location = New System.Drawing.Point(152, 54)
+        Me.TextReturns.Multiline = True
+        Me.TextReturns.Name = "TextReturns"
+        Me.TextReturns.ReadOnly = True
+        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextReturns.Size = New System.Drawing.Size(453, 399)
+        Me.TextReturns.TabIndex = 11
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(94, 553)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(350, 23)
+        Me.ProgressBar1.TabIndex = 12
         '
         'CommandReturn
         '
@@ -165,7 +183,7 @@ Partial Class TracertApp
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(590, 12)
+        Me.chkbxLangue.Location = New System.Drawing.Point(604, 45)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
         Me.chkbxLangue.TabIndex = 19
@@ -183,26 +201,6 @@ Partial Class TracertApp
         Me.GBForce.TabStop = False
         Me.GBForce.Text = "Forcer"
         '
-        'Opt6
-        '
-        Me.Opt6.AutoSize = True
-        Me.Opt6.Location = New System.Drawing.Point(5, 44)
-        Me.Opt6.Name = "Opt6"
-        Me.Opt6.Size = New System.Drawing.Size(48, 17)
-        Me.Opt6.TabIndex = 1
-        Me.Opt6.Text = "IPv6"
-        Me.Opt6.UseVisualStyleBackColor = True
-        '
-        'Opt4
-        '
-        Me.Opt4.AutoSize = True
-        Me.Opt4.Location = New System.Drawing.Point(5, 20)
-        Me.Opt4.Name = "Opt4"
-        Me.Opt4.Size = New System.Drawing.Size(48, 17)
-        Me.Opt4.TabIndex = 0
-        Me.Opt4.Text = "IPv4"
-        Me.Opt4.UseVisualStyleBackColor = True
-        '
         'GBIpv6
         '
         Me.GBIpv6.Controls.Add(Me.txtSourceIPv6)
@@ -214,33 +212,6 @@ Partial Class TracertApp
         Me.GBIpv6.TabIndex = 21
         Me.GBIpv6.TabStop = False
         Me.GBIpv6.Text = "IPv6"
-        '
-        'txtSourceIPv6
-        '
-        Me.txtSourceIPv6.Location = New System.Drawing.Point(5, 42)
-        Me.txtSourceIPv6.Name = "txtSourceIPv6"
-        Me.txtSourceIPv6.Size = New System.Drawing.Size(132, 20)
-        Me.txtSourceIPv6.TabIndex = 2
-        '
-        'OptR
-        '
-        Me.OptR.AutoSize = True
-        Me.OptR.Location = New System.Drawing.Point(5, 19)
-        Me.OptR.Name = "OptR"
-        Me.OptR.Size = New System.Drawing.Size(39, 17)
-        Me.OptR.TabIndex = 1
-        Me.OptR.Text = "/R"
-        Me.OptR.UseVisualStyleBackColor = True
-        '
-        'OptS
-        '
-        Me.OptS.AutoSize = True
-        Me.OptS.Location = New System.Drawing.Point(46, 19)
-        Me.OptS.Name = "OptS"
-        Me.OptS.Size = New System.Drawing.Size(91, 17)
-        Me.OptS.TabIndex = 0
-        Me.OptS.Text = "/S  Addresse:"
-        Me.OptS.UseVisualStyleBackColor = True
         '
         'OptD
         '
@@ -290,6 +261,33 @@ Partial Class TracertApp
         Me.OptJ.Text = "/J           Hôtes:"
         Me.OptJ.UseVisualStyleBackColor = True
         '
+        'OptS
+        '
+        Me.OptS.AutoSize = True
+        Me.OptS.Location = New System.Drawing.Point(46, 19)
+        Me.OptS.Name = "OptS"
+        Me.OptS.Size = New System.Drawing.Size(91, 17)
+        Me.OptS.TabIndex = 0
+        Me.OptS.Text = "/S  Addresse:"
+        Me.OptS.UseVisualStyleBackColor = True
+        '
+        'OptR
+        '
+        Me.OptR.AutoSize = True
+        Me.OptR.Location = New System.Drawing.Point(5, 19)
+        Me.OptR.Name = "OptR"
+        Me.OptR.Size = New System.Drawing.Size(39, 17)
+        Me.OptR.TabIndex = 1
+        Me.OptR.Text = "/R"
+        Me.OptR.UseVisualStyleBackColor = True
+        '
+        'txtSourceIPv6
+        '
+        Me.txtSourceIPv6.Location = New System.Drawing.Point(5, 42)
+        Me.txtSourceIPv6.Name = "txtSourceIPv6"
+        Me.txtSourceIPv6.Size = New System.Drawing.Size(132, 20)
+        Me.txtSourceIPv6.TabIndex = 2
+        '
         'txtAddresse
         '
         Me.txtAddresse.Location = New System.Drawing.Point(6, 112)
@@ -308,14 +306,6 @@ Partial Class TracertApp
         Me.GBHops.TabStop = False
         Me.GBHops.Text = "Sauts Maximum"
         '
-        'SautsMax
-        '
-        Me.SautsMax.Location = New System.Drawing.Point(5, 57)
-        Me.SautsMax.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
-        Me.SautsMax.Name = "SautsMax"
-        Me.SautsMax.Size = New System.Drawing.Size(46, 20)
-        Me.SautsMax.TabIndex = 1
-        '
         'OptH
         '
         Me.OptH.AutoSize = True
@@ -325,6 +315,34 @@ Partial Class TracertApp
         Me.OptH.TabIndex = 0
         Me.OptH.Text = "/H"
         Me.OptH.UseVisualStyleBackColor = True
+        '
+        'SautsMax
+        '
+        Me.SautsMax.Location = New System.Drawing.Point(5, 57)
+        Me.SautsMax.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
+        Me.SautsMax.Name = "SautsMax"
+        Me.SautsMax.Size = New System.Drawing.Size(46, 20)
+        Me.SautsMax.TabIndex = 1
+        '
+        'Opt4
+        '
+        Me.Opt4.AutoSize = True
+        Me.Opt4.Location = New System.Drawing.Point(5, 20)
+        Me.Opt4.Name = "Opt4"
+        Me.Opt4.Size = New System.Drawing.Size(48, 17)
+        Me.Opt4.TabIndex = 0
+        Me.Opt4.Text = "IPv4"
+        Me.Opt4.UseVisualStyleBackColor = True
+        '
+        'Opt6
+        '
+        Me.Opt6.AutoSize = True
+        Me.Opt6.Location = New System.Drawing.Point(5, 44)
+        Me.Opt6.Name = "Opt6"
+        Me.Opt6.Size = New System.Drawing.Size(48, 17)
+        Me.Opt6.TabIndex = 1
+        Me.Opt6.Text = "IPv6"
+        Me.Opt6.UseVisualStyleBackColor = True
         '
         'lblAddresse
         '
@@ -354,23 +372,6 @@ Partial Class TracertApp
         Me.txtListeHotes.Size = New System.Drawing.Size(125, 20)
         Me.txtListeHotes.TabIndex = 26
         '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(152, 54)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(453, 394)
-        Me.myConsole.TabIndex = 30
-        '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(0, 0)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(619, 40)
-        Me.flashHeader.TabIndex = 31
-        '
         'TracertApp
         '
         Me.AcceptButton = Me.btnEnvoi
@@ -380,9 +381,6 @@ Partial Class TracertApp
         Me.CancelButton = Me.btnBack
         Me.ClientSize = New System.Drawing.Size(617, 584)
         Me.ControlBox = False
-        Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.GBHotes)
         Me.Controls.Add(Me.lblAddresse)
         Me.Controls.Add(Me.GBHops)
@@ -391,11 +389,14 @@ Partial Class TracertApp
         Me.Controls.Add(Me.OptD)
         Me.Controls.Add(Me.GBIpv6)
         Me.Controls.Add(Me.GBForce)
+        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.lblCommandeExec)
         Me.Controls.Add(Me.lblLigneCommande)
         Me.Controls.Add(Me.btnEnvoi)
         Me.Controls.Add(Me.ADVCommand)
         Me.Controls.Add(Me.CommandReturn)
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.TextReturns)
         Me.Controls.Add(Me.OptADV)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
@@ -415,7 +416,6 @@ Partial Class TracertApp
         CType(Me.SautsMax, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GBHotes.ResumeLayout(False)
         Me.GBHotes.PerformLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -425,6 +425,8 @@ Partial Class TracertApp
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents OptADV As System.Windows.Forms.CheckBox
+    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
     Friend WithEvents btnEnvoi As System.Windows.Forms.Button
@@ -450,6 +452,4 @@ Partial Class TracertApp
     Friend WithEvents lblAddresse As System.Windows.Forms.Label
     Friend WithEvents GBHotes As System.Windows.Forms.GroupBox
     Friend WithEvents txtListeHotes As System.Windows.Forms.TextBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

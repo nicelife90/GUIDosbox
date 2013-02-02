@@ -22,12 +22,13 @@ Partial Class TypeApp
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TypeApp))
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.OptADV = New System.Windows.Forms.CheckBox()
+        Me.TextReturns = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
@@ -35,9 +36,6 @@ Partial Class TypeApp
         Me.btnFichier = New System.Windows.Forms.Button()
         Me.txtPathFichier = New System.Windows.Forms.TextBox()
         Me.lblFichier = New System.Windows.Forms.Label()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnHelp
@@ -61,7 +59,7 @@ Partial Class TypeApp
         'btnBack
         '
         Me.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnBack.Location = New System.Drawing.Point(643, 530)
+        Me.btnBack.Location = New System.Drawing.Point(843, 553)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(75, 23)
         Me.btnBack.TabIndex = 8
@@ -80,13 +78,33 @@ Partial Class TypeApp
         'OptADV
         '
         Me.OptADV.AutoSize = True
-        Me.OptADV.Location = New System.Drawing.Point(12, 530)
+        Me.OptADV.Location = New System.Drawing.Point(13, 18)
         Me.OptADV.Name = "OptADV"
         Me.OptADV.Size = New System.Drawing.Size(92, 17)
         Me.OptADV.TabIndex = 10
         Me.OptADV.Text = "Mode avancé"
         Me.OptADV.UseVisualStyleBackColor = True
         Me.OptADV.Visible = False
+        '
+        'TextReturns
+        '
+        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
+        Me.TextReturns.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
+        Me.TextReturns.Location = New System.Drawing.Point(8, 55)
+        Me.TextReturns.Multiline = True
+        Me.TextReturns.Name = "TextReturns"
+        Me.TextReturns.ReadOnly = True
+        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextReturns.Size = New System.Drawing.Size(910, 399)
+        Me.TextReturns.TabIndex = 11
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(94, 553)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(350, 23)
+        Me.ProgressBar1.TabIndex = 12
         '
         'CommandReturn
         '
@@ -112,7 +130,7 @@ Partial Class TypeApp
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(739, 12)
+        Me.chkbxLangue.Location = New System.Drawing.Point(129, 21)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
         Me.chkbxLangue.TabIndex = 19
@@ -149,23 +167,6 @@ Partial Class TypeApp
         Me.lblFichier.TabIndex = 22
         Me.lblFichier.Text = "Fichier à lire"
         '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(8, 55)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(746, 399)
-        Me.myConsole.TabIndex = 23
-        '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(0, -1)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(763, 40)
-        Me.flashHeader.TabIndex = 24
-        '
         'TypeApp
         '
         Me.AcceptButton = Me.btnApply
@@ -173,16 +174,16 @@ Partial Class TypeApp
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.CancelButton = Me.btnBack
-        Me.ClientSize = New System.Drawing.Size(759, 584)
+        Me.ClientSize = New System.Drawing.Size(930, 584)
         Me.ControlBox = False
-        Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.lblFichier)
         Me.Controls.Add(Me.txtPathFichier)
         Me.Controls.Add(Me.btnFichier)
+        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.lblCommandeExec)
         Me.Controls.Add(Me.CommandReturn)
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.TextReturns)
         Me.Controls.Add(Me.OptADV)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
@@ -190,7 +191,6 @@ Partial Class TypeApp
         Me.Controls.Add(Me.btnHelp)
         Me.Name = "TypeApp"
         Me.Text = "GUI DosBox - Type"
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -200,6 +200,8 @@ Partial Class TypeApp
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents OptADV As System.Windows.Forms.CheckBox
+    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
@@ -207,6 +209,4 @@ Partial Class TypeApp
     Friend WithEvents btnFichier As System.Windows.Forms.Button
     Friend WithEvents txtPathFichier As System.Windows.Forms.TextBox
     Friend WithEvents lblFichier As System.Windows.Forms.Label
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

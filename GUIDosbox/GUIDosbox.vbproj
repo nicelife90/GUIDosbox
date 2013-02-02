@@ -51,7 +51,6 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>GUIDosbox.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <RunCodeAnalysis>true</RunCodeAnalysis>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -69,7 +68,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\cmd.ico</ApplicationIcon>
+    <ApplicationIcon>GUIDosBox.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E520648F59C0BA0221B170E081E381B1EC5D39FE</ManifestCertificateThumbprint>
@@ -90,6 +89,7 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -150,27 +150,6 @@
     </Compile>
     <Compile Include="CP.vb">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxButton.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxCheckbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxConsole.Designer.vb">
-      <DependentUpon>GUIDosboxConsole.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxConsole.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxGroupbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxLabel.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosboxTextbox.vb">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Form1.Designer.vb">
       <DependentUpon>CompactApp.vb</DependentUpon>
@@ -276,15 +255,6 @@
     <EmbeddedResource Include="CP.resx">
       <DependentUpon>CP.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosboxButton.resx">
-      <DependentUpon>GUIDosboxButton.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosboxConsole.resx">
-      <DependentUpon>GUIDosboxConsole.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosboxGroupbox.resx">
-      <DependentUpon>GUIDosboxGroupbox.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="HelpApp.resx">
       <DependentUpon>HelpApp.vb</DependentUpon>
     </EmbeddedResource>
@@ -360,17 +330,33 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\style2.css" />
-    <EmbeddedResource Include="Resources\style.css" />
-    <EmbeddedResource Include="Resources\page_30.xml" />
-    <EmbeddedResource Include="Resources\page_20.xml" />
-    <EmbeddedResource Include="Resources\page_10.xml" />
-    <EmbeddedResource Include="Resources\page_3.xml" />
-    <EmbeddedResource Include="Resources\page_2.xml" />
-    <EmbeddedResource Include="Resources\page_1.xml" />
-    <EmbeddedResource Include="Resources\Menu_GuiDosBox.swf" />
-    <EmbeddedResource Include="Resources\Menu_EN_GuiDosBox.swf" />
-    <EmbeddedResource Include="Resources\headerGUIDOSBOX.swf" />
+    <Content Include="Flash\Assoc.swf" />
+    <Content Include="Flash\Attrib.swf" />
+    <Content Include="Flash\CHKDSK.swf" />
+    <Content Include="Flash\CMDConsol.swf" />
+    <Content Include="Flash\compact.swf" />
+    <Content Include="Flash\CompApp.swf" />
+    <Content Include="Flash\headerGUIDOSBOX.swf" />
+    <Content Include="Flash\help.swf" />
+    <Content Include="Flash\Menu_EN_GuiDosBox.swf" />
+    <Content Include="Flash\Menu_GuiDosBox.swf" />
+    <Content Include="Flash\page_1.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Flash\page_10.xml" />
+    <Content Include="Flash\page_2.xml" />
+    <Content Include="Flash\page_20.xml" />
+    <Content Include="Flash\page_3.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Flash\page_30.xml" />
+    <Content Include="Flash\style.css" />
+    <Content Include="Flash\style2.css" />
+    <Content Include="Flash\swfobject.js" />
+    <Content Include="Flash\Where.swf" />
+    <Content Include="Flash\WHOAMI.swf" />
+    <Content Include="Flash\XCOPY.swf" />
+    <Content Include="GUIDosBox.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
@@ -393,60 +379,6 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\cmd.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\assoc.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\attrib.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\cacls.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\chkdsk.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\cmd.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\comp.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\compact.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\convert.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\help.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\rd.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\subst.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\system_info.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\tracert.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\type.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\where.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\whoami.swf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Resources\xcopy.swf" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

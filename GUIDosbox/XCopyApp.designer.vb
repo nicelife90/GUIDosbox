@@ -47,6 +47,7 @@ Partial Class XCopyApp
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog2 = New System.Windows.Forms.FolderBrowserDialog()
         Me.btnDossierDest = New System.Windows.Forms.Button()
+        Me.TextReturns = New System.Windows.Forms.TextBox()
         Me.OptK = New System.Windows.Forms.CheckBox()
         Me.OptX = New System.Windows.Forms.CheckBox()
         Me.OptO = New System.Windows.Forms.CheckBox()
@@ -68,16 +69,16 @@ Partial Class XCopyApp
         Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.lblCommande = New System.Windows.Forms.Label()
         Me.btnClear = New System.Windows.Forms.Button()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GroupBox1.SuspendLayout()
         Me.GBDate.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
         Me.GBPrompt.SuspendLayout()
         Me.GBRecomande.SuspendLayout()
         Me.Options.SuspendLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnApply
@@ -286,6 +287,17 @@ Partial Class XCopyApp
         Me.btnDossierDest.TabIndex = 24
         Me.btnDossierDest.Text = "Dossier"
         Me.btnDossierDest.UseVisualStyleBackColor = True
+        '
+        'TextReturns
+        '
+        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
+        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
+        Me.TextReturns.Location = New System.Drawing.Point(186, 120)
+        Me.TextReturns.Multiline = True
+        Me.TextReturns.Name = "TextReturns"
+        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextReturns.Size = New System.Drawing.Size(394, 288)
+        Me.TextReturns.TabIndex = 25
         '
         'OptK
         '
@@ -503,6 +515,22 @@ Partial Class XCopyApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(94, 444)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(320, 10)
+        Me.ProgressBar1.TabIndex = 47
+        '
+        'AxShockwaveFlash1
+        '
+        Me.AxShockwaveFlash1.Enabled = True
+        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(0, -2)
+        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
+        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(588, 43)
+        Me.AxShockwaveFlash1.TabIndex = 48
+        '
         'chkbxLangue
         '
         Me.chkbxLangue.AutoSize = True
@@ -515,23 +543,6 @@ Partial Class XCopyApp
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(186, 121)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(394, 286)
-        Me.myConsole.TabIndex = 50
-        '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(1, 0)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(585, 40)
-        Me.flashHeader.TabIndex = 51
-        '
         'XCopyApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -539,9 +550,9 @@ Partial Class XCopyApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(585, 465)
         Me.ControlBox = False
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
+        Me.Controls.Add(Me.AxShockwaveFlash1)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.lblCommande)
         Me.Controls.Add(Me.CommandReturn)
@@ -549,6 +560,7 @@ Partial Class XCopyApp
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.Options)
         Me.Controls.Add(Me.GBRecomande)
+        Me.Controls.Add(Me.TextReturns)
         Me.Controls.Add(Me.btnDossierDest)
         Me.Controls.Add(Me.btnDossierSource)
         Me.Controls.Add(Me.btnFichier)
@@ -576,7 +588,7 @@ Partial Class XCopyApp
         Me.GBRecomande.PerformLayout()
         Me.Options.ResumeLayout(False)
         Me.Options.PerformLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -601,6 +613,7 @@ Partial Class XCopyApp
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents FolderBrowserDialog2 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents btnDossierDest As System.Windows.Forms.Button
+    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
     Friend WithEvents OptK As System.Windows.Forms.CheckBox
     Friend WithEvents OptX As System.Windows.Forms.CheckBox
     Friend WithEvents OptO As System.Windows.Forms.CheckBox
@@ -624,9 +637,9 @@ Partial Class XCopyApp
     Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents lblCommande As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents DateSelected As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
+    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

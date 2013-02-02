@@ -48,6 +48,7 @@ Partial Class AttribApp
         Me.OptD = New System.Windows.Forms.CheckBox()
         Me.OptS = New System.Windows.Forms.CheckBox()
         Me.btnAide = New System.Windows.Forms.Button()
+        Me.TextResults = New System.Windows.Forms.TextBox()
         Me.btnFiles = New System.Windows.Forms.Button()
         Me.PathReturn = New System.Windows.Forms.TextBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
@@ -58,19 +59,16 @@ Partial Class AttribApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.lblDescription1 = New System.Windows.Forms.Label()
         Me.lblDescription2 = New System.Windows.Forms.Label()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.txtCmdExec = New System.Windows.Forms.TextBox()
-        Me.lblCmdExec = New System.Windows.Forms.Label()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.RBox.SuspendLayout()
         Me.ABox.SuspendLayout()
         Me.SBox.SuspendLayout()
         Me.HBox.SuspendLayout()
         Me.IBox.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'RBox
@@ -342,12 +340,29 @@ Partial Class AttribApp
         '
         'btnAide
         '
-        Me.btnAide.Location = New System.Drawing.Point(12, 558)
+        Me.btnAide.Location = New System.Drawing.Point(12, 528)
         Me.btnAide.Name = "btnAide"
         Me.btnAide.Size = New System.Drawing.Size(72, 23)
         Me.btnAide.TabIndex = 11
         Me.btnAide.Text = "Aide"
         Me.btnAide.UseVisualStyleBackColor = True
+        '
+        'TextResults
+        '
+        Me.TextResults.BackColor = System.Drawing.SystemColors.InfoText
+        Me.TextResults.Cursor = System.Windows.Forms.Cursors.Default
+        Me.TextResults.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextResults.ForeColor = System.Drawing.Color.White
+        Me.TextResults.ImeMode = System.Windows.Forms.ImeMode.NoControl
+        Me.TextResults.Location = New System.Drawing.Point(12, 265)
+        Me.TextResults.Multiline = True
+        Me.TextResults.Name = "TextResults"
+        Me.TextResults.ReadOnly = True
+        Me.TextResults.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextResults.Size = New System.Drawing.Size(573, 261)
+        Me.TextResults.TabIndex = 13
+        Me.TextResults.Text = "Bienvenue!" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "Vous pouvez en tous temp appuyer sur la touche aide plus bas pour con" & _
+            "naitre l'effet des options" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "disponible plus haut."
         '
         'btnFiles
         '
@@ -390,7 +405,7 @@ Partial Class AttribApp
         'btnBack
         '
         Me.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnBack.Location = New System.Drawing.Point(510, 558)
+        Me.btnBack.Location = New System.Drawing.Point(510, 528)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(75, 23)
         Me.btnBack.TabIndex = 18
@@ -399,7 +414,7 @@ Partial Class AttribApp
         '
         'btnApply
         '
-        Me.btnApply.Location = New System.Drawing.Point(348, 558)
+        Me.btnApply.Location = New System.Drawing.Point(429, 528)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(75, 23)
         Me.btnApply.TabIndex = 19
@@ -408,23 +423,39 @@ Partial Class AttribApp
         '
         'lblDescription1
         '
-        Me.lblDescription1.Location = New System.Drawing.Point(17, 156)
+        Me.lblDescription1.Location = New System.Drawing.Point(2, 156)
         Me.lblDescription1.Name = "lblDescription1"
         Me.lblDescription1.Size = New System.Drawing.Size(231, 39)
         Me.lblDescription1.TabIndex = 20
         Me.lblDescription1.Text = "Ces options peuvent prendres plus de temps" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "sur certaint ordinateur. Soyer patien" & _
-    "t, même si" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "la fenêtre semble plus bouger. (J'usqua 30 sec)."
+            "t, même si" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "la fenêtre semble plus bouger. (J'usqua 30 sec)."
         Me.lblDescription1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'lblDescription2
         '
-        Me.lblDescription2.Location = New System.Drawing.Point(464, 47)
+        Me.lblDescription2.Location = New System.Drawing.Point(464, 66)
         Me.lblDescription2.Name = "lblDescription2"
         Me.lblDescription2.Size = New System.Drawing.Size(119, 103)
         Me.lblDescription2.TabIndex = 21
         Me.lblDescription2.Text = "Vous devez choisir les " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "attributs içi. Pour en " & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "connaitre la description" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "vous " & _
-    "pouvez cliquer sur" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "le bouton aide plus bas."
+            "pouvez cliquer sur" & Global.Microsoft.VisualBasic.ChrW(13) & Global.Microsoft.VisualBasic.ChrW(10) & "le bouton aide plus bas."
         Me.lblDescription2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(90, 531)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(333, 17)
+        Me.ProgressBar1.TabIndex = 22
+        '
+        'AxShockwaveFlash1
+        '
+        Me.AxShockwaveFlash1.Enabled = True
+        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(-3, -4)
+        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
+        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(596, 53)
+        Me.AxShockwaveFlash1.TabIndex = 23
         '
         'chkbxLangue
         '
@@ -438,49 +469,6 @@ Partial Class AttribApp
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'txtCmdExec
-        '
-        Me.txtCmdExec.Location = New System.Drawing.Point(135, 532)
-        Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(450, 20)
-        Me.txtCmdExec.TabIndex = 26
-        '
-        'lblCmdExec
-        '
-        Me.lblCmdExec.AutoSize = True
-        Me.lblCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.lblCmdExec.Location = New System.Drawing.Point(9, 534)
-        Me.lblCmdExec.Name = "lblCmdExec"
-        Me.lblCmdExec.Size = New System.Drawing.Size(120, 15)
-        Me.lblCmdExec.TabIndex = 27
-        Me.lblCmdExec.Text = "Commande exécutée:"
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(429, 558)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 28
-        Me.btnClear.Text = "Clear (cls)"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(12, 265)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(573, 261)
-        Me.myConsole.TabIndex = 29
-        '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(-1, 1)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(596, 40)
-        Me.flashHeader.TabIndex = 30
-        '
         'AttribApp
         '
         Me.AcceptButton = Me.btnApply
@@ -488,14 +476,10 @@ Partial Class AttribApp
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.CancelButton = Me.btnBack
-        Me.ClientSize = New System.Drawing.Size(592, 586)
-        Me.ControlBox = False
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.lblCmdExec)
-        Me.Controls.Add(Me.txtCmdExec)
+        Me.ClientSize = New System.Drawing.Size(592, 555)
         Me.Controls.Add(Me.chkbxLangue)
+        Me.Controls.Add(Me.AxShockwaveFlash1)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.lblDescription2)
         Me.Controls.Add(Me.lblDescription1)
         Me.Controls.Add(Me.btnApply)
@@ -504,6 +488,7 @@ Partial Class AttribApp
         Me.Controls.Add(Me.btnFolders)
         Me.Controls.Add(Me.PathReturn)
         Me.Controls.Add(Me.btnFiles)
+        Me.Controls.Add(Me.TextResults)
         Me.Controls.Add(Me.btnAide)
         Me.Controls.Add(Me.GroupBox6)
         Me.Controls.Add(Me.IBox)
@@ -512,8 +497,9 @@ Partial Class AttribApp
         Me.Controls.Add(Me.ABox)
         Me.Controls.Add(Me.RBox)
         Me.ForeColor = System.Drawing.SystemColors.ControlText
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximumSize = New System.Drawing.Size(608, 593)
+        Me.MinimumSize = New System.Drawing.Size(608, 593)
         Me.Name = "AttribApp"
         Me.Text = "GUI DosBox - Attrib"
         Me.RBox.ResumeLayout(False)
@@ -528,7 +514,7 @@ Partial Class AttribApp
         Me.IBox.PerformLayout()
         Me.GroupBox6.ResumeLayout(False)
         Me.GroupBox6.PerformLayout()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -553,6 +539,7 @@ Partial Class AttribApp
     Friend WithEvents IMoin As System.Windows.Forms.RadioButton
     Friend WithEvents IPlus As System.Windows.Forms.RadioButton
     Friend WithEvents btnAide As System.Windows.Forms.Button
+    Friend WithEvents TextResults As System.Windows.Forms.TextBox
     Friend WithEvents btnFiles As System.Windows.Forms.Button
     Friend WithEvents PathReturn As System.Windows.Forms.TextBox
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
@@ -568,10 +555,7 @@ Partial Class AttribApp
     Friend WithEvents Null4 As System.Windows.Forms.RadioButton
     Friend WithEvents lblDescription1 As System.Windows.Forms.Label
     Friend WithEvents lblDescription2 As System.Windows.Forms.Label
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
-    Friend WithEvents lblCmdExec As System.Windows.Forms.Label
-    Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

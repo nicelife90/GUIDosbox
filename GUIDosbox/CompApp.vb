@@ -1,48 +1,149 @@
-﻿Option Strict On
+﻿Imports System.Text
+
 
 Public Class CompApp
 
+    Private WithEvents MyProcess As Process 'déclaration de myprocess     ''''
+    Private Delegate Sub AppendOutputTextDelegate(ByVal text As String)   ''''
+
+
+    Private Sub MyProcess_ErrorDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess.ErrorDataReceived '''' Sub
+        AppendOutputText(vbCrLf & e.Data)
+    End Sub
+
+    Private Sub MyProcess_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess.OutputDataReceived '''' Sub
+        AppendOutputText(vbCrLf & e.Data)
+    End Sub
+
+    Private Sub ExecuteButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
+        'action qui ce produise lors du click 
+        MyProcess.StandardInput.WriteLine(ADVCommand.Text) 'on n'envoie au commande prompt la commande du textbox ADVCommand.Text
+        MyProcess.StandardInput.Flush()
+        ADVCommand.Text = "" 'on efface le textbox
+
+    End Sub
+
+    Private Sub AppendOutputText(ByVal text As String)  '''' Sub
+
+        If TextReturns.InvokeRequired Then  'on appelle la methode invoke puisque lappelant se trouve sur un thread different du control
+            Dim myDelegate As New AppendOutputTextDelegate(AddressOf AppendOutputText)
+            Me.Invoke(myDelegate, text)
+        Else
+            TextReturns.AppendText(text)
+        End If
+
+    End Sub
+
+    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
+        If OptADV.Checked = False Then
+            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
+            ADVCommand.Hide()
+            lblLigneCommande.Hide()
+            btnApply.Show()
+            lblCommandeExec.Show()
+            CommandReturn.Show()
+        Else
+            btnEnvoi.Show()
+            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
+            lblLigneCommande.Show()
+            btnApply.Hide()
+            lblCommandeExec.Hide()
+            CommandReturn.Hide()
+        End If
+    End Sub
+
+    Private Sub CHKDSkApp_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed   '''' Contenue du sub
+
+        MyProcess.CancelErrorRead() 'on arrête la lecture asynchrone sur le flux standard error
+        MyProcess.CancelOutputRead() 'on arrête la lecture asynchrone sur le flux standard output
+        MyProcess.Close() 'on arrête le processus
+
+        For Each RunningProcess In Process.GetProcessesByName("cmd")   'on kill toute les process cdm.exe
+            RunningProcess.Kill()
+        Next
+        For Each RunningProcess In Process.GetProcessesByName("comp")   'on kill toute les process cdm.exe
+            RunningProcess.Kill()
+        Next
+
+    End Sub
+
     Private Sub CHKDSkApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load '''' contenu du sub
-        'Démarrage de la console.
-        myConsole.StartConsole()
-
-        'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "comp.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.comp, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "comp.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
-
-        'Mode avancé caché.
         btnEnvoi.Hide()
-        ADVCommand.Hide()
+        ADVCommand.Hide()  'on cache les element du mode avancer au demarrage
         lblLigneCommande.Hide()
+
+        'début de notre shell dans notre form and wait for command
+        MyProcess = New Process  'déclaration de myprocess as process
+        With MyProcess.StartInfo 'début des argument pour start.info du process myprocess
+            .FileName = "CMD.EXE" 'process à exécuter cmd.exe
+            .UseShellExecute = False 'on n'utilise pas le shell de windows
+            .CreateNoWindow = True 'on ne cré pas de fenêtre pour notre command prompt
+            .RedirectStandardInput = True 'on redirige le texte d'entrer
+            .RedirectStandardOutput = True 'on redirige le texte de sortie
+            .RedirectStandardError = True 'on redirige les erreur
+            .StandardOutputEncoding = Encoding.GetEncoding("cp437") 'on convertie le texte dans un mode ocmpatible windows 7
+        End With 'fin des argument du démarage
+
+        MyProcess.Start() 'on start le process et on attend
+
+        MyProcess.BeginErrorReadLine() 'on start la lecture asynchrone sur le flux system standard error
+        MyProcess.BeginOutputReadLine() ' on start la lecture asynchrone sur le flux systeme standard output
+
+
+    End Sub
+
+    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+
+        MyProcess.StandardInput.WriteLine("comp /?") 'on envoie au commande prompt les la ligne suivante
+        MyProcess.StandardInput.Flush()
+        ADVCommand.Text = "" ' on efface le textbox ADVCommand.text
+
+    End Sub
+
+    Private Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
+        CP.Show() 'on affiche le control panel
+        Me.Close() 'on cache ferme le form chkdsk
+    End Sub
+
+    Private Sub Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+
+
+        For Each RunningProcess In Process.GetProcessesByName("comp")   'on kill toute les process cdm.exe
+            RunningProcess.Kill()
+        Next
+
+
+        Dim ctl As Control
+        For Each ctl In Controls
+            If TypeOf ctl Is TextBox Then   'fonction qui permet d'effacer les textbox
+                ctl.Text = ""
+            End If
+        Next
     End Sub
 
     Private Sub Apply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-
-        'Déclaration des variables et des constantes.
-        Const Apps As String = "comp "
+        Const Apps As String = "comp "  'changer le programme a executer
         Dim Args1 As String = ""
         Dim Args2 As String = ""
-        Dim Args3 As String = ""
+        Dim Args3 As String = ""            'Déclaration des variables
         Dim Args4 As String = ""
         Dim Args5 As String = ""
         Dim Args6 As String = ""
         Dim Args7 As String = ""
         Dim Args8 As String = ""
 
+
         'Argument 1 Fichier 1
-        Args1 = """" & OptFile1.Text & """" & " "
+
+
+        Args1 = Args1 & " " & "" & _
+             OptFile1.Text & "" & " "
 
         'Argument 2 Fichier 2
-        Args2 = """" & OptFile2.Text & """" & " "
-
+       
+        Args2 = Args2 & " " & "" & _
+             OptFile2.Text & "" & " "
+     
         'Argument 3 /D
         If OptD.Checked = True Then
             Args3 = Args3 + " /D "
@@ -86,64 +187,32 @@ Public Class CompApp
             Args8 = ""
         End If
 
-        'Vérification des champs obligatoire.
+        'Petite sécuriter pour verifier le chemin des fichier
         If OptFile1.Text = "" Or OptFile2.Text = "" Then
-            myConsole.Message("Vous devez entrer les noms de fichiers à comparer dans les cases du haut.")
+            TextReturns.Text = ""
+            TextReturns.Text = "Vous devez entrer le nom de fichier à comparer dans les cases du haut"
         Else
-            'Envoi de la commande.
-            myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 _
-            + Args5 + Args6 + Args7 + Args8)
+            MyProcess.StandardInput.WriteLine(Apps + Args1 + Args2 + Args3 + Args4 _
+            + Args5 + Args6 + Args7 + Args8) 'on n'envoie au commande prompt la commande du textbox
+            MyProcess.StandardInput.Flush()
 
-            'Répond non à la question de comp
-            myConsole.SendReponseNo()
+            CommandReturn.Text = Apps + Args1 + Args2 + Args3 + Args4 _
+            + Args5 + Args6 + Args7 + Args8   'renvoie de la commande effectuer au textbox commandReturn
 
-            'Affichage de la commande exécuté.
-            txtCmdExec.Text = Apps + Args1 + Args2 + Args3 + Args4 _
-            + Args5 + Args6 + Args7 + Args8
+
+            'Progress bar 1 qui ce déclenche en meme temp que le process
+            Dim i As Integer = 0
+            ProgressBar1.Maximum = 100000
+            ProgressBar1.Minimum = 0
+            ProgressBar1.Value = 0
+            For i = ProgressBar1.Minimum To ProgressBar1.Maximum
+                ProgressBar1.Value = i
+            Next
 
         End If
 
     End Sub
 
-    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
-        'Affichage de l'aide.
-        myConsole.SendCommand("comp /?")
-        txtCmdExec.Text = "comp /?"
-        ADVCommand.Text = ""
-    End Sub
-
-    Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
-        'Fermeture de la console et retour au cp.
-        myConsole.CloseConsole("comp")
-        CP.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset de texbox.
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
-        'Reset de la console
-        myConsole.Cls()
-    End Sub
-
-    Private Sub btnFile1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile1.Click
-        'Sélection du fichier.
-        OpenFileDialog1.ShowDialog()
-        OptFile1.Text = OpenFileDialog1.FileName
-    End Sub
-
-    Private Sub btnFile2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile2.Click
-        'Sélection du fichier.
-        OpenFileDialog2.ShowDialog()
-        OptFile2.Text = OpenFileDialog2.FileName
-    End Sub
-
-#Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
@@ -169,32 +238,37 @@ Public Class CompApp
 
         End If
     End Sub
-#End Region
 
-#Region "Mode avancé"
-    Private Sub btnEnvoi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
-        'Envoi de la commande 
-        myConsole.SendCommand(ADVCommand.Text)
-        ADVCommand.Text = ""
+    Private Sub btnFile1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile1.Click
+        OpenFileDialog1.Title = "Rechercher un fichier"  'attribut du openfiledialoge ex. titre, directory, start
+        OpenFileDialog1.InitialDirectory = "C:\"
+        OpenFileDialog1.ShowDialog()
     End Sub
 
-    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
-        If OptADV.Checked = False Then
-            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
-            ADVCommand.Hide()
-            lblLigneCommande.Hide()
-            btnApply.Show()
-            lblCommandeExec.Show()
-            txtCmdExec.Show()
-        Else
-            btnEnvoi.Show()
-            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
-            lblLigneCommande.Show()
-            btnApply.Hide()
-            lblCommandeExec.Hide()
-            txtCmdExec.Hide()
+   
+    Private Sub OpenFileDialog1_FileOk_1(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog1.FileOk
+        Dim strm As System.IO.Stream                            'fonction openfiledialoge
+        strm = OpenFileDialog1.OpenFile()                       'qui permet de voir les fichier et de sélectionner une source
+        OptFile1.Text = OpenFileDialog1.FileName.ToString()   '**'
+        If Not (strm Is Nothing) Then                           '**'
+            'insert code to read the file data
+            strm.Close()
         End If
     End Sub
-#End Region
 
+    Private Sub OpenFileDialog2_FileOk(ByVal sender As System.Object, ByVal e As System.ComponentModel.CancelEventArgs) Handles OpenFileDialog2.FileOk
+        Dim strm As System.IO.Stream                            'fonction openfiledialoge
+        strm = OpenFileDialog1.OpenFile()                       'qui permet de voir les fichier et de sélectionner une source
+        OptFile2.Text = OpenFileDialog1.FileName.ToString()   '**'
+        If Not (strm Is Nothing) Then                           '**'
+            'insert code to read the file data
+            strm.Close()
+        End If
+    End Sub
+
+    Private Sub btnFile2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile2.Click
+        OpenFileDialog2.Title = "Rechercher un fichier"  'attribut du openfiledialoge ex. titre, directory, start
+        OpenFileDialog2.InitialDirectory = "C:\"
+        OpenFileDialog2.ShowDialog()
+    End Sub
 End Class

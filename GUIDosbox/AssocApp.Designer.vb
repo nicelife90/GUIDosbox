@@ -31,16 +31,17 @@ Partial Class AssocApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
+        Me.TextReturn = New System.Windows.Forms.TextBox()
         Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.lblCommande = New System.Windows.Forms.Label()
         Me.lblTypeFichier = New System.Windows.Forms.Label()
         Me.LSubTitle3 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.btnExtShow = New System.Windows.Forms.Button()
+        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ExtentionSet
@@ -71,7 +72,7 @@ Partial Class AssocApp
         '
         Me.LSubTitle2.AutoSize = True
         Me.LSubTitle2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LSubTitle2.Location = New System.Drawing.Point(210, 51)
+        Me.LSubTitle2.Location = New System.Drawing.Point(210, 54)
         Me.LSubTitle2.Name = "LSubTitle2"
         Me.LSubTitle2.Size = New System.Drawing.Size(15, 15)
         Me.LSubTitle2.TabIndex = 4
@@ -112,6 +113,18 @@ Partial Class AssocApp
         Me.btnClear.TabIndex = 8
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
+        '
+        'TextReturn
+        '
+        Me.TextReturn.BackColor = System.Drawing.SystemColors.ActiveCaptionText
+        Me.TextReturn.ForeColor = System.Drawing.SystemColors.Window
+        Me.TextReturn.Location = New System.Drawing.Point(6, 98)
+        Me.TextReturn.Multiline = True
+        Me.TextReturn.Name = "TextReturn"
+        Me.TextReturn.ReadOnly = True
+        Me.TextReturn.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextReturn.Size = New System.Drawing.Size(424, 237)
+        Me.TextReturn.TabIndex = 9
         '
         'CommandReturn
         '
@@ -162,6 +175,13 @@ Partial Class AssocApp
         Me.Label2.TabIndex = 14
         Me.Label2.Text = "*"
         '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(87, 373)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(181, 20)
+        Me.ProgressBar1.TabIndex = 15
+        '
         'btnExtShow
         '
         Me.btnExtShow.Location = New System.Drawing.Point(274, 341)
@@ -170,6 +190,16 @@ Partial Class AssocApp
         Me.btnExtShow.TabIndex = 16
         Me.btnExtShow.Text = "Voir les .ext"
         Me.btnExtShow.UseVisualStyleBackColor = True
+        '
+        'AxShockwaveFlash1
+        '
+        Me.AxShockwaveFlash1.Dock = System.Windows.Forms.DockStyle.Top
+        Me.AxShockwaveFlash1.Enabled = True
+        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(0, 0)
+        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
+        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(436, 35)
+        Me.AxShockwaveFlash1.TabIndex = 17
         '
         'chkbxLangue
         '
@@ -183,39 +213,23 @@ Partial Class AssocApp
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(1, 0)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(439, 40)
-        Me.flashHeader.TabIndex = 20
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(6, 98)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(423, 237)
-        Me.myConsole.TabIndex = 19
-        '
         'AssocApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.ClientSize = New System.Drawing.Size(434, 408)
+        Me.ClientSize = New System.Drawing.Size(436, 403)
         Me.ControlBox = False
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
+        Me.Controls.Add(Me.AxShockwaveFlash1)
         Me.Controls.Add(Me.btnExtShow)
+        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.LSubTitle3)
         Me.Controls.Add(Me.lblTypeFichier)
         Me.Controls.Add(Me.lblCommande)
         Me.Controls.Add(Me.CommandReturn)
+        Me.Controls.Add(Me.TextReturn)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
@@ -224,13 +238,11 @@ Partial Class AssocApp
         Me.Controls.Add(Me.lblExtension)
         Me.Controls.Add(Me.ExtentionFile)
         Me.Controls.Add(Me.ExtentionSet)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
-        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximizeBox = False
-        Me.MinimizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(452, 441)
+        Me.MinimumSize = New System.Drawing.Size(452, 441)
         Me.Name = "AssocApp"
-        Me.Text = "GUIDosbox - Assoc"
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Text = "GUI DosBox - Assoc"
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -243,13 +255,14 @@ Partial Class AssocApp
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
+    Friend WithEvents TextReturn As System.Windows.Forms.TextBox
     Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents lblCommande As System.Windows.Forms.Label
     Friend WithEvents lblTypeFichier As System.Windows.Forms.Label
     Friend WithEvents LSubTitle3 As System.Windows.Forms.Label
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents btnExtShow As System.Windows.Forms.Button
+    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

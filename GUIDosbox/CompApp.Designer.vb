@@ -28,7 +28,9 @@ Partial Class CompApp
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.txtCmdExec = New System.Windows.Forms.TextBox()
+        Me.TextReturns = New System.Windows.Forms.TextBox()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.ADVCommand = New System.Windows.Forms.TextBox()
         Me.btnEnvoi = New System.Windows.Forms.Button()
         Me.lblLigneCommande = New System.Windows.Forms.Label()
@@ -49,12 +51,11 @@ Partial Class CompApp
         Me.lblNbLigne = New System.Windows.Forms.Label()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.OptNArgs, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnHelp
@@ -103,14 +104,34 @@ Partial Class CompApp
         Me.OptADV.Text = "Mode avancé"
         Me.OptADV.UseVisualStyleBackColor = True
         '
-        'txtCmdExec
+        'TextReturns
         '
-        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
-        Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.ReadOnly = True
-        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
-        Me.txtCmdExec.TabIndex = 13
+        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
+        Me.TextReturns.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
+        Me.TextReturns.Location = New System.Drawing.Point(129, 120)
+        Me.TextReturns.Multiline = True
+        Me.TextReturns.Name = "TextReturns"
+        Me.TextReturns.ReadOnly = True
+        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
+        Me.TextReturns.Size = New System.Drawing.Size(476, 333)
+        Me.TextReturns.TabIndex = 11
+        '
+        'ProgressBar1
+        '
+        Me.ProgressBar1.Location = New System.Drawing.Point(94, 553)
+        Me.ProgressBar1.Name = "ProgressBar1"
+        Me.ProgressBar1.Size = New System.Drawing.Size(350, 23)
+        Me.ProgressBar1.TabIndex = 12
+        '
+        'CommandReturn
+        '
+        Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CommandReturn.Location = New System.Drawing.Point(129, 475)
+        Me.CommandReturn.Name = "CommandReturn"
+        Me.CommandReturn.ReadOnly = True
+        Me.CommandReturn.Size = New System.Drawing.Size(476, 21)
+        Me.CommandReturn.TabIndex = 13
         '
         'ADVCommand
         '
@@ -300,22 +321,14 @@ Partial Class CompApp
         '
         Me.OpenFileDialog2.FileName = "OpenFileDialog2"
         '
-        'myConsole
+        'AxShockwaveFlash1
         '
-        Me.myConsole.Location = New System.Drawing.Point(129, 120)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(476, 328)
-        Me.myConsole.TabIndex = 32
-        '
-        'flashHeader
-        '
-        Me.flashHeader.Enabled = True
-        Me.flashHeader.Location = New System.Drawing.Point(0, -1)
-        Me.flashHeader.Name = "flashHeader"
-        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(617, 40)
-        Me.flashHeader.TabIndex = 33
+        Me.AxShockwaveFlash1.Enabled = True
+        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(-5, -4)
+        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
+        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(623, 44)
+        Me.AxShockwaveFlash1.TabIndex = 31
         '
         'CompApp
         '
@@ -325,8 +338,7 @@ Partial Class CompApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(617, 584)
         Me.ControlBox = False
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
+        Me.Controls.Add(Me.AxShockwaveFlash1)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.OptC)
@@ -338,7 +350,9 @@ Partial Class CompApp
         Me.Controls.Add(Me.lblLigneCommande)
         Me.Controls.Add(Me.btnEnvoi)
         Me.Controls.Add(Me.ADVCommand)
-        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.CommandReturn)
+        Me.Controls.Add(Me.ProgressBar1)
+        Me.Controls.Add(Me.TextReturns)
         Me.Controls.Add(Me.OptADV)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
@@ -351,7 +365,7 @@ Partial Class CompApp
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         CType(Me.OptNArgs, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -361,7 +375,9 @@ Partial Class CompApp
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
+    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
+    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
+    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
     Friend WithEvents btnEnvoi As System.Windows.Forms.Button
     Friend WithEvents lblLigneCommande As System.Windows.Forms.Label
@@ -382,6 +398,5 @@ Partial Class CompApp
     Friend WithEvents btnFile2 As System.Windows.Forms.Button
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents OpenFileDialog2 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class
