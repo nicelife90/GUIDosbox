@@ -1,133 +1,42 @@
-﻿Imports System.Text
-
+﻿Option Strict On
 
 Public Class TracertApp
 
-    Private WithEvents MyProcess As Process 'déclaration de myprocess     ''''
-    Private Delegate Sub AppendOutputTextDelegate(ByVal text As String)   ''''
+    Private Sub TracertApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+        'Démmarage de la console.
+        myConsole.StartConsole()
 
+        'Loading du header flash.
+        Try
+            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "tracert.swf"
+            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.tracert, False)
+            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "tracert.swf")
+            flashHeader.Play()
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
+                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
+                   MsgBoxStyle.Information, My.Application.GetType.Name)
+        End Try
 
-    Private Sub MyProcess_ErrorDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess.ErrorDataReceived '''' Sub
-        AppendOutputText(vbCrLf & e.Data)
-    End Sub
-
-    Private Sub MyProcess_OutputDataReceived(ByVal sender As Object, ByVal e As System.Diagnostics.DataReceivedEventArgs) Handles MyProcess.OutputDataReceived '''' Sub
-        AppendOutputText(vbCrLf & e.Data)
-    End Sub
-
-    Private Sub ExecuteButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
-        'action qui ce produise lors du click 
-        MyProcess.StandardInput.WriteLine(ADVCommand.Text) 'on n'envoie au commande prompt la commande du textbox ADVCommand.Text
-        MyProcess.StandardInput.Flush()
-        ADVCommand.Text = "" 'on efface le textbox
-
-    End Sub
-
-    Private Sub AppendOutputText(ByVal text As String)  '''' Sub
-
-        If TextReturns.InvokeRequired Then  'on appelle la methode invoke puisque lappelant se trouve sur un thread different du control
-            Dim myDelegate As New AppendOutputTextDelegate(AddressOf AppendOutputText)
-            Me.Invoke(myDelegate, text)
-        Else
-            TextReturns.AppendText(text)
-        End If
-
-    End Sub
-
-    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
-        If OptADV.Checked = False Then
-            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
-            ADVCommand.Hide()
-            lblLigneCommande.Hide()
-            btnApply.Show()
-            lblCommandeExec.Show()
-            CommandReturn.Show()
-        Else
-            btnEnvoi.Show()
-            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
-            lblLigneCommande.Show()
-            btnApply.Hide()
-            lblCommandeExec.Hide()
-            CommandReturn.Hide()
-        End If
-    End Sub
-
-    Private Sub CHKDSkApp_FormClosed(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosedEventArgs) Handles Me.FormClosed   '''' Contenue du sub
-
-        MyProcess.CancelErrorRead() 'on arrête la lecture asynchrone sur le flux standard error
-        MyProcess.CancelOutputRead() 'on arrête la lecture asynchrone sur le flux standard output
-        MyProcess.Close() 'on arrête le processus
-
-        For Each RunningProcess In Process.GetProcessesByName("cmd")   'on kill toute les process cdm.exe
-            RunningProcess.Kill()
-        Next
-        For Each RunningProcess In Process.GetProcessesByName("tracert")   'on kill toute les process cdm.exe
-            RunningProcess.Kill()
-        Next
-
-    End Sub
-
-    Private Sub CHKDSkApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load '''' contenu du sub
+        'Mode avancé caché.
         btnEnvoi.Hide()
-        ADVCommand.Hide()  'on cache les element du mode avancer au demarrage
+        ADVCommand.Hide()
         lblLigneCommande.Hide()
-
-        'début de notre shell dans notre form and wait for command
-        MyProcess = New Process  'déclaration de myprocess as process
-        With MyProcess.StartInfo 'début des argument pour start.info du process myprocess
-            .FileName = "CMD.EXE" 'process à exécuter cmd.exe
-            .UseShellExecute = False 'on n'utilise pas le shell de windows
-            .CreateNoWindow = True 'on ne cré pas de fenêtre pour notre command prompt
-            .RedirectStandardInput = True 'on redirige le texte d'entrer
-            .RedirectStandardOutput = True 'on redirige le texte de sortie
-            .RedirectStandardError = True 'on redirige les erreur
-            .StandardOutputEncoding = Encoding.GetEncoding("cp437") 'on convertie le texte dans un mode ocmpatible windows 7
-        End With 'fin des argument du démarage
-
-        MyProcess.Start() 'on start le process et on attend
-
-        MyProcess.BeginErrorReadLine() 'on start la lecture asynchrone sur le flux system standard error
-        MyProcess.BeginOutputReadLine() ' on start la lecture asynchrone sur le flux systeme standard output
-
-
     End Sub
 
-    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+    Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-        MyProcess.StandardInput.WriteLine("tracert /?") 'on envoie au commande prompt les la ligne suivante
-        MyProcess.StandardInput.Flush()
-        ADVCommand.Text = "" ' on efface le textbox ADVCommand.text
-
-    End Sub
-
-    Private Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
-        CP.Show()
-        Me.Close()
-    End Sub
-
-    Private Sub Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
-    End Sub
-
-    Private Sub Apply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-        Const Apps As String = "tracert "  'changer le programme a executer
+        'Déclaration des variables et constantes.
+        Const Apps As String = "tracert "
         Dim Args1 As String = ""
         Dim Args2 As String = ""
-        Dim Args3 As String = ""            'Déclaration des variables
+        Dim Args3 As String = ""
         Dim Args4 As String = ""
         Dim Args5 As String = ""
         Dim Args6 As String = ""
         Dim Args7 As String = ""
         Dim Args8 As String = ""
         Dim Args9 As String = ""
-
-        'début des élément if
 
         'Argument 1 /D
         If OptD.Checked = True Then
@@ -174,28 +83,64 @@ Public Class TracertApp
         'Argument 9 
         Args9 = txtAddresse.Text
 
-
-        MyProcess.StandardInput.WriteLine(Apps + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9) 'on n'envoie au commande prompt la commande du textbox
-        MyProcess.StandardInput.Flush()
-
-        CommandReturn.Text = Apps + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9  'renvoie de la commande effectuer au textbox commandReturn
-
-
-        'Progress bar 1 qui ce déclenche en meme temp que le process
-        Dim i As Integer = 0
-        ProgressBar1.Maximum = 100000
-        ProgressBar1.Minimum = 0
-        ProgressBar1.Value = 0
-        For i = ProgressBar1.Minimum To ProgressBar1.Maximum
-            ProgressBar1.Value = i
-        Next
-
-
+        'Envoi de la commande­.
+        myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
+        'Affichage de la commande exécué.
+        CommandReturn.Text = Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9
 
     End Sub
 
+    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+        'Affichage de l'aide.
+        myConsole.SendCommand("tracert /?")
+        ADVCommand.Text = ""
+    End Sub
+
+    Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
+        'Fermeture de la console et retour au cp.
+        myConsole.CloseConsole("tracert")
+        CP.Show()
+        Me.Close()
+    End Sub
+
+    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+        'Reset des textbox. 
+        Dim ctl As Control
+        For Each ctl In Controls
+            If TypeOf ctl Is TextBox Then
+                ctl.Text = ""
+            End If
+        Next
+    End Sub
+
+
+#Region "Mode avancé"
+    Private Sub btnEnvoi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
+        'Envoi de la commande. 
+        myConsole.SendCommand(ADVCommand.Text)
+        ADVCommand.Text = ""
+    End Sub
+
+    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
+        If OptADV.Checked = False Then
+            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
+            ADVCommand.Hide()
+            lblLigneCommande.Hide()
+            btnApply.Show()
+            lblCommandeExec.Show()
+            CommandReturn.Show()
+        Else
+            btnEnvoi.Show()
+            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
+            lblLigneCommande.Show()
+            btnApply.Hide()
+            lblCommandeExec.Hide()
+            CommandReturn.Hide()
+        End If
+    End Sub
+#End Region
+
+#Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
@@ -214,8 +159,6 @@ Public Class TracertApp
             GBHotes.Text = "Liste Hotes"
             OptJ.Text = "/J           Hôtes:"
             OptS.Text = "/S  Addresse:"
-
-
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
             lblLigneCommande.Text = "Command line:"
@@ -232,8 +175,8 @@ Public Class TracertApp
             GBHotes.Text = "Host List"
             OptJ.Text = "/J           Hosts:"
             OptS.Text = "/S   Address:"
-
-
         End If
     End Sub
+#End Region
+
 End Class

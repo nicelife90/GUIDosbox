@@ -25,21 +25,21 @@ Partial Class WhereApp
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WhereApp))
         Me.OptT = New System.Windows.Forms.CheckBox()
         Me.OptR = New System.Windows.Forms.CheckBox()
-        Me.BtnRecherche = New System.Windows.Forms.Button()
-        Me.BtnAide = New System.Windows.Forms.Button()
+        Me.btnApply = New System.Windows.Forms.Button()
+        Me.btnHelp = New System.Windows.Forms.Button()
         Me.txtSource = New System.Windows.Forms.TextBox()
-        Me.TextReturns = New System.Windows.Forms.TextBox()
         Me.lblModele = New System.Windows.Forms.Label()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.BtnOuvrirdossier = New System.Windows.Forms.Button()
+        Me.btnDossier = New System.Windows.Forms.Button()
         Me.gbOptions = New System.Windows.Forms.GroupBox()
+        Me.lblSillencieux = New System.Windows.Forms.Label()
+        Me.OptQ = New System.Windows.Forms.CheckBox()
         Me.lblAfficheName = New System.Windows.Forms.Label()
         Me.OptF = New System.Windows.Forms.CheckBox()
         Me.lblInfo = New System.Windows.Forms.Label()
         Me.lblSubFolder = New System.Windows.Forms.Label()
-        Me.BtnRetour = New System.Windows.Forms.Button()
+        Me.btnBack = New System.Windows.Forms.Button()
         Me.txtModele = New System.Windows.Forms.TextBox()
-        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.txtComandLine = New System.Windows.Forms.TextBox()
         Me.txtComandExecuter = New System.Windows.Forms.TextBox()
         Me.lblComandLine = New System.Windows.Forms.Label()
@@ -47,15 +47,13 @@ Partial Class WhereApp
         Me.gbRecherche = New System.Windows.Forms.GroupBox()
         Me.lblExemple = New System.Windows.Forms.Label()
         Me.OptAdvance = New System.Windows.Forms.CheckBox()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.btnSend = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.OptQ = New System.Windows.Forms.CheckBox()
-        Me.lblSillencieux = New System.Windows.Forms.Label()
-        Me.lblExplication = New System.Windows.Forms.Label()
+        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbOptions.SuspendLayout()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbRecherche.SuspendLayout()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'OptT
@@ -78,23 +76,23 @@ Partial Class WhereApp
         Me.OptR.Text = "/R"
         Me.OptR.UseVisualStyleBackColor = True
         '
-        'BtnRecherche
+        'btnApply
         '
-        Me.BtnRecherche.Location = New System.Drawing.Point(356, 467)
-        Me.BtnRecherche.Name = "BtnRecherche"
-        Me.BtnRecherche.Size = New System.Drawing.Size(75, 23)
-        Me.BtnRecherche.TabIndex = 2
-        Me.BtnRecherche.Text = "Recherche"
-        Me.BtnRecherche.UseVisualStyleBackColor = True
+        Me.btnApply.Location = New System.Drawing.Point(356, 467)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(75, 23)
+        Me.btnApply.TabIndex = 2
+        Me.btnApply.Text = "Appliquer"
+        Me.btnApply.UseVisualStyleBackColor = True
         '
-        'BtnAide
+        'btnHelp
         '
-        Me.BtnAide.Location = New System.Drawing.Point(4, 467)
-        Me.BtnAide.Name = "BtnAide"
-        Me.BtnAide.Size = New System.Drawing.Size(75, 23)
-        Me.BtnAide.TabIndex = 3
-        Me.BtnAide.Text = "Aide"
-        Me.BtnAide.UseVisualStyleBackColor = True
+        Me.btnHelp.Location = New System.Drawing.Point(4, 467)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(75, 23)
+        Me.btnHelp.TabIndex = 3
+        Me.btnHelp.Text = "Aide"
+        Me.btnHelp.UseVisualStyleBackColor = True
         '
         'txtSource
         '
@@ -102,18 +100,6 @@ Partial Class WhereApp
         Me.txtSource.Name = "txtSource"
         Me.txtSource.Size = New System.Drawing.Size(260, 20)
         Me.txtSource.TabIndex = 4
-        '
-        'TextReturns
-        '
-        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
-        Me.TextReturns.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextReturns.Location = New System.Drawing.Point(9, 182)
-        Me.TextReturns.Multiline = True
-        Me.TextReturns.Name = "TextReturns"
-        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextReturns.Size = New System.Drawing.Size(500, 217)
-        Me.TextReturns.TabIndex = 5
         '
         'lblModele
         '
@@ -124,14 +110,14 @@ Partial Class WhereApp
         Me.lblModele.TabIndex = 7
         Me.lblModele.Text = "Modèle : "
         '
-        'BtnOuvrirdossier
+        'btnDossier
         '
-        Me.BtnOuvrirdossier.Location = New System.Drawing.Point(5, 16)
-        Me.BtnOuvrirdossier.Name = "BtnOuvrirdossier"
-        Me.BtnOuvrirdossier.Size = New System.Drawing.Size(54, 23)
-        Me.BtnOuvrirdossier.TabIndex = 8
-        Me.BtnOuvrirdossier.Text = "Dossier"
-        Me.BtnOuvrirdossier.UseVisualStyleBackColor = True
+        Me.btnDossier.Location = New System.Drawing.Point(5, 16)
+        Me.btnDossier.Name = "btnDossier"
+        Me.btnDossier.Size = New System.Drawing.Size(54, 23)
+        Me.btnDossier.TabIndex = 8
+        Me.btnDossier.Text = "Dossier"
+        Me.btnDossier.UseVisualStyleBackColor = True
         '
         'gbOptions
         '
@@ -147,6 +133,25 @@ Partial Class WhereApp
         Me.gbOptions.TabIndex = 10
         Me.gbOptions.TabStop = False
         Me.gbOptions.Text = "Options"
+        '
+        'lblSillencieux
+        '
+        Me.lblSillencieux.AutoSize = True
+        Me.lblSillencieux.Location = New System.Drawing.Point(44, 58)
+        Me.lblSillencieux.Name = "lblSillencieux"
+        Me.lblSillencieux.Size = New System.Drawing.Size(111, 13)
+        Me.lblSillencieux.TabIndex = 7
+        Me.lblSillencieux.Text = "Code sortie seulement"
+        '
+        'OptQ
+        '
+        Me.OptQ.AutoSize = True
+        Me.OptQ.Location = New System.Drawing.Point(5, 57)
+        Me.OptQ.Name = "OptQ"
+        Me.OptQ.Size = New System.Drawing.Size(42, 17)
+        Me.OptQ.TabIndex = 6
+        Me.OptQ.Text = "/ Q"
+        Me.OptQ.UseVisualStyleBackColor = True
         '
         'lblAfficheName
         '
@@ -185,14 +190,14 @@ Partial Class WhereApp
         Me.lblSubFolder.TabIndex = 2
         Me.lblSubFolder.Text = "Dossier + Sous dossiers"
         '
-        'BtnRetour
+        'btnBack
         '
-        Me.BtnRetour.Location = New System.Drawing.Point(433, 467)
-        Me.BtnRetour.Name = "BtnRetour"
-        Me.BtnRetour.Size = New System.Drawing.Size(75, 23)
-        Me.BtnRetour.TabIndex = 11
-        Me.BtnRetour.Text = "Retour"
-        Me.BtnRetour.UseVisualStyleBackColor = True
+        Me.btnBack.Location = New System.Drawing.Point(433, 467)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(75, 23)
+        Me.btnBack.TabIndex = 11
+        Me.btnBack.Text = "Retour"
+        Me.btnBack.UseVisualStyleBackColor = True
         '
         'txtModele
         '
@@ -200,15 +205,6 @@ Partial Class WhereApp
         Me.txtModele.Name = "txtModele"
         Me.txtModele.Size = New System.Drawing.Size(103, 20)
         Me.txtModele.TabIndex = 12
-        '
-        'AxShockwaveFlash1
-        '
-        Me.AxShockwaveFlash1.Enabled = True
-        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(-1, -1)
-        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
-        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(544, 46)
-        Me.AxShockwaveFlash1.TabIndex = 13
         '
         'txtComandLine
         '
@@ -245,7 +241,7 @@ Partial Class WhereApp
         'gbRecherche
         '
         Me.gbRecherche.Controls.Add(Me.lblExemple)
-        Me.gbRecherche.Controls.Add(Me.BtnOuvrirdossier)
+        Me.gbRecherche.Controls.Add(Me.btnDossier)
         Me.gbRecherche.Controls.Add(Me.lblModele)
         Me.gbRecherche.Controls.Add(Me.lblSubFolder)
         Me.gbRecherche.Controls.Add(Me.txtSource)
@@ -278,13 +274,6 @@ Partial Class WhereApp
         Me.OptAdvance.Text = "Mode Avancé"
         Me.OptAdvance.UseVisualStyleBackColor = True
         '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(84, 469)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(267, 19)
-        Me.ProgressBar1.TabIndex = 20
-        '
         'btnSend
         '
         Me.btnSend.Location = New System.Drawing.Point(356, 443)
@@ -303,35 +292,22 @@ Partial Class WhereApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'OptQ
+        'myConsole
         '
-        Me.OptQ.AutoSize = True
-        Me.OptQ.Location = New System.Drawing.Point(5, 57)
-        Me.OptQ.Name = "OptQ"
-        Me.OptQ.Size = New System.Drawing.Size(42, 17)
-        Me.OptQ.TabIndex = 6
-        Me.OptQ.Text = "/ Q"
-        Me.OptQ.UseVisualStyleBackColor = True
+        Me.myConsole.Location = New System.Drawing.Point(9, 140)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(499, 255)
+        Me.myConsole.TabIndex = 24
         '
-        'lblSillencieux
+        'flashHeader
         '
-        Me.lblSillencieux.AutoSize = True
-        Me.lblSillencieux.Location = New System.Drawing.Point(44, 58)
-        Me.lblSillencieux.Name = "lblSillencieux"
-        Me.lblSillencieux.Size = New System.Drawing.Size(111, 13)
-        Me.lblSillencieux.TabIndex = 7
-        Me.lblSillencieux.Text = "Code sortie seulement"
-        '
-        'lblExplication
-        '
-        Me.lblExplication.AutoSize = True
-        Me.lblExplication.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblExplication.ForeColor = System.Drawing.Color.DarkBlue
-        Me.lblExplication.Location = New System.Drawing.Point(8, 137)
-        Me.lblExplication.Name = "lblExplication"
-        Me.lblExplication.Size = New System.Drawing.Size(503, 39)
-        Me.lblExplication.TabIndex = 23
-        Me.lblExplication.Text = resources.GetString("lblExplication.Text")
+        Me.flashHeader.Enabled = True
+        Me.flashHeader.Location = New System.Drawing.Point(-1, 0)
+        Me.flashHeader.Name = "flashHeader"
+        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.flashHeader.Size = New System.Drawing.Size(523, 40)
+        Me.flashHeader.TabIndex = 25
         '
         'WhereApp
         '
@@ -341,48 +317,44 @@ Partial Class WhereApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(520, 496)
         Me.ControlBox = False
-        Me.Controls.Add(Me.lblExplication)
+        Me.Controls.Add(Me.flashHeader)
+        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.OptAdvance)
         Me.Controls.Add(Me.gbRecherche)
         Me.Controls.Add(Me.lblComandExecuter)
         Me.Controls.Add(Me.lblComandLine)
         Me.Controls.Add(Me.txtComandExecuter)
         Me.Controls.Add(Me.txtComandLine)
-        Me.Controls.Add(Me.AxShockwaveFlash1)
-        Me.Controls.Add(Me.BtnRetour)
+        Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.gbOptions)
-        Me.Controls.Add(Me.TextReturns)
-        Me.Controls.Add(Me.BtnAide)
-        Me.Controls.Add(Me.BtnRecherche)
+        Me.Controls.Add(Me.btnHelp)
+        Me.Controls.Add(Me.btnApply)
         Me.Name = "WhereApp"
         Me.Text = "WhereApp"
         Me.gbOptions.ResumeLayout(False)
         Me.gbOptions.PerformLayout()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbRecherche.ResumeLayout(False)
         Me.gbRecherche.PerformLayout()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents OptT As System.Windows.Forms.CheckBox
     Friend WithEvents OptR As System.Windows.Forms.CheckBox
-    Friend WithEvents BtnRecherche As System.Windows.Forms.Button
-    Friend WithEvents BtnAide As System.Windows.Forms.Button
+    Friend WithEvents btnApply As System.Windows.Forms.Button
+    Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents txtSource As System.Windows.Forms.TextBox
-    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
     Friend WithEvents lblModele As System.Windows.Forms.Label
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents BtnOuvrirdossier As System.Windows.Forms.Button
+    Friend WithEvents btnDossier As System.Windows.Forms.Button
     Friend WithEvents gbOptions As System.Windows.Forms.GroupBox
     Friend WithEvents lblInfo As System.Windows.Forms.Label
     Friend WithEvents lblSubFolder As System.Windows.Forms.Label
-    Friend WithEvents BtnRetour As System.Windows.Forms.Button
+    Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents txtModele As System.Windows.Forms.TextBox
-    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents OptF As System.Windows.Forms.CheckBox
     Friend WithEvents txtComandLine As System.Windows.Forms.TextBox
     Friend WithEvents txtComandExecuter As System.Windows.Forms.TextBox
@@ -392,10 +364,10 @@ Partial Class WhereApp
     Friend WithEvents gbRecherche As System.Windows.Forms.GroupBox
     Friend WithEvents lblExemple As System.Windows.Forms.Label
     Friend WithEvents OptAdvance As System.Windows.Forms.CheckBox
-    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents lblSillencieux As System.Windows.Forms.Label
     Friend WithEvents OptQ As System.Windows.Forms.CheckBox
-    Friend WithEvents lblExplication As System.Windows.Forms.Label
+    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

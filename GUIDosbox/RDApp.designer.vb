@@ -28,21 +28,20 @@ Partial Class RDApp
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.TextReturns = New System.Windows.Forms.TextBox()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.CommandReturn = New System.Windows.Forms.TextBox()
         Me.ADVCommand = New System.Windows.Forms.TextBox()
         Me.btnEnvoi = New System.Windows.Forms.Button()
         Me.lblLigneCommande = New System.Windows.Forms.Label()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
-        Me.AxShockwaveFlash1 = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.OptS = New System.Windows.Forms.CheckBox()
         Me.OptQ = New System.Windows.Forms.CheckBox()
         Me.txtPath = New System.Windows.Forms.TextBox()
         Me.btnDossier = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnHelp
@@ -91,26 +90,6 @@ Partial Class RDApp
         Me.OptADV.Text = "Mode avancé"
         Me.OptADV.UseVisualStyleBackColor = True
         '
-        'TextReturns
-        '
-        Me.TextReturns.BackColor = System.Drawing.SystemColors.WindowText
-        Me.TextReturns.Font = New System.Drawing.Font("Times New Roman", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.TextReturns.ForeColor = System.Drawing.SystemColors.Window
-        Me.TextReturns.Location = New System.Drawing.Point(129, 54)
-        Me.TextReturns.Multiline = True
-        Me.TextReturns.Name = "TextReturns"
-        Me.TextReturns.ReadOnly = True
-        Me.TextReturns.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.TextReturns.Size = New System.Drawing.Size(476, 399)
-        Me.TextReturns.TabIndex = 11
-        '
-        'ProgressBar1
-        '
-        Me.ProgressBar1.Location = New System.Drawing.Point(94, 553)
-        Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(350, 23)
-        Me.ProgressBar1.TabIndex = 12
-        '
         'CommandReturn
         '
         Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -157,15 +136,6 @@ Partial Class RDApp
         Me.lblCommandeExec.TabIndex = 17
         Me.lblCommandeExec.Text = "Commande exécutée:"
         Me.lblCommandeExec.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'AxShockwaveFlash1
-        '
-        Me.AxShockwaveFlash1.Enabled = True
-        Me.AxShockwaveFlash1.Location = New System.Drawing.Point(-1, 0)
-        Me.AxShockwaveFlash1.Name = "AxShockwaveFlash1"
-        Me.AxShockwaveFlash1.OcxState = CType(resources.GetObject("AxShockwaveFlash1.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.AxShockwaveFlash1.Size = New System.Drawing.Size(620, 39)
-        Me.AxShockwaveFlash1.TabIndex = 18
         '
         'chkbxLangue
         '
@@ -217,6 +187,23 @@ Partial Class RDApp
         Me.btnDossier.Text = "Dossier"
         Me.btnDossier.UseVisualStyleBackColor = True
         '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(129, 54)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(476, 394)
+        Me.myConsole.TabIndex = 26
+        '
+        'flashHeader
+        '
+        Me.flashHeader.Enabled = True
+        Me.flashHeader.Location = New System.Drawing.Point(0, -1)
+        Me.flashHeader.Name = "flashHeader"
+        Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
+        Me.flashHeader.Size = New System.Drawing.Size(619, 40)
+        Me.flashHeader.TabIndex = 27
+        '
         'RDApp
         '
         Me.AcceptButton = Me.btnEnvoi
@@ -225,28 +212,27 @@ Partial Class RDApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(617, 584)
         Me.ControlBox = False
+        Me.Controls.Add(Me.flashHeader)
+        Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.btnDossier)
         Me.Controls.Add(Me.txtPath)
         Me.Controls.Add(Me.OptQ)
         Me.Controls.Add(Me.OptS)
         Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.AxShockwaveFlash1)
         Me.Controls.Add(Me.lblCommandeExec)
         Me.Controls.Add(Me.lblLigneCommande)
         Me.Controls.Add(Me.btnEnvoi)
         Me.Controls.Add(Me.ADVCommand)
         Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.ProgressBar1)
-        Me.Controls.Add(Me.TextReturns)
         Me.Controls.Add(Me.OptADV)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnHelp)
-        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "RDApp"
         Me.Text = "GUI DosBox - RD"
-        CType(Me.AxShockwaveFlash1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -256,18 +242,17 @@ Partial Class RDApp
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents TextReturns As System.Windows.Forms.TextBox
-    Friend WithEvents ProgressBar1 As System.Windows.Forms.ProgressBar
     Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
     Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
     Friend WithEvents btnEnvoi As System.Windows.Forms.Button
     Friend WithEvents lblLigneCommande As System.Windows.Forms.Label
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
-    Friend WithEvents AxShockwaveFlash1 As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents OptS As System.Windows.Forms.CheckBox
     Friend WithEvents OptQ As System.Windows.Forms.CheckBox
     Friend WithEvents txtPath As System.Windows.Forms.TextBox
     Friend WithEvents btnDossier As System.Windows.Forms.Button
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
+    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class
