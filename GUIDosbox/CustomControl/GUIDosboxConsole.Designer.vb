@@ -27,7 +27,7 @@ Partial Class GUIDosboxConsole
         '
         'txtOutput
         '
-        Me.txtOutput.BackColor = System.Drawing.Color.Black
+        Me.txtOutput.BackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
         Me.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtOutput.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill

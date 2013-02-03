@@ -9,6 +9,7 @@ Public Class GUIDosboxButton
 
     Public Sub New()
 
+
         Me.BackColor = Color.Black
         Me.Cursor = Cursors.Hand
         Me.FlatStyle = Windows.Forms.FlatStyle.Flat
@@ -17,6 +18,5 @@ Public Class GUIDosboxButton
         Me.ForeColor = Color.LightBlue
 
     End Sub
-
 
 End Class

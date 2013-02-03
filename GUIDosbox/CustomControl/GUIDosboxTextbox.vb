@@ -13,4 +13,12 @@ Public Class GUIDosboxTextbox
         Me.ForeColor = Color.LightBlue
     End Sub
 
+    Public Sub on_Focus() Handles Me.GotFocus
+        Me.BackColor = Color.FromArgb(25, 25, 25)
+    End Sub
+
+    Public Sub on_lostFocus() Handles Me.LostFocus
+        Me.BackColor = Color.Black
+    End Sub
+
 End Class

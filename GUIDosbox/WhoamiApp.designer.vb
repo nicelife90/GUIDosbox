@@ -55,6 +55,7 @@ Partial Class WhoamiApp
         Me.btnClear = New GUIDosbox.GUIDosboxButton()
         Me.myConsole = New GUIDosbox.GUIDosboxConsole()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosboxCheckbox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -324,6 +325,19 @@ Partial Class WhoamiApp
         Me.flashHeader.Size = New System.Drawing.Size(753, 40)
         Me.flashHeader.TabIndex = 14
         '
+        'optAdvanceMode
+        '
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
+        Me.optAdvanceMode.Location = New System.Drawing.Point(89, 458)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(112, 15)
+        Me.optAdvanceMode.TabIndex = 15
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = False
+        '
         'WhoamiApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 11.0!)
@@ -331,6 +345,7 @@ Partial Class WhoamiApp
         Me.BackColor = System.Drawing.SystemColors.WindowText
         Me.ClientSize = New System.Drawing.Size(751, 481)
         Me.ControlBox = False
+        Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.btnClear)
@@ -385,4 +400,5 @@ Partial Class WhoamiApp
     Friend WithEvents btnClear As GUIDosbox.GUIDosboxButton
     Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosboxCheckbox
 End Class

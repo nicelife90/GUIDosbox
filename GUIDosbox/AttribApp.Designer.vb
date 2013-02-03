@@ -486,7 +486,7 @@ Partial Class AttribApp
         Me.AcceptButton = Me.btnApply
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ScrollBar
+        Me.BackColor = System.Drawing.Color.Black
         Me.CancelButton = Me.btnBack
         Me.ClientSize = New System.Drawing.Size(592, 586)
         Me.ControlBox = False
@@ -511,7 +511,7 @@ Partial Class AttribApp
         Me.Controls.Add(Me.SBox)
         Me.Controls.Add(Me.ABox)
         Me.Controls.Add(Me.RBox)
-        Me.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.ForeColor = System.Drawing.Color.WhiteSmoke
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "AttribApp"
