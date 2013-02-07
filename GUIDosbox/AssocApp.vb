@@ -3,10 +3,12 @@
 Public Class AssocApp
 
 #Region "Mode avancé"
+
     'Variable pour le mode avancé.
     Private AdvanceMode As Boolean = False
-    Private Sub OptAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles OptAdvanceMode.CheckedChanged
-        If OptAdvanceMode.Checked = True Then
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
             AdvanceMode = True
             btnExtShow.Visible = False
             btnApply.Visible = False
@@ -26,6 +28,7 @@ Public Class AssocApp
     Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
         'Envoi de la commande
         myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
     End Sub
 
 #End Region

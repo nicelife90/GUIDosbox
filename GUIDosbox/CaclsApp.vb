@@ -1,11 +1,56 @@
 ﻿Option Strict On
+Imports Microsoft.Win32
+Imports System.Drawing.Drawing2D
+
 
 Public Class CaclsApp
 
-    Private Sub CaclsApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+#Region "Mode avancé"
 
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
+
+    Private Sub CaclsApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+     
         'Démmarage de la console.
         myConsole.StartConsole()
+
+        'Mode avancé caché
+        btnSend.Hide()
+
+        'Ajout des éléments (utilisateurs) aux ComboBox. --> GUIDosboxCustomFunction
+        Dim Users As List(Of String) = GetLocalUsers("localhost")
+        For Each User As String In Users
+            cbUserD.Items.Add(User)
+            cbUserP.Items.Add(User)
+            cbUserR.Items.Add(User)
+            cbUserG.Items.Add(User)
+        Next
 
         'Loading du header flash.
         Try
@@ -18,17 +63,11 @@ Public Class CaclsApp
                    "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
-
-        'Mode avancé caché
-        btnEnvoi.Hide()
-        ADVCommand.Hide()
-        lblLigneCommande.Hide()
-
     End Sub
 
-    Private Sub Apply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
+    Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-        Const Apps As String = "CACLS "
+        Const Apps As String = "cacls "
         Dim File As String = ""
         Dim Args1 As String = ""
         Dim Args2 As String = ""
@@ -108,14 +147,14 @@ Public Class CaclsApp
         'args6 = option /G util:perm
         If optG.Checked = True Then
             Args6 = Args6 + " /G " + _
-            txtUserG.Text + ":" + Permission
+            cbUserG.Text + ":" + Permission
         Else
             Args6 = ""
         End If
         'args7 = option /R 
         If optR.Checked = True Then
             Args7 = Args7 + " /R " + _
-            txtUserR.Text + " "
+            cbUserR.Text + " "
         Else
             Args7 = ""
         End If
@@ -123,13 +162,13 @@ Public Class CaclsApp
         'args8 = option /P util:author
         If optP.Checked = True Then
             Args8 = Args8 + " /G " + _
-            txtUserP.Text + ":" + Permission2
+            cbUserP.Text + ":" + Permission2
         Else
             Args8 = ""
         End If
         'args9 = option /D utililistaeur
         If optD.Checked = True Then
-            Args9 = Args9 + " /D " + txtUserD.Text
+            Args9 = Args9 + " /D " + cbUserD.Text
         Else
             Args9 = ""
         End If
@@ -137,113 +176,93 @@ Public Class CaclsApp
         'on affecte sa valeur a File
         File = """" & txtFile.Text & """"
 
-        'on envoi ca commande au process
-        myConsole.sendCommand(Apps + File + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9) 'on n'envoie au commande prompt la commande du textbox
 
-
-        CommandReturn.Text = Apps + File + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9  'renvoie de la commande effectuer au textbox commandReturn
-
+        'Envoi et afichage de la commande
+        txtCmdExec.Text = myConsole.SendCommand(Apps + File + Args1 + Args2 + Args3 + Args4 _
+        + Args5 + Args6 + Args7 + Args8 + Args9)
 
     End Sub
 
-    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide
-        myConsole.sendCommand("cacls /?")
-        ADVCommand.Text = ""
+        txtCmdExec.Text = myConsole.SendCommand("cacls /?")
     End Sub
 
-    Private Sub Back_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
+    Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
         'Arrêt de la console et retour au cp
         myConsole.CloseConsole("cacls")
         CP.Show()
         Me.Close()
     End Sub
 
-    Private Sub Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
+    Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
 
         'on efface les textbox du form
         Dim ctl As Control
         For Each ctl In Controls
             If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
+                ctl.Text = Nothing
             End If
         Next ctl
 
         'on efface les textbox dans les gorupe box
-        txtFile.Text = ""
-        txtUserD.Text = ""
-        txtUserG.Text = ""
-        txtUserP.Text = ""
-        txtUserR.Text = ""
+        txtFile.Text = Nothing
+        cbUserD.Text = Nothing
+        cbUserG.Text = Nothing
+        cbUserP.Text = Nothing
+        cbUserR.Text = Nothing
 
         'Reset de la console
-        myConsole.cls()
+        myConsole.Cls()
 
     End Sub
 
-    Private Sub btnOpenFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnOpenFile.Click
+    Private Sub btnOpenFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
         'Sélection d'un fichier
+        OpenFileDialog1.FileName = Nothing
         OpenFileDialog1.ShowDialog()
         txtFile.Text = OpenFileDialog1.FileName
     End Sub
 
-#Region "Mode avancé"
-
-    Private Sub btnEnvoi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
-        'Envoi de la commande 
-        myConsole.sendCommand(ADVCommand.Text)
-        ADVCommand.Text = ""
-    End Sub
-
-    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
-        If OptADV.Checked = False Then
-            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
-            ADVCommand.Hide()
-            lblLigneCommande.Hide()
-            btnApply.Show()
-            lblCommandeExec.Show()
-            CommandReturn.Show()
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
         Else
-            btnEnvoi.Show()
-            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
-            lblLigneCommande.Show()
-            btnApply.Hide()
-            lblCommandeExec.Hide()
-            CommandReturn.Hide()
+            ActiveControl = btnApply
         End If
     End Sub
 
-#End Region
+
+
 
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblLigneCommande.Text = "Ligne de commande:"
-            lblCommandeExec.Text = "Commande exécutée:"
-            OptADV.Text = "Mode Avancé"
+            lblCmdExec.Text = "Commande exécutée:"
+            optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
-            btnEnvoi.Text = "Envoi"
+            btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblLigneCommande.Text = "Command line:"
-            lblCommandeExec.Text = "Just Executed:"
-            OptADV.Text = "Advanced Mode"
+            lblCmdExec.Text = "Just Executed:"
+            optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Applyr"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"
-            btnEnvoi.Text = "Send"
+            btnSend.Text = "Send"
             btnHelp.Text = "Help"
 
         End If
     End Sub
 #End Region
 
-   
+
 End Class

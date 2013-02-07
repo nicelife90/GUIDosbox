@@ -1,11 +1,10 @@
 ﻿Option Strict On
 Imports System.Text
 
-
 ''' <summary>
-''' Console personnalisé.
+''' Console personnalisé GUIDosbox.
 ''' </summary>
-Public Class GUIDosboxConsole
+Public Class GUIDosbox_Console
 
 
     ''' <summary>
@@ -62,13 +61,14 @@ Public Class GUIDosboxConsole
     End Sub
 
     ''' <summary>
-    ''' Envoi la commande à l'instance actuelle de la console personnalisé GUIDosbox.
+    ''' Envoi la commande à l'instance actuelle de la console personnalisé GUIDosbox et retourne la commande exécuté.
     ''' </summary>
     ''' <param name="myCommand">Commande à exécuter.</param>
-    Public Sub SendCommand(ByVal myCommand As String)
+    Public Function SendCommand(ByVal myCommand As String) As String
         myConsole.StandardInput.WriteLine(myCommand)
         myConsole.StandardInput.Flush()
-    End Sub
+        Return myCommand
+    End Function
 
     ''' <summary>
     ''' Répond n à la question afficher dans l'instance actuelle de la console personnalisé GUIDosbox.

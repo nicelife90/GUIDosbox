@@ -2,6 +2,35 @@
 
 Public Class WhoamiApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub WhoamiApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Démmarage de la console.
         myConsole.StartConsole()
@@ -23,7 +52,7 @@ Public Class WhoamiApp
     Private Sub btnHelp_Click(sender As Object, e As EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
         myConsole.SendCommand("whoami /?")
-        
+
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
@@ -33,7 +62,7 @@ Public Class WhoamiApp
         CP.Show()
     End Sub
 
-    Private Sub btnGo_Click(sender As Object, e As EventArgs) Handles btnGo.Click
+    Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
         'Envoi de la commande.
         myConsole.SendCommand("whoami")
     End Sub
@@ -49,14 +78,16 @@ Public Class WhoamiApp
     End Sub
 
     ''' <summary>
-    ''' Ce sub empêche la console d'être sélectionné.
+    ''' Empêche la console d'être sélectionné.
     ''' </summary>
-    ''' <param name="sender"></param>
-    ''' <param name="e"></param>
-    ''' <remarks></remarks>
-    Private Sub TextReturns_Enter(sender As Object, e As EventArgs)
-        ActiveControl = btnGo
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
+        Else
+            ActiveControl = btnApply
+        End If
     End Sub
+
 
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
@@ -72,5 +103,5 @@ Public Class WhoamiApp
     End Sub
 #End Region
 
-   
+
 End Class

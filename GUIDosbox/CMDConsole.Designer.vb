@@ -30,8 +30,8 @@ Partial Class CMDConsole
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnSend = New System.Windows.Forms.Button()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -51,12 +51,12 @@ Partial Class CMDConsole
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
         Me.btnBack.Location = New System.Drawing.Point(776, 487)
         Me.btnBack.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(100, 19)
+        Me.btnBack.Size = New System.Drawing.Size(100, 23)
         Me.btnBack.TabIndex = 2
         Me.btnBack.Text = "Retour"
         Me.btnBack.UseVisualStyleBackColor = True
@@ -66,12 +66,12 @@ Partial Class CMDConsole
         Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
         Me.btnHelp.Location = New System.Drawing.Point(11, 487)
         Me.btnHelp.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(100, 19)
+        Me.btnHelp.Size = New System.Drawing.Size(100, 23)
         Me.btnHelp.TabIndex = 3
         Me.btnHelp.Text = "Aide"
         Me.btnHelp.UseVisualStyleBackColor = True
@@ -79,12 +79,12 @@ Partial Class CMDConsole
         'lblCommande
         '
         Me.lblCommande.AutoSize = True
-        Me.lblCommande.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.lblCommande.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.lblCommande.ForeColor = System.Drawing.Color.LightBlue
         Me.lblCommande.Location = New System.Drawing.Point(8, 463)
         Me.lblCommande.Margin = New System.Windows.Forms.Padding(4, 0, 4, 0)
         Me.lblCommande.Name = "lblCommande"
-        Me.lblCommande.Size = New System.Drawing.Size(157, 11)
+        Me.lblCommande.Size = New System.Drawing.Size(138, 11)
         Me.lblCommande.TabIndex = 4
         Me.lblCommande.Text = "Ligne de commande :"
         '
@@ -93,12 +93,12 @@ Partial Class CMDConsole
         Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
         Me.btnClear.Location = New System.Drawing.Point(448, 487)
         Me.btnClear.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(100, 19)
+        Me.btnClear.Size = New System.Drawing.Size(100, 23)
         Me.btnClear.TabIndex = 5
         Me.btnClear.Text = "Effacer"
         Me.btnClear.UseVisualStyleBackColor = True
@@ -108,12 +108,12 @@ Partial Class CMDConsole
         Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
         Me.btnSend.Location = New System.Drawing.Point(327, 487)
         Me.btnSend.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.btnSend.Name = "btnSend"
-        Me.btnSend.Size = New System.Drawing.Size(100, 19)
+        Me.btnSend.Size = New System.Drawing.Size(100, 23)
         Me.btnSend.TabIndex = 7
         Me.btnSend.Text = "Envoyer"
         Me.btnSend.UseVisualStyleBackColor = True
@@ -132,15 +132,6 @@ Partial Class CMDConsole
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(10, 42)
-        Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(865, 412)
-        Me.myConsole.TabIndex = 9
-        '
         'flashHeader
         '
         Me.flashHeader.Enabled = True
@@ -150,13 +141,22 @@ Partial Class CMDConsole
         Me.flashHeader.Size = New System.Drawing.Size(886, 40)
         Me.flashHeader.TabIndex = 10
         '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(10, 42)
+        Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(865, 412)
+        Me.myConsole.TabIndex = 9
+        '
         'CMDConsole
         '
         Me.AcceptButton = Me.btnSend
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 11.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ClientSize = New System.Drawing.Size(883, 513)
+        Me.ClientSize = New System.Drawing.Size(883, 516)
         Me.ControlBox = False
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
@@ -167,7 +167,7 @@ Partial Class CMDConsole
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.txtInput)
-        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "CMDConsole"
@@ -184,6 +184,6 @@ Partial Class CMDConsole
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

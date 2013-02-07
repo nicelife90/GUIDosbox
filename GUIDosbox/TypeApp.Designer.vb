@@ -27,16 +27,17 @@ Partial Class TypeApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.btnFichier = New System.Windows.Forms.Button()
         Me.txtPathFichier = New System.Windows.Forms.TextBox()
         Me.lblFichier = New System.Windows.Forms.Label()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.OptAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -77,29 +78,18 @@ Partial Class TypeApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'OptADV
+        'txtCmdExec
         '
-        Me.OptADV.AutoSize = True
-        Me.OptADV.Location = New System.Drawing.Point(12, 530)
-        Me.OptADV.Name = "OptADV"
-        Me.OptADV.Size = New System.Drawing.Size(92, 17)
-        Me.OptADV.TabIndex = 10
-        Me.OptADV.Text = "Mode avancé"
-        Me.OptADV.UseVisualStyleBackColor = True
-        Me.OptADV.Visible = False
-        '
-        'CommandReturn
-        '
-        Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CommandReturn.Location = New System.Drawing.Point(129, 460)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(476, 21)
-        Me.CommandReturn.TabIndex = 13
+        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCmdExec.Location = New System.Drawing.Point(129, 460)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
+        Me.txtCmdExec.TabIndex = 13
         '
         'lblCommandeExec
         '
         Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCommandeExec.Location = New System.Drawing.Point(5, 466)
         Me.lblCommandeExec.Name = "lblCommandeExec"
         Me.lblCommandeExec.Size = New System.Drawing.Size(120, 15)
@@ -142,7 +132,7 @@ Partial Class TypeApp
         'lblFichier
         '
         Me.lblFichier.AutoSize = True
-        Me.lblFichier.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblFichier.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblFichier.Location = New System.Drawing.Point(5, 500)
         Me.lblFichier.Name = "lblFichier"
         Me.lblFichier.Size = New System.Drawing.Size(76, 15)
@@ -166,6 +156,34 @@ Partial Class TypeApp
         Me.flashHeader.Size = New System.Drawing.Size(763, 40)
         Me.flashHeader.TabIndex = 24
         '
+        'OptAdvanceMode
+        '
+        Me.OptAdvanceMode.AutoSize = True
+        Me.OptAdvanceMode.BackColor = System.Drawing.Color.Transparent
+        Me.OptAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.OptAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
+        Me.OptAdvanceMode.Location = New System.Drawing.Point(26, 530)
+        Me.OptAdvanceMode.Name = "OptAdvanceMode"
+        Me.OptAdvanceMode.Size = New System.Drawing.Size(112, 15)
+        Me.OptAdvanceMode.TabIndex = 25
+        Me.OptAdvanceMode.Text = "Mode avancé"
+        Me.OptAdvanceMode.UseVisualStyleBackColor = False
+        '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(246, 531)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 26
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
         'TypeApp
         '
         Me.AcceptButton = Me.btnApply
@@ -175,6 +193,8 @@ Partial Class TypeApp
         Me.CancelButton = Me.btnBack
         Me.ClientSize = New System.Drawing.Size(759, 584)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.OptAdvanceMode)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
@@ -182,8 +202,7 @@ Partial Class TypeApp
         Me.Controls.Add(Me.txtPathFichier)
         Me.Controls.Add(Me.btnFichier)
         Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.OptADV)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
@@ -199,14 +218,15 @@ Partial Class TypeApp
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents btnFichier As System.Windows.Forms.Button
     Friend WithEvents txtPathFichier As System.Windows.Forms.TextBox
     Friend WithEvents lblFichier As System.Windows.Forms.Label
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents OptAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
 End Class

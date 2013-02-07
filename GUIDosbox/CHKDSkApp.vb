@@ -1,10 +1,49 @@
 ﻿Option Strict On
 
+Imports System.IO
+Imports System.Collections.ObjectModel
+
 Public Class CHKDSkApp
+
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
 
     Private Sub CHKDSkApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démarrage de la console
         myConsole.StartConsole()
+
+        'Ajout des éléments (lecteur) au comboBox.
+        Dim drives As ReadOnlyCollection(Of DriveInfo) = My.Computer.FileSystem.Drives
+        For Each drive As DriveInfo In drives
+            Dim lecteur As String = drive.ToString.Substring(0, drive.ToString.Length - 1)
+            cbLetter.Items.Add(lecteur)
+        Next
 
         'Loading du header flash.
         Try
@@ -19,12 +58,12 @@ Public Class CHKDSkApp
         End Try
 
         'Mode avancé caché.
-        btnEnvoi.Hide()
-        ADVCommand.Hide()
-        lblLigneCommande.Hide()
+        btnSend.Hide()
+
+
     End Sub
 
-    Private Sub Apply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
+    Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des variables et constante
         Const Apps As String = "CHKDSK "
@@ -40,79 +79,73 @@ Public Class CHKDSkApp
 
         'Argument 1 Lecteur
         Args1 = Args1 & " " & "" & _
-        DLetter.Text & "" & " "
+        cbLetter.Text & "" & " "
 
         'Argument 2 /F
-        If OptF.Checked = True Then
+        If optF.Checked = True Then
             Args2 = Args2 + " /F "
         Else
             Args2 = ""
         End If
 
         'Argument 3 /V
-        If OptV.Checked = True Then
+        If optV.Checked = True Then
             Args3 = Args3 + " /V "
         Else
             Args3 = ""
         End If
 
         'Argument 4 /R
-        If OptR.Checked = True Then
+        If optR.Checked = True Then
             Args4 = Args4 + " /R "
         Else
             Args4 = ""
         End If
 
         'Argument 5 /L:taille
-        If OptL.Checked = True Then
+        If optL.Checked = True Then
             Args5 = Args5 + " /L:" & "" & _
-            OptLArg.Text & "" & " "
+            optLArg.Text & "" & " "
         Else
             Args5 = ""
         End If
 
         'Argument 6 /X
-        If OptX.Checked = True Then
+        If optX.Checked = True Then
             Args6 = Args6 + " /X "
         Else
             Args6 = ""
         End If
 
         'Argument 7 /I
-        If OptI.Checked = True Then
+        If optI.Checked = True Then
             Args7 = Args7 + " /I "
         Else
             Args7 = ""
         End If
 
         'Argument 8 /C
-        If OptC.Checked = True Then
+        If optC.Checked = True Then
             Args8 = Args8 + " /C "
         Else
             Args8 = ""
         End If
 
         'Argument 9 /B
-        If OptB.Checked = True Then
+        If optB.Checked = True Then
             Args9 = Args9 + " /B "
         Else
             Args9 = ""
         End If
 
         'Exécution de la commande
-        myConsole.sendCommand(Apps + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9)
-
-        'Affichage de la commande exécuté.
-        CommandReturn.Text = Apps + Args1 + Args2 + Args3 + Args4 _
-        + Args5 + Args6 + Args7 + Args8 + Args9
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
 
     End Sub
 
-    Private Sub Help_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
+    Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide
-        myConsole.sendCommand("chkdsk /?")
-        ADVCommand.Text = ""
+        txtCmdExec.Text = myConsole.SendCommand("chkdsk /?")
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -127,69 +160,52 @@ Public Class CHKDSkApp
         Dim ctl As Control
         For Each ctl In Controls
             If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
+                ctl.Text = Nothing
             End If
         Next
         'Reset de la console
-        myConsole.cls()
+        myConsole.Cls()
     End Sub
 
-#Region "Mode avancé"
-
-    Private Sub ExecuteButton_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
-        'Envoi de la commande
-        myConsole.sendCommand(ADVCommand.Text)
-        ADVCommand.Text = ""
-    End Sub
-
-    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
-        If OptADV.Checked = False Then
-            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
-            ADVCommand.Hide()
-            lblLigneCommande.Hide()
-            btnApply.Show()
-            lblCommandeExec.Show()
-            CommandReturn.Show()
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
         Else
-            btnEnvoi.Show()
-            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
-            lblLigneCommande.Show()
-            btnApply.Hide()
-            lblCommandeExec.Hide()
-            CommandReturn.Hide()
+            ActiveControl = btnApply
         End If
     End Sub
-
-#End Region
 
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            GBLetter.Text = "Lecteur/Disque"
-            GBOptL.Text = "Option /L"
-            OptL.Text = "/L:taille"
-            lblLigneCommande.Text = "Ligne de commande:"
-            lblCommandeExec.Text = "Commande exécutée:"
-            OptADV.Text = "Mode Avancé"
+            gbLetter.Text = "Lecteur/Disque"
+            gbOptL.Text = "Option /L"
+            optL.Text = "/L:taille"
+
+            lblCmdExec.Text = "Commande exécutée:"
+            optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
-            btnEnvoi.Text = "Envoi"
+            btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            GBLetter.Text = "Drive letter"
-            GBOptL.Text = "/L Option"
-            OptL.Text = "/L:size"
-            lblLigneCommande.Text = "Command line:"
-            lblCommandeExec.Text = "Just Executed:"
-            OptADV.Text = "Advanced Mode"
+            gbLetter.Text = "Drive letter"
+            gbOptL.Text = "/L Option"
+            optL.Text = "/L:size"
+
+            lblCmdExec.Text = "Just Executed:"
+            optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Applyr"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"
-            btnEnvoi.Text = "Send"
+            btnSend.Text = "Send"
             btnHelp.Text = "Help"
 
         End If

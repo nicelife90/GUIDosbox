@@ -27,11 +27,9 @@ Partial Class SystemInfoApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
-        Me.ADVCommand = New System.Windows.Forms.TextBox()
-        Me.btnEnvoi = New System.Windows.Forms.Button()
-        Me.lblLigneCommande = New System.Windows.Forms.Label()
+        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
+        Me.btnSend = New System.Windows.Forms.Button()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.OptS = New System.Windows.Forms.CheckBox()
@@ -48,7 +46,7 @@ Partial Class SystemInfoApp
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.txtOptFO = New System.Windows.Forms.ComboBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -94,56 +92,37 @@ Partial Class SystemInfoApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'OptADV
+        'optAdvanceMode
         '
-        Me.OptADV.AutoSize = True
-        Me.OptADV.Location = New System.Drawing.Point(513, 501)
-        Me.OptADV.Name = "OptADV"
-        Me.OptADV.Size = New System.Drawing.Size(92, 17)
-        Me.OptADV.TabIndex = 10
-        Me.OptADV.Text = "Mode avancé"
-        Me.OptADV.UseVisualStyleBackColor = True
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.Location = New System.Drawing.Point(513, 501)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(92, 17)
+        Me.optAdvanceMode.TabIndex = 10
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = True
         '
-        'CommandReturn
+        'txtCmdExec
         '
-        Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CommandReturn.Location = New System.Drawing.Point(129, 475)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(476, 21)
-        Me.CommandReturn.TabIndex = 13
+        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
+        Me.txtCmdExec.TabIndex = 13
         '
-        'ADVCommand
+        'btnSend
         '
-        Me.ADVCommand.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ADVCommand.Location = New System.Drawing.Point(129, 454)
-        Me.ADVCommand.Name = "ADVCommand"
-        Me.ADVCommand.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.ADVCommand.Size = New System.Drawing.Size(476, 21)
-        Me.ADVCommand.TabIndex = 14
-        '
-        'btnEnvoi
-        '
-        Me.btnEnvoi.Location = New System.Drawing.Point(315, 501)
-        Me.btnEnvoi.Name = "btnEnvoi"
-        Me.btnEnvoi.Size = New System.Drawing.Size(75, 23)
-        Me.btnEnvoi.TabIndex = 0
-        Me.btnEnvoi.Text = "Envoi"
-        Me.btnEnvoi.UseVisualStyleBackColor = True
-        '
-        'lblLigneCommande
-        '
-        Me.lblLigneCommande.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLigneCommande.Location = New System.Drawing.Point(5, 460)
-        Me.lblLigneCommande.Name = "lblLigneCommande"
-        Me.lblLigneCommande.Size = New System.Drawing.Size(118, 15)
-        Me.lblLigneCommande.TabIndex = 16
-        Me.lblLigneCommande.Text = "Ligne de commande :"
-        Me.lblLigneCommande.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnSend.Location = New System.Drawing.Point(315, 501)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 0
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = True
         '
         'lblCommandeExec
         '
         Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCommandeExec.Location = New System.Drawing.Point(3, 481)
         Me.lblCommandeExec.Name = "lblCommandeExec"
         Me.lblCommandeExec.Size = New System.Drawing.Size(120, 15)
@@ -166,7 +145,7 @@ Partial Class SystemInfoApp
         'OptS
         '
         Me.OptS.AutoSize = True
-        Me.OptS.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OptS.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptS.Location = New System.Drawing.Point(6, 13)
         Me.OptS.Name = "OptS"
         Me.OptS.Size = New System.Drawing.Size(37, 19)
@@ -177,7 +156,7 @@ Partial Class SystemInfoApp
         'OptU
         '
         Me.OptU.AutoSize = True
-        Me.OptU.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OptU.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptU.Location = New System.Drawing.Point(6, 10)
         Me.OptU.Name = "OptU"
         Me.OptU.Size = New System.Drawing.Size(37, 19)
@@ -188,7 +167,7 @@ Partial Class SystemInfoApp
         'OptP
         '
         Me.OptP.AutoSize = True
-        Me.OptP.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OptP.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptP.Location = New System.Drawing.Point(6, 10)
         Me.OptP.Name = "OptP"
         Me.OptP.Size = New System.Drawing.Size(36, 19)
@@ -199,7 +178,7 @@ Partial Class SystemInfoApp
         'OptFO
         '
         Me.OptFO.AutoSize = True
-        Me.OptFO.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OptFO.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptFO.Location = New System.Drawing.Point(6, 10)
         Me.OptFO.Name = "OptFO"
         Me.OptFO.Size = New System.Drawing.Size(46, 19)
@@ -210,7 +189,7 @@ Partial Class SystemInfoApp
         'OptNH
         '
         Me.OptNH.AutoSize = True
-        Me.OptNH.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.OptNH.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OptNH.Location = New System.Drawing.Point(7, 13)
         Me.OptNH.Name = "OptNH"
         Me.OptNH.Size = New System.Drawing.Size(47, 19)
@@ -316,7 +295,7 @@ Partial Class SystemInfoApp
         '
         'SystemInfoApp
         '
-        Me.AcceptButton = Me.btnEnvoi
+        Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
@@ -331,11 +310,9 @@ Partial Class SystemInfoApp
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.lblLigneCommande)
-        Me.Controls.Add(Me.btnEnvoi)
-        Me.Controls.Add(Me.ADVCommand)
-        Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.OptADV)
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
@@ -362,11 +339,9 @@ Partial Class SystemInfoApp
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
-    Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
-    Friend WithEvents btnEnvoi As System.Windows.Forms.Button
-    Friend WithEvents lblLigneCommande As System.Windows.Forms.Label
+    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
+    Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents OptS As System.Windows.Forms.CheckBox
@@ -383,6 +358,6 @@ Partial Class SystemInfoApp
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
     Friend WithEvents GroupBox5 As System.Windows.Forms.GroupBox
     Friend WithEvents txtOptFO As System.Windows.Forms.ComboBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class GUIDosboxConsole
+Partial Class GUIDosbox_Console
     Inherits System.Windows.Forms.UserControl
 
     'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -31,7 +31,7 @@ Partial Class GUIDosboxConsole
         Me.txtOutput.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.txtOutput.Cursor = System.Windows.Forms.Cursors.Default
         Me.txtOutput.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtOutput.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.txtOutput.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.txtOutput.ForeColor = System.Drawing.Color.LightBlue
         Me.txtOutput.Location = New System.Drawing.Point(0, 0)
         Me.txtOutput.MaxLength = 1000000

@@ -24,14 +24,14 @@ Partial Class HelpApp
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HelpApp))
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.lblAdvanceMode = New GUIDosbox.GUIDosboxLabel()
-        Me.txtAdvanceCommand = New GUIDosbox.GUIDosboxTextbox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
-        Me.optAdvanceMode = New GUIDosbox.GUIDosboxCheckbox()
-        Me.btnAide = New GUIDosbox.GUIDosboxButton()
-        Me.btnSend = New GUIDosbox.GUIDosboxButton()
-        Me.btnBack = New GUIDosbox.GUIDosboxButton()
-        Me.btnClaer = New GUIDosbox.GUIDosboxButton()
+        Me.lblAdvanceMode = New GUIDosbox.GUIDosbox_Label()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.btnApply = New GUIDosbox.GUIDosbox_Button()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
+        Me.btnBack = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClaer = New GUIDosbox.GUIDosbox_Button()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -53,7 +53,7 @@ Partial Class HelpApp
         '
         Me.lblAdvanceMode.AutoSize = True
         Me.lblAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.lblAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.lblAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.lblAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
         Me.lblAdvanceMode.Location = New System.Drawing.Point(1, 476)
         Me.lblAdvanceMode.Name = "lblAdvanceMode"
@@ -61,16 +61,16 @@ Partial Class HelpApp
         Me.lblAdvanceMode.TabIndex = 8
         Me.lblAdvanceMode.Text = "Ligne de commande :"
         '
-        'txtAdvanceCommand
+        'txtCmdExec
         '
-        Me.txtAdvanceCommand.BackColor = System.Drawing.Color.Black
-        Me.txtAdvanceCommand.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtAdvanceCommand.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.txtAdvanceCommand.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtAdvanceCommand.Location = New System.Drawing.Point(164, 474)
-        Me.txtAdvanceCommand.Name = "txtAdvanceCommand"
-        Me.txtAdvanceCommand.Size = New System.Drawing.Size(482, 18)
-        Me.txtAdvanceCommand.TabIndex = 0
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(164, 474)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(482, 18)
+        Me.txtCmdExec.TabIndex = 0
         '
         'myConsole
         '
@@ -84,7 +84,7 @@ Partial Class HelpApp
         '
         Me.optAdvanceMode.AutoSize = True
         Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
         Me.optAdvanceMode.Location = New System.Drawing.Point(3, 507)
         Me.optAdvanceMode.Name = "optAdvanceMode"
@@ -93,20 +93,20 @@ Partial Class HelpApp
         Me.optAdvanceMode.Text = "Mode avancé"
         Me.optAdvanceMode.UseVisualStyleBackColor = False
         '
-        'btnAide
+        'btnApply
         '
-        Me.btnAide.BackColor = System.Drawing.Color.Black
-        Me.btnAide.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnAide.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnAide.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnAide.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.btnAide.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnAide.Location = New System.Drawing.Point(455, 498)
-        Me.btnAide.Name = "btnAide"
-        Me.btnAide.Size = New System.Drawing.Size(110, 23)
-        Me.btnAide.TabIndex = 10
-        Me.btnAide.Text = "Voir l'aide"
-        Me.btnAide.UseVisualStyleBackColor = False
+        Me.btnApply.BackColor = System.Drawing.Color.Black
+        Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnApply.Location = New System.Drawing.Point(455, 498)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(110, 23)
+        Me.btnApply.TabIndex = 10
+        Me.btnApply.Text = "Voir l'aide"
+        Me.btnApply.UseVisualStyleBackColor = False
         '
         'btnSend
         '
@@ -114,7 +114,7 @@ Partial Class HelpApp
         Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
         Me.btnSend.Location = New System.Drawing.Point(164, 498)
         Me.btnSend.Name = "btnSend"
@@ -129,7 +129,7 @@ Partial Class HelpApp
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
         Me.btnBack.Location = New System.Drawing.Point(571, 498)
         Me.btnBack.Name = "btnBack"
@@ -144,7 +144,7 @@ Partial Class HelpApp
         Me.btnClaer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClaer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnClaer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClaer.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnClaer.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnClaer.ForeColor = System.Drawing.Color.LightBlue
         Me.btnClaer.Location = New System.Drawing.Point(245, 498)
         Me.btnClaer.Name = "btnClaer"
@@ -159,7 +159,7 @@ Partial Class HelpApp
         Me.flashHeader.Location = New System.Drawing.Point(-1, 0)
         Me.flashHeader.Name = "flashHeader"
         Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(655, 40)
+        Me.flashHeader.Size = New System.Drawing.Size(656, 40)
         Me.flashHeader.TabIndex = 14
         '
         'HelpApp
@@ -175,10 +175,10 @@ Partial Class HelpApp
         Me.Controls.Add(Me.btnClaer)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.btnAide)
+        Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.lblAdvanceMode)
-        Me.Controls.Add(Me.txtAdvanceCommand)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.myConsole)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.HelpButton = True
@@ -190,13 +190,13 @@ Partial Class HelpApp
 
     End Sub
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
-    Friend WithEvents txtAdvanceCommand As GUIDosbox.GUIDosboxTextbox
-    Friend WithEvents lblAdvanceMode As GUIDosbox.GUIDosboxLabel
-    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosboxCheckbox
-    Friend WithEvents btnAide As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnSend As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnBack As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnClaer As GUIDosbox.GUIDosboxButton
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents lblAdvanceMode As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClaer As GUIDosbox.GUIDosbox_Button
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

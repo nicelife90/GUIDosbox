@@ -2,9 +2,44 @@
 
 Public Class SUBSTApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub SUBSTApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démmarage de la console.
         myConsole.StartConsole()
+
+        'On ajoute les élément (lecteur) au combobox --> GUIDosboxCustomFunction
+
+        For Each lecteur As String In AvailableDrive()
+            cbLecteur.Items.Add(lecteur & ":")
+        Next
 
         'Loading du header flash.
         Try
@@ -19,55 +54,64 @@ Public Class SUBSTApp
         End Try
 
         'Mode avancé caché.
-        btnEnvoi.Hide()
-        ADVCommand.Hide()
-        lblLigneCommande.Hide()
+        btnSend.Hide()
+
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
+        
 
-        'Déclaration des variables et constantes.
+        'Déclaration des variable et constante
         Const Apps As String = "subst "
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
+        Dim Arguments As String = Nothing
 
-        'Argument 1 Lecteur
-        If Not txtLecteur.Text = "" Then
-            Args1 = Args1 & " " & "" & txtLecteur.Text & "" & ":\" & "" & txtDossier.Text & "" & " "
-        Else
-            Args1 = ""
+        'Arguments.
+        Dim Args(2) As String
+        Args(0) = Nothing
+        Args(1) = Nothing
+        Args(2) = Nothing
+
+        'Argument 0 --> Drive
+        If Not cbLecteur.Text = "" Then
+            Args(0) = cbLecteur.Text & " "
         End If
 
-        'Argument 2 /F
-        If OptSUBST.Checked = True Then
-            Args1 = ""
-            Args2 = Args2 + ""
-            Args3 = ""
-            Args4 = ""
-            Args5 = ""
+        'Argument 1 --> Drive
+        If Not txtDossier.Text = Nothing Then
+            Args(1) = """" & txtDossier.Text & """" & " "
         End If
 
-        'Argument 3 /V
-        If Not txtDelete.Text = "" Then
-            Args3 = Args3 & " " & "/d " & "" & txtDelete.Text & "" & ":\"
-        Else
-            Args3 = ""
+        'Argument 2 --> /D
+        If optD.Checked Then
+            If Not cbDelete.Text = "" Then
+                For i As Integer = 0 To 2
+                    Args(i) = ""
+                Next
+                Args(2) = cbDelete.Text & " /D"
+            End If
         End If
+
+        'Argument --> Lister Seulement
+        If optLister.Checked Then
+            For i As Integer = 0 To 2
+                Args(i) = ""
+            Next
+        End If
+
+        'Création de la chaine d'argument
+        For Each arg In Args
+            Arguments += arg
+        Next
 
         'Envoi de la commande.
-        myConsole.SendCommand(Apps + Args1 + Args2 + Args3)
-        'Affichage de la commande exécuté.
-        CommandReturn.Text = Apps + Args1 + Args2 + Args3
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
 
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
         myConsole.SendCommand("subst /?")
-        ADVCommand.Text = ""
+        txtCmdExec.Text = ""
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -93,67 +137,53 @@ Public Class SUBSTApp
         txtDossier.Text = FolderBrowserDialog1.SelectedPath
     End Sub
 
-#Region "Mode avancé"
-    Private Sub btnEnvoi_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnEnvoi.Click
-        'Envoi de la commande  
-        myConsole.SendCommand(ADVCommand.Text)
-        ADVCommand.Text = ""
-    End Sub
-
-    Private Sub OptADV_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptADV.CheckedChanged
-        If OptADV.Checked = False Then
-            btnEnvoi.Hide()       'on affiche les élément du mode normal et on cache les élément du mode avancé
-            ADVCommand.Hide()
-            lblLigneCommande.Hide()
-            btnApply.Show()
-            lblCommandeExec.Show()
-            CommandReturn.Show()
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
         Else
-            btnEnvoi.Show()
-            ADVCommand.Show()   'on chache les élément du mode normal et on affiche les élément du mode avancer
-            lblLigneCommande.Show()
-            btnApply.Hide()
-            lblCommandeExec.Hide()
-            CommandReturn.Hide()
+            ActiveControl = btnApply
         End If
     End Sub
-#End Region
 
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblLigneCommande.Text = "Ligne de commande:"
             lblCommandeExec.Text = "Commande exécutée:"
-            OptADV.Text = "Mode Avancé"
+            optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
-            btnEnvoi.Text = "Envoi"
+            btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
             GBCreer.Text = "Créer"
-            GBSupprimmer.Text = "Supprimer"
+            gbDelete.Text = "Supprimer"
             BtnDossier.Text = "Dossier"
-            OptSUBST.Text = "Lister Seulement"
+            optLister.Text = "Lister Seulement"
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblLigneCommande.Text = "Command line:"
             lblCommandeExec.Text = "Just Executed:"
-            OptADV.Text = "Advanced Mode"
+            optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Applyr"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"
-            btnEnvoi.Text = "Send"
+            btnSend.Text = "Send"
             btnHelp.Text = "Help"
             GBCreer.Text = "Create"
-            GBSupprimmer.Text = "Delete"
+            gbDelete.Text = "Delete"
             BtnDossier.Text = "Folder"
-            OptSUBST.Text = "Lister Only"
+            optLister.Text = "Lister Only"
 
         End If
     End Sub
 #End Region
-    
+
+    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
+
+    End Sub
 End Class
 

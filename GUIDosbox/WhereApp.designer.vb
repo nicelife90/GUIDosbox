@@ -40,16 +40,14 @@ Partial Class WhereApp
         Me.lblSubFolder = New System.Windows.Forms.Label()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.txtModele = New System.Windows.Forms.TextBox()
-        Me.txtComandLine = New System.Windows.Forms.TextBox()
-        Me.txtComandExecuter = New System.Windows.Forms.TextBox()
-        Me.lblComandLine = New System.Windows.Forms.Label()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
         Me.lblComandExecuter = New System.Windows.Forms.Label()
         Me.gbRecherche = New System.Windows.Forms.GroupBox()
         Me.lblExemple = New System.Windows.Forms.Label()
-        Me.OptAdvance = New System.Windows.Forms.CheckBox()
+        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
         Me.btnSend = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbOptions.SuspendLayout()
         Me.gbRecherche.SuspendLayout()
@@ -206,28 +204,12 @@ Partial Class WhereApp
         Me.txtModele.Size = New System.Drawing.Size(103, 20)
         Me.txtModele.TabIndex = 12
         '
-        'txtComandLine
+        'txtCmdExec
         '
-        Me.txtComandLine.Location = New System.Drawing.Point(123, 401)
-        Me.txtComandLine.Name = "txtComandLine"
-        Me.txtComandLine.Size = New System.Drawing.Size(385, 20)
-        Me.txtComandLine.TabIndex = 14
-        '
-        'txtComandExecuter
-        '
-        Me.txtComandExecuter.Location = New System.Drawing.Point(123, 420)
-        Me.txtComandExecuter.Name = "txtComandExecuter"
-        Me.txtComandExecuter.Size = New System.Drawing.Size(385, 20)
-        Me.txtComandExecuter.TabIndex = 15
-        '
-        'lblComandLine
-        '
-        Me.lblComandLine.AutoSize = True
-        Me.lblComandLine.Location = New System.Drawing.Point(9, 404)
-        Me.lblComandLine.Name = "lblComandLine"
-        Me.lblComandLine.Size = New System.Drawing.Size(109, 13)
-        Me.lblComandLine.TabIndex = 16
-        Me.lblComandLine.Text = "Ligne de commande :"
+        Me.txtCmdExec.Location = New System.Drawing.Point(123, 420)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(385, 20)
+        Me.txtCmdExec.TabIndex = 15
         '
         'lblComandExecuter
         '
@@ -257,22 +239,22 @@ Partial Class WhereApp
         'lblExemple
         '
         Me.lblExemple.AutoSize = True
-        Me.lblExemple.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblExemple.Font = New System.Drawing.Font("Microsoft Sans Serif", 8.25!, CType((System.Drawing.FontStyle.Regular Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblExemple.Location = New System.Drawing.Point(3, 62)
         Me.lblExemple.Name = "lblExemple"
         Me.lblExemple.Size = New System.Drawing.Size(331, 13)
         Me.lblExemple.TabIndex = 13
         Me.lblExemple.Text = "Exemple de Modèles : *.txt , *.dll, *.exe ou nom de fichier"
         '
-        'OptAdvance
+        'optAdvanceMode
         '
-        Me.OptAdvance.AutoSize = True
-        Me.OptAdvance.Location = New System.Drawing.Point(9, 443)
-        Me.OptAdvance.Name = "OptAdvance"
-        Me.OptAdvance.Size = New System.Drawing.Size(93, 17)
-        Me.OptAdvance.TabIndex = 19
-        Me.OptAdvance.Text = "Mode Avancé"
-        Me.OptAdvance.UseVisualStyleBackColor = True
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.Location = New System.Drawing.Point(9, 443)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(93, 17)
+        Me.optAdvanceMode.TabIndex = 19
+        Me.optAdvanceMode.Text = "Mode Avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = True
         '
         'btnSend
         '
@@ -321,12 +303,10 @@ Partial Class WhereApp
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.OptAdvance)
+        Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.gbRecherche)
         Me.Controls.Add(Me.lblComandExecuter)
-        Me.Controls.Add(Me.lblComandLine)
-        Me.Controls.Add(Me.txtComandExecuter)
-        Me.Controls.Add(Me.txtComandLine)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.gbOptions)
         Me.Controls.Add(Me.btnHelp)
@@ -356,18 +336,16 @@ Partial Class WhereApp
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents txtModele As System.Windows.Forms.TextBox
     Friend WithEvents OptF As System.Windows.Forms.CheckBox
-    Friend WithEvents txtComandLine As System.Windows.Forms.TextBox
-    Friend WithEvents txtComandExecuter As System.Windows.Forms.TextBox
-    Friend WithEvents lblComandLine As System.Windows.Forms.Label
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
     Friend WithEvents lblComandExecuter As System.Windows.Forms.Label
     Friend WithEvents lblAfficheName As System.Windows.Forms.Label
     Friend WithEvents gbRecherche As System.Windows.Forms.GroupBox
     Friend WithEvents lblExemple As System.Windows.Forms.Label
-    Friend WithEvents OptAdvance As System.Windows.Forms.CheckBox
+    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
     Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents lblSillencieux As System.Windows.Forms.Label
     Friend WithEvents OptQ As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

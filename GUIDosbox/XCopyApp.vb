@@ -2,6 +2,35 @@
 
 Public Class XCopyApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub xcopyApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démmarage de la console
         myConsole.StartConsole()
@@ -23,7 +52,7 @@ Public Class XCopyApp
         OptE.Checked = True
         OptY.Checked = True
     End Sub
-   
+
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des variables et constantes.
@@ -173,7 +202,7 @@ Public Class XCopyApp
                 + Args11 + Args12 + Args13 + Args14 + Args15 + Args16)
 
         'Affichage de la commande exécuté.
-        CommandReturn.Text = ("xcopy.exe " & source & " " & destination _
+        txtCmdExec.Text = ("xcopy.exe " & source & " " & destination _
                 + Args1 + ArgsD + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9 + Args10 _
                 + Args11 + Args12 + Args13 + Args14 + Args15 + Args16) 'affichage de la commande éxécuter
 
@@ -188,6 +217,7 @@ Public Class XCopyApp
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide
         myConsole.SendCommand("xcopy /?")
+        txtCmdExec.Text = "xcopy /?"
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -225,6 +255,17 @@ Public Class XCopyApp
         Next
     End Sub
 
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
+        Else
+            ActiveControl = btnApply
+        End If
+    End Sub
+
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
@@ -256,5 +297,5 @@ Public Class XCopyApp
         End If
     End Sub
 #End Region
-    
+
 End Class

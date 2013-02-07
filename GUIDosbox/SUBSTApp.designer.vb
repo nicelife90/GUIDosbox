@@ -27,28 +27,27 @@ Partial Class SUBSTApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
-        Me.ADVCommand = New System.Windows.Forms.TextBox()
-        Me.btnEnvoi = New System.Windows.Forms.Button()
-        Me.lblLigneCommande = New System.Windows.Forms.Label()
+        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
+        Me.btnSend = New System.Windows.Forms.Button()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.txtLecteur = New System.Windows.Forms.ComboBox()
+        Me.cbLecteur = New System.Windows.Forms.ComboBox()
         Me.GBCreer = New System.Windows.Forms.GroupBox()
         Me.BtnDossier = New System.Windows.Forms.Button()
         Me.txtDossier = New System.Windows.Forms.TextBox()
         Me.lblLecteur = New System.Windows.Forms.Label()
-        Me.OptSUBST = New System.Windows.Forms.CheckBox()
+        Me.optLister = New System.Windows.Forms.CheckBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.GBSupprimmer = New System.Windows.Forms.GroupBox()
-        Me.txtDelete = New System.Windows.Forms.ComboBox()
+        Me.gbDelete = New System.Windows.Forms.GroupBox()
+        Me.cbDelete = New System.Windows.Forms.ComboBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.optD = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.GBCreer.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
-        Me.GBSupprimmer.SuspendLayout()
+        Me.gbDelete.SuspendLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -88,59 +87,40 @@ Partial Class SUBSTApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'OptADV
+        'optAdvanceMode
         '
-        Me.OptADV.AutoSize = True
-        Me.OptADV.Location = New System.Drawing.Point(513, 501)
-        Me.OptADV.Name = "OptADV"
-        Me.OptADV.Size = New System.Drawing.Size(92, 17)
-        Me.OptADV.TabIndex = 10
-        Me.OptADV.Text = "Mode avancé"
-        Me.OptADV.UseVisualStyleBackColor = True
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.Location = New System.Drawing.Point(513, 501)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(92, 17)
+        Me.optAdvanceMode.TabIndex = 10
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = True
         '
-        'CommandReturn
+        'txtCmdExec
         '
-        Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CommandReturn.Location = New System.Drawing.Point(129, 475)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(476, 21)
-        Me.CommandReturn.TabIndex = 13
+        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
+        Me.txtCmdExec.TabIndex = 13
         '
-        'ADVCommand
+        'btnSend
         '
-        Me.ADVCommand.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ADVCommand.Location = New System.Drawing.Point(129, 454)
-        Me.ADVCommand.Name = "ADVCommand"
-        Me.ADVCommand.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.ADVCommand.Size = New System.Drawing.Size(476, 21)
-        Me.ADVCommand.TabIndex = 14
-        '
-        'btnEnvoi
-        '
-        Me.btnEnvoi.Location = New System.Drawing.Point(315, 501)
-        Me.btnEnvoi.Name = "btnEnvoi"
-        Me.btnEnvoi.Size = New System.Drawing.Size(75, 23)
-        Me.btnEnvoi.TabIndex = 0
-        Me.btnEnvoi.Text = "Envoi"
-        Me.btnEnvoi.UseVisualStyleBackColor = True
-        '
-        'lblLigneCommande
-        '
-        Me.lblLigneCommande.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLigneCommande.Location = New System.Drawing.Point(5, 460)
-        Me.lblLigneCommande.Name = "lblLigneCommande"
-        Me.lblLigneCommande.Size = New System.Drawing.Size(118, 15)
-        Me.lblLigneCommande.TabIndex = 16
-        Me.lblLigneCommande.Text = "Ligne de commande :"
-        Me.lblLigneCommande.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnSend.Location = New System.Drawing.Point(315, 501)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 0
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = True
         '
         'lblCommandeExec
         '
         Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCommandeExec.Location = New System.Drawing.Point(3, 481)
         Me.lblCommandeExec.Name = "lblCommandeExec"
-        Me.lblCommandeExec.Size = New System.Drawing.Size(120, 15)
+        Me.lblCommandeExec.Size = New System.Drawing.Size(107, 15)
         Me.lblCommandeExec.TabIndex = 17
         Me.lblCommandeExec.Text = "Commande exécutée:"
         Me.lblCommandeExec.TextAlign = System.Drawing.ContentAlignment.TopRight
@@ -157,20 +137,20 @@ Partial Class SUBSTApp
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
         '
-        'txtLecteur
+        'cbLecteur
         '
-        Me.txtLecteur.FormattingEnabled = True
-        Me.txtLecteur.Location = New System.Drawing.Point(41, 38)
-        Me.txtLecteur.Name = "txtLecteur"
-        Me.txtLecteur.Size = New System.Drawing.Size(69, 21)
-        Me.txtLecteur.TabIndex = 20
+        Me.cbLecteur.FormattingEnabled = True
+        Me.cbLecteur.Location = New System.Drawing.Point(13, 36)
+        Me.cbLecteur.Name = "cbLecteur"
+        Me.cbLecteur.Size = New System.Drawing.Size(69, 21)
+        Me.cbLecteur.TabIndex = 20
         '
         'GBCreer
         '
         Me.GBCreer.Controls.Add(Me.BtnDossier)
         Me.GBCreer.Controls.Add(Me.txtDossier)
         Me.GBCreer.Controls.Add(Me.lblLecteur)
-        Me.GBCreer.Controls.Add(Me.txtLecteur)
+        Me.GBCreer.Controls.Add(Me.cbLecteur)
         Me.GBCreer.Location = New System.Drawing.Point(6, 97)
         Me.GBCreer.Name = "GBCreer"
         Me.GBCreer.Size = New System.Drawing.Size(117, 149)
@@ -203,51 +183,43 @@ Partial Class SUBSTApp
         Me.lblLecteur.TabIndex = 21
         Me.lblLecteur.Text = "Lecteur :"
         '
-        'OptSUBST
+        'optLister
         '
-        Me.OptSUBST.AutoSize = True
-        Me.OptSUBST.ForeColor = System.Drawing.Color.Maroon
-        Me.OptSUBST.Location = New System.Drawing.Point(6, 19)
-        Me.OptSUBST.Name = "OptSUBST"
-        Me.OptSUBST.Size = New System.Drawing.Size(104, 17)
-        Me.OptSUBST.TabIndex = 23
-        Me.OptSUBST.Text = "Lister Seulement"
-        Me.OptSUBST.UseVisualStyleBackColor = True
+        Me.optLister.AutoSize = True
+        Me.optLister.ForeColor = System.Drawing.Color.Maroon
+        Me.optLister.Location = New System.Drawing.Point(6, 19)
+        Me.optLister.Name = "optLister"
+        Me.optLister.Size = New System.Drawing.Size(104, 17)
+        Me.optLister.TabIndex = 23
+        Me.optLister.Text = "Lister Seulement"
+        Me.optLister.UseVisualStyleBackColor = True
         '
         'GroupBox2
         '
-        Me.GroupBox2.Controls.Add(Me.OptSUBST)
+        Me.GroupBox2.Controls.Add(Me.optLister)
         Me.GroupBox2.Location = New System.Drawing.Point(6, 252)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Size = New System.Drawing.Size(117, 52)
         Me.GroupBox2.TabIndex = 24
         Me.GroupBox2.TabStop = False
         '
-        'GBSupprimmer
+        'gbDelete
         '
-        Me.GBSupprimmer.Controls.Add(Me.txtDelete)
-        Me.GBSupprimmer.Location = New System.Drawing.Point(6, 351)
-        Me.GBSupprimmer.Name = "GBSupprimmer"
-        Me.GBSupprimmer.Size = New System.Drawing.Size(117, 49)
-        Me.GBSupprimmer.TabIndex = 25
-        Me.GBSupprimmer.TabStop = False
-        Me.GBSupprimmer.Text = "Supprimer"
+        Me.gbDelete.Controls.Add(Me.cbDelete)
+        Me.gbDelete.Location = New System.Drawing.Point(6, 351)
+        Me.gbDelete.Name = "gbDelete"
+        Me.gbDelete.Size = New System.Drawing.Size(117, 49)
+        Me.gbDelete.TabIndex = 25
+        Me.gbDelete.TabStop = False
+        Me.gbDelete.Text = "Supprimer"
         '
-        'txtDelete
+        'cbDelete
         '
-        Me.txtDelete.FormattingEnabled = True
-        Me.txtDelete.Location = New System.Drawing.Point(42, 20)
-        Me.txtDelete.Name = "txtDelete"
-        Me.txtDelete.Size = New System.Drawing.Size(68, 21)
-        Me.txtDelete.TabIndex = 0
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(129, 54)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(476, 394)
-        Me.myConsole.TabIndex = 26
+        Me.cbDelete.FormattingEnabled = True
+        Me.cbDelete.Location = New System.Drawing.Point(13, 22)
+        Me.cbDelete.Name = "cbDelete"
+        Me.cbDelete.Size = New System.Drawing.Size(68, 21)
+        Me.cbDelete.TabIndex = 0
         '
         'flashHeader
         '
@@ -258,26 +230,47 @@ Partial Class SUBSTApp
         Me.flashHeader.Size = New System.Drawing.Size(619, 40)
         Me.flashHeader.TabIndex = 27
         '
+        'optD
+        '
+        Me.optD.AutoSize = True
+        Me.optD.BackColor = System.Drawing.Color.Black
+        Me.optD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optD.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optD.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optD.Location = New System.Drawing.Point(40, 433)
+        Me.optD.Name = "optD"
+        Me.optD.Size = New System.Drawing.Size(35, 15)
+        Me.optD.TabIndex = 28
+        Me.optD.Text = "/D"
+        Me.optD.UseVisualStyleBackColor = False
+        '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(129, 54)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(476, 394)
+        Me.myConsole.TabIndex = 26
+        '
         'SUBSTApp
         '
-        Me.AcceptButton = Me.btnEnvoi
+        Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(617, 584)
         Me.ControlBox = False
+        Me.Controls.Add(Me.optD)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.GBSupprimmer)
+        Me.Controls.Add(Me.gbDelete)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GBCreer)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.lblLigneCommande)
-        Me.Controls.Add(Me.btnEnvoi)
-        Me.Controls.Add(Me.ADVCommand)
-        Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.OptADV)
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
@@ -288,7 +281,7 @@ Partial Class SUBSTApp
         Me.GBCreer.PerformLayout()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
-        Me.GBSupprimmer.ResumeLayout(False)
+        Me.gbDelete.ResumeLayout(False)
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -298,23 +291,22 @@ Partial Class SUBSTApp
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
-    Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
-    Friend WithEvents btnEnvoi As System.Windows.Forms.Button
-    Friend WithEvents lblLigneCommande As System.Windows.Forms.Label
+    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
+    Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents txtLecteur As System.Windows.Forms.ComboBox
+    Friend WithEvents cbLecteur As System.Windows.Forms.ComboBox
     Friend WithEvents GBCreer As System.Windows.Forms.GroupBox
     Friend WithEvents BtnDossier As System.Windows.Forms.Button
     Friend WithEvents txtDossier As System.Windows.Forms.TextBox
     Friend WithEvents lblLecteur As System.Windows.Forms.Label
-    Friend WithEvents OptSUBST As System.Windows.Forms.CheckBox
+    Friend WithEvents optLister As System.Windows.Forms.CheckBox
     Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents GBSupprimmer As System.Windows.Forms.GroupBox
-    Friend WithEvents txtDelete As System.Windows.Forms.ComboBox
+    Friend WithEvents gbDelete As System.Windows.Forms.GroupBox
+    Friend WithEvents cbDelete As System.Windows.Forms.ComboBox
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents optD As GUIDosbox.GUIDosbox_Checkbox
 End Class

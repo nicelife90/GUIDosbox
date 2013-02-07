@@ -23,228 +23,38 @@ Partial Class CompactApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompactApp))
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnApply = New System.Windows.Forms.Button()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.txtCmdExec = New System.Windows.Forms.TextBox()
-        Me.GBMode = New System.Windows.Forms.GroupBox()
-        Me.OptU = New System.Windows.Forms.RadioButton()
-        Me.OptC = New System.Windows.Forms.RadioButton()
-        Me.GBDossier = New System.Windows.Forms.GroupBox()
-        Me.btnPathDossier = New System.Windows.Forms.Button()
-        Me.AllPath = New System.Windows.Forms.TextBox()
-        Me.OptS = New System.Windows.Forms.CheckBox()
-        Me.GBOptions = New System.Windows.Forms.GroupBox()
-        Me.OptQ = New System.Windows.Forms.CheckBox()
-        Me.OptF = New System.Windows.Forms.CheckBox()
-        Me.OptI = New System.Windows.Forms.CheckBox()
-        Me.OptA = New System.Windows.Forms.CheckBox()
-        Me.RealPath = New System.Windows.Forms.TextBox()
-        Me.btnPathFichier = New System.Windows.Forms.Button()
-        Me.lblCommande = New System.Windows.Forms.Label()
-        Me.btnClear = New System.Windows.Forms.Button()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        Me.GBMode.SuspendLayout()
-        Me.GBDossier.SuspendLayout()
-        Me.GBOptions.SuspendLayout()
+        Me.gbMode = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optC = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optU = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.gbDossier = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.btnDossier = New GUIDosbox.GUIDosbox_Button()
+        Me.optS = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.txtAllPath = New GUIDosbox.GUIDosbox_Textbox()
+        Me.gbOptions = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optA = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.optQ = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.optF = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.optI = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.txtRealPath = New GUIDosbox.GUIDosbox_Textbox()
+        Me.btnFichier = New GUIDosbox.GUIDosbox_Button()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
+        Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
+        Me.btnApply = New GUIDosbox.GUIDosbox_Button()
+        Me.btnBack = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClear = New GUIDosbox.GUIDosbox_Button()
+        Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbMode.SuspendLayout()
+        Me.gbDossier.SuspendLayout()
+        Me.gbOptions.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnHelp
-        '
-        Me.btnHelp.Location = New System.Drawing.Point(9, 471)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(75, 23)
-        Me.btnHelp.TabIndex = 0
-        Me.btnHelp.Text = "Aide"
-        Me.btnHelp.UseVisualStyleBackColor = True
-        '
-        'btnApply
-        '
-        Me.btnApply.Location = New System.Drawing.Point(315, 471)
-        Me.btnApply.Name = "btnApply"
-        Me.btnApply.Size = New System.Drawing.Size(75, 23)
-        Me.btnApply.TabIndex = 1
-        Me.btnApply.Text = "Appliquer"
-        Me.btnApply.UseVisualStyleBackColor = True
-        '
-        'btnBack
-        '
-        Me.btnBack.Location = New System.Drawing.Point(396, 471)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(75, 23)
-        Me.btnBack.TabIndex = 2
-        Me.btnBack.Text = "Retour"
-        Me.btnBack.UseVisualStyleBackColor = True
-        '
-        'txtCmdExec
-        '
-        Me.txtCmdExec.Location = New System.Drawing.Point(117, 416)
-        Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(354, 20)
-        Me.txtCmdExec.TabIndex = 5
-        '
-        'GBMode
-        '
-        Me.GBMode.Controls.Add(Me.OptU)
-        Me.GBMode.Controls.Add(Me.OptC)
-        Me.GBMode.Location = New System.Drawing.Point(37, 52)
-        Me.GBMode.Name = "GBMode"
-        Me.GBMode.Size = New System.Drawing.Size(117, 71)
-        Me.GBMode.TabIndex = 6
-        Me.GBMode.TabStop = False
-        Me.GBMode.Text = "Mode"
-        '
-        'OptU
-        '
-        Me.OptU.AutoSize = True
-        Me.OptU.Location = New System.Drawing.Point(6, 42)
-        Me.OptU.Name = "OptU"
-        Me.OptU.Size = New System.Drawing.Size(109, 17)
-        Me.OptU.TabIndex = 1
-        Me.OptU.TabStop = True
-        Me.OptU.Text = "Décompresser /U"
-        Me.OptU.UseVisualStyleBackColor = True
-        '
-        'OptC
-        '
-        Me.OptC.AutoSize = True
-        Me.OptC.Location = New System.Drawing.Point(6, 21)
-        Me.OptC.Name = "OptC"
-        Me.OptC.Size = New System.Drawing.Size(95, 17)
-        Me.OptC.TabIndex = 0
-        Me.OptC.TabStop = True
-        Me.OptC.Text = "Compresser /C"
-        Me.OptC.UseVisualStyleBackColor = True
-        '
-        'GBDossier
-        '
-        Me.GBDossier.Controls.Add(Me.btnPathDossier)
-        Me.GBDossier.Controls.Add(Me.AllPath)
-        Me.GBDossier.Controls.Add(Me.OptS)
-        Me.GBDossier.Location = New System.Drawing.Point(160, 52)
-        Me.GBDossier.Name = "GBDossier"
-        Me.GBDossier.Size = New System.Drawing.Size(198, 71)
-        Me.GBDossier.TabIndex = 7
-        Me.GBDossier.TabStop = False
-        Me.GBDossier.Text = "Dossier"
-        '
-        'btnPathDossier
-        '
-        Me.btnPathDossier.Location = New System.Drawing.Point(119, 16)
-        Me.btnPathDossier.Name = "btnPathDossier"
-        Me.btnPathDossier.Size = New System.Drawing.Size(75, 23)
-        Me.btnPathDossier.TabIndex = 2
-        Me.btnPathDossier.Text = "Dossier"
-        Me.btnPathDossier.UseVisualStyleBackColor = True
-        '
-        'AllPath
-        '
-        Me.AllPath.Location = New System.Drawing.Point(6, 43)
-        Me.AllPath.Name = "AllPath"
-        Me.AllPath.Size = New System.Drawing.Size(186, 20)
-        Me.AllPath.TabIndex = 1
-        '
-        'OptS
-        '
-        Me.OptS.AutoSize = True
-        Me.OptS.Location = New System.Drawing.Point(7, 20)
-        Me.OptS.Name = "OptS"
-        Me.OptS.Size = New System.Drawing.Size(117, 17)
-        Me.OptS.TabIndex = 0
-        Me.OptS.Text = "/S Sous-Répertoire"
-        Me.OptS.UseVisualStyleBackColor = True
-        '
-        'GBOptions
-        '
-        Me.GBOptions.Controls.Add(Me.OptQ)
-        Me.GBOptions.Controls.Add(Me.OptF)
-        Me.GBOptions.Controls.Add(Me.OptI)
-        Me.GBOptions.Controls.Add(Me.OptA)
-        Me.GBOptions.Location = New System.Drawing.Point(364, 52)
-        Me.GBOptions.Name = "GBOptions"
-        Me.GBOptions.Size = New System.Drawing.Size(85, 71)
-        Me.GBOptions.TabIndex = 8
-        Me.GBOptions.TabStop = False
-        Me.GBOptions.Text = "Options"
-        '
-        'OptQ
-        '
-        Me.OptQ.AutoSize = True
-        Me.OptQ.Location = New System.Drawing.Point(43, 39)
-        Me.OptQ.Name = "OptQ"
-        Me.OptQ.Size = New System.Drawing.Size(39, 17)
-        Me.OptQ.TabIndex = 3
-        Me.OptQ.Text = "/Q"
-        Me.OptQ.UseVisualStyleBackColor = True
-        '
-        'OptF
-        '
-        Me.OptF.AutoSize = True
-        Me.OptF.Location = New System.Drawing.Point(43, 16)
-        Me.OptF.Name = "OptF"
-        Me.OptF.Size = New System.Drawing.Size(37, 17)
-        Me.OptF.TabIndex = 2
-        Me.OptF.Text = "/F"
-        Me.OptF.UseVisualStyleBackColor = True
-        '
-        'OptI
-        '
-        Me.OptI.AutoSize = True
-        Me.OptI.Location = New System.Drawing.Point(7, 39)
-        Me.OptI.Name = "OptI"
-        Me.OptI.Size = New System.Drawing.Size(34, 17)
-        Me.OptI.TabIndex = 1
-        Me.OptI.Text = "/I"
-        Me.OptI.UseVisualStyleBackColor = True
-        '
-        'OptA
-        '
-        Me.OptA.AutoSize = True
-        Me.OptA.Location = New System.Drawing.Point(7, 16)
-        Me.OptA.Name = "OptA"
-        Me.OptA.Size = New System.Drawing.Size(38, 17)
-        Me.OptA.TabIndex = 0
-        Me.OptA.Text = "/A"
-        Me.OptA.UseVisualStyleBackColor = True
-        '
-        'RealPath
-        '
-        Me.RealPath.Location = New System.Drawing.Point(117, 130)
-        Me.RealPath.Name = "RealPath"
-        Me.RealPath.Size = New System.Drawing.Size(332, 20)
-        Me.RealPath.TabIndex = 10
-        '
-        'btnPathFichier
-        '
-        Me.btnPathFichier.Location = New System.Drawing.Point(37, 128)
-        Me.btnPathFichier.Name = "btnPathFichier"
-        Me.btnPathFichier.Size = New System.Drawing.Size(75, 23)
-        Me.btnPathFichier.TabIndex = 11
-        Me.btnPathFichier.Text = "Fichier"
-        Me.btnPathFichier.UseVisualStyleBackColor = True
-        '
-        'lblCommande
-        '
-        Me.lblCommande.Location = New System.Drawing.Point(6, 419)
-        Me.lblCommande.Name = "lblCommande"
-        Me.lblCommande.Size = New System.Drawing.Size(110, 13)
-        Me.lblCommande.TabIndex = 12
-        Me.lblCommande.Text = "Commande exécutée :"
-        Me.lblCommande.TextAlign = System.Drawing.ContentAlignment.TopRight
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(396, 442)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 13
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
         '
         'OpenFileDialog1
         '
@@ -255,20 +65,12 @@ Partial Class CompactApp
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(9, 52)
+        Me.chkbxLangue.Location = New System.Drawing.Point(5, 427)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
         Me.chkbxLangue.TabIndex = 16
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(9, 157)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(462, 253)
-        Me.myConsole.TabIndex = 17
         '
         'flashHeader
         '
@@ -276,68 +78,404 @@ Partial Class CompactApp
         Me.flashHeader.Location = New System.Drawing.Point(-1, 0)
         Me.flashHeader.Name = "flashHeader"
         Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(487, 40)
+        Me.flashHeader.Size = New System.Drawing.Size(526, 40)
         Me.flashHeader.TabIndex = 18
+        '
+        'gbMode
+        '
+        Me.gbMode.BackColor = System.Drawing.Color.Black
+        Me.gbMode.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbMode.Controls.Add(Me.optC)
+        Me.gbMode.Controls.Add(Me.optU)
+        Me.gbMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbMode.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbMode.Location = New System.Drawing.Point(25, 44)
+        Me.gbMode.Name = "gbMode"
+        Me.gbMode.Size = New System.Drawing.Size(139, 64)
+        Me.gbMode.TabIndex = 39
+        Me.gbMode.TabStop = False
+        Me.gbMode.Text = " Mode"
+        '
+        'optC
+        '
+        Me.optC.AutoSize = True
+        Me.optC.BackColor = System.Drawing.Color.Black
+        Me.optC.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optC.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optC.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optC.Location = New System.Drawing.Point(8, 21)
+        Me.optC.Name = "optC"
+        Me.optC.Size = New System.Drawing.Size(113, 15)
+        Me.optC.TabIndex = 37
+        Me.optC.TabStop = True
+        Me.optC.Text = "Compresser /C"
+        Me.optC.UseVisualStyleBackColor = False
+        '
+        'optU
+        '
+        Me.optU.AutoSize = True
+        Me.optU.BackColor = System.Drawing.Color.Black
+        Me.optU.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optU.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optU.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optU.Location = New System.Drawing.Point(8, 37)
+        Me.optU.Name = "optU"
+        Me.optU.Size = New System.Drawing.Size(127, 15)
+        Me.optU.TabIndex = 38
+        Me.optU.TabStop = True
+        Me.optU.Text = "Décompresser /U"
+        Me.optU.UseVisualStyleBackColor = False
+        '
+        'gbDossier
+        '
+        Me.gbDossier.BackColor = System.Drawing.Color.Black
+        Me.gbDossier.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbDossier.Controls.Add(Me.btnDossier)
+        Me.gbDossier.Controls.Add(Me.optS)
+        Me.gbDossier.Controls.Add(Me.txtAllPath)
+        Me.gbDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbDossier.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbDossier.Location = New System.Drawing.Point(170, 44)
+        Me.gbDossier.Name = "gbDossier"
+        Me.gbDossier.Size = New System.Drawing.Size(257, 64)
+        Me.gbDossier.TabIndex = 36
+        Me.gbDossier.TabStop = False
+        Me.gbDossier.Text = " Dossier"
+        '
+        'btnDossier
+        '
+        Me.btnDossier.BackColor = System.Drawing.Color.Black
+        Me.btnDossier.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDossier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnDossier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnDossier.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnDossier.Location = New System.Drawing.Point(176, 11)
+        Me.btnDossier.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnDossier.Name = "btnDossier"
+        Me.btnDossier.Size = New System.Drawing.Size(75, 23)
+        Me.btnDossier.TabIndex = 2
+        Me.btnDossier.Text = "Dossier"
+        Me.btnDossier.UseVisualStyleBackColor = False
+        '
+        'optS
+        '
+        Me.optS.AutoSize = True
+        Me.optS.BackColor = System.Drawing.Color.Black
+        Me.optS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optS.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optS.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optS.Location = New System.Drawing.Point(6, 16)
+        Me.optS.Name = "optS"
+        Me.optS.Size = New System.Drawing.Size(147, 15)
+        Me.optS.TabIndex = 35
+        Me.optS.Text = "/S Sous-Répertoire"
+        Me.optS.UseVisualStyleBackColor = False
+        '
+        'txtAllPath
+        '
+        Me.txtAllPath.BackColor = System.Drawing.Color.Black
+        Me.txtAllPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtAllPath.Enabled = False
+        Me.txtAllPath.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtAllPath.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtAllPath.Location = New System.Drawing.Point(6, 38)
+        Me.txtAllPath.Name = "txtAllPath"
+        Me.txtAllPath.Size = New System.Drawing.Size(245, 18)
+        Me.txtAllPath.TabIndex = 3
+        '
+        'gbOptions
+        '
+        Me.gbOptions.BackColor = System.Drawing.Color.Black
+        Me.gbOptions.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbOptions.Controls.Add(Me.optA)
+        Me.gbOptions.Controls.Add(Me.optQ)
+        Me.gbOptions.Controls.Add(Me.optF)
+        Me.gbOptions.Controls.Add(Me.optI)
+        Me.gbOptions.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbOptions.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbOptions.Location = New System.Drawing.Point(433, 44)
+        Me.gbOptions.Name = "gbOptions"
+        Me.gbOptions.Size = New System.Drawing.Size(103, 64)
+        Me.gbOptions.TabIndex = 34
+        Me.gbOptions.TabStop = False
+        Me.gbOptions.Text = " Options"
+        '
+        'optA
+        '
+        Me.optA.AutoSize = True
+        Me.optA.BackColor = System.Drawing.Color.Black
+        Me.optA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optA.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optA.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optA.Location = New System.Drawing.Point(15, 16)
+        Me.optA.Name = "optA"
+        Me.optA.Size = New System.Drawing.Size(35, 15)
+        Me.optA.TabIndex = 30
+        Me.optA.Text = "/A"
+        Me.optA.UseVisualStyleBackColor = False
+        '
+        'optQ
+        '
+        Me.optQ.AutoSize = True
+        Me.optQ.BackColor = System.Drawing.Color.Black
+        Me.optQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optQ.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optQ.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optQ.Location = New System.Drawing.Point(53, 37)
+        Me.optQ.Name = "optQ"
+        Me.optQ.Size = New System.Drawing.Size(35, 15)
+        Me.optQ.TabIndex = 33
+        Me.optQ.Text = "/Q"
+        Me.optQ.UseVisualStyleBackColor = False
+        '
+        'optF
+        '
+        Me.optF.AutoSize = True
+        Me.optF.BackColor = System.Drawing.Color.Black
+        Me.optF.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optF.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optF.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optF.Location = New System.Drawing.Point(53, 16)
+        Me.optF.Name = "optF"
+        Me.optF.Size = New System.Drawing.Size(35, 15)
+        Me.optF.TabIndex = 31
+        Me.optF.Text = "/F"
+        Me.optF.UseVisualStyleBackColor = False
+        '
+        'optI
+        '
+        Me.optI.AutoSize = True
+        Me.optI.BackColor = System.Drawing.Color.Black
+        Me.optI.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optI.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optI.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optI.Location = New System.Drawing.Point(15, 37)
+        Me.optI.Name = "optI"
+        Me.optI.Size = New System.Drawing.Size(35, 15)
+        Me.optI.TabIndex = 32
+        Me.optI.Text = "/I"
+        Me.optI.UseVisualStyleBackColor = False
+        '
+        'txtRealPath
+        '
+        Me.txtRealPath.BackColor = System.Drawing.Color.Black
+        Me.txtRealPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtRealPath.Enabled = False
+        Me.txtRealPath.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtRealPath.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtRealPath.Location = New System.Drawing.Point(106, 116)
+        Me.txtRealPath.Name = "txtRealPath"
+        Me.txtRealPath.Size = New System.Drawing.Size(430, 18)
+        Me.txtRealPath.TabIndex = 29
+        '
+        'btnFichier
+        '
+        Me.btnFichier.BackColor = System.Drawing.Color.Black
+        Me.btnFichier.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnFichier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnFichier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnFichier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnFichier.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnFichier.Location = New System.Drawing.Point(25, 113)
+        Me.btnFichier.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnFichier.Name = "btnFichier"
+        Me.btnFichier.Size = New System.Drawing.Size(75, 23)
+        Me.btnFichier.TabIndex = 28
+        Me.btnFichier.Text = "Fichier"
+        Me.btnFichier.UseVisualStyleBackColor = False
+        '
+        'txtCmdExec
+        '
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Enabled = False
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(140, 394)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(417, 18)
+        Me.txtCmdExec.TabIndex = 27
+        '
+        'lblCmdExec
+        '
+        Me.lblCmdExec.AutoSize = True
+        Me.lblCmdExec.BackColor = System.Drawing.Color.Transparent
+        Me.lblCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.lblCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.lblCmdExec.Location = New System.Drawing.Point(3, 397)
+        Me.lblCmdExec.Name = "lblCmdExec"
+        Me.lblCmdExec.Size = New System.Drawing.Size(131, 11)
+        Me.lblCmdExec.TabIndex = 26
+        Me.lblCmdExec.Text = "Commande exécuté :"
+        '
+        'optAdvanceMode
+        '
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Black
+        Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optAdvanceMode.Location = New System.Drawing.Point(93, 455)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
+        Me.optAdvanceMode.TabIndex = 25
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = False
+        '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(293, 418)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(82, 23)
+        Me.btnSend.TabIndex = 24
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
+        'btnApply
+        '
+        Me.btnApply.BackColor = System.Drawing.Color.Black
+        Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnApply.Location = New System.Drawing.Point(387, 447)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(82, 23)
+        Me.btnApply.TabIndex = 23
+        Me.btnApply.Text = "Appliquer"
+        Me.btnApply.UseVisualStyleBackColor = False
+        '
+        'btnBack
+        '
+        Me.btnBack.BackColor = System.Drawing.Color.Black
+        Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnBack.Location = New System.Drawing.Point(475, 447)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(82, 23)
+        Me.btnBack.TabIndex = 22
+        Me.btnBack.Text = "Retour"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnClear
+        '
+        Me.btnClear.BackColor = System.Drawing.Color.Black
+        Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnClear.Location = New System.Drawing.Point(475, 418)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(82, 23)
+        Me.btnClear.TabIndex = 21
+        Me.btnClear.Text = "Effacer"
+        Me.btnClear.UseVisualStyleBackColor = False
+        '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.Black
+        Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnHelp.Location = New System.Drawing.Point(5, 447)
+        Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(82, 23)
+        Me.btnHelp.TabIndex = 20
+        Me.btnHelp.Text = "Aide"
+        Me.btnHelp.UseVisualStyleBackColor = False
+        '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(5, 140)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(552, 248)
+        Me.myConsole.TabIndex = 17
         '
         'CompactApp
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AcceptButton = Me.btnSend
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.ClientSize = New System.Drawing.Size(484, 499)
+        Me.BackColor = System.Drawing.Color.Black
+        Me.ClientSize = New System.Drawing.Size(561, 476)
         Me.ControlBox = False
+        Me.Controls.Add(Me.gbMode)
+        Me.Controls.Add(Me.gbDossier)
+        Me.Controls.Add(Me.gbOptions)
+        Me.Controls.Add(Me.txtRealPath)
+        Me.Controls.Add(Me.btnFichier)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.lblCmdExec)
+        Me.Controls.Add(Me.optAdvanceMode)
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.btnApply)
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.lblCommande)
-        Me.Controls.Add(Me.btnPathFichier)
-        Me.Controls.Add(Me.RealPath)
-        Me.Controls.Add(Me.GBOptions)
-        Me.Controls.Add(Me.GBDossier)
-        Me.Controls.Add(Me.GBMode)
-        Me.Controls.Add(Me.txtCmdExec)
-        Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnApply)
-        Me.Controls.Add(Me.btnHelp)
-        Me.MaximumSize = New System.Drawing.Size(500, 537)
-        Me.MinimumSize = New System.Drawing.Size(500, 537)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ForeColor = System.Drawing.Color.LightBlue
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "CompactApp"
         Me.Text = "Compact"
-        Me.GBMode.ResumeLayout(False)
-        Me.GBMode.PerformLayout()
-        Me.GBDossier.ResumeLayout(False)
-        Me.GBDossier.PerformLayout()
-        Me.GBOptions.ResumeLayout(False)
-        Me.GBOptions.PerformLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbMode.ResumeLayout(False)
+        Me.gbMode.PerformLayout()
+        Me.gbDossier.ResumeLayout(False)
+        Me.gbDossier.PerformLayout()
+        Me.gbOptions.ResumeLayout(False)
+        Me.gbOptions.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnHelp As System.Windows.Forms.Button
-    Friend WithEvents btnApply As System.Windows.Forms.Button
-    Friend WithEvents btnBack As System.Windows.Forms.Button
-    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
-    Friend WithEvents GBMode As System.Windows.Forms.GroupBox
-    Friend WithEvents OptU As System.Windows.Forms.RadioButton
-    Friend WithEvents OptC As System.Windows.Forms.RadioButton
-    Friend WithEvents GBDossier As System.Windows.Forms.GroupBox
-    Friend WithEvents GBOptions As System.Windows.Forms.GroupBox
-    Friend WithEvents OptS As System.Windows.Forms.CheckBox
-    Friend WithEvents btnPathDossier As System.Windows.Forms.Button
-    Friend WithEvents AllPath As System.Windows.Forms.TextBox
-    Friend WithEvents OptQ As System.Windows.Forms.CheckBox
-    Friend WithEvents OptF As System.Windows.Forms.CheckBox
-    Friend WithEvents OptI As System.Windows.Forms.CheckBox
-    Friend WithEvents OptA As System.Windows.Forms.CheckBox
-    Friend WithEvents RealPath As System.Windows.Forms.TextBox
-    Friend WithEvents btnPathFichier As System.Windows.Forms.Button
-    Friend WithEvents lblCommande As System.Windows.Forms.Label
-    Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents btnHelp As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents txtAllPath As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents btnDossier As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnFichier As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents txtRealPath As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents gbOptions As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents optA As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optQ As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optF As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optI As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optS As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents gbDossier As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents optC As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optU As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents gbMode As GUIDosbox.GUIDosbox_Groupbox
 End Class

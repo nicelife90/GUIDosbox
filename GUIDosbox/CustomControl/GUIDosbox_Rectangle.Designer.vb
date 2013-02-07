@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class GUIDosboxRectangle
+Partial Class GUIDosbox_Rectangle
     Inherits System.Windows.Forms.UserControl
 
     'UserControl remplace la méthode Dispose pour nettoyer la liste des composants.
@@ -54,12 +54,12 @@ Partial Class GUIDosboxRectangle
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape1.Size = New System.Drawing.Size(324, 100)
         '
-        'GUIDosboxRectangle
+        'GUIDosbox_Rectangle
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.ShapeContainer1)
-        Me.Name = "GUIDosboxRectangle"
+        Me.Name = "GUIDosbox_Rectangle"
         Me.Size = New System.Drawing.Size(332, 106)
         Me.ResumeLayout(False)
 

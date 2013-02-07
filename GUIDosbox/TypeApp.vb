@@ -2,6 +2,35 @@
 
 Public Class TypeApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles OptAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub TypeApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démarrage de la console.
         myConsole.StartConsole()
@@ -30,7 +59,7 @@ Public Class TypeApp
         'Envoi de la commande.
         myConsole.SendCommand(Apps + Args3)
         'Affichage de la commande exécuté.
-        CommandReturn.Text = Apps + Args3
+        txtCmdExec.Text = Apps + Args3
 
     End Sub
 
@@ -62,6 +91,17 @@ Public Class TypeApp
         txtPathFichier.Text = OpenFileDialog1.FileName.ToString()
     End Sub
 
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
+        Else
+            ActiveControl = btnApply
+        End If
+    End Sub
+
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
@@ -83,5 +123,5 @@ Public Class TypeApp
         End If
     End Sub
 #End Region
-    
+
 End Class

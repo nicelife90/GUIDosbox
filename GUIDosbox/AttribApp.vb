@@ -2,10 +2,42 @@
 
 Public Class AttribApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnAide.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnAide.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub AttribApp_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
 
         'Démarrage de la console
         myConsole.StartConsole()
+
+        'Mode avancé caché
+        btnSend.Visible = False
 
         'Loading du header flash.
         Try
@@ -20,11 +52,11 @@ Public Class AttribApp
         End Try
 
         'Valeur par défaut
-        Null.Checked = True
-        Null1.Checked = True
-        Null2.Checked = True
-        Null3.Checked = True
-        Null4.Checked = True
+        optRNull.Checked = True
+        optANull.Checked = True
+        optSNull.Checked = True
+        optHNull.Checked = True
+        optINull.Checked = True
 
     End Sub
 
@@ -43,87 +75,92 @@ Public Class AttribApp
         Dim Args9 As String = ""
 
         'Argument 1 +/- R
-        If RPlus.Checked = True Then
+        If optRPlus.Checked = True Then
             Args1 = Args1 + " +R"
-        ElseIf RMoin.Checked = True Then
+        ElseIf optRMoin.Checked = True Then
             Args1 = Args1 + " -R"
         End If
         'Argument 2 +/- A
-        If Aplus.Checked = True Then
+        If optAplus.Checked = True Then
             Args2 = Args2 + " +A "
-        ElseIf AMoin.Checked = True Then
+        ElseIf optAMoin.Checked = True Then
             Args2 = Args2 + " -A "
         End If
         'Argument 3 +/- S
-        If SPlus.Checked = True Then
+        If optSPlus.Checked = True Then
             Args3 = Args3 + " +S "
-        ElseIf SMoin.Checked = True Then
+        ElseIf optSMoin.Checked = True Then
             Args3 = Args3 + " -S "
         End If
         'Argument 4 +/- H
-        If HPlus.Checked = True Then
+        If optHPlus.Checked = True Then
             Args4 = Args4 + " +H "
-        ElseIf HMoin.Checked = True Then
+        ElseIf optHMoin.Checked = True Then
             Args4 = Args4 + " -H "
         End If
         'Argument 5 +/- I
-        If IPlus.Checked = True Then
+        If optIPlus.Checked = True Then
             Args5 = Args5 + " +I "
-        ElseIf IMoin.Checked = True Then
+        ElseIf optIMoin.Checked = True Then
             Args5 = Args5 + " -I "
         End If
         'Argument 7 /S
-        If OptS.Checked = True Then
+        If optS.Checked = True Then
             Args7 = Args7 + " /S "
-        ElseIf OptS.Checked = False Then
+        ElseIf optS.Checked = False Then
             Args7 = ""
         End If
         'Argument 8 /D
-        If OptD.Checked = True Then
+        If optD.Checked = True Then
             Args8 = Args8 + " /D "
-        ElseIf OptD.Checked = False Then
+        ElseIf optD.Checked = False Then
             Args8 = ""
         End If
         'Argument 9 /L
-        If OptL.Checked = True Then
+        If optL.Checked = True Then
             Args9 = Args9 + " /L "
-        ElseIf OptL.Checked = False Then
+        ElseIf optL.Checked = False Then
             Args9 = ""
         End If
 
         'Argument 6
-        Args6 = """" & PathReturn.Text & """"
+        Args6 = """" & txtFile.Text & """"
 
 
         'Exécution de la commande.
-        myConsole.sendCommand("attrib " + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
-        'Affichage de la commande exécuté.
-        txtCmdExec.Text = "attrib " + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9
+        txtCmdExec.Text = myConsole.SendCommand("attrib " + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
 
     End Sub
 
     Private Sub btnAide_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAide.Click
         'Affichage de l'aide
-        myConsole.sendCommand("attrib /?")
-        txtCmdExec.Text = "attrib /?"
+        txtCmdExec.Text = myConsole.SendCommand("attrib /?")
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
+        'Reset des textbox
+        Dim ctl As Control
+        For Each ctl In Controls
+            If TypeOf ctl Is TextBox Then
+                ctl.Text = Nothing
+            End If
+        Next
         'Reset de la console
-        myConsole.cls()
+        myConsole.Cls()
         txtCmdExec.Text = "cls"
     End Sub
 
     Private Sub btnFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFiles.Click
         'Sélection d'un fichier
+        OpenFileDialog1.FileName = Nothing
         OpenFileDialog1.ShowDialog()
-        PathReturn.Text = OpenFileDialog1.FileName
+        txtFile.Text = OpenFileDialog1.FileName
     End Sub
 
     Private Sub btnFolders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFolders.Click
         'Sélection d'un dossier
         FolderBrowserDialog1.ShowDialog()
-        PathReturn.Text = FolderBrowserDialog1.SelectedPath
+        txtFile.Text = FolderBrowserDialog1.SelectedPath
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -133,13 +170,21 @@ Public Class AttribApp
         Me.Close()
     End Sub
 
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
+        Else
+            ActiveControl = btnApply
+        End If
+    End Sub
+
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
             chkbxLangue.Text = "Français"
-            lblDescription2.Text = "Vous devez choisir les attributs içi. Pour en connaitre la description vous pouvez cliquer sur le bouton aide plus bas."
-            lblDescription1.Text = "Ces options peuvent prendres plus de temps sur certains ordinateur. Soyez patient, même si la fenêtre ne semble plus bouger. (J'usqua 30 sec)."
-            lblPath.Text = "Pour quel fichier ou dossier souhaitez-vous modiffier les attributs : "
             btnAide.Text = "Aide"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
@@ -148,9 +193,6 @@ Public Class AttribApp
 
         Else                               ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblDescription2.Text = "You ay select attributes here. To get a description for each you may click on the help button below."
-            lblDescription1.Text = "Theese option can take more time on certain computers. Please be patient, even if the window seem to not be moving. (Up to 30 sec)."
-            lblPath.Text = "For which file or folder did you wish to modify attributes :"
             btnAide.Text = "Help"
             btnApply.Text = "Apply"
             btnBack.Text = "Back"
@@ -160,8 +202,5 @@ Public Class AttribApp
         End If
     End Sub
 #End Region
-
-
-
 
 End Class

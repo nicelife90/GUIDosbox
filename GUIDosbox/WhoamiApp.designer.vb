@@ -49,13 +49,16 @@ Partial Class WhoamiApp
         Me.ToolTip8 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip9 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip10 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnBack = New GUIDosbox.GUIDosboxButton()
-        Me.btnGo = New GUIDosbox.GUIDosboxButton()
-        Me.btnHelp = New GUIDosbox.GUIDosboxButton()
-        Me.btnClear = New GUIDosbox.GUIDosboxButton()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.btnBack = New GUIDosbox.GUIDosbox_Button()
+        Me.btnApply = New GUIDosbox.GUIDosbox_Button()
+        Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClear = New GUIDosbox.GUIDosbox_Button()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        Me.optAdvanceMode = New GUIDosbox.GUIDosboxCheckbox()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -66,7 +69,7 @@ Partial Class WhoamiApp
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(464, 459)
+        Me.chkbxLangue.Location = New System.Drawing.Point(419, 486)
         Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
@@ -85,9 +88,9 @@ Partial Class WhoamiApp
         Me.GroupBox1.Controls.Add(Me.Opt3)
         Me.GroupBox1.Controls.Add(Me.Opt2)
         Me.GroupBox1.Controls.Add(Me.Opt1)
-        Me.GroupBox1.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.GroupBox1.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular)
         Me.GroupBox1.ForeColor = System.Drawing.Color.LightBlue
-        Me.GroupBox1.Location = New System.Drawing.Point(176, 64)
+        Me.GroupBox1.Location = New System.Drawing.Point(176, 56)
         Me.GroupBox1.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
@@ -191,7 +194,7 @@ Partial Class WhoamiApp
         Me.GroupBox2.Controls.Add(Me.rbTable)
         Me.GroupBox2.Controls.Add(Me.Opt9)
         Me.GroupBox2.ForeColor = System.Drawing.Color.LightBlue
-        Me.GroupBox2.Location = New System.Drawing.Point(377, 64)
+        Me.GroupBox2.Location = New System.Drawing.Point(377, 56)
         Me.GroupBox2.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.GroupBox2.Name = "GroupBox2"
         Me.GroupBox2.Padding = New System.Windows.Forms.Padding(4, 3, 4, 3)
@@ -253,29 +256,29 @@ Partial Class WhoamiApp
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnBack.Location = New System.Drawing.Point(668, 454)
+        Me.btnBack.Location = New System.Drawing.Point(604, 477)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(75, 23)
         Me.btnBack.TabIndex = 11
         Me.btnBack.Text = "Retour"
         Me.btnBack.UseVisualStyleBackColor = False
         '
-        'btnGo
+        'btnApply
         '
-        Me.btnGo.BackColor = System.Drawing.Color.Black
-        Me.btnGo.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnGo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnGo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnGo.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
-        Me.btnGo.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnGo.Location = New System.Drawing.Point(506, 454)
-        Me.btnGo.Name = "btnGo"
-        Me.btnGo.Size = New System.Drawing.Size(75, 23)
-        Me.btnGo.TabIndex = 10
-        Me.btnGo.Text = "Go"
-        Me.btnGo.UseVisualStyleBackColor = False
+        Me.btnApply.BackColor = System.Drawing.Color.Black
+        Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnApply.Location = New System.Drawing.Point(443, 477)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(75, 23)
+        Me.btnApply.TabIndex = 10
+        Me.btnApply.Text = "Go"
+        Me.btnApply.UseVisualStyleBackColor = False
         '
         'btnHelp
         '
@@ -283,9 +286,9 @@ Partial Class WhoamiApp
         Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnHelp.Location = New System.Drawing.Point(8, 454)
+        Me.btnHelp.Location = New System.Drawing.Point(10, 477)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(75, 23)
         Me.btnHelp.TabIndex = 9
@@ -298,9 +301,9 @@ Partial Class WhoamiApp
         Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnClear.Location = New System.Drawing.Point(587, 454)
+        Me.btnClear.Location = New System.Drawing.Point(524, 477)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(75, 23)
         Me.btnClear.TabIndex = 12
@@ -313,7 +316,7 @@ Partial Class WhoamiApp
         Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.myConsole.myConsole = Nothing
         Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(735, 265)
+        Me.myConsole.Size = New System.Drawing.Size(671, 265)
         Me.myConsole.TabIndex = 13
         '
         'flashHeader
@@ -329,33 +332,75 @@ Partial Class WhoamiApp
         '
         Me.optAdvanceMode.AutoSize = True
         Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Bold)
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
-        Me.optAdvanceMode.Location = New System.Drawing.Point(89, 458)
+        Me.optAdvanceMode.Location = New System.Drawing.Point(91, 485)
         Me.optAdvanceMode.Name = "optAdvanceMode"
         Me.optAdvanceMode.Size = New System.Drawing.Size(112, 15)
         Me.optAdvanceMode.TabIndex = 15
         Me.optAdvanceMode.Text = "Mode avancé"
         Me.optAdvanceMode.UseVisualStyleBackColor = False
         '
+        'lblCmdExec
+        '
+        Me.lblCmdExec.AutoSize = True
+        Me.lblCmdExec.BackColor = System.Drawing.Color.Transparent
+        Me.lblCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.lblCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.lblCmdExec.Location = New System.Drawing.Point(8, 455)
+        Me.lblCmdExec.Name = "lblCmdExec"
+        Me.lblCmdExec.Size = New System.Drawing.Size(149, 11)
+        Me.lblCmdExec.TabIndex = 16
+        Me.lblCmdExec.Text = "Commande exécuté :"
+        '
+        'txtCmdExec
+        '
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Enabled = False
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(163, 453)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(516, 18)
+        Me.txtCmdExec.TabIndex = 17
+        '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(262, 477)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 18
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
         'WhoamiApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ClientSize = New System.Drawing.Size(751, 481)
+        Me.ClientSize = New System.Drawing.Size(685, 507)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.lblCmdExec)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnGo)
+        Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.chkbxLangue)
-        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Bold)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.Name = "WhoamiApp"
@@ -394,11 +439,14 @@ Partial Class WhoamiApp
     Friend WithEvents ToolTip8 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip9 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip10 As System.Windows.Forms.ToolTip
-    Friend WithEvents btnHelp As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnGo As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnBack As GUIDosbox.GUIDosboxButton
-    Friend WithEvents btnClear As GUIDosbox.GUIDosboxButton
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents btnHelp As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
-    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosboxCheckbox
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
 End Class

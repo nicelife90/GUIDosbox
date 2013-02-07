@@ -2,6 +2,35 @@
 
 Public Class WhereApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnHelp.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Enabled = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnHelp.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Enabled = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub WhereApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démmarage de la console.
         myConsole.StartConsole()
@@ -22,8 +51,6 @@ Public Class WhereApp
         OptR.Checked = True
 
         'Mode avancé caché.
-        lblComandLine.Hide()
-        txtComandLine.Hide()
         btnSend.Hide()
     End Sub
 
@@ -79,7 +106,7 @@ Public Class WhereApp
             'Envoi de la commande.
             myConsole.SendCommand(apps + Args1 + Args2 + Args3 + Args4 + Args5)
             'Affichage de la commande exécuté.
-            txtComandExecuter.Text = apps + Args1 + Args2 + Args3 + Args4 + Args5
+            txtCmdExec.Text = apps + Args1 + Args2 + Args3 + Args4 + Args5
         End If
 
     End Sub
@@ -87,7 +114,7 @@ Public Class WhereApp
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Envoi de la commande
         myConsole.SendCommand("where /?")
-        txtComandExecuter.Text = "where /?"
+        txtCmdExec.Text = "where /?"
     End Sub
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
@@ -153,31 +180,15 @@ Public Class WhereApp
         End If
     End Sub
 
-#Region "Mode avancé"
-    Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSend.Click
-        'Envoi de la commande.
-        myConsole.SendCommand(txtComandLine.Text)
-        txtComandLine.Text = ""
-    End Sub
-
-    Private Sub OptAdvance_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptAdvance.CheckedChanged
-        'on affiche et on masque les élément selon le mode d'utilisation choisi par l'utilisateur (Avancer / Normal)
-        If OptAdvance.Checked = True Then
-            btnApply.Hide()
-            lblComandExecuter.Hide()
-            txtComandExecuter.Hide()
-            btnSend.Show()
-            lblComandLine.Show()
-            txtComandLine.Show()
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
         Else
-            btnApply.Show()
-            lblComandExecuter.Show()
-            txtComandExecuter.Show()
-            btnSend.Hide()
-            lblComandLine.Hide()
-            txtComandLine.Hide()
+            ActiveControl = btnApply
         End If
     End Sub
-#End Region
 
 End Class

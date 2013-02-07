@@ -65,12 +65,14 @@ Partial Class XCopyApp
         Me.Label1 = New System.Windows.Forms.Label()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.lblResultatCmd = New System.Windows.Forms.Label()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
         Me.lblCommande = New System.Windows.Forms.Label()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
         Me.GroupBox1.SuspendLayout()
         Me.GBDate.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -478,12 +480,12 @@ Partial Class XCopyApp
         Me.lblResultatCmd.TabIndex = 43
         Me.lblResultatCmd.Text = "Résultat de la commande : "
         '
-        'CommandReturn
+        'txtCmdExec
         '
-        Me.CommandReturn.Location = New System.Drawing.Point(116, 415)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(386, 20)
-        Me.CommandReturn.TabIndex = 44
+        Me.txtCmdExec.Location = New System.Drawing.Point(116, 415)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(386, 20)
+        Me.txtCmdExec.TabIndex = 44
         '
         'lblCommande
         '
@@ -532,6 +534,34 @@ Partial Class XCopyApp
         Me.flashHeader.Size = New System.Drawing.Size(585, 40)
         Me.flashHeader.TabIndex = 51
         '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(293, 438)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 52
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
+        'optAdvanceMode
+        '
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
+        Me.optAdvanceMode.Location = New System.Drawing.Point(97, 438)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(112, 15)
+        Me.optAdvanceMode.TabIndex = 53
+        Me.optAdvanceMode.Text = "Mode Avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = False
+        '
         'XCopyApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -539,12 +569,14 @@ Partial Class XCopyApp
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
         Me.ClientSize = New System.Drawing.Size(585, 465)
         Me.ControlBox = False
+        Me.Controls.Add(Me.optAdvanceMode)
+        Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.lblCommande)
-        Me.Controls.Add(Me.CommandReturn)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.lblResultatCmd)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.Options)
@@ -621,12 +653,14 @@ Partial Class XCopyApp
     Friend WithEvents OptD As System.Windows.Forms.CheckBox
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents lblResultatCmd As System.Windows.Forms.Label
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
     Friend WithEvents lblCommande As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents DateSelected As System.Windows.Forms.TextBox
     Friend WithEvents Label5 As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
 End Class

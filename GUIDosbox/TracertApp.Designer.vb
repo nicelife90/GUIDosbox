@@ -27,11 +27,9 @@ Partial Class TracertApp
         Me.btnApply = New System.Windows.Forms.Button()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnClear = New System.Windows.Forms.Button()
-        Me.OptADV = New System.Windows.Forms.CheckBox()
-        Me.CommandReturn = New System.Windows.Forms.TextBox()
-        Me.ADVCommand = New System.Windows.Forms.TextBox()
-        Me.btnEnvoi = New System.Windows.Forms.Button()
-        Me.lblLigneCommande = New System.Windows.Forms.Label()
+        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
+        Me.txtCmdExec = New System.Windows.Forms.TextBox()
+        Me.btnSend = New System.Windows.Forms.Button()
         Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.GBForce = New System.Windows.Forms.GroupBox()
@@ -53,7 +51,7 @@ Partial Class TracertApp
         Me.lblAddresse = New System.Windows.Forms.Label()
         Me.GBHotes = New System.Windows.Forms.GroupBox()
         Me.txtListeHotes = New System.Windows.Forms.TextBox()
-        Me.myConsole = New GUIDosbox.GUIDosboxConsole()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GBForce.SuspendLayout()
         Me.GBIpv6.SuspendLayout()
@@ -103,56 +101,37 @@ Partial Class TracertApp
         Me.btnClear.Text = "Clear"
         Me.btnClear.UseVisualStyleBackColor = True
         '
-        'OptADV
+        'optAdvanceMode
         '
-        Me.OptADV.AutoSize = True
-        Me.OptADV.Location = New System.Drawing.Point(513, 501)
-        Me.OptADV.Name = "OptADV"
-        Me.OptADV.Size = New System.Drawing.Size(92, 17)
-        Me.OptADV.TabIndex = 10
-        Me.OptADV.Text = "Mode avancé"
-        Me.OptADV.UseVisualStyleBackColor = True
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.Location = New System.Drawing.Point(513, 501)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(92, 17)
+        Me.optAdvanceMode.TabIndex = 10
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = True
         '
-        'CommandReturn
+        'txtCmdExec
         '
-        Me.CommandReturn.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.CommandReturn.Location = New System.Drawing.Point(129, 475)
-        Me.CommandReturn.Name = "CommandReturn"
-        Me.CommandReturn.Size = New System.Drawing.Size(476, 21)
-        Me.CommandReturn.TabIndex = 13
+        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
+        Me.txtCmdExec.TabIndex = 13
         '
-        'ADVCommand
+        'btnSend
         '
-        Me.ADVCommand.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ADVCommand.Location = New System.Drawing.Point(129, 454)
-        Me.ADVCommand.Name = "ADVCommand"
-        Me.ADVCommand.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.ADVCommand.Size = New System.Drawing.Size(476, 21)
-        Me.ADVCommand.TabIndex = 14
-        '
-        'btnEnvoi
-        '
-        Me.btnEnvoi.Location = New System.Drawing.Point(315, 501)
-        Me.btnEnvoi.Name = "btnEnvoi"
-        Me.btnEnvoi.Size = New System.Drawing.Size(75, 23)
-        Me.btnEnvoi.TabIndex = 0
-        Me.btnEnvoi.Text = "Envoi"
-        Me.btnEnvoi.UseVisualStyleBackColor = True
-        '
-        'lblLigneCommande
-        '
-        Me.lblLigneCommande.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblLigneCommande.Location = New System.Drawing.Point(5, 460)
-        Me.lblLigneCommande.Name = "lblLigneCommande"
-        Me.lblLigneCommande.Size = New System.Drawing.Size(118, 15)
-        Me.lblLigneCommande.TabIndex = 16
-        Me.lblLigneCommande.Text = "Ligne de commande :"
-        Me.lblLigneCommande.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.btnSend.Location = New System.Drawing.Point(315, 501)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(75, 23)
+        Me.btnSend.TabIndex = 0
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = True
         '
         'lblCommandeExec
         '
         Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblCommandeExec.Location = New System.Drawing.Point(3, 481)
         Me.lblCommandeExec.Name = "lblCommandeExec"
         Me.lblCommandeExec.Size = New System.Drawing.Size(123, 15)
@@ -329,7 +308,7 @@ Partial Class TracertApp
         'lblAddresse
         '
         Me.lblAddresse.AutoSize = True
-        Me.lblAddresse.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblAddresse.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblAddresse.Location = New System.Drawing.Point(10, 83)
         Me.lblAddresse.Name = "lblAddresse"
         Me.lblAddresse.Size = New System.Drawing.Size(97, 15)
@@ -373,7 +352,7 @@ Partial Class TracertApp
         '
         'TracertApp
         '
-        Me.AcceptButton = Me.btnEnvoi
+        Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.ScrollBar
@@ -392,11 +371,9 @@ Partial Class TracertApp
         Me.Controls.Add(Me.GBIpv6)
         Me.Controls.Add(Me.GBForce)
         Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.lblLigneCommande)
-        Me.Controls.Add(Me.btnEnvoi)
-        Me.Controls.Add(Me.ADVCommand)
-        Me.Controls.Add(Me.CommandReturn)
-        Me.Controls.Add(Me.OptADV)
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
@@ -424,11 +401,9 @@ Partial Class TracertApp
     Friend WithEvents btnApply As System.Windows.Forms.Button
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents OptADV As System.Windows.Forms.CheckBox
-    Friend WithEvents CommandReturn As System.Windows.Forms.TextBox
-    Friend WithEvents ADVCommand As System.Windows.Forms.TextBox
-    Friend WithEvents btnEnvoi As System.Windows.Forms.Button
-    Friend WithEvents lblLigneCommande As System.Windows.Forms.Label
+    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
+    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
+    Friend WithEvents btnSend As System.Windows.Forms.Button
     Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents GBForce As System.Windows.Forms.GroupBox
@@ -450,6 +425,6 @@ Partial Class TracertApp
     Friend WithEvents lblAddresse As System.Windows.Forms.Label
     Friend WithEvents GBHotes As System.Windows.Forms.GroupBox
     Friend WithEvents txtListeHotes As System.Windows.Forms.TextBox
-    Friend WithEvents myConsole As GUIDosbox.GUIDosboxConsole
+    Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
 End Class

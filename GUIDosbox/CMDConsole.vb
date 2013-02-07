@@ -21,7 +21,7 @@ Public Class CMDConsole
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        myConsole.sendCommand("cmd /?")
+        myConsole.SendCommand("cmd /?")
         txtInput.Text = ""
     End Sub
 
@@ -34,12 +34,12 @@ Public Class CMDConsole
             End If
         Next
         'Reset de la console.
-        myConsole.cls()
+        myConsole.Cls()
     End Sub
 
     Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSend.Click
         'Envoi de la commande.
-        myConsole.sendCommand(txtInput.Text)
+        myConsole.SendCommand(txtInput.Text)
         txtInput.Text = ""
     End Sub
 
@@ -48,6 +48,13 @@ Public Class CMDConsole
         myConsole.CloseConsole()
         CP.Show()
         Me.Close()
+    End Sub
+
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        ActiveControl = txtInput
     End Sub
 
 #Region "Language"
@@ -76,4 +83,7 @@ Public Class CMDConsole
 
 #End Region
 
+    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
+
+    End Sub
 End Class

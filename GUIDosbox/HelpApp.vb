@@ -2,6 +2,35 @@
 
 Public Class HelpApp
 
+#Region "Mode avancé"
+
+    'Variable pour le mode avancé.
+    Private AdvanceMode As Boolean = False
+
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
+        If optAdvanceMode.Checked = True Then
+            AdvanceMode = True
+            btnApply.Visible = False
+            btnSend.Visible = True
+            txtCmdExec.Visible = True
+            lblAdvanceMode.Visible = True
+        Else
+            AdvanceMode = False
+            btnApply.Visible = True
+            btnSend.Visible = False
+            txtCmdExec.Visible = False
+            lblAdvanceMode.Visible = False
+        End If
+    End Sub
+
+    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+        'Envoi de la commande
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
+    End Sub
+
+#End Region
+
     Private Sub HelpApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Démarrage de la console.
         myConsole.StartConsole()
@@ -21,21 +50,16 @@ Public Class HelpApp
         'Mode avancé caché
         btnSend.Visible = False
         lblAdvanceMode.Visible = False
-        txtAdvanceCommand.Visible = False
+        txtCmdExec.Visible = False
 
     End Sub
 
-    Private Sub btnAide_Click(sender As Object, e As EventArgs) Handles btnAide.Click
+    Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
         'Affichage de l'aide
         myConsole.Cls()
         myConsole.SendCommand("help")
     End Sub
 
-    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
-        'Envoi de la commande
-        myConsole.SendCommand(txtAdvanceCommand.Text)
-        txtAdvanceCommand.Text = Nothing
-    End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         'Arrêt de la console et retour au cp.
@@ -53,34 +77,31 @@ Public Class HelpApp
     ''' Ce sub empêche la console d'être sélectionné.
     ''' </summary>
     Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-        ActiveControl = txtAdvanceCommand
+        ActiveControl = txtCmdExec
     End Sub
 
-    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
-        'Gestion pour le mode avancé.
-        If optAdvanceMode.Checked = True Then
-            btnSend.Visible = True
-            lblAdvanceMode.Visible = True
-            txtAdvanceCommand.Visible = True
-            txtAdvanceCommand.Focus()
 
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
         Else
-            btnSend.Visible = False
-            lblAdvanceMode.Visible = False
-            txtAdvanceCommand.Visible = False
+            ActiveControl = btnApply
         End If
     End Sub
 
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-            btnAide.Text = "Aide"
+            btnApply.Text = "Aide"
             btnBack.Text = "Retour"
             btnSend.Text = "Envoyer"
             optAdvanceMode.Text = "Mode avancé"
             btnClaer.Text = "Effacer"
         Else                                ' boite PAS cochée=EN 
-            btnAide.Text = "Help"
+            btnApply.Text = "Help"
             btnBack.Text = "Back"
             btnSend.Text = "Send"
             optAdvanceMode.Text = "Advance mode"
@@ -89,5 +110,5 @@ Public Class HelpApp
     End Sub
 #End Region
 
-    
+
 End Class
