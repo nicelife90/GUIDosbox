@@ -1,4 +1,7 @@
-﻿Option Strict On
+﻿'Pour une liste de toute les commandes cmd disponble et une description complette.
+'http://technet.microsoft.com/en-us/library/bb490928.aspx
+
+Option Strict On
 
 Public Class CP
 
@@ -169,6 +172,27 @@ Public Class CP
 
 #End Region
 
+#Region "Parramètres de démarrage"
+    Private Sub CP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
+
+        'Permet d'accepter les arguments de démarrage
+        If OpenWithCmdArgs() Then
+
+            Dim CmdArg As String = My.Application.CommandLineArgs(0)
+            Select Case CmdArg
+                Case "/cmdc"
+                    CMDConsole.Show()
+                    Me.Close()
+
+                Case "/test"
+                    MsgBox("salut")
+
+            End Select
+        End If
+
+    End Sub
+#End Region
+
     Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
 
@@ -219,7 +243,5 @@ Public Class CP
         End Try
 
     End Sub
-
-
 
 End Class

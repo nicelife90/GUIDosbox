@@ -42,12 +42,12 @@ Partial Class GUIDosbox_Console
         Me.txtOutput.Size = New System.Drawing.Size(441, 333)
         Me.txtOutput.TabIndex = 0
         '
-        'GUIDosboxConsole
+        'GUIDosbox_Console
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.txtOutput)
-        Me.Name = "GUIDosboxConsole"
+        Me.Name = "GUIDosbox_Console"
         Me.Size = New System.Drawing.Size(441, 333)
         Me.ResumeLayout(False)
         Me.PerformLayout()

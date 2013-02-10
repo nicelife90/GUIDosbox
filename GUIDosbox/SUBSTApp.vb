@@ -1,5 +1,8 @@
 ﻿Option Strict On
 
+Imports System.Collections.ObjectModel
+Imports System.IO
+
 Public Class SUBSTApp
 
 #Region "Mode avancé"
@@ -35,11 +38,8 @@ Public Class SUBSTApp
         'Démmarage de la console.
         myConsole.StartConsole()
 
-        'On ajoute les élément (lecteur) au combobox --> GUIDosboxCustomFunction
-
-        For Each lecteur As String In AvailableDrive()
-            cbLecteur.Items.Add(lecteur & ":")
-        Next
+        'Ajout des élément au combobox.
+        FillComboBox()
 
         'Loading du header flash.
         Try
@@ -58,8 +58,25 @@ Public Class SUBSTApp
 
     End Sub
 
+    Private Sub FillComboBox()
+        System.Threading.Thread.Sleep(100)
+        'On ajoute les élément (lecteur disponible) au combobox --> GUIDosboxCustomFunction
+        cbLecteur.Items.Clear()
+        For Each lecteur As String In AvailableDrive()
+            cbLecteur.Items.Add(lecteur.ToUpper & ":")
+        Next
+
+        'Ajout des éléments (lecteur utiliser) au comboBox.
+        cbDelete.Items.Clear()
+        Dim drives As ReadOnlyCollection(Of DriveInfo) = My.Computer.FileSystem.Drives
+        For Each drive As DriveInfo In drives
+            Dim lecteur As String = drive.ToString.Substring(0, drive.ToString.Length - 1)
+            cbDelete.Items.Add(lecteur)
+        Next
+    End Sub
+
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-        
+
 
         'Déclaration des variable et constante
         Const Apps As String = "subst "
@@ -105,13 +122,15 @@ Public Class SUBSTApp
 
         'Envoi de la commande.
         txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
+        'Mise à jour des ComboBox.
+        FillComboBox()
+
 
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        myConsole.SendCommand("subst /?")
-        txtCmdExec.Text = ""
+        txtCmdExec.Text = myConsole.SendCommand("subst /?")
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -126,12 +145,18 @@ Public Class SUBSTApp
         Dim ctl As Control
         For Each ctl In Controls
             If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
+                ctl.Text = Nothing
             End If
         Next
+
+        txtDossier.Text = Nothing
+
+        'Reset de la console
+        myConsole.Cls()
+
     End Sub
 
-    Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDossier.Click
+    Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
         'Sélectionner de dossier.
         FolderBrowserDialog1.ShowDialog()
         txtDossier.Text = FolderBrowserDialog1.SelectedPath
@@ -148,42 +173,65 @@ Public Class SUBSTApp
         End If
     End Sub
 
+    Private Sub optLister_CheckedChanged(sender As Object, e As EventArgs) Handles optLister.CheckedChanged
+        'Groupbox caché si option lister est coché.
+        If optLister.Checked Then
+            gbLecteur.Visible = False
+            gbDossier.Visible = False
+            gbDelete.Visible = False
+        Else
+            gbLecteur.Visible = True
+            gbDossier.Visible = True
+            gbDelete.Visible = True
+        End If
+    End Sub
+
+    Private Sub optD_CheckedChanged(sender As Object, e As EventArgs) Handles optD.CheckedChanged
+        'Groupbox caché si option /D est coché.
+        If optD.Checked Then
+            gbLecteur.Visible = False
+            gbDossier.Visible = False
+            gbOption.Visible = False
+        Else
+            gbLecteur.Visible = True
+            gbDossier.Visible = True
+            gbOption.Visible = True
+        End If
+    End Sub
+
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCommandeExec.Text = "Commande exécutée:"
+            lblCmdExec.Text = "Commande exécutée:"
             optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
             btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
-            GBCreer.Text = "Créer"
+            gbDossier.Text = "Créer"
             gbDelete.Text = "Supprimer"
-            BtnDossier.Text = "Dossier"
+            btnDossier.Text = "Dossier"
             optLister.Text = "Lister Seulement"
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblCommandeExec.Text = "Just Executed:"
+            lblCmdExec.Text = "Just Executed:"
             optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Applyr"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"
             btnSend.Text = "Send"
             btnHelp.Text = "Help"
-            GBCreer.Text = "Create"
+            gbDossier.Text = "Create"
             gbDelete.Text = "Delete"
-            BtnDossier.Text = "Folder"
+            btnDossier.Text = "Folder"
             optLister.Text = "Lister Only"
 
         End If
     End Sub
 #End Region
 
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
 End Class
 

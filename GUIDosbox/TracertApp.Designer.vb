@@ -23,323 +23,60 @@ Partial Class TracertApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TracertApp))
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnApply = New System.Windows.Forms.Button()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
-        Me.txtCmdExec = New System.Windows.Forms.TextBox()
-        Me.btnSend = New System.Windows.Forms.Button()
-        Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.GBForce = New System.Windows.Forms.GroupBox()
-        Me.Opt6 = New System.Windows.Forms.CheckBox()
-        Me.Opt4 = New System.Windows.Forms.CheckBox()
-        Me.GBIpv6 = New System.Windows.Forms.GroupBox()
-        Me.txtSourceIPv6 = New System.Windows.Forms.TextBox()
-        Me.OptR = New System.Windows.Forms.CheckBox()
-        Me.OptS = New System.Windows.Forms.CheckBox()
-        Me.OptD = New System.Windows.Forms.CheckBox()
-        Me.DelaiMS = New System.Windows.Forms.NumericUpDown()
-        Me.GBTimeout = New System.Windows.Forms.GroupBox()
-        Me.OptW = New System.Windows.Forms.CheckBox()
-        Me.OptJ = New System.Windows.Forms.CheckBox()
-        Me.txtAddresse = New System.Windows.Forms.TextBox()
-        Me.GBHops = New System.Windows.Forms.GroupBox()
-        Me.SautsMax = New System.Windows.Forms.NumericUpDown()
-        Me.OptH = New System.Windows.Forms.CheckBox()
-        Me.lblAddresse = New System.Windows.Forms.Label()
-        Me.GBHotes = New System.Windows.Forms.GroupBox()
-        Me.txtListeHotes = New System.Windows.Forms.TextBox()
-        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        Me.GBForce.SuspendLayout()
-        Me.GBIpv6.SuspendLayout()
-        CType(Me.DelaiMS, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GBTimeout.SuspendLayout()
-        Me.GBHops.SuspendLayout()
-        CType(Me.SautsMax, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GBHotes.SuspendLayout()
+        Me.GuiDosbox_Groupbox7 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optD = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Groupbox6 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.txtSourceIPv6 = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optS = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.optR = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Groupbox2 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.txtAdresse = New GUIDosbox.GUIDosbox_Textbox()
+        Me.gbHops = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optH = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.numSautsMax = New System.Windows.Forms.NumericUpDown()
+        Me.gbTimeout = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optW = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.numDelaiMS = New System.Windows.Forms.NumericUpDown()
+        Me.gbForce = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.opt6 = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.opt4 = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.gbHotes = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.txtListeHotes = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optJ = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
+        Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
+        Me.btnBack = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClear = New GUIDosbox.GUIDosbox_Button()
+        Me.btnApply = New GUIDosbox.GUIDosbox_Button()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
+        Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GuiDosbox_Groupbox7.SuspendLayout()
+        Me.GuiDosbox_Groupbox6.SuspendLayout()
+        Me.GuiDosbox_Groupbox2.SuspendLayout()
+        Me.gbHops.SuspendLayout()
+        CType(Me.numSautsMax, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbTimeout.SuspendLayout()
+        CType(Me.numDelaiMS, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbForce.SuspendLayout()
+        Me.gbHotes.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnHelp
-        '
-        Me.btnHelp.Location = New System.Drawing.Point(13, 553)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(75, 23)
-        Me.btnHelp.TabIndex = 6
-        Me.btnHelp.Text = "Aide"
-        Me.btnHelp.UseVisualStyleBackColor = True
-        '
-        'btnApply
-        '
-        Me.btnApply.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnApply.Location = New System.Drawing.Point(449, 553)
-        Me.btnApply.Name = "btnApply"
-        Me.btnApply.Size = New System.Drawing.Size(75, 23)
-        Me.btnApply.TabIndex = 7
-        Me.btnApply.Text = "Appliquer"
-        Me.btnApply.UseVisualStyleBackColor = True
-        '
-        'btnBack
-        '
-        Me.btnBack.DialogResult = System.Windows.Forms.DialogResult.Cancel
-        Me.btnBack.Location = New System.Drawing.Point(530, 553)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(75, 23)
-        Me.btnBack.TabIndex = 8
-        Me.btnBack.Text = "Retour"
-        Me.btnBack.UseVisualStyleBackColor = True
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(530, 524)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 9
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'optAdvanceMode
-        '
-        Me.optAdvanceMode.AutoSize = True
-        Me.optAdvanceMode.Location = New System.Drawing.Point(513, 501)
-        Me.optAdvanceMode.Name = "optAdvanceMode"
-        Me.optAdvanceMode.Size = New System.Drawing.Size(92, 17)
-        Me.optAdvanceMode.TabIndex = 10
-        Me.optAdvanceMode.Text = "Mode avancé"
-        Me.optAdvanceMode.UseVisualStyleBackColor = True
-        '
-        'txtCmdExec
-        '
-        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
-        Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
-        Me.txtCmdExec.TabIndex = 13
-        '
-        'btnSend
-        '
-        Me.btnSend.Location = New System.Drawing.Point(315, 501)
-        Me.btnSend.Name = "btnSend"
-        Me.btnSend.Size = New System.Drawing.Size(75, 23)
-        Me.btnSend.TabIndex = 0
-        Me.btnSend.Text = "Envoyer"
-        Me.btnSend.UseVisualStyleBackColor = True
-        '
-        'lblCommandeExec
-        '
-        Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCommandeExec.Location = New System.Drawing.Point(3, 481)
-        Me.lblCommandeExec.Name = "lblCommandeExec"
-        Me.lblCommandeExec.Size = New System.Drawing.Size(123, 15)
-        Me.lblCommandeExec.TabIndex = 17
-        Me.lblCommandeExec.Text = "Commande executée :"
-        Me.lblCommandeExec.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'chkbxLangue
         '
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(590, 12)
+        Me.chkbxLangue.Location = New System.Drawing.Point(26, 562)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
         Me.chkbxLangue.TabIndex = 19
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
-        '
-        'GBForce
-        '
-        Me.GBForce.Controls.Add(Me.Opt6)
-        Me.GBForce.Controls.Add(Me.Opt4)
-        Me.GBForce.Location = New System.Drawing.Point(74, 229)
-        Me.GBForce.Name = "GBForce"
-        Me.GBForce.Size = New System.Drawing.Size(59, 66)
-        Me.GBForce.TabIndex = 20
-        Me.GBForce.TabStop = False
-        Me.GBForce.Text = "Forcer"
-        '
-        'Opt6
-        '
-        Me.Opt6.AutoSize = True
-        Me.Opt6.Location = New System.Drawing.Point(5, 44)
-        Me.Opt6.Name = "Opt6"
-        Me.Opt6.Size = New System.Drawing.Size(48, 17)
-        Me.Opt6.TabIndex = 1
-        Me.Opt6.Text = "IPv6"
-        Me.Opt6.UseVisualStyleBackColor = True
-        '
-        'Opt4
-        '
-        Me.Opt4.AutoSize = True
-        Me.Opt4.Location = New System.Drawing.Point(5, 20)
-        Me.Opt4.Name = "Opt4"
-        Me.Opt4.Size = New System.Drawing.Size(48, 17)
-        Me.Opt4.TabIndex = 0
-        Me.Opt4.Text = "IPv4"
-        Me.Opt4.UseVisualStyleBackColor = True
-        '
-        'GBIpv6
-        '
-        Me.GBIpv6.Controls.Add(Me.txtSourceIPv6)
-        Me.GBIpv6.Controls.Add(Me.OptR)
-        Me.GBIpv6.Controls.Add(Me.OptS)
-        Me.GBIpv6.Location = New System.Drawing.Point(2, 377)
-        Me.GBIpv6.Name = "GBIpv6"
-        Me.GBIpv6.Size = New System.Drawing.Size(145, 71)
-        Me.GBIpv6.TabIndex = 21
-        Me.GBIpv6.TabStop = False
-        Me.GBIpv6.Text = "IPv6"
-        '
-        'txtSourceIPv6
-        '
-        Me.txtSourceIPv6.Location = New System.Drawing.Point(5, 42)
-        Me.txtSourceIPv6.Name = "txtSourceIPv6"
-        Me.txtSourceIPv6.Size = New System.Drawing.Size(132, 20)
-        Me.txtSourceIPv6.TabIndex = 2
-        '
-        'OptR
-        '
-        Me.OptR.AutoSize = True
-        Me.OptR.Location = New System.Drawing.Point(5, 19)
-        Me.OptR.Name = "OptR"
-        Me.OptR.Size = New System.Drawing.Size(39, 17)
-        Me.OptR.TabIndex = 1
-        Me.OptR.Text = "/R"
-        Me.OptR.UseVisualStyleBackColor = True
-        '
-        'OptS
-        '
-        Me.OptS.AutoSize = True
-        Me.OptS.Location = New System.Drawing.Point(46, 19)
-        Me.OptS.Name = "OptS"
-        Me.OptS.Size = New System.Drawing.Size(91, 17)
-        Me.OptS.TabIndex = 0
-        Me.OptS.Text = "/S  Addresse:"
-        Me.OptS.UseVisualStyleBackColor = True
-        '
-        'OptD
-        '
-        Me.OptD.AutoSize = True
-        Me.OptD.Location = New System.Drawing.Point(6, 249)
-        Me.OptD.Name = "OptD"
-        Me.OptD.Size = New System.Drawing.Size(39, 17)
-        Me.OptD.TabIndex = 22
-        Me.OptD.Text = "/D"
-        Me.OptD.UseVisualStyleBackColor = True
-        '
-        'DelaiMS
-        '
-        Me.DelaiMS.Location = New System.Drawing.Point(11, 42)
-        Me.DelaiMS.Name = "DelaiMS"
-        Me.DelaiMS.Size = New System.Drawing.Size(54, 20)
-        Me.DelaiMS.TabIndex = 23
-        '
-        'GBTimeout
-        '
-        Me.GBTimeout.Controls.Add(Me.OptW)
-        Me.GBTimeout.Controls.Add(Me.DelaiMS)
-        Me.GBTimeout.Location = New System.Drawing.Point(74, 154)
-        Me.GBTimeout.Name = "GBTimeout"
-        Me.GBTimeout.Size = New System.Drawing.Size(73, 69)
-        Me.GBTimeout.TabIndex = 24
-        Me.GBTimeout.TabStop = False
-        Me.GBTimeout.Text = "Délai"
-        '
-        'OptW
-        '
-        Me.OptW.AutoSize = True
-        Me.OptW.Location = New System.Drawing.Point(6, 19)
-        Me.OptW.Name = "OptW"
-        Me.OptW.Size = New System.Drawing.Size(42, 17)
-        Me.OptW.TabIndex = 24
-        Me.OptW.Text = "/W"
-        Me.OptW.UseVisualStyleBackColor = True
-        '
-        'OptJ
-        '
-        Me.OptJ.AutoSize = True
-        Me.OptJ.Location = New System.Drawing.Point(12, 19)
-        Me.OptJ.Name = "OptJ"
-        Me.OptJ.Size = New System.Drawing.Size(100, 17)
-        Me.OptJ.TabIndex = 25
-        Me.OptJ.Text = "/J           Hôtes:"
-        Me.OptJ.UseVisualStyleBackColor = True
-        '
-        'txtAddresse
-        '
-        Me.txtAddresse.Location = New System.Drawing.Point(6, 112)
-        Me.txtAddresse.Name = "txtAddresse"
-        Me.txtAddresse.Size = New System.Drawing.Size(145, 20)
-        Me.txtAddresse.TabIndex = 26
-        '
-        'GBHops
-        '
-        Me.GBHops.Controls.Add(Me.SautsMax)
-        Me.GBHops.Controls.Add(Me.OptH)
-        Me.GBHops.Location = New System.Drawing.Point(1, 154)
-        Me.GBHops.Name = "GBHops"
-        Me.GBHops.Size = New System.Drawing.Size(67, 85)
-        Me.GBHops.TabIndex = 27
-        Me.GBHops.TabStop = False
-        Me.GBHops.Text = "Sauts Maximum"
-        '
-        'SautsMax
-        '
-        Me.SautsMax.Location = New System.Drawing.Point(5, 57)
-        Me.SautsMax.Maximum = New Decimal(New Integer() {30, 0, 0, 0})
-        Me.SautsMax.Name = "SautsMax"
-        Me.SautsMax.Size = New System.Drawing.Size(46, 20)
-        Me.SautsMax.TabIndex = 1
-        '
-        'OptH
-        '
-        Me.OptH.AutoSize = True
-        Me.OptH.Location = New System.Drawing.Point(7, 34)
-        Me.OptH.Name = "OptH"
-        Me.OptH.Size = New System.Drawing.Size(39, 17)
-        Me.OptH.TabIndex = 0
-        Me.OptH.Text = "/H"
-        Me.OptH.UseVisualStyleBackColor = True
-        '
-        'lblAddresse
-        '
-        Me.lblAddresse.AutoSize = True
-        Me.lblAddresse.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblAddresse.Location = New System.Drawing.Point(10, 83)
-        Me.lblAddresse.Name = "lblAddresse"
-        Me.lblAddresse.Size = New System.Drawing.Size(97, 15)
-        Me.lblAddresse.TabIndex = 28
-        Me.lblAddresse.Text = "Addresse à tracer"
-        '
-        'GBHotes
-        '
-        Me.GBHotes.Controls.Add(Me.txtListeHotes)
-        Me.GBHotes.Controls.Add(Me.OptJ)
-        Me.GBHotes.Location = New System.Drawing.Point(0, 296)
-        Me.GBHotes.Name = "GBHotes"
-        Me.GBHotes.Size = New System.Drawing.Size(146, 80)
-        Me.GBHotes.TabIndex = 29
-        Me.GBHotes.TabStop = False
-        Me.GBHotes.Text = "Liste Hôtes"
-        '
-        'txtListeHotes
-        '
-        Me.txtListeHotes.Location = New System.Drawing.Point(12, 42)
-        Me.txtListeHotes.Name = "txtListeHotes"
-        Me.txtListeHotes.Size = New System.Drawing.Size(125, 20)
-        Me.txtListeHotes.TabIndex = 26
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(152, 54)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(453, 394)
-        Me.myConsole.TabIndex = 30
         '
         'flashHeader
         '
@@ -347,84 +84,484 @@ Partial Class TracertApp
         Me.flashHeader.Location = New System.Drawing.Point(0, 0)
         Me.flashHeader.Name = "flashHeader"
         Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(619, 40)
+        Me.flashHeader.Size = New System.Drawing.Size(660, 40)
         Me.flashHeader.TabIndex = 31
+        '
+        'GuiDosbox_Groupbox7
+        '
+        Me.GuiDosbox_Groupbox7.BackColor = System.Drawing.Color.Black
+        Me.GuiDosbox_Groupbox7.BorderColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox7.Controls.Add(Me.optD)
+        Me.GuiDosbox_Groupbox7.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Groupbox7.ForeColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox7.Location = New System.Drawing.Point(5, 105)
+        Me.GuiDosbox_Groupbox7.Name = "GuiDosbox_Groupbox7"
+        Me.GuiDosbox_Groupbox7.Size = New System.Drawing.Size(75, 54)
+        Me.GuiDosbox_Groupbox7.TabIndex = 43
+        Me.GuiDosbox_Groupbox7.TabStop = False
+        Me.GuiDosbox_Groupbox7.Text = "Option"
+        '
+        'optD
+        '
+        Me.optD.AutoSize = True
+        Me.optD.BackColor = System.Drawing.Color.Black
+        Me.optD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optD.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optD.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optD.Location = New System.Drawing.Point(20, 20)
+        Me.optD.Name = "optD"
+        Me.optD.Size = New System.Drawing.Size(35, 15)
+        Me.optD.TabIndex = 41
+        Me.optD.Text = "/D"
+        Me.optD.UseVisualStyleBackColor = False
+        '
+        'GuiDosbox_Groupbox6
+        '
+        Me.GuiDosbox_Groupbox6.BackColor = System.Drawing.Color.Black
+        Me.GuiDosbox_Groupbox6.BorderColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox6.Controls.Add(Me.txtSourceIPv6)
+        Me.GuiDosbox_Groupbox6.Controls.Add(Me.optS)
+        Me.GuiDosbox_Groupbox6.Controls.Add(Me.optR)
+        Me.GuiDosbox_Groupbox6.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Groupbox6.ForeColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox6.Location = New System.Drawing.Point(292, 105)
+        Me.GuiDosbox_Groupbox6.Name = "GuiDosbox_Groupbox6"
+        Me.GuiDosbox_Groupbox6.Size = New System.Drawing.Size(251, 54)
+        Me.GuiDosbox_Groupbox6.TabIndex = 42
+        Me.GuiDosbox_Groupbox6.TabStop = False
+        Me.GuiDosbox_Groupbox6.Text = " IPv6 Seulement"
+        '
+        'txtSourceIPv6
+        '
+        Me.txtSourceIPv6.BackColor = System.Drawing.Color.Black
+        Me.txtSourceIPv6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtSourceIPv6.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtSourceIPv6.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtSourceIPv6.Location = New System.Drawing.Point(89, 18)
+        Me.txtSourceIPv6.Name = "txtSourceIPv6"
+        Me.txtSourceIPv6.Size = New System.Drawing.Size(153, 18)
+        Me.txtSourceIPv6.TabIndex = 2
+        '
+        'optS
+        '
+        Me.optS.AutoSize = True
+        Me.optS.BackColor = System.Drawing.Color.Black
+        Me.optS.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optS.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optS.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optS.Location = New System.Drawing.Point(48, 19)
+        Me.optS.Name = "optS"
+        Me.optS.Size = New System.Drawing.Size(35, 15)
+        Me.optS.TabIndex = 1
+        Me.optS.Text = "/S"
+        Me.optS.UseVisualStyleBackColor = False
+        '
+        'optR
+        '
+        Me.optR.AutoSize = True
+        Me.optR.BackColor = System.Drawing.Color.Black
+        Me.optR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optR.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optR.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optR.Location = New System.Drawing.Point(8, 19)
+        Me.optR.Name = "optR"
+        Me.optR.Size = New System.Drawing.Size(35, 15)
+        Me.optR.TabIndex = 0
+        Me.optR.Text = "/R"
+        Me.optR.UseVisualStyleBackColor = False
+        '
+        'GuiDosbox_Groupbox2
+        '
+        Me.GuiDosbox_Groupbox2.BackColor = System.Drawing.Color.Black
+        Me.GuiDosbox_Groupbox2.BorderColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox2.Controls.Add(Me.txtAdresse)
+        Me.GuiDosbox_Groupbox2.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Groupbox2.ForeColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox2.Location = New System.Drawing.Point(5, 45)
+        Me.GuiDosbox_Groupbox2.Name = "GuiDosbox_Groupbox2"
+        Me.GuiDosbox_Groupbox2.Size = New System.Drawing.Size(200, 54)
+        Me.GuiDosbox_Groupbox2.TabIndex = 0
+        Me.GuiDosbox_Groupbox2.TabStop = False
+        Me.GuiDosbox_Groupbox2.Text = " Adresse IP / Hostname"
+        '
+        'txtAdresse
+        '
+        Me.txtAdresse.BackColor = System.Drawing.Color.Black
+        Me.txtAdresse.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtAdresse.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtAdresse.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtAdresse.Location = New System.Drawing.Point(6, 18)
+        Me.txtAdresse.Name = "txtAdresse"
+        Me.txtAdresse.Size = New System.Drawing.Size(188, 18)
+        Me.txtAdresse.TabIndex = 0
+        '
+        'gbHops
+        '
+        Me.gbHops.BackColor = System.Drawing.Color.Black
+        Me.gbHops.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbHops.Controls.Add(Me.optH)
+        Me.gbHops.Controls.Add(Me.numSautsMax)
+        Me.gbHops.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbHops.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbHops.Location = New System.Drawing.Point(211, 45)
+        Me.gbHops.Name = "gbHops"
+        Me.gbHops.Size = New System.Drawing.Size(140, 54)
+        Me.gbHops.TabIndex = 0
+        Me.gbHops.TabStop = False
+        Me.gbHops.Text = " Sauts maximum"
+        '
+        'optH
+        '
+        Me.optH.AutoSize = True
+        Me.optH.BackColor = System.Drawing.Color.Black
+        Me.optH.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optH.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optH.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optH.Location = New System.Drawing.Point(9, 18)
+        Me.optH.Name = "optH"
+        Me.optH.Size = New System.Drawing.Size(35, 15)
+        Me.optH.TabIndex = 1
+        Me.optH.Text = "/H"
+        Me.optH.UseVisualStyleBackColor = False
+        '
+        'numSautsMax
+        '
+        Me.numSautsMax.BackColor = System.Drawing.Color.Black
+        Me.numSautsMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.numSautsMax.ForeColor = System.Drawing.Color.LightBlue
+        Me.numSautsMax.Location = New System.Drawing.Point(50, 18)
+        Me.numSautsMax.Name = "numSautsMax"
+        Me.numSautsMax.Size = New System.Drawing.Size(82, 18)
+        Me.numSautsMax.TabIndex = 0
+        '
+        'gbTimeout
+        '
+        Me.gbTimeout.BackColor = System.Drawing.Color.Black
+        Me.gbTimeout.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbTimeout.Controls.Add(Me.optW)
+        Me.gbTimeout.Controls.Add(Me.numDelaiMS)
+        Me.gbTimeout.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbTimeout.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbTimeout.Location = New System.Drawing.Point(357, 45)
+        Me.gbTimeout.Name = "gbTimeout"
+        Me.gbTimeout.Size = New System.Drawing.Size(171, 54)
+        Me.gbTimeout.TabIndex = 0
+        Me.gbTimeout.TabStop = False
+        Me.gbTimeout.Text = " Délai (milliseconde)"
+        '
+        'optW
+        '
+        Me.optW.AutoSize = True
+        Me.optW.BackColor = System.Drawing.Color.Black
+        Me.optW.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optW.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optW.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optW.Location = New System.Drawing.Point(24, 18)
+        Me.optW.Name = "optW"
+        Me.optW.Size = New System.Drawing.Size(35, 15)
+        Me.optW.TabIndex = 1
+        Me.optW.Text = "/W"
+        Me.optW.UseVisualStyleBackColor = False
+        '
+        'numDelaiMS
+        '
+        Me.numDelaiMS.BackColor = System.Drawing.Color.Black
+        Me.numDelaiMS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.numDelaiMS.ForeColor = System.Drawing.Color.LightBlue
+        Me.numDelaiMS.Location = New System.Drawing.Point(65, 18)
+        Me.numDelaiMS.Name = "numDelaiMS"
+        Me.numDelaiMS.Size = New System.Drawing.Size(82, 18)
+        Me.numDelaiMS.TabIndex = 0
+        '
+        'gbForce
+        '
+        Me.gbForce.BackColor = System.Drawing.Color.Black
+        Me.gbForce.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbForce.Controls.Add(Me.opt6)
+        Me.gbForce.Controls.Add(Me.opt4)
+        Me.gbForce.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbForce.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbForce.Location = New System.Drawing.Point(534, 45)
+        Me.gbForce.Name = "gbForce"
+        Me.gbForce.Size = New System.Drawing.Size(118, 54)
+        Me.gbForce.TabIndex = 0
+        Me.gbForce.TabStop = False
+        Me.gbForce.Text = "Forcer"
+        '
+        'opt6
+        '
+        Me.opt6.AutoSize = True
+        Me.opt6.BackColor = System.Drawing.Color.Black
+        Me.opt6.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.opt6.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.opt6.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.opt6.Location = New System.Drawing.Point(62, 20)
+        Me.opt6.Name = "opt6"
+        Me.opt6.Size = New System.Drawing.Size(49, 15)
+        Me.opt6.TabIndex = 1
+        Me.opt6.Text = "IPv6"
+        Me.opt6.UseVisualStyleBackColor = False
+        '
+        'opt4
+        '
+        Me.opt4.AutoSize = True
+        Me.opt4.BackColor = System.Drawing.Color.Black
+        Me.opt4.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.opt4.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.opt4.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.opt4.Location = New System.Drawing.Point(7, 20)
+        Me.opt4.Name = "opt4"
+        Me.opt4.Size = New System.Drawing.Size(49, 15)
+        Me.opt4.TabIndex = 0
+        Me.opt4.Text = "IPv4"
+        Me.opt4.UseVisualStyleBackColor = False
+        '
+        'gbHotes
+        '
+        Me.gbHotes.BackColor = System.Drawing.Color.Black
+        Me.gbHotes.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbHotes.Controls.Add(Me.txtListeHotes)
+        Me.gbHotes.Controls.Add(Me.optJ)
+        Me.gbHotes.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbHotes.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbHotes.Location = New System.Drawing.Point(86, 105)
+        Me.gbHotes.Name = "gbHotes"
+        Me.gbHotes.Size = New System.Drawing.Size(200, 54)
+        Me.gbHotes.TabIndex = 40
+        Me.gbHotes.TabStop = False
+        Me.gbHotes.Text = " Liste d'hôtes"
+        '
+        'txtListeHotes
+        '
+        Me.txtListeHotes.BackColor = System.Drawing.Color.Black
+        Me.txtListeHotes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtListeHotes.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtListeHotes.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtListeHotes.Location = New System.Drawing.Point(48, 18)
+        Me.txtListeHotes.Name = "txtListeHotes"
+        Me.txtListeHotes.Size = New System.Drawing.Size(146, 18)
+        Me.txtListeHotes.TabIndex = 1
+        '
+        'optJ
+        '
+        Me.optJ.AutoSize = True
+        Me.optJ.BackColor = System.Drawing.Color.Black
+        Me.optJ.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optJ.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optJ.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optJ.Location = New System.Drawing.Point(7, 18)
+        Me.optJ.Name = "optJ"
+        Me.optJ.Size = New System.Drawing.Size(35, 15)
+        Me.optJ.TabIndex = 0
+        Me.optJ.Text = "/J"
+        Me.optJ.UseVisualStyleBackColor = False
+        '
+        'txtCmdExec
+        '
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Enabled = False
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(139, 533)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(512, 18)
+        Me.txtCmdExec.TabIndex = 39
+        '
+        'lblCmdExec
+        '
+        Me.lblCmdExec.AutoSize = True
+        Me.lblCmdExec.BackColor = System.Drawing.Color.Transparent
+        Me.lblCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.lblCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.lblCmdExec.Location = New System.Drawing.Point(2, 535)
+        Me.lblCmdExec.Name = "lblCmdExec"
+        Me.lblCmdExec.Size = New System.Drawing.Size(131, 11)
+        Me.lblCmdExec.TabIndex = 38
+        Me.lblCmdExec.Text = "Commande exécuté :"
+        '
+        'optAdvanceMode
+        '
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Black
+        Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optAdvanceMode.Location = New System.Drawing.Point(99, 594)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
+        Me.optAdvanceMode.TabIndex = 37
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = False
+        '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.Black
+        Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnHelp.Location = New System.Drawing.Point(4, 586)
+        Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(82, 23)
+        Me.btnHelp.TabIndex = 36
+        Me.btnHelp.Text = "Aide"
+        Me.btnHelp.UseVisualStyleBackColor = False
+        '
+        'btnBack
+        '
+        Me.btnBack.BackColor = System.Drawing.Color.Black
+        Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnBack.Location = New System.Drawing.Point(569, 586)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(82, 23)
+        Me.btnBack.TabIndex = 35
+        Me.btnBack.Text = "Retour"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnClear
+        '
+        Me.btnClear.BackColor = System.Drawing.Color.Black
+        Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnClear.Location = New System.Drawing.Point(569, 557)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(82, 23)
+        Me.btnClear.TabIndex = 34
+        Me.btnClear.Text = "Effacer"
+        Me.btnClear.UseVisualStyleBackColor = False
+        '
+        'btnApply
+        '
+        Me.btnApply.BackColor = System.Drawing.Color.Black
+        Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnApply.Location = New System.Drawing.Point(481, 586)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(82, 23)
+        Me.btnApply.TabIndex = 33
+        Me.btnApply.Text = "Appliquer"
+        Me.btnApply.UseVisualStyleBackColor = False
+        '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(319, 557)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(82, 23)
+        Me.btnSend.TabIndex = 32
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
+        'myConsole
+        '
+        Me.myConsole.Location = New System.Drawing.Point(5, 170)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(647, 357)
+        Me.myConsole.TabIndex = 30
         '
         'TracertApp
         '
-        Me.AcceptButton = Me.btnSend
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.CancelButton = Me.btnBack
-        Me.ClientSize = New System.Drawing.Size(617, 584)
+        Me.BackColor = System.Drawing.Color.Black
+        Me.ClientSize = New System.Drawing.Size(657, 617)
         Me.ControlBox = False
+        Me.Controls.Add(Me.GuiDosbox_Groupbox7)
+        Me.Controls.Add(Me.GuiDosbox_Groupbox6)
+        Me.Controls.Add(Me.GuiDosbox_Groupbox2)
+        Me.Controls.Add(Me.gbHops)
+        Me.Controls.Add(Me.gbTimeout)
+        Me.Controls.Add(Me.gbForce)
+        Me.Controls.Add(Me.gbHotes)
+        Me.Controls.Add(Me.txtCmdExec)
+        Me.Controls.Add(Me.lblCmdExec)
+        Me.Controls.Add(Me.optAdvanceMode)
+        Me.Controls.Add(Me.btnHelp)
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnApply)
+        Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.GBHotes)
-        Me.Controls.Add(Me.lblAddresse)
-        Me.Controls.Add(Me.GBHops)
-        Me.Controls.Add(Me.txtAddresse)
-        Me.Controls.Add(Me.GBTimeout)
-        Me.Controls.Add(Me.OptD)
-        Me.Controls.Add(Me.GBIpv6)
-        Me.Controls.Add(Me.GBForce)
-        Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.txtCmdExec)
-        Me.Controls.Add(Me.optAdvanceMode)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnApply)
-        Me.Controls.Add(Me.btnHelp)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
+        Me.ForeColor = System.Drawing.Color.LightBlue
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "TracertApp"
         Me.Text = "GUI DosBox - TRACERT"
-        Me.GBForce.ResumeLayout(False)
-        Me.GBForce.PerformLayout()
-        Me.GBIpv6.ResumeLayout(False)
-        Me.GBIpv6.PerformLayout()
-        CType(Me.DelaiMS, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GBTimeout.ResumeLayout(False)
-        Me.GBTimeout.PerformLayout()
-        Me.GBHops.ResumeLayout(False)
-        Me.GBHops.PerformLayout()
-        CType(Me.SautsMax, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GBHotes.ResumeLayout(False)
-        Me.GBHotes.PerformLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GuiDosbox_Groupbox7.ResumeLayout(False)
+        Me.GuiDosbox_Groupbox7.PerformLayout()
+        Me.GuiDosbox_Groupbox6.ResumeLayout(False)
+        Me.GuiDosbox_Groupbox6.PerformLayout()
+        Me.GuiDosbox_Groupbox2.ResumeLayout(False)
+        Me.GuiDosbox_Groupbox2.PerformLayout()
+        Me.gbHops.ResumeLayout(False)
+        Me.gbHops.PerformLayout()
+        CType(Me.numSautsMax, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbTimeout.ResumeLayout(False)
+        Me.gbTimeout.PerformLayout()
+        CType(Me.numDelaiMS, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbForce.ResumeLayout(False)
+        Me.gbForce.PerformLayout()
+        Me.gbHotes.ResumeLayout(False)
+        Me.gbHotes.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnHelp As System.Windows.Forms.Button
-    Friend WithEvents btnApply As System.Windows.Forms.Button
-    Friend WithEvents btnBack As System.Windows.Forms.Button
-    Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
-    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
-    Friend WithEvents btnSend As System.Windows.Forms.Button
-    Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents GBForce As System.Windows.Forms.GroupBox
-    Friend WithEvents GBIpv6 As System.Windows.Forms.GroupBox
-    Friend WithEvents OptD As System.Windows.Forms.CheckBox
-    Friend WithEvents DelaiMS As System.Windows.Forms.NumericUpDown
-    Friend WithEvents GBTimeout As System.Windows.Forms.GroupBox
-    Friend WithEvents OptW As System.Windows.Forms.CheckBox
-    Friend WithEvents OptJ As System.Windows.Forms.CheckBox
-    Friend WithEvents Opt6 As System.Windows.Forms.CheckBox
-    Friend WithEvents Opt4 As System.Windows.Forms.CheckBox
-    Friend WithEvents txtSourceIPv6 As System.Windows.Forms.TextBox
-    Friend WithEvents OptR As System.Windows.Forms.CheckBox
-    Friend WithEvents OptS As System.Windows.Forms.CheckBox
-    Friend WithEvents txtAddresse As System.Windows.Forms.TextBox
-    Friend WithEvents GBHops As System.Windows.Forms.GroupBox
-    Friend WithEvents SautsMax As System.Windows.Forms.NumericUpDown
-    Friend WithEvents OptH As System.Windows.Forms.CheckBox
-    Friend WithEvents lblAddresse As System.Windows.Forms.Label
-    Friend WithEvents GBHotes As System.Windows.Forms.GroupBox
-    Friend WithEvents txtListeHotes As System.Windows.Forms.TextBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnHelp As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents gbHotes As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents GuiDosbox_Groupbox2 As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents txtAdresse As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents gbHops As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents gbTimeout As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents gbForce As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents numSautsMax As System.Windows.Forms.NumericUpDown
+    Friend WithEvents optH As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents txtListeHotes As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents optJ As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optW As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents numDelaiMS As System.Windows.Forms.NumericUpDown
+    Friend WithEvents opt6 As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents opt4 As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optD As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents GuiDosbox_Groupbox6 As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents txtSourceIPv6 As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents optS As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents optR As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents GuiDosbox_Groupbox7 As GUIDosbox.GUIDosbox_Groupbox
 End Class

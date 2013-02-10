@@ -56,72 +56,77 @@ Public Class TracertApp
 
         'Déclaration des variables et constantes.
         Const Apps As String = "tracert "
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
-        Dim Args6 As String = ""
-        Dim Args7 As String = ""
-        Dim Args8 As String = ""
-        Dim Args9 As String = ""
+        Dim Arguments As String = Nothing
 
-        'Argument 1 /D
-        If OptD.Checked = True Then
-            Args1 = Args1 + " /D "
-        Else
-            Args1 = ""
+        'Arguments
+        Dim Args(8) As String
+        Args(0) = Nothing
+        Args(1) = Nothing
+        Args(2) = Nothing
+        Args(3) = Nothing
+        Args(4) = Nothing
+        Args(5) = Nothing
+        Args(6) = Nothing
+        Args(7) = Nothing
+        Args(8) = Nothing
+
+        'Argument 0 --> /d
+        If optD.Checked Then
+            Args(0) = "-d "
         End If
-        'Argument 2 /J
-        If OptJ.Checked = True Then
-            Args2 = Args2 + " /j " + " " & """" & txtListeHotes.Text & """" & " "
-        Else
-            Args2 = ""
+
+        'Argument 1 --> /h
+        If optH.Checked = True Then
+            Args(1) = "-h " + CStr(numSautsMax.Value) + " "
         End If
-        'Argument 3
-        If OptH.Checked = True Then
-            Args3 = Args3 + " /h " + CStr(SautsMax.Value) + " "
-        Else
-            Args3 = ""
+
+        'Argument 2 --> /j
+        If optJ.Checked Then
+            Args(2) = "-j " & """" & txtListeHotes.Text & """" & " "
         End If
-        'Argument 4
-        If OptW.Checked = True Then
-            Args4 = Args4 + " /w " + CStr(DelaiMS.Value) + " "
-        Else
-            Args4 = ""
+
+        'Argument 3 --> /w
+        If optW.Checked Then
+            Args(3) = "-w " + CStr(numDelaiMS.Value) + " "
         End If
-        'Argument 5
-        If Opt4.Checked = True Then
-            Args5 = Args5 + " /4 "
-        Else
-            Args5 = ""
+
+        'Argument 4 --> /R
+        If optR.Checked Then
+            Args(4) = "-R "
         End If
-        'Argument 6
-        If Opt6.Checked = True Then
-            Args6 = Args6 + " /6 "
+
+        'Argument 5 --> /S
+        If optS.Checked Then
+            Args(5) = "-S " & """" & txtSourceIPv6.Text & """" & " "
         End If
-        'Argument 7
-        If OptR.Checked = True Then
-            Args7 = Args7 + " /r "
+
+        'Argument 6 --> /4
+        If opt4.Checked Then
+            Args(6) = "-4 "
         End If
-        'Argument 8
-        If OptS.Checked = True Then
-            Args8 = Args8 + " " & """" & txtSourceIPv6.Text & """" & " "
+
+        'Argument 7 --> /6
+        If opt6.Checked Then
+            Args(7) = "-6 "
         End If
-        'Argument 9 
-        Args9 = txtAddresse.Text
+
+        'Argument 8 --> IP Adress
+        Args(8) = txtAdresse.Text
+
+        'Création de la chaine d'argument
+        For Each arg In Args
+            Arguments += arg
+        Next
 
         'Envoi de la commande­.
-        myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
-        'Affichage de la commande exécué.
-        txtCmdExec.Text = Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
+
 
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        myConsole.SendCommand("tracert /?")
-        txtCmdExec.Text = ""
+        txtCmdExec.Text = myConsole.SendCommand("tracert /?")
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -132,13 +137,10 @@ Public Class TracertApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des textbox. 
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
+        'Reset de la console
+        myConsole.Cls()
+        'Reset des textbox.
+        ClearTextBox(Me)
     End Sub
 
     ''' <summary>
@@ -156,37 +158,39 @@ Public Class TracertApp
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCommandeExec.Text = "Commande exécutée:"
+            lblCmdExec.Text = "Commande exécutée:"
             optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
             btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
-            lblAddresse.Text = "Addresse à tracer"
-            GBHops.Text = "Sauts Maximum"
-            GBTimeout.Text = "Délai"
-            GBForce.Text = "Forcer"
-            GBHotes.Text = "Liste Hotes"
-            OptJ.Text = "/J           Hôtes:"
-            OptS.Text = "/S  Addresse:"
+            gbHops.Text = "Sauts Maximum"
+            gbTimeout.Text = "Délai"
+            gbForce.Text = "Forcer"
+            gbHotes.Text = "Liste Hotes"
+            optJ.Text = "/J           Hôtes:"
+            optS.Text = "/S  Addresse:"
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblCommandeExec.Text = "Just Executed:"
+            lblCmdExec.Text = "Just Executed:"
             optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Apply"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"
             btnSend.Text = "Send"
             btnHelp.Text = "Help"
-            lblAddresse.Text = "Address to be Traced"
-            GBHops.Text = "Maximum Hops"
-            GBForce.Text = "Force"
-            GBHotes.Text = "Host List"
-            OptJ.Text = "/J           Hosts:"
-            OptS.Text = "/S   Address:"
+            gbHops.Text = "Maximum Hops"
+            gbForce.Text = "Force"
+            gbHotes.Text = "Host List"
+            optJ.Text = "/J           Hosts:"
+            optS.Text = "/S   Address:"
         End If
     End Sub
 #End Region
 
+    
+    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
+
+    End Sub
 End Class

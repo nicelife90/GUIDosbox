@@ -23,203 +23,46 @@ Partial Class SUBSTApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SUBSTApp))
-        Me.btnHelp = New System.Windows.Forms.Button()
-        Me.btnApply = New System.Windows.Forms.Button()
-        Me.btnBack = New System.Windows.Forms.Button()
-        Me.btnClear = New System.Windows.Forms.Button()
-        Me.optAdvanceMode = New System.Windows.Forms.CheckBox()
-        Me.txtCmdExec = New System.Windows.Forms.TextBox()
-        Me.btnSend = New System.Windows.Forms.Button()
-        Me.lblCommandeExec = New System.Windows.Forms.Label()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.cbLecteur = New System.Windows.Forms.ComboBox()
-        Me.GBCreer = New System.Windows.Forms.GroupBox()
-        Me.BtnDossier = New System.Windows.Forms.Button()
-        Me.txtDossier = New System.Windows.Forms.TextBox()
-        Me.lblLecteur = New System.Windows.Forms.Label()
-        Me.optLister = New System.Windows.Forms.CheckBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.gbDelete = New System.Windows.Forms.GroupBox()
-        Me.cbDelete = New System.Windows.Forms.ComboBox()
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.gbLecteur = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.cbLecteur = New GUIDosbox.GUIDosbox_Combobox()
+        Me.gbDossier = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.btnDossier = New GUIDosbox.GUIDosbox_Button()
+        Me.txtDossier = New GUIDosbox.GUIDosbox_Textbox()
+        Me.gbOption = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optLister = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.gbDelete = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.cbDelete = New GUIDosbox.GUIDosbox_Combobox()
         Me.optD = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
+        Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
+        Me.btnBack = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClear = New GUIDosbox.GUIDosbox_Button()
+        Me.btnApply = New GUIDosbox.GUIDosbox_Button()
+        Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
-        Me.GBCreer.SuspendLayout()
-        Me.GroupBox2.SuspendLayout()
-        Me.gbDelete.SuspendLayout()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gbLecteur.SuspendLayout()
+        Me.gbDossier.SuspendLayout()
+        Me.gbOption.SuspendLayout()
+        Me.gbDelete.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'btnHelp
-        '
-        Me.btnHelp.Location = New System.Drawing.Point(13, 553)
-        Me.btnHelp.Name = "btnHelp"
-        Me.btnHelp.Size = New System.Drawing.Size(75, 23)
-        Me.btnHelp.TabIndex = 6
-        Me.btnHelp.Text = "Aide"
-        Me.btnHelp.UseVisualStyleBackColor = True
-        '
-        'btnApply
-        '
-        Me.btnApply.Location = New System.Drawing.Point(449, 553)
-        Me.btnApply.Name = "btnApply"
-        Me.btnApply.Size = New System.Drawing.Size(75, 23)
-        Me.btnApply.TabIndex = 7
-        Me.btnApply.Text = "Appliquer"
-        Me.btnApply.UseVisualStyleBackColor = True
-        '
-        'btnBack
-        '
-        Me.btnBack.Location = New System.Drawing.Point(530, 553)
-        Me.btnBack.Name = "btnBack"
-        Me.btnBack.Size = New System.Drawing.Size(75, 23)
-        Me.btnBack.TabIndex = 8
-        Me.btnBack.Text = "Retour"
-        Me.btnBack.UseVisualStyleBackColor = True
-        '
-        'btnClear
-        '
-        Me.btnClear.Location = New System.Drawing.Point(530, 524)
-        Me.btnClear.Name = "btnClear"
-        Me.btnClear.Size = New System.Drawing.Size(75, 23)
-        Me.btnClear.TabIndex = 9
-        Me.btnClear.Text = "Clear"
-        Me.btnClear.UseVisualStyleBackColor = True
-        '
-        'optAdvanceMode
-        '
-        Me.optAdvanceMode.AutoSize = True
-        Me.optAdvanceMode.Location = New System.Drawing.Point(513, 501)
-        Me.optAdvanceMode.Name = "optAdvanceMode"
-        Me.optAdvanceMode.Size = New System.Drawing.Size(92, 17)
-        Me.optAdvanceMode.TabIndex = 10
-        Me.optAdvanceMode.Text = "Mode avancé"
-        Me.optAdvanceMode.UseVisualStyleBackColor = True
-        '
-        'txtCmdExec
-        '
-        Me.txtCmdExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtCmdExec.Location = New System.Drawing.Point(129, 475)
-        Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(476, 21)
-        Me.txtCmdExec.TabIndex = 13
-        '
-        'btnSend
-        '
-        Me.btnSend.Location = New System.Drawing.Point(315, 501)
-        Me.btnSend.Name = "btnSend"
-        Me.btnSend.Size = New System.Drawing.Size(75, 23)
-        Me.btnSend.TabIndex = 0
-        Me.btnSend.Text = "Envoyer"
-        Me.btnSend.UseVisualStyleBackColor = True
-        '
-        'lblCommandeExec
-        '
-        Me.lblCommandeExec.AutoSize = True
-        Me.lblCommandeExec.Font = New System.Drawing.Font("Times New Roman", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCommandeExec.Location = New System.Drawing.Point(3, 481)
-        Me.lblCommandeExec.Name = "lblCommandeExec"
-        Me.lblCommandeExec.Size = New System.Drawing.Size(107, 15)
-        Me.lblCommandeExec.TabIndex = 17
-        Me.lblCommandeExec.Text = "Commande exécutée:"
-        Me.lblCommandeExec.TextAlign = System.Drawing.ContentAlignment.TopRight
         '
         'chkbxLangue
         '
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(-1, 572)
+        Me.chkbxLangue.Location = New System.Drawing.Point(22, 495)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
         Me.chkbxLangue.TabIndex = 19
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
-        '
-        'cbLecteur
-        '
-        Me.cbLecteur.FormattingEnabled = True
-        Me.cbLecteur.Location = New System.Drawing.Point(13, 36)
-        Me.cbLecteur.Name = "cbLecteur"
-        Me.cbLecteur.Size = New System.Drawing.Size(69, 21)
-        Me.cbLecteur.TabIndex = 20
-        '
-        'GBCreer
-        '
-        Me.GBCreer.Controls.Add(Me.BtnDossier)
-        Me.GBCreer.Controls.Add(Me.txtDossier)
-        Me.GBCreer.Controls.Add(Me.lblLecteur)
-        Me.GBCreer.Controls.Add(Me.cbLecteur)
-        Me.GBCreer.Location = New System.Drawing.Point(6, 97)
-        Me.GBCreer.Name = "GBCreer"
-        Me.GBCreer.Size = New System.Drawing.Size(117, 149)
-        Me.GBCreer.TabIndex = 22
-        Me.GBCreer.TabStop = False
-        Me.GBCreer.Text = "Créer"
-        '
-        'BtnDossier
-        '
-        Me.BtnDossier.Location = New System.Drawing.Point(6, 94)
-        Me.BtnDossier.Name = "BtnDossier"
-        Me.BtnDossier.Size = New System.Drawing.Size(72, 23)
-        Me.BtnDossier.TabIndex = 23
-        Me.BtnDossier.Text = "Dossier"
-        Me.BtnDossier.UseVisualStyleBackColor = True
-        '
-        'txtDossier
-        '
-        Me.txtDossier.Location = New System.Drawing.Point(6, 123)
-        Me.txtDossier.Name = "txtDossier"
-        Me.txtDossier.Size = New System.Drawing.Size(100, 20)
-        Me.txtDossier.TabIndex = 22
-        '
-        'lblLecteur
-        '
-        Me.lblLecteur.AutoSize = True
-        Me.lblLecteur.Location = New System.Drawing.Point(7, 20)
-        Me.lblLecteur.Name = "lblLecteur"
-        Me.lblLecteur.Size = New System.Drawing.Size(49, 13)
-        Me.lblLecteur.TabIndex = 21
-        Me.lblLecteur.Text = "Lecteur :"
-        '
-        'optLister
-        '
-        Me.optLister.AutoSize = True
-        Me.optLister.ForeColor = System.Drawing.Color.Maroon
-        Me.optLister.Location = New System.Drawing.Point(6, 19)
-        Me.optLister.Name = "optLister"
-        Me.optLister.Size = New System.Drawing.Size(104, 17)
-        Me.optLister.TabIndex = 23
-        Me.optLister.Text = "Lister Seulement"
-        Me.optLister.UseVisualStyleBackColor = True
-        '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.optLister)
-        Me.GroupBox2.Location = New System.Drawing.Point(6, 252)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(117, 52)
-        Me.GroupBox2.TabIndex = 24
-        Me.GroupBox2.TabStop = False
-        '
-        'gbDelete
-        '
-        Me.gbDelete.Controls.Add(Me.cbDelete)
-        Me.gbDelete.Location = New System.Drawing.Point(6, 351)
-        Me.gbDelete.Name = "gbDelete"
-        Me.gbDelete.Size = New System.Drawing.Size(117, 49)
-        Me.gbDelete.TabIndex = 25
-        Me.gbDelete.TabStop = False
-        Me.gbDelete.Text = "Supprimer"
-        '
-        'cbDelete
-        '
-        Me.cbDelete.FormattingEnabled = True
-        Me.cbDelete.Location = New System.Drawing.Point(13, 22)
-        Me.cbDelete.Name = "cbDelete"
-        Me.cbDelete.Size = New System.Drawing.Size(68, 21)
-        Me.cbDelete.TabIndex = 0
         '
         'flashHeader
         '
@@ -227,8 +70,132 @@ Partial Class SUBSTApp
         Me.flashHeader.Location = New System.Drawing.Point(0, 0)
         Me.flashHeader.Name = "flashHeader"
         Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(619, 40)
+        Me.flashHeader.Size = New System.Drawing.Size(666, 40)
         Me.flashHeader.TabIndex = 27
+        '
+        'gbLecteur
+        '
+        Me.gbLecteur.BackColor = System.Drawing.Color.Black
+        Me.gbLecteur.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbLecteur.Controls.Add(Me.cbLecteur)
+        Me.gbLecteur.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbLecteur.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbLecteur.Location = New System.Drawing.Point(137, 44)
+        Me.gbLecteur.Name = "gbLecteur"
+        Me.gbLecteur.Size = New System.Drawing.Size(106, 68)
+        Me.gbLecteur.TabIndex = 3
+        Me.gbLecteur.TabStop = False
+        Me.gbLecteur.Text = " Lecteur"
+        '
+        'cbLecteur
+        '
+        Me.cbLecteur.BackColor = System.Drawing.Color.Black
+        Me.cbLecteur.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbLecteur.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.cbLecteur.ForeColor = System.Drawing.Color.LightBlue
+        Me.cbLecteur.FormattingEnabled = True
+        Me.cbLecteur.Location = New System.Drawing.Point(17, 25)
+        Me.cbLecteur.Name = "cbLecteur"
+        Me.cbLecteur.Size = New System.Drawing.Size(73, 19)
+        Me.cbLecteur.TabIndex = 2
+        '
+        'gbDossier
+        '
+        Me.gbDossier.BackColor = System.Drawing.Color.Black
+        Me.gbDossier.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbDossier.Controls.Add(Me.btnDossier)
+        Me.gbDossier.Controls.Add(Me.txtDossier)
+        Me.gbDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbDossier.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbDossier.Location = New System.Drawing.Point(245, 44)
+        Me.gbDossier.Name = "gbDossier"
+        Me.gbDossier.Size = New System.Drawing.Size(280, 68)
+        Me.gbDossier.TabIndex = 39
+        Me.gbDossier.TabStop = False
+        Me.gbDossier.Text = " Dossier"
+        '
+        'btnDossier
+        '
+        Me.btnDossier.BackColor = System.Drawing.Color.Black
+        Me.btnDossier.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnDossier.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnDossier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnDossier.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnDossier.Location = New System.Drawing.Point(8, 17)
+        Me.btnDossier.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnDossier.Name = "btnDossier"
+        Me.btnDossier.Size = New System.Drawing.Size(82, 23)
+        Me.btnDossier.TabIndex = 1
+        Me.btnDossier.Text = "Parcourir"
+        Me.btnDossier.UseVisualStyleBackColor = False
+        '
+        'txtDossier
+        '
+        Me.txtDossier.BackColor = System.Drawing.Color.Black
+        Me.txtDossier.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtDossier.Enabled = False
+        Me.txtDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtDossier.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtDossier.Location = New System.Drawing.Point(8, 44)
+        Me.txtDossier.Name = "txtDossier"
+        Me.txtDossier.Size = New System.Drawing.Size(265, 18)
+        Me.txtDossier.TabIndex = 0
+        '
+        'gbOption
+        '
+        Me.gbOption.BackColor = System.Drawing.Color.Black
+        Me.gbOption.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbOption.Controls.Add(Me.optLister)
+        Me.gbOption.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbOption.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbOption.Location = New System.Drawing.Point(7, 44)
+        Me.gbOption.Name = "gbOption"
+        Me.gbOption.Size = New System.Drawing.Size(128, 68)
+        Me.gbOption.TabIndex = 38
+        Me.gbOption.TabStop = False
+        Me.gbOption.Text = " Option"
+        '
+        'optLister
+        '
+        Me.optLister.AutoSize = True
+        Me.optLister.BackColor = System.Drawing.Color.Black
+        Me.optLister.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optLister.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optLister.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optLister.Location = New System.Drawing.Point(5, 27)
+        Me.optLister.Name = "optLister"
+        Me.optLister.Size = New System.Drawing.Size(119, 15)
+        Me.optLister.TabIndex = 0
+        Me.optLister.Text = "Lister lecteur"
+        Me.optLister.UseVisualStyleBackColor = False
+        '
+        'gbDelete
+        '
+        Me.gbDelete.BackColor = System.Drawing.Color.Black
+        Me.gbDelete.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbDelete.Controls.Add(Me.cbDelete)
+        Me.gbDelete.Controls.Add(Me.optD)
+        Me.gbDelete.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbDelete.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbDelete.Location = New System.Drawing.Point(527, 44)
+        Me.gbDelete.Name = "gbDelete"
+        Me.gbDelete.Size = New System.Drawing.Size(128, 68)
+        Me.gbDelete.TabIndex = 37
+        Me.gbDelete.TabStop = False
+        Me.gbDelete.Text = " Supprimer"
+        '
+        'cbDelete
+        '
+        Me.cbDelete.BackColor = System.Drawing.Color.Black
+        Me.cbDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbDelete.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.cbDelete.ForeColor = System.Drawing.Color.LightBlue
+        Me.cbDelete.FormattingEnabled = True
+        Me.cbDelete.Location = New System.Drawing.Point(51, 25)
+        Me.cbDelete.Name = "cbDelete"
+        Me.cbDelete.Size = New System.Drawing.Size(68, 19)
+        Me.cbDelete.TabIndex = 29
         '
         'optD
         '
@@ -237,76 +204,199 @@ Partial Class SUBSTApp
         Me.optD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optD.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optD.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optD.Location = New System.Drawing.Point(40, 433)
+        Me.optD.Location = New System.Drawing.Point(10, 27)
         Me.optD.Name = "optD"
         Me.optD.Size = New System.Drawing.Size(35, 15)
         Me.optD.TabIndex = 28
         Me.optD.Text = "/D"
         Me.optD.UseVisualStyleBackColor = False
         '
+        'txtCmdExec
+        '
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Enabled = False
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(137, 467)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(518, 18)
+        Me.txtCmdExec.TabIndex = 36
+        '
+        'optAdvanceMode
+        '
+        Me.optAdvanceMode.AutoSize = True
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Black
+        Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optAdvanceMode.Location = New System.Drawing.Point(95, 527)
+        Me.optAdvanceMode.Name = "optAdvanceMode"
+        Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
+        Me.optAdvanceMode.TabIndex = 35
+        Me.optAdvanceMode.Text = "Mode avancé"
+        Me.optAdvanceMode.UseVisualStyleBackColor = False
+        '
+        'lblCmdExec
+        '
+        Me.lblCmdExec.AutoSize = True
+        Me.lblCmdExec.BackColor = System.Drawing.Color.Transparent
+        Me.lblCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.lblCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.lblCmdExec.Location = New System.Drawing.Point(5, 470)
+        Me.lblCmdExec.Name = "lblCmdExec"
+        Me.lblCmdExec.Size = New System.Drawing.Size(131, 11)
+        Me.lblCmdExec.TabIndex = 34
+        Me.lblCmdExec.Text = "Commande exécuté :"
+        '
+        'btnHelp
+        '
+        Me.btnHelp.BackColor = System.Drawing.Color.Black
+        Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnHelp.Location = New System.Drawing.Point(7, 519)
+        Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnHelp.Name = "btnHelp"
+        Me.btnHelp.Size = New System.Drawing.Size(82, 23)
+        Me.btnHelp.TabIndex = 33
+        Me.btnHelp.Text = "Aide"
+        Me.btnHelp.UseVisualStyleBackColor = False
+        '
+        'btnBack
+        '
+        Me.btnBack.BackColor = System.Drawing.Color.Black
+        Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnBack.Location = New System.Drawing.Point(573, 519)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnBack.Name = "btnBack"
+        Me.btnBack.Size = New System.Drawing.Size(82, 23)
+        Me.btnBack.TabIndex = 32
+        Me.btnBack.Text = "Retour"
+        Me.btnBack.UseVisualStyleBackColor = False
+        '
+        'btnClear
+        '
+        Me.btnClear.BackColor = System.Drawing.Color.Black
+        Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnClear.Location = New System.Drawing.Point(573, 490)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(82, 23)
+        Me.btnClear.TabIndex = 31
+        Me.btnClear.Text = "Effacer"
+        Me.btnClear.UseVisualStyleBackColor = False
+        '
+        'btnApply
+        '
+        Me.btnApply.BackColor = System.Drawing.Color.Black
+        Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnApply.Location = New System.Drawing.Point(485, 519)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnApply.Name = "btnApply"
+        Me.btnApply.Size = New System.Drawing.Size(82, 23)
+        Me.btnApply.TabIndex = 30
+        Me.btnApply.Text = "Appliquer"
+        Me.btnApply.UseVisualStyleBackColor = False
+        '
+        'btnSend
+        '
+        Me.btnSend.BackColor = System.Drawing.Color.Black
+        Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnSend.Location = New System.Drawing.Point(290, 491)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnSend.Name = "btnSend"
+        Me.btnSend.Size = New System.Drawing.Size(82, 23)
+        Me.btnSend.TabIndex = 29
+        Me.btnSend.Text = "Envoyer"
+        Me.btnSend.UseVisualStyleBackColor = False
+        '
         'myConsole
         '
-        Me.myConsole.Location = New System.Drawing.Point(129, 54)
+        Me.myConsole.Location = New System.Drawing.Point(7, 117)
         Me.myConsole.myConsole = Nothing
         Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(476, 394)
+        Me.myConsole.Size = New System.Drawing.Size(648, 346)
         Me.myConsole.TabIndex = 26
         '
         'SUBSTApp
         '
         Me.AcceptButton = Me.btnSend
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.BackColor = System.Drawing.SystemColors.ScrollBar
-        Me.ClientSize = New System.Drawing.Size(617, 584)
+        Me.BackColor = System.Drawing.Color.Black
+        Me.ClientSize = New System.Drawing.Size(663, 549)
         Me.ControlBox = False
-        Me.Controls.Add(Me.optD)
-        Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.myConsole)
+        Me.Controls.Add(Me.gbLecteur)
+        Me.Controls.Add(Me.gbDossier)
+        Me.Controls.Add(Me.gbOption)
         Me.Controls.Add(Me.gbDelete)
-        Me.Controls.Add(Me.GroupBox2)
-        Me.Controls.Add(Me.GBCreer)
-        Me.Controls.Add(Me.chkbxLangue)
-        Me.Controls.Add(Me.lblCommandeExec)
-        Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.optAdvanceMode)
-        Me.Controls.Add(Me.btnClear)
-        Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.btnApply)
+        Me.Controls.Add(Me.lblCmdExec)
         Me.Controls.Add(Me.btnHelp)
+        Me.Controls.Add(Me.btnBack)
+        Me.Controls.Add(Me.btnClear)
+        Me.Controls.Add(Me.btnApply)
+        Me.Controls.Add(Me.btnSend)
+        Me.Controls.Add(Me.flashHeader)
+        Me.Controls.Add(Me.myConsole)
+        Me.Controls.Add(Me.chkbxLangue)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
+        Me.ForeColor = System.Drawing.Color.LightBlue
+        Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Name = "SUBSTApp"
         Me.Text = "GUI DosBox - SUBST"
-        Me.GBCreer.ResumeLayout(False)
-        Me.GBCreer.PerformLayout()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        Me.gbDelete.ResumeLayout(False)
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.gbLecteur.ResumeLayout(False)
+        Me.gbDossier.ResumeLayout(False)
+        Me.gbDossier.PerformLayout()
+        Me.gbOption.ResumeLayout(False)
+        Me.gbOption.PerformLayout()
+        Me.gbDelete.ResumeLayout(False)
+        Me.gbDelete.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents btnHelp As System.Windows.Forms.Button
-    Friend WithEvents btnApply As System.Windows.Forms.Button
-    Friend WithEvents btnBack As System.Windows.Forms.Button
-    Friend WithEvents btnClear As System.Windows.Forms.Button
-    Friend WithEvents optAdvanceMode As System.Windows.Forms.CheckBox
-    Friend WithEvents txtCmdExec As System.Windows.Forms.TextBox
-    Friend WithEvents btnSend As System.Windows.Forms.Button
-    Friend WithEvents lblCommandeExec As System.Windows.Forms.Label
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents cbLecteur As System.Windows.Forms.ComboBox
-    Friend WithEvents GBCreer As System.Windows.Forms.GroupBox
-    Friend WithEvents BtnDossier As System.Windows.Forms.Button
-    Friend WithEvents txtDossier As System.Windows.Forms.TextBox
-    Friend WithEvents lblLecteur As System.Windows.Forms.Label
-    Friend WithEvents optLister As System.Windows.Forms.CheckBox
-    Friend WithEvents GroupBox2 As System.Windows.Forms.GroupBox
-    Friend WithEvents gbDelete As System.Windows.Forms.GroupBox
-    Friend WithEvents cbDelete As System.Windows.Forms.ComboBox
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents optD As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnHelp As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents gbDelete As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents cbDelete As GUIDosbox.GUIDosbox_Combobox
+    Friend WithEvents gbOption As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents optLister As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents gbDossier As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents btnDossier As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents txtDossier As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents cbLecteur As GUIDosbox.GUIDosbox_Combobox
+    Friend WithEvents gbLecteur As GUIDosbox.GUIDosbox_Groupbox
 End Class

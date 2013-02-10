@@ -90,7 +90,7 @@ Public Class GUIDosbox_Console
     ''' <summary>
     ''' Éfface le text de l'instance actuelle de la console personnalisé GUIDosbox.
     ''' </summary>
-    Public Sub Cls()
+    Public Sub Cls(Optional ByVal root As Control = Nothing)
         txtOutput.Text = Nothing
     End Sub
 

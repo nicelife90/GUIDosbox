@@ -35,17 +35,8 @@ Public Class WhereApp
         'Démmarage de la console.
         myConsole.StartConsole()
 
-        'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "where.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.where, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "where.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        'Chargement du Flash Movie (Header)
+        LoadHeader(flashHeader, "where")
 
         'Options par défaut
         OptR.Checked = True
@@ -55,66 +46,71 @@ Public Class WhereApp
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-        If txtModele.Text = "" Then
-            MsgBox("Vous devez entrer un modèle valable." & vbCrLf & "Exemple : *.jpg, *.mp3," _
-                   & "*.dll, *.exe, *.avi, *.mp4 ou nom de fichier", _
-                   MsgBoxStyle.Exclamation, "Important! Modèle manquant.")
+
+        If txtModele.Text = Nothing Then
+            myConsole.Message("Vous devez entrer un modèle valable." & vbCrLf & "Exemple : *.jpg, *.mp3," _
+                   & "*.dll, *.exe, *.avi, *.mp4 ou nom de fichier")
         Else
 
             'Déclaration des variables et constantes.
-            Dim apps As String = "where "
-            Dim Args1 As String = ""
-            Dim Args2 As String = ""
-            Dim Args3 As String = ""
-            Dim Args4 As String = ""
-            Dim Args5 As String = ""
+            Const apps As String = "where "
+            Dim Arguments As String = Nothing
 
-            'Argument 1 +/- R
-            If OptR.Checked = True Then
-                Args1 = Args1 + "/R" & " " _
-                & """" & txtSource.Text _
-                & """" & " "
-            Else
-                Args1 = ""
+            'Arguments
+            Dim Args(4) As String
+            Args(0) = Nothing
+            Args(1) = Nothing
+            Args(2) = Nothing
+            Args(3) = Nothing
+            Args(4) = Nothing
+
+            'Argument 1 --> /Q
+            If OptQ.Checked Then
+                Args(1) = "/Q "
             End If
 
-            'Argument 2 +/- T
-            If OptT.Checked = True Then
-                Args2 = Args2 + "/T "
-            Else
-                Args2 = ""
+            'Argument 2 --> /F
+            If optF.Checked Then
+                Args(2) = "/F "
             End If
 
-            'Argument 3 +/- F
-            If OptF.Checked = True Then
-                Args3 = Args3 + "/F "
-            Else
-                Args3 = ""
+            'Argument 3 --> /T
+            If OptT.Checked Then
+                Args(3) = "/T "
             End If
 
-            'Argument 4 +/- Q
-            If OptQ.Checked = True Then
-                Args4 = Args4 + "/Q "
+            'Argument 4 --> Modèles
+            Args(4) = txtModele.Text
+
+            'Argument 0 --> /R (Args(0) dois être affecter en dernier mais dois tous de meme être args(0))
+            If OptR.Checked And txtSource.Text <> Nothing Then
+                Args(0) = "/R " & """" & txtSource.Text & """" & " "
+            ElseIf OptR.Checked Then
+                Args(0) = "/R "
             Else
-                Args4 = ""
+                If txtSource.Text <> Nothing Then
+                    Args(0) = """" & txtSource.Text & """" & ":" & txtModele.Text
+                    Args(4) = Nothing
+                Else
+                    Args(0) = Nothing
+                End If
             End If
 
-            'Argument 5 Modèles
-            Args5 = Args5 + """" _
-            & txtModele.Text & """"
+            'Création de la chaine d'arguments
+            For Each arg In Args
+                Arguments += arg
+            Next
 
             'Envoi de la commande.
-            myConsole.SendCommand(apps + Args1 + Args2 + Args3 + Args4 + Args5)
-            'Affichage de la commande exécuté.
-            txtCmdExec.Text = apps + Args1 + Args2 + Args3 + Args4 + Args5
+            txtCmdExec.Text = myConsole.SendCommand(apps + Arguments)
+            
         End If
 
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Envoi de la commande
-        myConsole.SendCommand("where /?")
-        txtCmdExec.Text = "where /?"
+        txtCmdExec.Text = myConsole.SendCommand("where /?")
     End Sub
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
@@ -132,37 +128,21 @@ Public Class WhereApp
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
         'Reset des textbox.
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
-    End Sub
-
-    Private Sub OptR_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptR.CheckedChanged
-        'on cache les élément d'emplacement si l'utilisateur décoche l'option R
-        If OptR.Checked = True Then
-            btnDossier.Show()
-            txtSource.Show()
-        Else
-            btnDossier.Hide()
-            txtSource.Hide()
-        End If
+        ClearTextBox(Me)
     End Sub
 
     Private Sub OptT_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptT.CheckedChanged
         'on bloque l'option /q quand une autre option est choisi
-        If OptT.Checked Or OptF.Checked = True Then
+        If OptT.Checked Or optF.Checked = True Then
             OptQ.Enabled = False
         Else
             OptQ.Enabled = True
         End If
     End Sub
 
-    Private Sub OptF_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptF.CheckedChanged
+    Private Sub OptF_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles optF.CheckedChanged
         'on bloque l'option /q quand une autre option est chois
-        If OptF.Checked Or OptT.Checked = True Then
+        If optF.Checked Or OptT.Checked = True Then
             OptQ.Enabled = False
         Else
             OptQ.Enabled = True
@@ -173,10 +153,10 @@ Public Class WhereApp
         'on affiche ou on masque les message d'avertissement concernat loption /Q
         If OptQ.Checked = True Then
             OptT.Enabled = False
-            OptF.Enabled = False
+            optF.Enabled = False
         Else
             OptT.Enabled = True
-            OptF.Enabled = True
+            optF.Enabled = True
         End If
     End Sub
 

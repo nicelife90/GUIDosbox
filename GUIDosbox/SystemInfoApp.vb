@@ -35,6 +35,11 @@ Public Class SystemInfoApp
         'Démmarage de la console
         myConsole.StartConsole()
 
+        'Ajout des éléments au ComboBox.
+        cbOptFO.Items.Add("TABLE")
+        cbOptFO.Items.Add("LIST")
+        cbOptFO.Items.Add("CSV")
+
         'Loading du header flash.
         Try
             Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "system_info.swf"
@@ -56,65 +61,55 @@ Public Class SystemInfoApp
 
         'Déclaration des variables et constantes.
         Const Apps As String = "systeminfo "
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
-        Dim Args6 As String = ""
-        Dim Args7 As String = ""
-        Dim Args8 As String = ""
-        Dim Args9 As String = ""
+        Dim Arguments As String = Nothing
 
-        'Argument 1 /S
-        If OptS.Checked = True Then
-            Args1 = Args1 + "  " & "" & txtOptS.Text & "" & " "
-        Else
-            Args1 = ""
+        'Arguments
+        Dim Args(5) As String
+        Args(0) = Nothing
+        Args(1) = Nothing
+        Args(2) = Nothing
+        Args(3) = Nothing
+        Args(4) = Nothing
+        Args(5) = Nothing
+
+        'Argument 0 --> /S
+        If optS.Checked Then
+            Args(0) = "/S " & txtOptS.Text & " "
         End If
 
-        'Argument 2 /U
-        If OptU.Checked = True Then
-            Args2 = Args2 + "  " & "" & txtOptU.Text & "" & " "
-        Else
-            Args2 = ""
+        'Argument 1 --> /U
+        If optU.Checked Then
+            Args(1) = "/U " & txtOptU.Text & " "
         End If
 
-        'Argument 3 /P
-        If OptP.Checked = True Then
-            Args3 = Args3 + "  " & "" & txtOptP.Text & "" & " "
-        Else
-            Args3 = ""
+        'Argument 2 --> /P
+        If optP.Checked Then
+            Args(2) = "/P " & txtOptP.Text & " "
         End If
 
-        'Argument 4 /FO
-        If OptFO.Checked = True Then
-            Args4 = Args4 + "  " & "" & txtOptFO.Text & "" & " "
-        Else
-            Args4 = ""
+        'Argument 3 --> /FO
+        If optFO.Checked Then
+            Args(3) = "/FO " & cbOptFO.Text & " "
         End If
 
-        'Argument 5 /NH
-        If OptNH.Checked = True Then
-            Args5 = Args5 + "  " & "/NH "
-        ElseIf txtOptFO.Text = "LIST" Then
-            Args5 = ""
-        Else
-            Args5 = ""
+        'Argument 4 --> /NH
+        If optNH.Checked And cbOptFO.Text <> "LIST" Then
+            Args(4) = "/NH "
         End If
 
-        'lancemant du process avec ses args
-        myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5)
+        'Création de la chaine d'argument
+        For Each arg In Args
+            Arguments += arg
+        Next
 
-        'Affichage de la commande exécuté.
-        txtCmdExec.Text = Apps + Args1 + Args2 + Args3 + Args4 + Args5
+        'lancemant du process avec ses arguments
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
 
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        myConsole.SendCommand("systeminfo /?")
-        txtCmdExec.Text = ""
+        txtCmdExec.Text = myConsole.SendCommand("systeminfo /?")
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -125,13 +120,14 @@ Public Class SystemInfoApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des texbox.
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
+        'Reset de la console
+        myConsole.Cls()
+        'Reset des textbox
+        txtCmdExec.Text = Nothing
+        txtOptP.Text = Nothing
+        txtOptS.Text = Nothing
+        txtOptU.Text = Nothing
+        cbOptFO.Text = Nothing
     End Sub
 
     ''' <summary>
@@ -149,7 +145,7 @@ Public Class SystemInfoApp
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCommandeExec.Text = "Commande exécutée:"
+            lblCmdExec.Text = "Commande exécutée:"
             optAdvanceMode.Text = "Mode Avancé"
             btnApply.Text = "Appliquer"
             btnBack.Text = "Retour"
@@ -159,7 +155,7 @@ Public Class SystemInfoApp
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblCommandeExec.Text = "Just Executed:"
+            lblCmdExec.Text = "Just Executed:"
             optAdvanceMode.Text = "Advanced Mode"
             btnApply.Text = "Applyr"
             btnBack.Text = "Back"

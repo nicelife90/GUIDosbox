@@ -7,7 +7,7 @@ Public Class TypeApp
     'Variable pour le mode avancé.
     Private AdvanceMode As Boolean = False
 
-    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles OptAdvanceMode.CheckedChanged
+    Private Sub optAdvanceMode_CheckedChanged(sender As Object, e As EventArgs) Handles optAdvanceMode.CheckedChanged
         If optAdvanceMode.Checked = True Then
             AdvanceMode = True
             btnApply.Visible = False
@@ -32,40 +32,44 @@ Public Class TypeApp
 #End Region
 
     Private Sub TypeApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+
         'Démarrage de la console.
         myConsole.StartConsole()
 
-        'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "type.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.type, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "type.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        'Mode avancé caché
+        btnSend.Visible = False
+
+        'Loading du Flash Movie (Header)
+        LoadHeader(flashHeader, "type")
+       
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des variables et constantes.
-        Const Apps As String = "TYPE "
-        Dim Args3 As String = ""
+        Const Apps As String = "type "
+        Dim Arguments As String = Nothing
 
-        Args3 = " " & """" & txtPathFichier.Text & """" & " "
+        'Argument
+        Dim args(0) As String
+        args(0) = Nothing
+
+        'Argument 0 --> Fichier
+        args(0) = """" & txtPathFichier.Text & """"
+
+        'Création de la chaine d'argument
+        For Each arg In args
+            Arguments += arg
+        Next
 
         'Envoi de la commande.
-        myConsole.SendCommand(Apps + Args3)
-        'Affichage de la commande exécuté.
-        txtCmdExec.Text = Apps + Args3
-
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
+       
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide
-        myConsole.SendCommand("type /?")
+        txtCmdExec.Text = myConsole.SendCommand("type /?")
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -77,12 +81,7 @@ Public Class TypeApp
 
     Private Sub Clear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
         'Reset des textbox.
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = ""
-            End If
-        Next
+        ClearTextBox(Me)
     End Sub
 
     Private Sub btnFichier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFichier.Click
@@ -106,7 +105,7 @@ Public Class TypeApp
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
             chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCommandeExec.Text = "Commande exécutée:"
+            lblCmdExec.Text = "Commande exécutée:"
             btnApply.Text = "Lire"
             btnBack.Text = "Retour"
             btnClear.Text = "Effacer"
@@ -114,7 +113,7 @@ Public Class TypeApp
 
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
-            lblCommandeExec.Text = "Just Executed:"
+            lblCmdExec.Text = "Just Executed:"
             btnApply.Text = "Read"
             btnBack.Text = "Back"
             btnClear.Text = "Clear"

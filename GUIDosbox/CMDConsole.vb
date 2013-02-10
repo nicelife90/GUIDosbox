@@ -17,6 +17,9 @@ Public Class CMDConsole
                    "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
+
+
+
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
@@ -44,10 +47,16 @@ Public Class CMDConsole
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
-        'Arrêt de la console et retour au cp.
-        myConsole.CloseConsole()
-        CP.Show()
-        Me.Close()
+        If OpenWithCmdArgs() Then
+            'Arrêt de la console et fermeture
+            myConsole.CloseConsole()
+            Me.Close()
+        Else
+            'Arrêt de la console et retour au cp.
+            myConsole.CloseConsole()
+            CP.Show()
+            Me.Close()
+        End If
     End Sub
 
     ''' <summary>
@@ -83,7 +92,5 @@ Public Class CMDConsole
 
 #End Region
 
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
+   
 End Class
