@@ -323,6 +323,7 @@ Partial Class CP
         Me.MaximumSize = New System.Drawing.Size(721, 508)
         Me.MinimumSize = New System.Drawing.Size(721, 508)
         Me.Name = "CP"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
