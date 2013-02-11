@@ -751,10 +751,8 @@ Partial Class XCopyApp
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MaximumSize = New System.Drawing.Size(737, 573)
-        Me.MinimumSize = New System.Drawing.Size(737, 573)
         Me.Name = "XCopyApp"
-        Me.ShowIcon = False
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - XCOPY"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbOptions.ResumeLayout(False)
