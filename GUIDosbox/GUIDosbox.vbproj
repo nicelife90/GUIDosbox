@@ -138,6 +138,9 @@
     <Compile Include="CHKDSkApp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CompactApp.Designer.vb">
+      <DependentUpon>CompactApp.vb</DependentUpon>
+    </Compile>
     <Compile Include="CompApp.Designer.vb">
       <DependentUpon>CompApp.vb</DependentUpon>
     </Compile>
@@ -182,9 +185,6 @@
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_Textbox.vb">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>CompactApp.vb</DependentUpon>
     </Compile>
     <Compile Include="CompactApp.vb">
       <SubType>Form</SubType>

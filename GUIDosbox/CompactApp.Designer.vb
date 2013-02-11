@@ -2,6 +2,7 @@
 Partial Class CompactApp
     Inherits System.Windows.Forms.Form
 
+
     'Form remplace la méthode Dispose pour nettoyer la liste des composants.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
