@@ -3,6 +3,9 @@
 Imports AxShockwaveFlashObjects
 Imports System.Collections.Specialized
 Imports System.IO
+Imports System.Runtime.InteropServices
+Imports System.Security.Principal
+Imports System.ComponentModel
 
 Module GUIDosboxCustomFunction
     ''' <summary>
@@ -94,5 +97,58 @@ Module GUIDosboxCustomFunction
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
     End Sub
+
+
+#Region " Gestion des privilèges "
+
+    ''' <summary>
+    ''' Vérifie le niveau d'exécution de l'application (Administrateur - Normal)
+    ''' </summary>
+    ''' <returns>True --> Administrateur (admin), False --> Normal (User) </returns>
+    Public Function RunAsAdmin() As Boolean
+        Dim user As New WindowsPrincipal(WindowsIdentity.GetCurrent())
+        Dim HaveAdminRight As Boolean = user.IsInRole(WindowsBuiltInRole.Administrator)
+        If HaveAdminRight Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    ''' <summary>
+    ''' Lance l'application en mode administrateur.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub RunAsAdminNow()
+        Dim processInfo As New ProcessStartInfo()
+        processInfo.Verb = "runas"
+        processInfo.FileName = Application.ExecutablePath
+        Try
+            Process.Start(processInfo)
+        Catch ex As Exception
+            'Do nothing. Probably the user canceled the UAC window
+        End Try
+    End Sub
+
+    ''' <summary>
+    ''' Lance le bon form (tools) après avoir été lancé en mode administrateur.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public Sub ShowGUIDosboxForm(ByVal FormName As String)
+        Dim ShowedForm As Windows.Forms.Form
+        Select Case FormName
+            Case "XCopyApp"
+                ShowedForm = XCopyApp
+            Case Else
+                ShowedForm = CP
+        End Select
+
+        CP.Hide()
+        ShowedForm.Show()
+
+    End Sub
+
+#End Region
     
+
 End Module

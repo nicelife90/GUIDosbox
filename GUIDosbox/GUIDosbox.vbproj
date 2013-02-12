@@ -189,6 +189,12 @@
     <Compile Include="CompactApp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmMsgBox.Designer.vb">
+      <DependentUpon>frmMsgBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmMsgBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="GUIDosboxCustomFunction.vb" />
     <Compile Include="HelpApp.Designer.vb">
       <DependentUpon>HelpApp.vb</DependentUpon>
@@ -302,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Rectangle.resx">
       <DependentUpon>GUIDosbox_Rectangle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMsgBox.resx">
+      <DependentUpon>frmMsgBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpApp.resx">
       <DependentUpon>HelpApp.vb</DependentUpon>

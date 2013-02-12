@@ -32,6 +32,7 @@ Public Class XCopyApp
 #End Region
 
     Private Sub xcopyApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
+       
         'Démmarage de la console
         myConsole.StartConsole()
 

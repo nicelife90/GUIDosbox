@@ -52,11 +52,15 @@ Partial Class CP
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.FlashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPEN = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
+        Me.lblMode = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.lblUser = New System.Windows.Forms.ToolStripStatusLabel()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.HeaderFlashFR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashCPFR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashCPEN, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.StatusStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
@@ -303,12 +307,43 @@ Partial Class CP
         Me.FlashCPEN.Size = New System.Drawing.Size(918, 696)
         Me.FlashCPEN.TabIndex = 9
         '
+        'StatusStrip1
+        '
+        Me.StatusStrip1.BackColor = System.Drawing.Color.Black
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.lblMode, Me.lblUser})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 448)
+        Me.StatusStrip1.Name = "StatusStrip1"
+        Me.StatusStrip1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
+        Me.StatusStrip1.Size = New System.Drawing.Size(705, 22)
+        Me.StatusStrip1.SizingGrip = False
+        Me.StatusStrip1.TabIndex = 10
+        Me.StatusStrip1.Text = "StatusStrip1"
+        '
+        'lblMode
+        '
+        Me.lblMode.Font = New System.Drawing.Font("Lucida Console", 8.25!)
+        Me.lblMode.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblMode.Name = "lblMode"
+        Me.lblMode.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblMode.Size = New System.Drawing.Size(47, 17)
+        Me.lblMode.Text = "{Mode}"
+        '
+        'lblUser
+        '
+        Me.lblUser.Font = New System.Drawing.Font("Lucida Console", 8.25!)
+        Me.lblUser.ForeColor = System.Drawing.Color.LightBlue
+        Me.lblUser.Name = "lblUser"
+        Me.lblUser.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.lblUser.Size = New System.Drawing.Size(75, 17)
+        Me.lblUser.Text = "{UserName}"
+        '
         'CP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
         Me.ClientSize = New System.Drawing.Size(705, 470)
+        Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.FlashHeader)
         Me.Controls.Add(Me.chkbxLangue)
@@ -331,6 +366,8 @@ Partial Class CP
         CType(Me.FlashCPFR, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FlashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.FlashCPEN, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.StatusStrip1.ResumeLayout(False)
+        Me.StatusStrip1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -364,5 +401,8 @@ Partial Class CP
     Friend WithEvents SYSTEMINFOToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents SUBSTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
+    Friend WithEvents lblMode As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents lblUser As System.Windows.Forms.ToolStripStatusLabel
 
 End Class

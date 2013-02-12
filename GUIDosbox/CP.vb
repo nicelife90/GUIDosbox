@@ -2,6 +2,7 @@
 'http://technet.microsoft.com/en-us/library/bb490928.aspx
 
 Option Strict On
+Imports System.IO
 
 Public Class CP
 
@@ -28,8 +29,14 @@ Public Class CP
     End Sub
 
     Private Sub XcopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XcopyToolStripMenuItem.Click
-        Me.Hide()
-        XCopyApp.Show()
+        'Vérification des droits
+        If Not RunAsAdmin() Then
+            My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "XCopyApp", False)
+            frmMsgBox.Show()
+        Else
+            Me.Hide()
+            XCopyApp.Show()
+        End If
     End Sub
 
     Private Sub COmToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
@@ -190,14 +197,33 @@ Public Class CP
             End Select
         End If
 
+
+        'Ouverture du form (tools) après avoir été lancé en mode administrateur.
+        Try
+            If File.Exists(Path.GetTempPath & "\stf.guidb") Then
+                Dim FormToShow As String
+                FormToShow = System.IO.File.ReadAllText(Path.GetTempPath & "\stf.guidb")
+                File.Delete(Path.GetTempPath & "\stf.guidb")
+                ShowGUIDosboxForm(FormToShow)
+            End If
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors du démmarage de l'application en mode administrateur, " & ex.Message, _
+                 MsgBoxStyle.Information, My.Application.GetType.Name)
+        End Try
+
     End Sub
 #End Region
 
     Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-
         'Préparation de l'interface d'utilisateur
         Try
+
+            'Status Strip
+            lblUser.Text = "Bienvenue, " & Environment.UserName & " : "
+            lblMode.ForeColor = If(RunAsAdmin, Color.DarkOrange, Color.RoyalBlue)
+            lblMode.Text = If(RunAsAdmin(), "Mode Administrateur", "Mode Utilisateur")
+
             'Déclaration des chemins pour les nouveaux fichiers 
             Dim MovieENPath As String = System.IO.Path.GetTempPath & "\" & "Menu_EN_GuiDosBox.swf"
             Dim MovieFRPath As String = System.IO.Path.GetTempPath & "\" & "Menu_GuiDosBox.swf"
