@@ -55,7 +55,7 @@ Public Class XCopyApp
         Dim Arguments As String = Nothing
 
         'Arguments
-        Dim args(20) As String
+        Dim args(19) As String
         For Each arg In args
             arg = Nothing
         Next
