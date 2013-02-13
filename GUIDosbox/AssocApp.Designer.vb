@@ -41,6 +41,7 @@ Partial Class AssocApp
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.ShapeContainer1 = New Microsoft.VisualBasic.PowerPacks.ShapeContainer()
         Me.RectangleShape1 = New Microsoft.VisualBasic.PowerPacks.RectangleShape()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -49,7 +50,7 @@ Partial Class AssocApp
         Me.chkbxLangue.AutoSize = True
         Me.chkbxLangue.Checked = True
         Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(527, 46)
+        Me.chkbxLangue.Location = New System.Drawing.Point(6, 487)
         Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.chkbxLangue.Name = "chkbxLangue"
         Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
@@ -64,7 +65,7 @@ Partial Class AssocApp
         Me.flashHeader.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.flashHeader.Name = "flashHeader"
         Me.flashHeader.OcxState = CType(resources.GetObject("flashHeader.OcxState"), System.Windows.Forms.AxHost.State)
-        Me.flashHeader.Size = New System.Drawing.Size(576, 40)
+        Me.flashHeader.Size = New System.Drawing.Size(594, 40)
         Me.flashHeader.TabIndex = 20
         '
         'btnSend
@@ -73,9 +74,10 @@ Partial Class AssocApp
         Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnSend.Location = New System.Drawing.Point(296, 487)
+        Me.btnSend.Location = New System.Drawing.Point(260, 478)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(75, 23)
         Me.btnSend.TabIndex = 33
@@ -86,11 +88,12 @@ Partial Class AssocApp
         '
         Me.optAdvanceMode.AutoSize = True
         Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
         Me.optAdvanceMode.Location = New System.Drawing.Point(87, 514)
         Me.optAdvanceMode.Name = "optAdvanceMode"
-        Me.optAdvanceMode.Size = New System.Drawing.Size(112, 15)
+        Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
         Me.optAdvanceMode.TabIndex = 32
         Me.optAdvanceMode.Text = "Mode avancé"
         Me.optAdvanceMode.UseVisualStyleBackColor = False
@@ -99,11 +102,11 @@ Partial Class AssocApp
         '
         Me.lblTypeFichier.AutoSize = True
         Me.lblTypeFichier.BackColor = System.Drawing.Color.Transparent
-        Me.lblTypeFichier.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.lblTypeFichier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.lblTypeFichier.ForeColor = System.Drawing.Color.LightBlue
         Me.lblTypeFichier.Location = New System.Drawing.Point(18, 101)
         Me.lblTypeFichier.Name = "lblTypeFichier"
-        Me.lblTypeFichier.Size = New System.Drawing.Size(141, 11)
+        Me.lblTypeFichier.Size = New System.Drawing.Size(124, 11)
         Me.lblTypeFichier.TabIndex = 31
         Me.lblTypeFichier.Text = "Type de fichier :"
         '
@@ -111,11 +114,11 @@ Partial Class AssocApp
         '
         Me.lblExtention.AutoSize = True
         Me.lblExtention.BackColor = System.Drawing.Color.Transparent
-        Me.lblExtention.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.lblExtention.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.lblExtention.ForeColor = System.Drawing.Color.LightBlue
         Me.lblExtention.Location = New System.Drawing.Point(18, 77)
         Me.lblExtention.Name = "lblExtention"
-        Me.lblExtention.Size = New System.Drawing.Size(93, 11)
+        Me.lblExtention.Size = New System.Drawing.Size(82, 11)
         Me.lblExtention.TabIndex = 30
         Me.lblExtention.Text = "Extension :"
         '
@@ -123,11 +126,11 @@ Partial Class AssocApp
         '
         Me.lblCommande.AutoSize = True
         Me.lblCommande.BackColor = System.Drawing.Color.Transparent
-        Me.lblCommande.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.lblCommande.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.lblCommande.ForeColor = System.Drawing.Color.LightBlue
         Me.lblCommande.Location = New System.Drawing.Point(4, 454)
         Me.lblCommande.Name = "lblCommande"
-        Me.lblCommande.Size = New System.Drawing.Size(149, 11)
+        Me.lblCommande.Size = New System.Drawing.Size(131, 11)
         Me.lblCommande.TabIndex = 29
         Me.lblCommande.Text = "Commande exécuté :"
         '
@@ -136,11 +139,11 @@ Partial Class AssocApp
         Me.txtCmdExec.BackColor = System.Drawing.Color.Black
         Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.txtCmdExec.Enabled = False
-        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtCmdExec.Location = New System.Drawing.Point(159, 452)
+        Me.txtCmdExec.Location = New System.Drawing.Point(141, 452)
         Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(404, 18)
+        Me.txtCmdExec.Size = New System.Drawing.Size(450, 18)
         Me.txtCmdExec.TabIndex = 28
         '
         'btnHelp
@@ -149,9 +152,10 @@ Partial Class AssocApp
         Me.btnHelp.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnHelp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
         Me.btnHelp.Location = New System.Drawing.Point(5, 507)
+        Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(75, 23)
         Me.btnHelp.TabIndex = 27
@@ -164,9 +168,10 @@ Partial Class AssocApp
         Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnApply.Location = New System.Drawing.Point(377, 507)
+        Me.btnApply.Location = New System.Drawing.Point(405, 505)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(90, 23)
         Me.btnApply.TabIndex = 26
@@ -179,9 +184,10 @@ Partial Class AssocApp
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnBack.Location = New System.Drawing.Point(473, 507)
+        Me.btnBack.Location = New System.Drawing.Point(501, 505)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(90, 23)
         Me.btnBack.TabIndex = 25
@@ -194,9 +200,10 @@ Partial Class AssocApp
         Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnClear.Location = New System.Drawing.Point(473, 478)
+        Me.btnClear.Location = New System.Drawing.Point(501, 476)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(90, 23)
         Me.btnClear.TabIndex = 24
@@ -209,9 +216,10 @@ Partial Class AssocApp
         Me.btnExtShow.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnExtShow.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnExtShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnExtShow.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnExtShow.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnExtShow.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnExtShow.Location = New System.Drawing.Point(377, 478)
+        Me.btnExtShow.Location = New System.Drawing.Point(405, 476)
+        Me.btnExtShow.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnExtShow.Name = "btnExtShow"
         Me.btnExtShow.Size = New System.Drawing.Size(90, 23)
         Me.btnExtShow.TabIndex = 23
@@ -222,7 +230,7 @@ Partial Class AssocApp
         '
         Me.txtExtSet.BackColor = System.Drawing.Color.Black
         Me.txtExtSet.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtExtSet.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtExtSet.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtExtSet.ForeColor = System.Drawing.Color.LightBlue
         Me.txtExtSet.Location = New System.Drawing.Point(165, 75)
         Me.txtExtSet.Name = "txtExtSet"
@@ -233,7 +241,7 @@ Partial Class AssocApp
         '
         Me.txtExtFile.BackColor = System.Drawing.Color.Black
         Me.txtExtFile.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtExtFile.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtExtFile.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtExtFile.ForeColor = System.Drawing.Color.LightBlue
         Me.txtExtFile.Location = New System.Drawing.Point(165, 99)
         Me.txtExtFile.Name = "txtExtFile"
@@ -243,12 +251,12 @@ Partial Class AssocApp
         'myConsole
         '
         Me.myConsole.BackColor = System.Drawing.Color.Gainsboro
-        Me.myConsole.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular)
+        Me.myConsole.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.myConsole.Location = New System.Drawing.Point(5, 140)
         Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
         Me.myConsole.myConsole = Nothing
         Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(557, 306)
+        Me.myConsole.Size = New System.Drawing.Size(586, 306)
         Me.myConsole.TabIndex = 19
         '
         'ShapeContainer1
@@ -257,7 +265,7 @@ Partial Class AssocApp
         Me.ShapeContainer1.Margin = New System.Windows.Forms.Padding(0)
         Me.ShapeContainer1.Name = "ShapeContainer1"
         Me.ShapeContainer1.Shapes.AddRange(New Microsoft.VisualBasic.PowerPacks.Shape() {Me.RectangleShape1})
-        Me.ShapeContainer1.Size = New System.Drawing.Size(568, 536)
+        Me.ShapeContainer1.Size = New System.Drawing.Size(595, 556)
         Me.ShapeContainer1.TabIndex = 34
         Me.ShapeContainer1.TabStop = False
         '
@@ -276,15 +284,24 @@ Partial Class AssocApp
         Me.RectangleShape1.SelectionColor = System.Drawing.Color.Transparent
         Me.RectangleShape1.Size = New System.Drawing.Size(328, 78)
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 534)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(595, 22)
+        Me.footer.TabIndex = 35
+        '
         'AssocApp
         '
         Me.AcceptButton = Me.btnSend
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(8.0!, 11.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.ClientSize = New System.Drawing.Size(568, 536)
+        Me.ClientSize = New System.Drawing.Size(595, 556)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.lblTypeFichier)
@@ -303,7 +320,7 @@ Partial Class AssocApp
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.ShapeContainer1)
         Me.DoubleBuffered = True
-        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular)
+        Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -311,6 +328,7 @@ Partial Class AssocApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "AssocApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI Dosbox - ASSOC"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -335,4 +353,5 @@ Partial Class AssocApp
     Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
     Friend WithEvents ShapeContainer1 As Microsoft.VisualBasic.PowerPacks.ShapeContainer
     Friend WithEvents RectangleShape1 As Microsoft.VisualBasic.PowerPacks.RectangleShape
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class
