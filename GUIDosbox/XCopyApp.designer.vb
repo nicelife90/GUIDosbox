@@ -71,6 +71,7 @@ Partial Class XCopyApp
         Me.GuiDosbox_Groupbox1 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.txtExclude = New GUIDosbox.GUIDosbox_Textbox()
         Me.optExclude = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbOptions.SuspendLayout()
         Me.gbUniqueOptions.SuspendLayout()
@@ -220,7 +221,7 @@ Partial Class XCopyApp
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnSend.Location = New System.Drawing.Point(308, 480)
+        Me.btnSend.Location = New System.Drawing.Point(319, 480)
         Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(82, 23)
@@ -717,14 +718,23 @@ Partial Class XCopyApp
         Me.optExclude.Text = "/EXCLUDE"
         Me.optExclude.UseVisualStyleBackColor = False
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 532)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(721, 22)
+        Me.footer.TabIndex = 74
+        '
         'XCopyApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(721, 535)
+        Me.ClientSize = New System.Drawing.Size(721, 554)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.GuiDosbox_Groupbox1)
         Me.Controls.Add(Me.gbOptions)
         Me.Controls.Add(Me.gbDate)
@@ -751,6 +761,8 @@ Partial Class XCopyApp
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "XCopyApp"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - XCOPY"
@@ -817,4 +829,5 @@ Partial Class XCopyApp
     Friend WithEvents GuiDosbox_Groupbox1 As GUIDosbox.GUIDosbox_Groupbox
     Friend WithEvents txtExclude As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents optExclude As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

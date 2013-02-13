@@ -322,7 +322,7 @@ Partial Class CP
         'lblMode
         '
         Me.lblMode.Font = New System.Drawing.Font("Lucida Console", 8.25!)
-        Me.lblMode.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.lblMode.ForeColor = System.Drawing.Color.MediumPurple
         Me.lblMode.Name = "lblMode"
         Me.lblMode.RightToLeft = System.Windows.Forms.RightToLeft.No
         Me.lblMode.Size = New System.Drawing.Size(47, 17)

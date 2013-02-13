@@ -3,7 +3,6 @@
 Public Class XCopyApp
 
 #Region "Mode avancé"
-
     'Variable pour le mode avancé.
     Private AdvanceMode As Boolean = False
 
@@ -12,14 +11,18 @@ Public Class XCopyApp
             AdvanceMode = True
             btnSend.Visible = False
             btnHelp.Visible = False
+            btnApply.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(True)
         Else
             AdvanceMode = False
             btnSend.Visible = True
             btnHelp.Visible = True
+            btnApply.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(False)
         End If
     End Sub
 
@@ -28,11 +31,9 @@ Public Class XCopyApp
         myConsole.SendCommand(txtCmdExec.Text)
         txtCmdExec.Text = Nothing
     End Sub
-
 #End Region
 
     Private Sub xcopyApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-       
         'Démmarage de la console
         myConsole.StartConsole()
 
@@ -49,7 +50,6 @@ Public Class XCopyApp
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
-
         'Déclaration des variables et constantes.
         Const App As String = "xcopy "
         Dim Arguments As String = Nothing
@@ -169,12 +169,6 @@ Public Class XCopyApp
         
         'Envoi de la commande.
         txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
-
-        'Reset des champs textes.
-        txtDestination.Text = Nothing
-        txtSource.Text = Nothing
-        txtExclude.Text = Nothing
-
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
@@ -305,7 +299,6 @@ Public Class XCopyApp
             btnDossier.Text = "Dossier"
             btnFichier.Text = "Fichier"
             btnHelp.Text = "Aide"
-
         Else                                ' boite PAS cochée=EN 
             chkbxLangue.Text = "English"
             lblCmdExec.Text = "Just executed:"
@@ -317,7 +310,6 @@ Public Class XCopyApp
             btnDossier.Text = "Folder"
             btnFichier.Text = "File"
             btnHelp.Text = "Help"
-
         End If
     End Sub
 #End Region

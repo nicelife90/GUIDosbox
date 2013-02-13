@@ -15,6 +15,7 @@ Public Class AssocApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(True)
         Else
             AdvanceMode = False
             btnExtShow.Visible = True
@@ -22,6 +23,7 @@ Public Class AssocApp
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(False)
         End If
     End Sub
 
@@ -41,33 +43,36 @@ Public Class AssocApp
         btnSend.Visible = False
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "assoc.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.assoc, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "assoc.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "assoc")
 
     End Sub
 
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-        Dim Args1 As String = "" 'déclaraiton des variable
-        Dim Args2 As String = ""
+        'Déclaraiton des variables et constantes
+        Const App As String = "assoc "
+        Dim Arguments As String = Nothing
 
-        'Argument 1 .ext Extension
-        Args1 = "" & txtExtSet.Text & ""
-        'Argument 2 Type de fichier
-        Args2 = "" & txtExtFile.Text & ""
+        'Arguments
+        Dim args(1) As String
+        For Each arg In args
+            arg = Nothing
+        Next
 
+        'args(0) --> .ext (Extension)
+        args(0) = txtExtSet.Text & "="
+        'args(1) --> Type de fichier
+        args(1) = txtExtFile.Text
 
-        myConsole.SendCommand("assoc " + Args1 + "=" + Args2)  'démmarage du process
-        txtCmdExec.Text = "assoc " & Args1 + "=" + Args2 'Renvoi de la commande exécuter au form Command return
+        'Création de la chiane d'arguments
+        For Each arg In args
+            Arguments += arg
+        Next
+
+        'Envoi de la commande
+        txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
+
 
     End Sub
 
@@ -79,28 +84,19 @@ Public Class AssocApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des textbox
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = Nothing
-            End If
-        Next
-        'Reset de la console.
-        myConsole.Cls()
+        'Reset des textbox et de la console
+        ClearTextBox(Me)
         txtCmdExec.Text = "cls"
     End Sub
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        myConsole.SendCommand("assoc /?")
-        txtCmdExec.Text = "assoc /?"
+        txtCmdExec.Text = myConsole.SendCommand("assoc /?")
     End Sub
 
     Private Sub btnExtShow_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnExtShow.Click
         'Affichage des extentioms.
-        myConsole.SendCommand("assoc")
-        txtCmdExec.Text = "assoc"
+        txtCmdExec.Text = myConsole.SendCommand("assoc")
     End Sub
 
     ''' <summary>
@@ -138,6 +134,4 @@ Public Class AssocApp
     End Sub
 #End Region
 
-   
-   
 End Class

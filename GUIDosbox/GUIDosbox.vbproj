@@ -183,6 +183,12 @@
     <Compile Include="CustomControl\GUIDosbox_Rectangle.vb">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="CustomControl\GUIDosbox_StatusStrip.Designer.vb">
+      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_StatusStrip.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="CustomControl\GUIDosbox_Textbox.vb">
       <SubType>Component</SubType>
     </Compile>
@@ -308,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Rectangle.resx">
       <DependentUpon>GUIDosbox_Rectangle.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_StatusStrip.resx">
+      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMsgBox.resx">
       <DependentUpon>frmMsgBox.vb</DependentUpon>

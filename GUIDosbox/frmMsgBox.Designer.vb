@@ -24,7 +24,6 @@ Partial Class frmMsgBox
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmMsgBox))
         Me.GuiDosbox_Label1 = New GUIDosbox.GUIDosbox_Label()
-        Me.optDontShow = New GUIDosbox.GUIDosbox_Checkbox()
         Me.btnNon = New GUIDosbox.GUIDosbox_Button()
         Me.btnOui = New GUIDosbox.GUIDosbox_Button()
         Me.SuspendLayout()
@@ -41,20 +40,6 @@ Partial Class frmMsgBox
         Me.GuiDosbox_Label1.Size = New System.Drawing.Size(614, 88)
         Me.GuiDosbox_Label1.TabIndex = 3
         Me.GuiDosbox_Label1.Text = resources.GetString("GuiDosbox_Label1.Text")
-        '
-        'optDontShow
-        '
-        Me.optDontShow.AutoSize = True
-        Me.optDontShow.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.optDontShow.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optDontShow.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optDontShow.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optDontShow.Location = New System.Drawing.Point(7, 171)
-        Me.optDontShow.Name = "optDontShow"
-        Me.optDontShow.Size = New System.Drawing.Size(210, 15)
-        Me.optDontShow.TabIndex = 2
-        Me.optDontShow.Text = "Ne plus afficher ce message"
-        Me.optDontShow.UseVisualStyleBackColor = False
         '
         'btnNon
         '
@@ -93,15 +78,15 @@ Partial Class frmMsgBox
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer), CType(CType(35, Byte), Integer))
-        Me.ClientSize = New System.Drawing.Size(648, 193)
+        Me.ClientSize = New System.Drawing.Size(648, 176)
         Me.ControlBox = False
         Me.Controls.Add(Me.GuiDosbox_Label1)
-        Me.Controls.Add(Me.optDontShow)
         Me.Controls.Add(Me.btnNon)
         Me.Controls.Add(Me.btnOui)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
+        Me.MaximumSize = New System.Drawing.Size(664, 214)
         Me.MinimizeBox = False
         Me.Name = "frmMsgBox"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -113,6 +98,5 @@ Partial Class frmMsgBox
     End Sub
     Friend WithEvents btnOui As GUIDosbox.GUIDosbox_Button
     Friend WithEvents btnNon As GUIDosbox.GUIDosbox_Button
-    Friend WithEvents optDontShow As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents GuiDosbox_Label1 As GUIDosbox.GUIDosbox_Label
 End Class

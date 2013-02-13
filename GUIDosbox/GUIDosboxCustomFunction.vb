@@ -1,11 +1,9 @@
 ﻿Option Strict On
 
-Imports AxShockwaveFlashObjects
-Imports System.Collections.Specialized
 Imports System.IO
-Imports System.Runtime.InteropServices
+Imports AxShockwaveFlashObjects
 Imports System.Security.Principal
-Imports System.ComponentModel
+Imports System.Collections.Specialized
 
 Module GUIDosboxCustomFunction
     ''' <summary>
@@ -135,20 +133,52 @@ Module GUIDosboxCustomFunction
     ''' </summary>
     ''' <remarks></remarks>
     Public Sub ShowGUIDosboxForm(ByVal FormName As String)
+
         Dim ShowedForm As Windows.Forms.Form
+
         Select Case FormName
-            Case "XCopyApp"
+            Case "assoc"
+                ShowedForm = AssocApp
+            Case "attrib"
+                ShowedForm = AttribApp
+            Case "cacls"
+                ShowedForm = CaclsApp
+            Case "chkdsk"
+                ShowedForm = CHKDSkApp
+            Case "cmd"
+                ShowedForm = CMDConsole
+            Case "compact"
+                ShowedForm = CompactApp
+            Case "comp"
+                ShowedForm = CompApp
+            Case "help"
+                ShowedForm = HelpApp
+            Case "rd"
+                ShowedForm = RDApp
+            Case "subst"
+                ShowedForm = SUBSTApp
+            Case "systeminfo"
+                ShowedForm = SystemInfoApp
+            Case "tracert"
+                ShowedForm = TracertApp
+            Case "type"
+                ShowedForm = TypeApp
+            Case "where"
+                ShowedForm = WhereApp
+            Case "whoami"
+                ShowedForm = WhoamiApp
+            Case "xcopy"
                 ShowedForm = XCopyApp
+
             Case Else
                 ShowedForm = CP
         End Select
 
         CP.Hide()
         ShowedForm.Show()
-
     End Sub
 
 #End Region
-    
+
 
 End Module

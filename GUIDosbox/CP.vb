@@ -29,9 +29,14 @@ Public Class CP
     End Sub
 
     Private Sub XcopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XcopyToolStripMenuItem.Click
-        'Vérification des droits
+        'XcopyApp
         If Not RunAsAdmin() Then
-            My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "XCopyApp", False)
+            Try
+                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "xcopy", False)
+            Catch ex As Exception
+                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+            End Try
             frmMsgBox.Show()
         Else
             Me.Hide()
@@ -39,9 +44,20 @@ Public Class CP
         End If
     End Sub
 
-    Private Sub COmToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
-        Me.Hide()
-        AssocApp.Show()
+    Private Sub AssocToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
+        'AssocApp
+        If Not RunAsAdmin() Then
+            Try
+                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "assoc", False)
+            Catch ex As Exception
+                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+            End Try
+            frmMsgBox.Show()
+        Else
+            Me.Hide()
+            AssocApp.Show()
+        End If
     End Sub
 
     Private Sub AideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -221,7 +237,7 @@ Public Class CP
 
             'Status Strip
             lblUser.Text = "Bienvenue, " & Environment.UserName & " : "
-            lblMode.ForeColor = If(RunAsAdmin, Color.DarkOrange, Color.RoyalBlue)
+            lblMode.ForeColor = If(RunAsAdmin, Color.MediumPurple, Color.RoyalBlue)
             lblMode.Text = If(RunAsAdmin(), "Mode Administrateur", "Mode Utilisateur")
 
             'Déclaration des chemins pour les nouveaux fichiers 
