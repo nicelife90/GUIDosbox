@@ -11,4 +11,6 @@ GUIDosbox
 =========
 Console CMD version GUI
 
+[All informations and tutorial available soon]
+
 
