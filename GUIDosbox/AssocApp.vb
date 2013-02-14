@@ -15,7 +15,7 @@ Public Class AssocApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
-            footer.AdvanceMode(True)
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnExtShow.Visible = True
@@ -23,7 +23,7 @@ Public Class AssocApp
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
-            footer.AdvanceMode(False)
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -44,6 +44,9 @@ Public Class AssocApp
 
         'Loading du header flash.
         LoadHeader(flashHeader, "assoc")
+
+        'Niveau de privilèges requis par l'utilitaire.
+        footer.PrivilegeLevelNeeded(1)
 
     End Sub
 

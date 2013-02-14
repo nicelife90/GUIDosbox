@@ -41,21 +41,21 @@ Partial Class CaclsApp
         Me.optL = New System.Windows.Forms.CheckBox()
         Me.GuiDosboxGroupbox2 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.cbUserP = New GUIDosbox.GUIDosbox_Combobox()
-        Me.optPControlT = New System.Windows.Forms.CheckBox()
         Me.lblUtili = New System.Windows.Forms.Label()
-        Me.optPAucun = New System.Windows.Forms.CheckBox()
         Me.optP = New System.Windows.Forms.CheckBox()
-        Me.optPEcrire = New System.Windows.Forms.CheckBox()
-        Me.optPLecture = New System.Windows.Forms.CheckBox()
-        Me.optPModif = New System.Windows.Forms.CheckBox()
+        Me.optPLecture = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optPAucun = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optPControlT = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optPModif = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optPEcrire = New GUIDosbox.GUIDosbox_RadioButton()
         Me.GuiDosboxGroupbox3 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optGControlT = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optGModif = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optGEcrire = New GUIDosbox.GUIDosbox_RadioButton()
+        Me.optGLecture = New GUIDosbox.GUIDosbox_RadioButton()
         Me.cbUserG = New GUIDosbox.GUIDosbox_Combobox()
-        Me.optGControlT = New System.Windows.Forms.CheckBox()
         Me.lblutili2 = New System.Windows.Forms.Label()
-        Me.optGLecture = New System.Windows.Forms.CheckBox()
-        Me.optGModif = New System.Windows.Forms.CheckBox()
         Me.optG = New System.Windows.Forms.CheckBox()
-        Me.optGEcrire = New System.Windows.Forms.CheckBox()
         Me.GuiDosboxGroupbox4 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.cbUserR = New GUIDosbox.GUIDosbox_Combobox()
         Me.lblUtili3 = New System.Windows.Forms.Label()
@@ -69,6 +69,9 @@ Partial Class CaclsApp
         Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
         Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
+        Me.btnYes = New GUIDosbox.GUIDosbox_Button()
+        Me.btnNo = New GUIDosbox.GUIDosbox_Button()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosboxGroupbox6.SuspendLayout()
         Me.GuiDosboxGroupbox5.SuspendLayout()
@@ -129,6 +132,7 @@ Partial Class CaclsApp
         Me.btnBrowse.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.btnBrowse.ForeColor = System.Drawing.Color.LightBlue
         Me.btnBrowse.Location = New System.Drawing.Point(6, 14)
+        Me.btnBrowse.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnBrowse.Name = "btnBrowse"
         Me.btnBrowse.Size = New System.Drawing.Size(91, 23)
         Me.btnBrowse.TabIndex = 4
@@ -165,6 +169,7 @@ Partial Class CaclsApp
         'cbUserD
         '
         Me.cbUserD.BackColor = System.Drawing.Color.Black
+        Me.cbUserD.DropDownWidth = 330
         Me.cbUserD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbUserD.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.cbUserD.ForeColor = System.Drawing.Color.LightBlue
@@ -172,6 +177,7 @@ Partial Class CaclsApp
         Me.cbUserD.Location = New System.Drawing.Point(5, 41)
         Me.cbUserD.Name = "cbUserD"
         Me.cbUserD.Size = New System.Drawing.Size(147, 19)
+        Me.cbUserD.Sorted = True
         Me.cbUserD.TabIndex = 3
         '
         'lblUtili4
@@ -181,9 +187,9 @@ Partial Class CaclsApp
         Me.lblUtili4.Location = New System.Drawing.Point(3, 27)
         Me.lblUtili4.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.lblUtili4.Name = "lblUtili4"
-        Me.lblUtili4.Size = New System.Drawing.Size(89, 11)
+        Me.lblUtili4.Size = New System.Drawing.Size(138, 11)
         Me.lblUtili4.TabIndex = 2
-        Me.lblUtili4.Text = "Utilisateur:"
+        Me.lblUtili4.Text = "Utilisateur/Groupe:"
         '
         'optD
         '
@@ -223,7 +229,7 @@ Partial Class CaclsApp
         Me.optC.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optC.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optC.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optC.Location = New System.Drawing.Point(74, 39)
+        Me.optC.Location = New System.Drawing.Point(141, 17)
         Me.optC.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.optC.Name = "optC"
         Me.optC.Size = New System.Drawing.Size(42, 15)
@@ -237,7 +243,7 @@ Partial Class CaclsApp
         Me.optT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optT.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optT.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optT.Location = New System.Drawing.Point(74, 18)
+        Me.optT.Location = New System.Drawing.Point(89, 18)
         Me.optT.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.optT.Name = "optT"
         Me.optT.Size = New System.Drawing.Size(42, 15)
@@ -251,7 +257,7 @@ Partial Class CaclsApp
         Me.optE.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optE.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optE.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optE.Location = New System.Drawing.Point(145, 18)
+        Me.optE.Location = New System.Drawing.Point(193, 17)
         Me.optE.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.optE.Name = "optE"
         Me.optE.Size = New System.Drawing.Size(42, 15)
@@ -265,7 +271,7 @@ Partial Class CaclsApp
         Me.optM.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optM.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optM.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optM.Location = New System.Drawing.Point(145, 39)
+        Me.optM.Location = New System.Drawing.Point(88, 39)
         Me.optM.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.optM.Name = "optM"
         Me.optM.Size = New System.Drawing.Size(42, 15)
@@ -279,7 +285,7 @@ Partial Class CaclsApp
         Me.optL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optL.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optL.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optL.Location = New System.Drawing.Point(201, 18)
+        Me.optL.Location = New System.Drawing.Point(141, 38)
         Me.optL.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
         Me.optL.Name = "optL"
         Me.optL.Size = New System.Drawing.Size(42, 15)
@@ -292,13 +298,13 @@ Partial Class CaclsApp
         Me.GuiDosboxGroupbox2.BackColor = System.Drawing.Color.Black
         Me.GuiDosboxGroupbox2.BorderColor = System.Drawing.Color.LightBlue
         Me.GuiDosboxGroupbox2.Controls.Add(Me.cbUserP)
-        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPControlT)
         Me.GuiDosboxGroupbox2.Controls.Add(Me.lblUtili)
-        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPAucun)
         Me.GuiDosboxGroupbox2.Controls.Add(Me.optP)
-        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPEcrire)
         Me.GuiDosboxGroupbox2.Controls.Add(Me.optPLecture)
+        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPAucun)
+        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPControlT)
         Me.GuiDosboxGroupbox2.Controls.Add(Me.optPModif)
+        Me.GuiDosboxGroupbox2.Controls.Add(Me.optPEcrire)
         Me.GuiDosboxGroupbox2.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.GuiDosboxGroupbox2.ForeColor = System.Drawing.Color.LightBlue
         Me.GuiDosboxGroupbox2.Location = New System.Drawing.Point(9, 263)
@@ -310,53 +316,27 @@ Partial Class CaclsApp
         'cbUserP
         '
         Me.cbUserP.BackColor = System.Drawing.Color.Black
+        Me.cbUserP.DropDownWidth = 330
         Me.cbUserP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbUserP.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.cbUserP.ForeColor = System.Drawing.Color.LightBlue
         Me.cbUserP.FormattingEnabled = True
-        Me.cbUserP.Location = New System.Drawing.Point(121, 29)
+        Me.cbUserP.Location = New System.Drawing.Point(151, 29)
         Me.cbUserP.Name = "cbUserP"
         Me.cbUserP.Size = New System.Drawing.Size(163, 19)
+        Me.cbUserP.Sorted = True
         Me.cbUserP.TabIndex = 5
-        '
-        'optPControlT
-        '
-        Me.optPControlT.AutoSize = True
-        Me.optPControlT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optPControlT.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.optPControlT.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optPControlT.Location = New System.Drawing.Point(151, 70)
-        Me.optPControlT.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optPControlT.Name = "optPControlT"
-        Me.optPControlT.Size = New System.Drawing.Size(140, 15)
-        Me.optPControlT.TabIndex = 3
-        Me.optPControlT.Text = "Control Total (F)"
-        Me.optPControlT.UseVisualStyleBackColor = True
         '
         'lblUtili
         '
         Me.lblUtili.AutoSize = True
         Me.lblUtili.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.lblUtili.Location = New System.Drawing.Point(29, 32)
+        Me.lblUtili.Location = New System.Drawing.Point(8, 32)
         Me.lblUtili.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.lblUtili.Name = "lblUtili"
-        Me.lblUtili.Size = New System.Drawing.Size(89, 11)
+        Me.lblUtili.Size = New System.Drawing.Size(138, 11)
         Me.lblUtili.TabIndex = 3
-        Me.lblUtili.Text = "Utilisateur:"
-        '
-        'optPAucun
-        '
-        Me.optPAucun.AutoSize = True
-        Me.optPAucun.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optPAucun.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.optPAucun.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optPAucun.Location = New System.Drawing.Point(31, 85)
-        Me.optPAucun.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optPAucun.Name = "optPAucun"
-        Me.optPAucun.Size = New System.Drawing.Size(84, 15)
-        Me.optPAucun.TabIndex = 4
-        Me.optPAucun.Text = "Aucun (N)"
-        Me.optPAucun.UseVisualStyleBackColor = True
+        Me.lblUtili.Text = "Utilisateur/Groupe:"
         '
         'optP
         '
@@ -372,59 +352,92 @@ Partial Class CaclsApp
         Me.optP.Text = "/P"
         Me.optP.UseVisualStyleBackColor = True
         '
-        'optPEcrire
-        '
-        Me.optPEcrire.AutoSize = True
-        Me.optPEcrire.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optPEcrire.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.optPEcrire.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optPEcrire.Location = New System.Drawing.Point(31, 70)
-        Me.optPEcrire.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optPEcrire.Name = "optPEcrire"
-        Me.optPEcrire.Size = New System.Drawing.Size(105, 15)
-        Me.optPEcrire.TabIndex = 1
-        Me.optPEcrire.Text = "Écriture (W)"
-        Me.optPEcrire.UseVisualStyleBackColor = True
-        '
         'optPLecture
         '
         Me.optPLecture.AutoSize = True
+        Me.optPLecture.BackColor = System.Drawing.Color.Black
         Me.optPLecture.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optPLecture.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optPLecture.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optPLecture.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optPLecture.Location = New System.Drawing.Point(31, 55)
-        Me.optPLecture.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
+        Me.optPLecture.Location = New System.Drawing.Point(19, 54)
         Me.optPLecture.Name = "optPLecture"
-        Me.optPLecture.Size = New System.Drawing.Size(98, 15)
-        Me.optPLecture.TabIndex = 0
+        Me.optPLecture.Size = New System.Drawing.Size(99, 15)
+        Me.optPLecture.TabIndex = 47
+        Me.optPLecture.TabStop = True
         Me.optPLecture.Text = "Lecture (R)"
-        Me.optPLecture.UseVisualStyleBackColor = True
+        Me.optPLecture.UseVisualStyleBackColor = False
+        '
+        'optPAucun
+        '
+        Me.optPAucun.AutoSize = True
+        Me.optPAucun.BackColor = System.Drawing.Color.Black
+        Me.optPAucun.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optPAucun.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optPAucun.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optPAucun.Location = New System.Drawing.Point(19, 86)
+        Me.optPAucun.Name = "optPAucun"
+        Me.optPAucun.Size = New System.Drawing.Size(85, 15)
+        Me.optPAucun.TabIndex = 43
+        Me.optPAucun.TabStop = True
+        Me.optPAucun.Text = "Aucun (N)"
+        Me.optPAucun.UseVisualStyleBackColor = False
+        '
+        'optPControlT
+        '
+        Me.optPControlT.AutoSize = True
+        Me.optPControlT.BackColor = System.Drawing.Color.Black
+        Me.optPControlT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optPControlT.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optPControlT.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optPControlT.Location = New System.Drawing.Point(156, 71)
+        Me.optPControlT.Name = "optPControlT"
+        Me.optPControlT.Size = New System.Drawing.Size(148, 15)
+        Me.optPControlT.TabIndex = 44
+        Me.optPControlT.TabStop = True
+        Me.optPControlT.Text = "Contrôle Total (F)"
+        Me.optPControlT.UseVisualStyleBackColor = False
         '
         'optPModif
         '
         Me.optPModif.AutoSize = True
+        Me.optPModif.BackColor = System.Drawing.Color.Black
         Me.optPModif.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optPModif.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.optPModif.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optPModif.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optPModif.Location = New System.Drawing.Point(151, 55)
-        Me.optPModif.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
+        Me.optPModif.Location = New System.Drawing.Point(19, 71)
         Me.optPModif.Name = "optPModif"
-        Me.optPModif.Size = New System.Drawing.Size(133, 15)
-        Me.optPModif.TabIndex = 2
+        Me.optPModif.Size = New System.Drawing.Size(134, 15)
+        Me.optPModif.TabIndex = 46
+        Me.optPModif.TabStop = True
         Me.optPModif.Text = "Modification (C)"
-        Me.optPModif.UseVisualStyleBackColor = True
+        Me.optPModif.UseVisualStyleBackColor = False
+        '
+        'optPEcrire
+        '
+        Me.optPEcrire.AutoSize = True
+        Me.optPEcrire.BackColor = System.Drawing.Color.Black
+        Me.optPEcrire.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optPEcrire.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optPEcrire.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optPEcrire.Location = New System.Drawing.Point(156, 54)
+        Me.optPEcrire.Name = "optPEcrire"
+        Me.optPEcrire.Size = New System.Drawing.Size(106, 15)
+        Me.optPEcrire.TabIndex = 45
+        Me.optPEcrire.TabStop = True
+        Me.optPEcrire.Text = "Écriture (W)"
+        Me.optPEcrire.UseVisualStyleBackColor = False
         '
         'GuiDosboxGroupbox3
         '
         Me.GuiDosboxGroupbox3.BackColor = System.Drawing.Color.Black
         Me.GuiDosboxGroupbox3.BorderColor = System.Drawing.Color.LightBlue
-        Me.GuiDosboxGroupbox3.Controls.Add(Me.cbUserG)
         Me.GuiDosboxGroupbox3.Controls.Add(Me.optGControlT)
-        Me.GuiDosboxGroupbox3.Controls.Add(Me.lblutili2)
-        Me.GuiDosboxGroupbox3.Controls.Add(Me.optGLecture)
         Me.GuiDosboxGroupbox3.Controls.Add(Me.optGModif)
-        Me.GuiDosboxGroupbox3.Controls.Add(Me.optG)
         Me.GuiDosboxGroupbox3.Controls.Add(Me.optGEcrire)
+        Me.GuiDosboxGroupbox3.Controls.Add(Me.optGLecture)
+        Me.GuiDosboxGroupbox3.Controls.Add(Me.cbUserG)
+        Me.GuiDosboxGroupbox3.Controls.Add(Me.lblutili2)
+        Me.GuiDosboxGroupbox3.Controls.Add(Me.optG)
         Me.GuiDosboxGroupbox3.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.GuiDosboxGroupbox3.ForeColor = System.Drawing.Color.LightBlue
         Me.GuiDosboxGroupbox3.Location = New System.Drawing.Point(9, 376)
@@ -433,70 +446,90 @@ Partial Class CaclsApp
         Me.GuiDosboxGroupbox3.TabIndex = 0
         Me.GuiDosboxGroupbox3.TabStop = False
         '
+        'optGControlT
+        '
+        Me.optGControlT.AutoSize = True
+        Me.optGControlT.BackColor = System.Drawing.Color.Black
+        Me.optGControlT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optGControlT.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optGControlT.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optGControlT.Location = New System.Drawing.Point(157, 71)
+        Me.optGControlT.Name = "optGControlT"
+        Me.optGControlT.Size = New System.Drawing.Size(148, 15)
+        Me.optGControlT.TabIndex = 48
+        Me.optGControlT.TabStop = True
+        Me.optGControlT.Text = "Contrôle Total (F)"
+        Me.optGControlT.UseVisualStyleBackColor = False
+        '
+        'optGModif
+        '
+        Me.optGModif.AutoSize = True
+        Me.optGModif.BackColor = System.Drawing.Color.Black
+        Me.optGModif.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optGModif.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optGModif.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optGModif.Location = New System.Drawing.Point(17, 71)
+        Me.optGModif.Name = "optGModif"
+        Me.optGModif.Size = New System.Drawing.Size(134, 15)
+        Me.optGModif.TabIndex = 49
+        Me.optGModif.TabStop = True
+        Me.optGModif.Text = "Modification (C)"
+        Me.optGModif.UseVisualStyleBackColor = False
+        '
+        'optGEcrire
+        '
+        Me.optGEcrire.AutoSize = True
+        Me.optGEcrire.BackColor = System.Drawing.Color.Black
+        Me.optGEcrire.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optGEcrire.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optGEcrire.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optGEcrire.Location = New System.Drawing.Point(157, 52)
+        Me.optGEcrire.Name = "optGEcrire"
+        Me.optGEcrire.Size = New System.Drawing.Size(106, 15)
+        Me.optGEcrire.TabIndex = 50
+        Me.optGEcrire.TabStop = True
+        Me.optGEcrire.Text = "Écriture (W)"
+        Me.optGEcrire.UseVisualStyleBackColor = False
+        '
+        'optGLecture
+        '
+        Me.optGLecture.AutoSize = True
+        Me.optGLecture.BackColor = System.Drawing.Color.Black
+        Me.optGLecture.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optGLecture.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optGLecture.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optGLecture.Location = New System.Drawing.Point(17, 53)
+        Me.optGLecture.Name = "optGLecture"
+        Me.optGLecture.Size = New System.Drawing.Size(99, 15)
+        Me.optGLecture.TabIndex = 51
+        Me.optGLecture.TabStop = True
+        Me.optGLecture.Text = "Lecture (R)"
+        Me.optGLecture.UseVisualStyleBackColor = False
+        '
         'cbUserG
         '
         Me.cbUserG.BackColor = System.Drawing.Color.Black
+        Me.cbUserG.DropDownWidth = 330
         Me.cbUserG.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbUserG.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.cbUserG.ForeColor = System.Drawing.Color.LightBlue
         Me.cbUserG.FormattingEnabled = True
-        Me.cbUserG.Location = New System.Drawing.Point(121, 28)
+        Me.cbUserG.Location = New System.Drawing.Point(151, 28)
         Me.cbUserG.Name = "cbUserG"
         Me.cbUserG.Size = New System.Drawing.Size(163, 19)
+        Me.cbUserG.Sorted = True
         Me.cbUserG.TabIndex = 4
-        '
-        'optGControlT
-        '
-        Me.optGControlT.AutoSize = True
-        Me.optGControlT.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optGControlT.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optGControlT.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optGControlT.Location = New System.Drawing.Point(151, 70)
-        Me.optGControlT.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optGControlT.Name = "optGControlT"
-        Me.optGControlT.Size = New System.Drawing.Size(140, 15)
-        Me.optGControlT.TabIndex = 3
-        Me.optGControlT.Text = "Control Total (F)"
-        Me.optGControlT.UseVisualStyleBackColor = True
         '
         'lblutili2
         '
         Me.lblutili2.AutoSize = True
         Me.lblutili2.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.lblutili2.Location = New System.Drawing.Point(29, 31)
+        Me.lblutili2.Location = New System.Drawing.Point(8, 31)
         Me.lblutili2.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.lblutili2.Name = "lblutili2"
-        Me.lblutili2.Size = New System.Drawing.Size(89, 11)
+        Me.lblutili2.Size = New System.Drawing.Size(138, 11)
         Me.lblutili2.TabIndex = 3
-        Me.lblutili2.Text = "Utilisateur:"
-        '
-        'optGLecture
-        '
-        Me.optGLecture.AutoSize = True
-        Me.optGLecture.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optGLecture.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optGLecture.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optGLecture.Location = New System.Drawing.Point(31, 55)
-        Me.optGLecture.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optGLecture.Name = "optGLecture"
-        Me.optGLecture.Size = New System.Drawing.Size(98, 15)
-        Me.optGLecture.TabIndex = 0
-        Me.optGLecture.Text = "Lecture (R)"
-        Me.optGLecture.UseVisualStyleBackColor = True
-        '
-        'optGModif
-        '
-        Me.optGModif.AutoSize = True
-        Me.optGModif.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optGModif.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optGModif.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optGModif.Location = New System.Drawing.Point(151, 55)
-        Me.optGModif.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optGModif.Name = "optGModif"
-        Me.optGModif.Size = New System.Drawing.Size(133, 15)
-        Me.optGModif.TabIndex = 2
-        Me.optGModif.Text = "Modification (C)"
-        Me.optGModif.UseVisualStyleBackColor = True
+        Me.lblutili2.Text = "Utilisateur/Groupe:"
         '
         'optG
         '
@@ -511,20 +544,6 @@ Partial Class CaclsApp
         Me.optG.TabIndex = 2
         Me.optG.Text = "/G"
         Me.optG.UseVisualStyleBackColor = True
-        '
-        'optGEcrire
-        '
-        Me.optGEcrire.AutoSize = True
-        Me.optGEcrire.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optGEcrire.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optGEcrire.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optGEcrire.Location = New System.Drawing.Point(31, 70)
-        Me.optGEcrire.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.optGEcrire.Name = "optGEcrire"
-        Me.optGEcrire.Size = New System.Drawing.Size(105, 15)
-        Me.optGEcrire.TabIndex = 1
-        Me.optGEcrire.Text = "Écriture (W)"
-        Me.optGEcrire.UseVisualStyleBackColor = True
         '
         'GuiDosboxGroupbox4
         '
@@ -544,6 +563,7 @@ Partial Class CaclsApp
         'cbUserR
         '
         Me.cbUserR.BackColor = System.Drawing.Color.Black
+        Me.cbUserR.DropDownWidth = 330
         Me.cbUserR.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.cbUserR.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.cbUserR.ForeColor = System.Drawing.Color.LightBlue
@@ -551,6 +571,7 @@ Partial Class CaclsApp
         Me.cbUserR.Location = New System.Drawing.Point(5, 41)
         Me.cbUserR.Name = "cbUserR"
         Me.cbUserR.Size = New System.Drawing.Size(147, 19)
+        Me.cbUserR.Sorted = True
         Me.cbUserR.TabIndex = 42
         '
         'lblUtili3
@@ -560,9 +581,9 @@ Partial Class CaclsApp
         Me.lblUtili3.Location = New System.Drawing.Point(5, 27)
         Me.lblUtili3.Margin = New System.Windows.Forms.Padding(5, 0, 5, 0)
         Me.lblUtili3.Name = "lblUtili3"
-        Me.lblUtili3.Size = New System.Drawing.Size(89, 11)
+        Me.lblUtili3.Size = New System.Drawing.Size(138, 11)
         Me.lblUtili3.TabIndex = 2
-        Me.lblUtili3.Text = "Utilisateur:"
+        Me.lblUtili3.Text = "Utilisateur/Groupe:"
         '
         'optR
         '
@@ -601,6 +622,7 @@ Partial Class CaclsApp
         Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
         Me.btnSend.Location = New System.Drawing.Point(507, 498)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(91, 23)
         Me.btnSend.TabIndex = 39
@@ -616,6 +638,7 @@ Partial Class CaclsApp
         Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
         Me.btnApply.Location = New System.Drawing.Point(651, 527)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(91, 23)
         Me.btnApply.TabIndex = 38
@@ -631,6 +654,7 @@ Partial Class CaclsApp
         Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
         Me.btnBack.Location = New System.Drawing.Point(749, 527)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(91, 23)
         Me.btnBack.TabIndex = 37
@@ -646,6 +670,7 @@ Partial Class CaclsApp
         Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
         Me.btnClear.Location = New System.Drawing.Point(749, 498)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(91, 23)
         Me.btnClear.TabIndex = 36
@@ -661,6 +686,7 @@ Partial Class CaclsApp
         Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
         Me.btnHelp.Location = New System.Drawing.Point(9, 527)
+        Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(91, 23)
         Me.btnHelp.TabIndex = 35
@@ -702,14 +728,57 @@ Partial Class CaclsApp
         Me.myConsole.Size = New System.Drawing.Size(503, 418)
         Me.myConsole.TabIndex = 31
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 554)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(846, 22)
+        Me.footer.TabIndex = 42
+        '
+        'btnYes
+        '
+        Me.btnYes.BackColor = System.Drawing.Color.Black
+        Me.btnYes.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnYes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnYes.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnYes.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnYes.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnYes.Location = New System.Drawing.Point(651, 498)
+        Me.btnYes.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnYes.Name = "btnYes"
+        Me.btnYes.Size = New System.Drawing.Size(42, 23)
+        Me.btnYes.TabIndex = 43
+        Me.btnYes.Text = "Oui"
+        Me.btnYes.UseVisualStyleBackColor = False
+        '
+        'btnNo
+        '
+        Me.btnNo.BackColor = System.Drawing.Color.Black
+        Me.btnNo.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnNo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnNo.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnNo.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnNo.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnNo.Location = New System.Drawing.Point(699, 498)
+        Me.btnNo.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnNo.Name = "btnNo"
+        Me.btnNo.Size = New System.Drawing.Size(44, 23)
+        Me.btnNo.TabIndex = 44
+        Me.btnNo.Text = "Non"
+        Me.btnNo.UseVisualStyleBackColor = False
+        '
         'CaclsApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(846, 558)
+        Me.ClientSize = New System.Drawing.Size(846, 576)
         Me.ControlBox = False
+        Me.Controls.Add(Me.btnNo)
+        Me.Controls.Add(Me.btnYes)
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.GuiDosboxGroupbox6)
         Me.Controls.Add(Me.GuiDosboxGroupbox5)
         Me.Controls.Add(Me.GuiDosboxGroupbox1)
@@ -730,8 +799,12 @@ Partial Class CaclsApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CaclsApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - CACLS"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosboxGroupbox6.ResumeLayout(False)
@@ -757,20 +830,11 @@ Partial Class CaclsApp
     Friend WithEvents optC As System.Windows.Forms.CheckBox
     Friend WithEvents optE As System.Windows.Forms.CheckBox
     Friend WithEvents optP As System.Windows.Forms.CheckBox
-    Friend WithEvents optPControlT As System.Windows.Forms.CheckBox
-    Friend WithEvents optPModif As System.Windows.Forms.CheckBox
-    Friend WithEvents optPEcrire As System.Windows.Forms.CheckBox
-    Friend WithEvents optPLecture As System.Windows.Forms.CheckBox
     Friend WithEvents optD As System.Windows.Forms.CheckBox
     Friend WithEvents optG As System.Windows.Forms.CheckBox
-    Friend WithEvents optGControlT As System.Windows.Forms.CheckBox
-    Friend WithEvents optGModif As System.Windows.Forms.CheckBox
-    Friend WithEvents optGEcrire As System.Windows.Forms.CheckBox
-    Friend WithEvents optGLecture As System.Windows.Forms.CheckBox
     Friend WithEvents optR As System.Windows.Forms.CheckBox
     Friend WithEvents lblutili2 As System.Windows.Forms.Label
     Friend WithEvents lblUtili As System.Windows.Forms.Label
-    Friend WithEvents optPAucun As System.Windows.Forms.CheckBox
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblUtili3 As System.Windows.Forms.Label
     Friend WithEvents lblUtili4 As System.Windows.Forms.Label
@@ -796,4 +860,16 @@ Partial Class CaclsApp
     Friend WithEvents cbUserP As GUIDosbox.GUIDosbox_Combobox
     Friend WithEvents cbUserG As GUIDosbox.GUIDosbox_Combobox
     Friend WithEvents cbUserR As GUIDosbox.GUIDosbox_Combobox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
+    Friend WithEvents optPLecture As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optPAucun As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optPControlT As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optPModif As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optPEcrire As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optGControlT As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optGModif As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optGEcrire As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents optGLecture As GUIDosbox.GUIDosbox_RadioButton
+    Friend WithEvents btnYes As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnNo As GUIDosbox.GUIDosbox_Button
 End Class

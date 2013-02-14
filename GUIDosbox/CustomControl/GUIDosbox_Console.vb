@@ -65,7 +65,11 @@ Public Class GUIDosbox_Console
     ''' </summary>
     ''' <param name="myCommand">Commande à exécuter.</param>
     Public Function SendCommand(ByVal myCommand As String) As String
-        myConsole.StandardInput.WriteLine(myCommand)
+        'Conversion de la chaine de caractères
+        Dim buffer As Byte() = Encoding.GetEncoding(850).GetBytes(myCommand)
+        'Envoi de la commande
+        myConsole.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
+        myConsole.StandardInput.WriteLine()
         myConsole.StandardInput.Flush()
         Return myCommand
     End Function
@@ -124,5 +128,4 @@ Public Class GUIDosbox_Console
 
     End Sub
 
-  
 End Class

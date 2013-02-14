@@ -22,6 +22,21 @@ Module GUIDosboxCustomFunction
     End Function
 
     ''' <summary>
+    ''' Retourne les groupes actif sur l'ordinateur spécifié.
+    ''' </summary>
+    ''' <param name="MachineName">The computer to get user accounts from</param>
+    Public Function GetLocalGroup(ByVal MachineName As String) As List(Of String)
+        Dim WinNt As New DirectoryServices.DirectoryEntry("WinNT://" & MachineName)
+        Dim GroupList As New List(Of String)
+        For Each Group As DirectoryServices.DirectoryEntry In WinNt.Children
+            If Group.SchemaClassName = "Group" Then
+                GroupList.Add(Group.Name)
+            End If
+        Next
+        Return GroupList
+    End Function
+
+    ''' <summary>
     ''' Renvoi une liste de lettre disponible pour un lecteur
     ''' </summary>
     ''' <returns></returns>

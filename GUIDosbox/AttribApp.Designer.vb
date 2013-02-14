@@ -63,6 +63,7 @@ Partial Class AttribApp
         Me.gbOptions = New GUIDosbox.GUIDosbox_Groupbox()
         Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbH.SuspendLayout()
         Me.gbI.SuspendLayout()
@@ -594,14 +595,23 @@ Partial Class AttribApp
         Me.btnSend.Text = "Envoyer"
         Me.btnSend.UseVisualStyleBackColor = False
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 600)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(585, 22)
+        Me.footer.TabIndex = 48
+        '
         'AttribApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(585, 602)
+        Me.ClientSize = New System.Drawing.Size(585, 622)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.gbOptions)
         Me.Controls.Add(Me.gbI)
         Me.Controls.Add(Me.gbH)
@@ -625,7 +635,10 @@ Partial Class AttribApp
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "AttribApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - ATTRIB"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbH.ResumeLayout(False)
@@ -684,4 +697,5 @@ Partial Class AttribApp
     Friend WithEvents gbOptions As GUIDosbox.GUIDosbox_Groupbox
     Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

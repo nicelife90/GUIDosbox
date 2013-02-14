@@ -14,12 +14,14 @@ Public Class AttribApp
             btnAide.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnAide.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -40,16 +42,7 @@ Public Class AttribApp
         btnSend.Visible = False
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "attrib.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.attrib, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "attrib.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "attrib")
 
         'Valeur par défaut
         optRNull.Checked = True
@@ -58,77 +51,84 @@ Public Class AttribApp
         optHNull.Checked = True
         optINull.Checked = True
 
+        'Niveau de privilèges requis par l'utilitaire.
+        footer.PrivilegeLevelNeeded(-1)
+
     End Sub
 
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-        'Déclaration des variables
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
-        Dim Args6 As String = ""
-        Dim Args7 As String = ""
-        Dim Args8 As String = ""
-        Dim Args9 As String = ""
+        'Déclaration des variables et constantes.
+        Const App As String = "attrib "
+        Dim Arguments As String = Nothing
 
-        'Argument 1 +/- R
-        If optRPlus.Checked = True Then
-            Args1 = Args1 + " +R"
-        ElseIf optRMoin.Checked = True Then
-            Args1 = Args1 + " -R"
-        End If
-        'Argument 2 +/- A
-        If optAplus.Checked = True Then
-            Args2 = Args2 + " +A "
-        ElseIf optAMoin.Checked = True Then
-            Args2 = Args2 + " -A "
-        End If
-        'Argument 3 +/- S
-        If optSPlus.Checked = True Then
-            Args3 = Args3 + " +S "
-        ElseIf optSMoin.Checked = True Then
-            Args3 = Args3 + " -S "
-        End If
-        'Argument 4 +/- H
-        If optHPlus.Checked = True Then
-            Args4 = Args4 + " +H "
-        ElseIf optHMoin.Checked = True Then
-            Args4 = Args4 + " -H "
-        End If
-        'Argument 5 +/- I
-        If optIPlus.Checked = True Then
-            Args5 = Args5 + " +I "
-        ElseIf optIMoin.Checked = True Then
-            Args5 = Args5 + " -I "
-        End If
-        'Argument 7 /S
-        If optS.Checked = True Then
-            Args7 = Args7 + " /S "
-        ElseIf optS.Checked = False Then
-            Args7 = ""
-        End If
-        'Argument 8 /D
-        If optD.Checked = True Then
-            Args8 = Args8 + " /D "
-        ElseIf optD.Checked = False Then
-            Args8 = ""
-        End If
-        'Argument 9 /L
-        If optL.Checked = True Then
-            Args9 = Args9 + " /L "
-        ElseIf optL.Checked = False Then
-            Args9 = ""
+        'Arguments
+        Dim args(8) As String
+        For Each arg In args
+            arg = Nothing
+        Next
+
+        'args(0) --> +/- R
+        If optRPlus.Checked Then
+            args(0) = "+R "
+        ElseIf optRMoin.Checked Then
+            args(0) = "-R "
         End If
 
-        'Argument 6
-        Args6 = """" & txtFile.Text & """"
+        'args(1) -->  +/- A
+        If optAplus.Checked Then
+            args(1) = "+A "
+        ElseIf optAMoin.Checked Then
+            args(1) = "-A "
+        End If
 
+        'args(2) --> +/- S
+        If optSPlus.Checked Then
+            args(2) = "+S "
+        ElseIf optSMoin.Checked Then
+            args(2) = "-S "
+        End If
 
+        'args(3) --> +/- H
+        If optHPlus.Checked Then
+            args(3) = "+H "
+        ElseIf optHMoin.Checked Then
+            args(3) = "-H "
+        End If
+
+        'args(4) --> +/- I
+        If optIPlus.Checked Then
+            args(4) = "+I "
+        ElseIf optIMoin.Checked Then
+            args(4) = "-I "
+        End If
+
+        'args(5) -->
+        args(5) = """" & txtFile.Text & """" & " "
+
+        'args(6) --> /S
+        If optS.Checked Then
+            args(6) = "/S "
+        End If
+
+        'args(7) --> /D
+        If optD.Checked Then
+            args(7) = "/D "
+        End If
+
+        'args(8) --> /L
+        If optL.Checked Then
+            args(8) = "/L "
+        End If
+
+        'Création de la chaine d'argument.
+        For Each arg In args
+            Arguments += arg
+        Next
+       
         'Exécution de la commande.
-        txtCmdExec.Text = myConsole.SendCommand("attrib " + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
+        txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
 
     End Sub
 
@@ -138,15 +138,8 @@ Public Class AttribApp
     End Sub
 
     Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
-        'Reset des textbox
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = Nothing
-            End If
-        Next
-        'Reset de la console
-        myConsole.Cls()
+        'Reset des textbox et de la console
+        ClearTextBox(Me)
         txtCmdExec.Text = "cls"
     End Sub
 

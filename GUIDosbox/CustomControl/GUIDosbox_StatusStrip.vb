@@ -1,21 +1,8 @@
-﻿''' <summary>
+﻿Option Strict On
+''' <summary>
 ''' ToolStrip Personnalisé GUIDosbox
 ''' </summary>
 Public Class GUIDosbox_StatusStrip
-
-    Public Sub GUIDosbox_StatusStrip_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-        If RunAsAdmin() Then
-            lblPrivilegesStatus.ForeColor = Color.MediumPurple
-            lblPrivilegesStatus.Text = "Administrateur"
-            lblFonctionanliteStatus.ForeColor = Color.MediumPurple
-            lblFonctionanliteStatus.Text = "Complètes"
-        Else
-            lblPrivilegesStatus.ForeColor = Color.LightBlue
-            lblPrivilegesStatus.Text = "Utilisateur"
-            lblFonctionanliteStatus.ForeColor = Color.Maroon
-            lblFonctionanliteStatus.Text = "Limité"
-        End If
-    End Sub
 
     ''' <summary>
     ''' Active ou désactive l'affichage du mode avancé dans le status strip
@@ -29,6 +16,57 @@ Public Class GUIDosbox_StatusStrip
             lblModeStatus.ForeColor = Color.LightBlue
             lblModeStatus.Text = "Normal"
         End If
+    End Sub
+
+    ''' <summary>
+    ''' Gère l'affichage dans le StatusStrip en fonction des privilèges requis par l'utilitaire.
+    ''' 1 --> Requis = Administrateur, 2 --> Requis = Utilisateur, -1 --> Rien de requis 
+    ''' </summary>
+    ''' <param name="level">1 --> Requis = Administrateur, 2 --> Requis = Utilisateur, -1 --> Rien de requis</param>
+    Public Sub PrivilegeLevelNeeded(ByVal level As Integer)
+        Select Case level
+            'Require Administrateur
+            Case 1
+                If RunAsAdmin() Then
+                    lblPrivilegesStatus.ForeColor = Color.MediumPurple
+                    lblPrivilegesStatus.Text = "Administrateur"
+                    lblFonctionanliteStatus.ForeColor = Color.MediumPurple
+                    lblFonctionanliteStatus.Text = "Complètes"
+                Else
+                    lblPrivilegesStatus.ForeColor = Color.LightBlue
+                    lblPrivilegesStatus.Text = "Utilisateur"
+                    lblFonctionanliteStatus.ForeColor = Color.Maroon
+                    lblFonctionanliteStatus.Text = "Limité"
+                End If
+                'Require User
+            Case 2
+                If Not RunAsAdmin() Then
+                    lblPrivilegesStatus.ForeColor = Color.MediumPurple
+                    lblPrivilegesStatus.Text = "Administrateur"
+                    lblFonctionanliteStatus.ForeColor = Color.MediumPurple
+                    lblFonctionanliteStatus.Text = "Complètes"
+                Else
+                    lblPrivilegesStatus.ForeColor = Color.LightBlue
+                    lblPrivilegesStatus.Text = "Utilisateur"
+                    lblFonctionanliteStatus.ForeColor = Color.Maroon
+                    lblFonctionanliteStatus.Text = "Limité"
+                End If
+                'Nothing Required
+            Case -1
+                If RunAsAdmin() Then
+                    lblPrivilegesStatus.ForeColor = Color.MediumPurple
+                    lblPrivilegesStatus.Text = "Administrateur"
+                    lblFonctionanliteStatus.ForeColor = Color.MediumPurple
+                    lblFonctionanliteStatus.Text = "Complètes"
+                Else
+                    lblPrivilegesStatus.ForeColor = Color.LightBlue
+                    lblPrivilegesStatus.Text = "Utilisateur"
+                    lblFonctionanliteStatus.ForeColor = Color.MediumPurple
+                    lblFonctionanliteStatus.Text = "Complètes"
+                End If
+            Case Else
+
+        End Select
     End Sub
 
 End Class

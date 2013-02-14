@@ -200,7 +200,6 @@ Public Class CP
 
         'Permet d'accepter les arguments de démarrage
         If OpenWithCmdArgs() Then
-
             Dim CmdArg As String = My.Application.CommandLineArgs(0)
             Select Case CmdArg
                 Case "/cmdc"
@@ -211,6 +210,7 @@ Public Class CP
                     MsgBox("salut")
 
             End Select
+          
         End If
 
 
@@ -286,4 +286,10 @@ Public Class CP
 
     End Sub
 
+    Private Sub FlashCPEN_Enter(sender As Object, e As EventArgs) Handles FlashCPEN.Enter
+
+    End Sub
+    Private Sub FlashCPFR_Enter(sender As Object, e As EventArgs) Handles FlashCPFR.Enter
+
+    End Sub
 End Class

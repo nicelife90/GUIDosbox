@@ -47,6 +47,9 @@ Public Class XCopyApp
         OptC.Checked = True
         OptE.Checked = True
         OptY.Checked = True
+
+        'Niveau de privilèges requis par l'utilitaire.
+        footer.PrivilegeLevelNeeded(1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
