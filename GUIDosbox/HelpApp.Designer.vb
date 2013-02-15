@@ -53,11 +53,11 @@ Partial Class HelpApp
         '
         Me.lblAdvanceMode.AutoSize = True
         Me.lblAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.lblAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.lblAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.lblAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
         Me.lblAdvanceMode.Location = New System.Drawing.Point(1, 476)
         Me.lblAdvanceMode.Name = "lblAdvanceMode"
-        Me.lblAdvanceMode.Size = New System.Drawing.Size(157, 11)
+        Me.lblAdvanceMode.Size = New System.Drawing.Size(138, 11)
         Me.lblAdvanceMode.TabIndex = 8
         Me.lblAdvanceMode.Text = "Ligne de commande :"
         '
@@ -65,7 +65,7 @@ Partial Class HelpApp
         '
         Me.txtCmdExec.BackColor = System.Drawing.Color.Black
         Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
         Me.txtCmdExec.Location = New System.Drawing.Point(164, 474)
         Me.txtCmdExec.Name = "txtCmdExec"
@@ -84,11 +84,12 @@ Partial Class HelpApp
         '
         Me.optAdvanceMode.AutoSize = True
         Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
-        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
         Me.optAdvanceMode.Location = New System.Drawing.Point(3, 507)
         Me.optAdvanceMode.Name = "optAdvanceMode"
-        Me.optAdvanceMode.Size = New System.Drawing.Size(112, 15)
+        Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
         Me.optAdvanceMode.TabIndex = 9
         Me.optAdvanceMode.Text = "Mode avancé"
         Me.optAdvanceMode.UseVisualStyleBackColor = False
@@ -99,9 +100,10 @@ Partial Class HelpApp
         Me.btnApply.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnApply.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
         Me.btnApply.Location = New System.Drawing.Point(455, 498)
+        Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(110, 23)
         Me.btnApply.TabIndex = 10
@@ -114,9 +116,10 @@ Partial Class HelpApp
         Me.btnSend.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnSend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
         Me.btnSend.Location = New System.Drawing.Point(164, 498)
+        Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(75, 23)
         Me.btnSend.TabIndex = 11
@@ -129,9 +132,10 @@ Partial Class HelpApp
         Me.btnBack.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnBack.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
         Me.btnBack.Location = New System.Drawing.Point(571, 498)
+        Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(75, 23)
         Me.btnBack.TabIndex = 12
@@ -144,9 +148,10 @@ Partial Class HelpApp
         Me.btnClaer.Cursor = System.Windows.Forms.Cursors.Hand
         Me.btnClaer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
         Me.btnClaer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClaer.Font = New System.Drawing.Font("Lucida Console", 8.0!, System.Drawing.FontStyle.Regular)
+        Me.btnClaer.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnClaer.ForeColor = System.Drawing.Color.LightBlue
         Me.btnClaer.Location = New System.Drawing.Point(245, 498)
+        Me.btnClaer.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnClaer.Name = "btnClaer"
         Me.btnClaer.Size = New System.Drawing.Size(75, 23)
         Me.btnClaer.TabIndex = 13
@@ -182,8 +187,11 @@ Partial Class HelpApp
         Me.Controls.Add(Me.myConsole)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.HelpButton = True
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "HelpApp"
-        Me.Text = "GUI DosBox - Aide"
+        Me.Text = "GUI DosBox - HELP"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()

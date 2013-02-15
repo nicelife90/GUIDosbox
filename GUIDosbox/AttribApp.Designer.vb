@@ -26,8 +26,6 @@ Partial Class AttribApp
         Me.optL = New System.Windows.Forms.CheckBox()
         Me.optD = New System.Windows.Forms.CheckBox()
         Me.optS = New System.Windows.Forms.CheckBox()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbH = New GUIDosbox.GUIDosbox_Groupbox()
@@ -108,10 +106,6 @@ Partial Class AttribApp
         Me.optS.TabIndex = 0
         Me.optS.Text = "/ S"
         Me.optS.UseVisualStyleBackColor = True
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'chkbxLangue
         '
@@ -670,8 +664,6 @@ Partial Class AttribApp
     Friend WithEvents optHPlus As System.Windows.Forms.RadioButton
     Friend WithEvents optIMoin As System.Windows.Forms.RadioButton
     Friend WithEvents optIPlus As System.Windows.Forms.RadioButton
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents optRNull As System.Windows.Forms.RadioButton
     Friend WithEvents optANull As System.Windows.Forms.RadioButton
     Friend WithEvents optSNull As System.Windows.Forms.RadioButton

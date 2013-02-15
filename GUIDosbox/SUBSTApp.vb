@@ -59,20 +59,21 @@ Public Class SUBSTApp
     End Sub
 
     Private Sub FillComboBox()
+        'Pause
         System.Threading.Thread.Sleep(100)
+
         'On ajoute les élément (lecteur disponible) au combobox --> GUIDosboxCustomFunction
         cbLecteur.Items.Clear()
-        For Each lecteur As String In AvailableDrive()
+        For Each lecteur In AvailableDrive()
             cbLecteur.Items.Add(lecteur.ToUpper & ":")
         Next
 
         'Ajout des éléments (lecteur utiliser) au comboBox.
         cbDelete.Items.Clear()
-        Dim drives As ReadOnlyCollection(Of DriveInfo) = My.Computer.FileSystem.Drives
-        For Each drive As DriveInfo In drives
-            Dim lecteur As String = drive.ToString.Substring(0, drive.ToString.Length - 1)
-            cbDelete.Items.Add(lecteur)
+        For Each drive In UsedDrive()
+            cbDelete.Items.Add(drive)
         Next
+
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click

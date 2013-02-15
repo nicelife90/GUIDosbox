@@ -24,8 +24,6 @@ Partial Class CompApp
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompApp))
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
-        Me.OpenFileDialog2 = New System.Windows.Forms.OpenFileDialog()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbNbLigne = New GUIDosbox.GUIDosbox_Groupbox()
         Me.optNArgs = New System.Windows.Forms.NumericUpDown()
@@ -49,6 +47,8 @@ Partial Class CompApp
         Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
+        Me.optOff = New GUIDosbox.GUIDosbox_Checkbox()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbNbLigne.SuspendLayout()
         CType(Me.optNArgs, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -67,14 +67,6 @@ Partial Class CompApp
         Me.chkbxLangue.TabIndex = 19
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'OpenFileDialog2
-        '
-        Me.OpenFileDialog2.FileName = "OpenFileDialog2"
         '
         'flashHeader
         '
@@ -128,6 +120,7 @@ Partial Class CompApp
         '
         Me.gbOptions.BackColor = System.Drawing.Color.Black
         Me.gbOptions.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbOptions.Controls.Add(Me.optOff)
         Me.gbOptions.Controls.Add(Me.optC)
         Me.gbOptions.Controls.Add(Me.optL)
         Me.gbOptions.Controls.Add(Me.optA)
@@ -148,7 +141,7 @@ Partial Class CompApp
         Me.optC.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optC.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optC.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optC.Location = New System.Drawing.Point(60, 40)
+        Me.optC.Location = New System.Drawing.Point(60, 33)
         Me.optC.Name = "optC"
         Me.optC.Size = New System.Drawing.Size(35, 15)
         Me.optC.TabIndex = 44
@@ -162,7 +155,7 @@ Partial Class CompApp
         Me.optL.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optL.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optL.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optL.Location = New System.Drawing.Point(14, 40)
+        Me.optL.Location = New System.Drawing.Point(14, 33)
         Me.optL.Name = "optL"
         Me.optL.Size = New System.Drawing.Size(35, 15)
         Me.optL.TabIndex = 45
@@ -176,7 +169,7 @@ Partial Class CompApp
         Me.optA.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optA.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optA.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optA.Location = New System.Drawing.Point(60, 19)
+        Me.optA.Location = New System.Drawing.Point(60, 14)
         Me.optA.Name = "optA"
         Me.optA.Size = New System.Drawing.Size(35, 15)
         Me.optA.TabIndex = 46
@@ -190,7 +183,7 @@ Partial Class CompApp
         Me.optD.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optD.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optD.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optD.Location = New System.Drawing.Point(14, 19)
+        Me.optD.Location = New System.Drawing.Point(14, 14)
         Me.optD.Name = "optD"
         Me.optD.Size = New System.Drawing.Size(35, 15)
         Me.optD.TabIndex = 47
@@ -278,7 +271,7 @@ Partial Class CompApp
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnSend.Location = New System.Drawing.Point(354, 428)
+        Me.btnSend.Location = New System.Drawing.Point(295, 428)
         Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(82, 23)
@@ -396,14 +389,37 @@ Partial Class CompApp
         Me.myConsole.Size = New System.Drawing.Size(660, 275)
         Me.myConsole.TabIndex = 32
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 483)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(673, 22)
+        Me.footer.TabIndex = 45
+        '
+        'optOff
+        '
+        Me.optOff.AutoSize = True
+        Me.optOff.BackColor = System.Drawing.Color.Black
+        Me.optOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optOff.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optOff.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optOff.Location = New System.Drawing.Point(14, 52)
+        Me.optOff.Name = "optOff"
+        Me.optOff.Size = New System.Drawing.Size(49, 15)
+        Me.optOff.TabIndex = 48
+        Me.optOff.Text = "/OFF"
+        Me.optOff.UseVisualStyleBackColor = False
+        '
         'CompApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(673, 487)
+        Me.ClientSize = New System.Drawing.Size(673, 505)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.gbNbLigne)
         Me.Controls.Add(Me.gbOptions)
         Me.Controls.Add(Me.gbFileCompare)
@@ -420,8 +436,11 @@ Partial Class CompApp
         Me.Controls.Add(Me.chkbxLangue)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.LightBlue
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CompApp"
-        Me.Text = "GUI DosBox - CHKDSK"
+        Me.Text = "GUI DosBox - COMP"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbNbLigne.ResumeLayout(False)
         Me.gbNbLigne.PerformLayout()
@@ -435,8 +454,6 @@ Partial Class CompApp
 
     End Sub
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
-    Friend WithEvents OpenFileDialog2 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
@@ -460,4 +477,6 @@ Partial Class CompApp
     Friend WithEvents gbNbLigne As GUIDosbox.GUIDosbox_Groupbox
     Friend WithEvents optN As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents optNArgs As System.Windows.Forms.NumericUpDown
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
+    Friend WithEvents optOff As GUIDosbox.GUIDosbox_Checkbox
 End Class

@@ -1,7 +1,5 @@
 ﻿Option Strict On
-
-Imports System.IO
-Imports System.Collections.ObjectModel
+Option Explicit On
 
 Public Class CHKDSkApp
 
@@ -17,12 +15,14 @@ Public Class CHKDSkApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -38,108 +38,83 @@ Public Class CHKDSkApp
         'Démarrage de la console
         myConsole.StartConsole()
 
-        'Ajout des éléments (lecteur) au comboBox.
-        Dim drives As ReadOnlyCollection(Of DriveInfo) = My.Computer.FileSystem.Drives
-        For Each drive As DriveInfo In drives
-            Dim lecteur As String = drive.ToString.Substring(0, drive.ToString.Length - 1)
-            cbLetter.Items.Add(lecteur)
+        'Ajout des éléments (lecteurs) au comboBox.
+        For Each drive In UsedDrive()
+            cbLetter.Items.Add(drive)
         Next
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "chkdsk.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.chkdsk, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "chkdsk.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "chkdsk")
 
         'Mode avancé caché.
         btnSend.Hide()
 
-
+        'Définition du niveau de privilèges de l'utilitaire.
+        footer.PrivilegeLevelNeeded(1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des variables et constante
-        Const Apps As String = "CHKDSK "
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
-        Dim Args6 As String = ""
-        Dim Args7 As String = ""
-        Dim Args8 As String = ""
-        Dim Args9 As String = ""
+        Const App As String = "chkdsk "
+        Dim Arguments As String = Nothing
 
-        'Argument 1 Lecteur
-        Args1 = Args1 & " " & "" & _
-        cbLetter.Text & "" & " "
+        'Arguments
+        Dim args(8) As String
+        For Each arg In args
+            arg = Nothing
+        Next
 
-        'Argument 2 /F
-        If optF.Checked = True Then
-            Args2 = Args2 + " /F "
-        Else
-            Args2 = ""
+        'args(0) --> Lecteur
+        args(0) = cbLetter.Text & " "
+
+        'args(1) --> /F
+        If optF.Checked Then
+            args(1) = "/F "
         End If
 
-        'Argument 3 /V
-        If optV.Checked = True Then
-            Args3 = Args3 + " /V "
-        Else
-            Args3 = ""
+        'args(2) --> /V
+        If optV.Checked Then
+            args(2) = "/V "
         End If
 
-        'Argument 4 /R
-        If optR.Checked = True Then
-            Args4 = Args4 + " /R "
-        Else
-            Args4 = ""
+        'args(3) --> /R
+        If optR.Checked Then
+            args(3) = "/R "
         End If
 
-        'Argument 5 /L:taille
-        If optL.Checked = True Then
-            Args5 = Args5 + " /L:" & "" & _
-            optLArg.Text & "" & " "
-        Else
-            Args5 = ""
+        'args(4) --> /X
+        If optX.Checked Then
+            args(4) = "/X "
         End If
 
-        'Argument 6 /X
-        If optX.Checked = True Then
-            Args6 = Args6 + " /X "
-        Else
-            Args6 = ""
+        'args(5) --> /I
+        If optI.Checked Then
+            args(5) = "/I "
         End If
 
-        'Argument 7 /I
-        If optI.Checked = True Then
-            Args7 = Args7 + " /I "
-        Else
-            Args7 = ""
+        'args(6) --> /C
+        If optC.Checked Then
+            args(6) = "/C "
         End If
 
-        'Argument 8 /C
-        If optC.Checked = True Then
-            Args8 = Args8 + " /C "
-        Else
-            Args8 = ""
+        'args(7) --> /L:taille
+        If optL.Checked Then
+            args(7) = "/L:" & optLArg.Text & " "
         End If
 
-        'Argument 9 /B
-        If optB.Checked = True Then
-            Args9 = Args9 + " /B "
-        Else
-            Args9 = ""
+        'args(8) --> /B
+        If optB.Checked Then
+            args(8) = "/B "
         End If
+
+        'Création de la chaine d'arguments
+        For Each arg In args
+            Arguments += arg
+        Next
 
         'Exécution de la commande
-        txtCmdExec.Text = myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8 + Args9)
+        txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
 
     End Sub
 
@@ -156,15 +131,9 @@ Public Class CHKDSkApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des textbox
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = Nothing
-            End If
-        Next
-        'Reset de la console
-        myConsole.Cls()
+        'Reset des textbox et de la console
+        ClearTextBox(Me)
+        txtCmdExec.Text = "cls"
     End Sub
 
     ''' <summary>

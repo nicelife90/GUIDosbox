@@ -24,7 +24,6 @@ Partial Class CaclsApp
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CaclsApp))
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GuiDosboxGroupbox6 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.btnBrowse = New GUIDosbox.GUIDosbox_Button()
@@ -93,10 +92,6 @@ Partial Class CaclsApp
         Me.chkbxLangue.TabIndex = 19
         Me.chkbxLangue.UseVisualStyleBackColor = True
         Me.chkbxLangue.Visible = False
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'flashHeader
         '
@@ -835,7 +830,6 @@ Partial Class CaclsApp
     Friend WithEvents optR As System.Windows.Forms.CheckBox
     Friend WithEvents lblutili2 As System.Windows.Forms.Label
     Friend WithEvents lblUtili As System.Windows.Forms.Label
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents lblUtili3 As System.Windows.Forms.Label
     Friend WithEvents lblUtili4 As System.Windows.Forms.Label
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console

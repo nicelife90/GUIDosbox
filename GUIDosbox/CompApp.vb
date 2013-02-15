@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class CompApp
 
@@ -14,12 +15,14 @@ Public Class CompApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -36,95 +39,73 @@ Public Class CompApp
         myConsole.StartConsole()
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "comp.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.comp, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "comp.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "comp")
 
         'Mode avancé caché.
         btnSend.Hide()
 
+        'Définition des prévilèges requis par l'utilitaire.
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des variables et des constantes.
         Const Apps As String = "comp "
-        Dim Args1 As String = ""
-        Dim Args2 As String = ""
-        Dim Args3 As String = ""
-        Dim Args4 As String = ""
-        Dim Args5 As String = ""
-        Dim Args6 As String = ""
-        Dim Args7 As String = ""
-        Dim Args8 As String = ""
+        Dim Arguments As String = Nothing
 
-        'Argument 1 Fichier 1
-        Args1 = """" & txtFile1.Text & """" & " "
+        'Arguments
+        Dim args(7) As String
+        For Each arg In args
+            arg = Nothing
+        Next
+        
+        'args(0) --> Fichier 1
+        args(0) = """" & txtFile1.Text & """" & " "
 
-        'Argument 2 Fichier 2
-        Args2 = """" & txtFile2.Text & """" & " "
+        'args(1) --> Fichier 2
+        args(1) = """" & txtFile2.Text & """" & " "
 
-        'Argument 3 /D
-        If optD.Checked = True Then
-            Args3 = Args3 + " /D "
-        Else
-            Args3 = ""
+        'args(2) --> /D
+        If optD.Checked Then
+            args(2) = "/D "
         End If
 
-        'Argument 4 /A
-        If optA.Checked = True Then
-            Args4 = Args4 + " /A "
-        Else
-            Args4 = ""
+        'args(3) --> /A
+        If optA.Checked Then
+            args(3) = "/A "
         End If
 
-        'Argument 5 /L
-        If optL.Checked = True Then
-            Args5 = Args5 + " /L "
-        Else
-            Args5 = ""
+        'args(4) --> /L
+        If optL.Checked Then
+            args(4) = "/L "
         End If
 
-        'Argument 6 /N
-        If optN.Checked = True Then
-            Args6 = Args6 + " /N="
-        Else
-            Args6 = ""
+        'args(5) --> /N:Nombre de ligne
+        If optN.Checked Then
+            args(5) = "/N=" & CStr(optNArgs.Value) & " "
         End If
 
-        'Argument 7 /N:Nombre de ligne
-        If optN.Checked = True Then
-            Args7 = Args7 & "" & _
-            CStr(optNArgs.Value) & "" & " "
-        Else
-            Args7 = ""
+        'args(6) --> /C
+        If optC.Checked Then
+            args(6) = "/C "
         End If
 
-        'Argument 8 /C
-        If optC.Checked = True Then
-            Args8 = Args8 + " /C "
-        Else
-            Args8 = ""
+        'args(7) --> /OFF[LINE]
+        If optOff.Checked Then
+            args(7) = "/OFF "
         End If
 
-        'Vérification des champs obligatoire.
-        If txtFile1.Text = "" Or txtFile2.Text = "" Then
-            myConsole.Message("Vous devez entrer les noms de fichiers à comparer dans les cases du haut.")
-        Else
-            'Envoi de la commande.
-            txtCmdExec.Text = myConsole.SendCommand(Apps + Args1 + Args2 + Args3 + Args4 + Args5 + Args6 + Args7 + Args8)
+        'Céation de la chaine d'arguments
+        For Each arg In args
+            Arguments += arg
+        Next
 
-            'Répond non à la question de comp
-            myConsole.SendReponseNo()
+        'Envoi de la commande
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
 
-        End If
+        'Répond non à la question de comp
+        myConsole.SendReponseNo()
 
     End Sub
 
@@ -141,33 +122,18 @@ Public Class CompApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset de texbox.
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = Nothing
-            End If
-        Next
-
-        txtFile1.Text = Nothing
-        txtFile2.Text = Nothing
-
-        'Reset de la console
-        myConsole.Cls()
+        'Reset des texbox et de la console.
+        ClearTextBox(Me)
     End Sub
 
     Private Sub btnFile1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile1.Click
         'Sélection du fichier.
-        OpenFileDialog1.FileName = Nothing
-        OpenFileDialog1.ShowDialog()
-        txtFile1.Text = OpenFileDialog1.FileName
+        txtFile1.Text = ofd()
     End Sub
 
     Private Sub btnFile2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFile2.Click
         'Sélection du fichier.
-        OpenFileDialog2.FileName = Nothing
-        OpenFileDialog2.ShowDialog()
-        txtFile2.Text = OpenFileDialog2.FileName
+        txtFile2.Text = ofd()
     End Sub
 
     ''' <summary>
@@ -192,7 +158,6 @@ Public Class CompApp
             btnClear.Text = "Effacer"
             btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
-
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
             lblCmdExec.Text = "Just Executed:"
@@ -206,7 +171,4 @@ Public Class CompApp
     End Sub
 #End Region
 
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
 End Class

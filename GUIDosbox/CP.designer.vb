@@ -32,18 +32,17 @@ Partial Class CP
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssocToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AttribToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CaclsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChkdskToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CmdConsoleToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompactToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.COMPToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CONVERTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RDToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SUBSTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.SYSTEMINFOToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TRACERTToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.TYPEToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.RToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CompToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RdToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SubstToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.SystemInfoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TracertToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TypeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.WhereToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhoamiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XcopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripAide = New System.Windows.Forms.ToolStripMenuItem()
@@ -121,7 +120,7 @@ Partial Class CP
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
-        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AssocToolStripMenuItem, Me.AttribToolStripMenuItem, Me.RToolStripMenuItem, Me.ChkdskToolStripMenuItem, Me.CmdConsoleToolStripMenuItem, Me.CompactToolStripMenuItem, Me.COMPToolStripMenuItem, Me.CONVERTToolStripMenuItem, Me.RDToolStripMenuItem, Me.SUBSTToolStripMenuItem, Me.SYSTEMINFOToolStripMenuItem, Me.TRACERTToolStripMenuItem, Me.TYPEToolStripMenuItem, Me.RToolStripMenuItem1, Me.WhoamiToolStripMenuItem, Me.XcopyToolStripMenuItem})
+        Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AssocToolStripMenuItem, Me.AttribToolStripMenuItem, Me.CaclsToolStripMenuItem, Me.ChkdskToolStripMenuItem, Me.CmdConsoleToolStripMenuItem, Me.CompactToolStripMenuItem, Me.CompToolStripMenuItem, Me.RdToolStripMenuItem, Me.SubstToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.TracertToolStripMenuItem, Me.TypeToolStripMenuItem, Me.WhereToolStripMenuItem, Me.WhoamiToolStripMenuItem, Me.XcopyToolStripMenuItem})
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
@@ -144,12 +143,12 @@ Partial Class CP
         Me.AttribToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.AttribToolStripMenuItem.Text = "ATTRIB"
         '
-        'RToolStripMenuItem
+        'CaclsToolStripMenuItem
         '
-        Me.RToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.RToolStripMenuItem.Name = "RToolStripMenuItem"
-        Me.RToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.RToolStripMenuItem.Text = "CACLS"
+        Me.CaclsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CaclsToolStripMenuItem.Name = "CaclsToolStripMenuItem"
+        Me.CaclsToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.CaclsToolStripMenuItem.Text = "CACLS"
         '
         'ChkdskToolStripMenuItem
         '
@@ -175,63 +174,55 @@ Partial Class CP
         Me.CompactToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.CompactToolStripMenuItem.Text = "COMPACT"
         '
-        'COMPToolStripMenuItem
+        'CompToolStripMenuItem
         '
-        Me.COMPToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.COMPToolStripMenuItem.Name = "COMPToolStripMenuItem"
-        Me.COMPToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.COMPToolStripMenuItem.Text = "COMP"
+        Me.CompToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CompToolStripMenuItem.Name = "CompToolStripMenuItem"
+        Me.CompToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.CompToolStripMenuItem.Text = "COMP"
         '
-        'CONVERTToolStripMenuItem
+        'RdToolStripMenuItem
         '
-        Me.CONVERTToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.CONVERTToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.CONVERTToolStripMenuItem.Name = "CONVERTToolStripMenuItem"
-        Me.CONVERTToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.CONVERTToolStripMenuItem.Text = "CONVERT"
+        Me.RdToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.RdToolStripMenuItem.Name = "RdToolStripMenuItem"
+        Me.RdToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.RdToolStripMenuItem.Text = "RD"
         '
-        'RDToolStripMenuItem
+        'SubstToolStripMenuItem
         '
-        Me.RDToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.RDToolStripMenuItem.Name = "RDToolStripMenuItem"
-        Me.RDToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.RDToolStripMenuItem.Text = "RD"
+        Me.SubstToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.SubstToolStripMenuItem.Name = "SubstToolStripMenuItem"
+        Me.SubstToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.SubstToolStripMenuItem.Text = "SUBST"
         '
-        'SUBSTToolStripMenuItem
+        'SystemInfoToolStripMenuItem
         '
-        Me.SUBSTToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.SUBSTToolStripMenuItem.Name = "SUBSTToolStripMenuItem"
-        Me.SUBSTToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.SUBSTToolStripMenuItem.Text = "SUBST"
+        Me.SystemInfoToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.SystemInfoToolStripMenuItem.Name = "SystemInfoToolStripMenuItem"
+        Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.SystemInfoToolStripMenuItem.Text = "SYSTEM INFO"
         '
-        'SYSTEMINFOToolStripMenuItem
+        'TracertToolStripMenuItem
         '
-        Me.SYSTEMINFOToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.SYSTEMINFOToolStripMenuItem.Name = "SYSTEMINFOToolStripMenuItem"
-        Me.SYSTEMINFOToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.SYSTEMINFOToolStripMenuItem.Text = "SYSTEM INFO"
+        Me.TracertToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
+        Me.TracertToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.TracertToolStripMenuItem.Name = "TracertToolStripMenuItem"
+        Me.TracertToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.TracertToolStripMenuItem.Text = "TRACERT"
         '
-        'TRACERTToolStripMenuItem
+        'TypeToolStripMenuItem
         '
-        Me.TRACERTToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.TRACERTToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.TRACERTToolStripMenuItem.Name = "TRACERTToolStripMenuItem"
-        Me.TRACERTToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.TRACERTToolStripMenuItem.Text = "TRACERT"
+        Me.TypeToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.TypeToolStripMenuItem.Name = "TypeToolStripMenuItem"
+        Me.TypeToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.TypeToolStripMenuItem.Text = "TYPE"
         '
-        'TYPEToolStripMenuItem
+        'WhereToolStripMenuItem
         '
-        Me.TYPEToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.TYPEToolStripMenuItem.Name = "TYPEToolStripMenuItem"
-        Me.TYPEToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
-        Me.TYPEToolStripMenuItem.Text = "TYPE"
-        '
-        'RToolStripMenuItem1
-        '
-        Me.RToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.RToolStripMenuItem1.Name = "RToolStripMenuItem1"
-        Me.RToolStripMenuItem1.Size = New System.Drawing.Size(157, 22)
-        Me.RToolStripMenuItem1.Text = "WHERE"
+        Me.WhereToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.WhereToolStripMenuItem.Name = "WhereToolStripMenuItem"
+        Me.WhereToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
+        Me.WhereToolStripMenuItem.Text = "WHERE"
         '
         'WhoamiToolStripMenuItem
         '
@@ -387,20 +378,19 @@ Partial Class CP
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AssocToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AttribToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CaclsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ChkdskToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CmdConsoleToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CompactToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents COMPToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RDToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents CONVERTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TRACERTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents TYPEToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents CompToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents RdToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TracertToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents TypeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents XcopyToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents WhoamiToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SYSTEMINFOToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents SUBSTToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents RToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SystemInfoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents SubstToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents WhereToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents lblMode As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblUser As System.Windows.Forms.ToolStripStatusLabel

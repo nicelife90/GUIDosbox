@@ -24,8 +24,6 @@ Partial Class CompactApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompactApp))
-        Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbMode = New GUIDosbox.GUIDosbox_Groupbox()
@@ -51,15 +49,12 @@ Partial Class CompactApp
         Me.btnClear = New GUIDosbox.GUIDosbox_Button()
         Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbMode.SuspendLayout()
         Me.gbDossier.SuspendLayout()
         Me.gbOptions.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'OpenFileDialog1
-        '
-        Me.OpenFileDialog1.FileName = "OpenFileDialog1"
         '
         'chkbxLangue
         '
@@ -90,7 +85,7 @@ Partial Class CompactApp
         Me.gbMode.Controls.Add(Me.optU)
         Me.gbMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.gbMode.ForeColor = System.Drawing.Color.LightBlue
-        Me.gbMode.Location = New System.Drawing.Point(25, 44)
+        Me.gbMode.Location = New System.Drawing.Point(47, 44)
         Me.gbMode.Name = "gbMode"
         Me.gbMode.Size = New System.Drawing.Size(139, 64)
         Me.gbMode.TabIndex = 39
@@ -136,7 +131,7 @@ Partial Class CompactApp
         Me.gbDossier.Controls.Add(Me.txtAllPath)
         Me.gbDossier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.gbDossier.ForeColor = System.Drawing.Color.LightBlue
-        Me.gbDossier.Location = New System.Drawing.Point(170, 44)
+        Me.gbDossier.Location = New System.Drawing.Point(192, 44)
         Me.gbDossier.Name = "gbDossier"
         Me.gbDossier.Size = New System.Drawing.Size(257, 64)
         Me.gbDossier.TabIndex = 36
@@ -195,7 +190,7 @@ Partial Class CompactApp
         Me.gbOptions.Controls.Add(Me.optI)
         Me.gbOptions.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.gbOptions.ForeColor = System.Drawing.Color.LightBlue
-        Me.gbOptions.Location = New System.Drawing.Point(433, 44)
+        Me.gbOptions.Location = New System.Drawing.Point(455, 44)
         Me.gbOptions.Name = "gbOptions"
         Me.gbOptions.Size = New System.Drawing.Size(103, 64)
         Me.gbOptions.TabIndex = 34
@@ -265,7 +260,7 @@ Partial Class CompactApp
         Me.txtRealPath.Enabled = False
         Me.txtRealPath.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtRealPath.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtRealPath.Location = New System.Drawing.Point(106, 116)
+        Me.txtRealPath.Location = New System.Drawing.Point(128, 116)
         Me.txtRealPath.Name = "txtRealPath"
         Me.txtRealPath.Size = New System.Drawing.Size(430, 18)
         Me.txtRealPath.TabIndex = 29
@@ -278,7 +273,7 @@ Partial Class CompactApp
         Me.btnFichier.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnFichier.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnFichier.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnFichier.Location = New System.Drawing.Point(25, 113)
+        Me.btnFichier.Location = New System.Drawing.Point(47, 113)
         Me.btnFichier.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnFichier.Name = "btnFichier"
         Me.btnFichier.Size = New System.Drawing.Size(75, 23)
@@ -293,9 +288,9 @@ Partial Class CompactApp
         Me.txtCmdExec.Enabled = False
         Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtCmdExec.Location = New System.Drawing.Point(140, 394)
+        Me.txtCmdExec.Location = New System.Drawing.Point(140, 411)
         Me.txtCmdExec.Name = "txtCmdExec"
-        Me.txtCmdExec.Size = New System.Drawing.Size(417, 18)
+        Me.txtCmdExec.Size = New System.Drawing.Size(460, 18)
         Me.txtCmdExec.TabIndex = 27
         '
         'lblCmdExec
@@ -304,7 +299,7 @@ Partial Class CompactApp
         Me.lblCmdExec.BackColor = System.Drawing.Color.Transparent
         Me.lblCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.lblCmdExec.ForeColor = System.Drawing.Color.LightBlue
-        Me.lblCmdExec.Location = New System.Drawing.Point(3, 397)
+        Me.lblCmdExec.Location = New System.Drawing.Point(3, 414)
         Me.lblCmdExec.Name = "lblCmdExec"
         Me.lblCmdExec.Size = New System.Drawing.Size(131, 11)
         Me.lblCmdExec.TabIndex = 26
@@ -317,7 +312,7 @@ Partial Class CompactApp
         Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optAdvanceMode.Location = New System.Drawing.Point(93, 455)
+        Me.optAdvanceMode.Location = New System.Drawing.Point(93, 472)
         Me.optAdvanceMode.Name = "optAdvanceMode"
         Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
         Me.optAdvanceMode.TabIndex = 25
@@ -332,7 +327,7 @@ Partial Class CompactApp
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnSend.Location = New System.Drawing.Point(293, 418)
+        Me.btnSend.Location = New System.Drawing.Point(261, 435)
         Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(82, 23)
@@ -348,7 +343,7 @@ Partial Class CompactApp
         Me.btnApply.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnApply.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnApply.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnApply.Location = New System.Drawing.Point(387, 447)
+        Me.btnApply.Location = New System.Drawing.Point(430, 464)
         Me.btnApply.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnApply.Name = "btnApply"
         Me.btnApply.Size = New System.Drawing.Size(82, 23)
@@ -364,7 +359,7 @@ Partial Class CompactApp
         Me.btnBack.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnBack.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnBack.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnBack.Location = New System.Drawing.Point(475, 447)
+        Me.btnBack.Location = New System.Drawing.Point(518, 464)
         Me.btnBack.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnBack.Name = "btnBack"
         Me.btnBack.Size = New System.Drawing.Size(82, 23)
@@ -380,7 +375,7 @@ Partial Class CompactApp
         Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnClear.Location = New System.Drawing.Point(475, 418)
+        Me.btnClear.Location = New System.Drawing.Point(518, 435)
         Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnClear.Name = "btnClear"
         Me.btnClear.Size = New System.Drawing.Size(82, 23)
@@ -396,7 +391,7 @@ Partial Class CompactApp
         Me.btnHelp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnHelp.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnHelp.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnHelp.Location = New System.Drawing.Point(5, 447)
+        Me.btnHelp.Location = New System.Drawing.Point(5, 464)
         Me.btnHelp.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnHelp.Name = "btnHelp"
         Me.btnHelp.Size = New System.Drawing.Size(82, 23)
@@ -409,8 +404,16 @@ Partial Class CompactApp
         Me.myConsole.Location = New System.Drawing.Point(5, 140)
         Me.myConsole.myConsole = Nothing
         Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(552, 248)
+        Me.myConsole.Size = New System.Drawing.Size(595, 265)
         Me.myConsole.TabIndex = 17
+        '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 493)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(605, 22)
+        Me.footer.TabIndex = 40
         '
         'CompactApp
         '
@@ -418,8 +421,9 @@ Partial Class CompactApp
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(561, 476)
+        Me.ClientSize = New System.Drawing.Size(605, 515)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.gbMode)
         Me.Controls.Add(Me.gbDossier)
         Me.Controls.Add(Me.gbOptions)
@@ -439,8 +443,11 @@ Partial Class CompactApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CompactApp"
-        Me.Text = "Compact"
+        Me.Text = "GUI Dosbox - COMPACT"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbMode.ResumeLayout(False)
         Me.gbMode.PerformLayout()
@@ -452,8 +459,6 @@ Partial Class CompactApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
@@ -479,4 +484,5 @@ Partial Class CompactApp
     Friend WithEvents optC As GUIDosbox.GUIDosbox_RadioButton
     Friend WithEvents optU As GUIDosbox.GUIDosbox_RadioButton
     Friend WithEvents gbMode As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

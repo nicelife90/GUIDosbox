@@ -47,6 +47,7 @@ Partial Class CHKDSkApp
         Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
         Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosbox_Groupbox3.SuspendLayout()
         Me.gbOptL.SuspendLayout()
@@ -290,7 +291,7 @@ Partial Class CHKDSkApp
         Me.btnSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.btnSend.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.btnSend.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnSend.Location = New System.Drawing.Point(367, 439)
+        Me.btnSend.Location = New System.Drawing.Point(304, 439)
         Me.btnSend.MinimumSize = New System.Drawing.Size(0, 23)
         Me.btnSend.Name = "btnSend"
         Me.btnSend.Size = New System.Drawing.Size(83, 23)
@@ -384,14 +385,23 @@ Partial Class CHKDSkApp
         Me.myConsole.Size = New System.Drawing.Size(543, 354)
         Me.myConsole.TabIndex = 20
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 493)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(691, 22)
+        Me.footer.TabIndex = 33
+        '
         'CHKDSkApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(691, 500)
+        Me.ClientSize = New System.Drawing.Size(691, 515)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.GuiDosbox_Groupbox3)
         Me.Controls.Add(Me.gbOptL)
         Me.Controls.Add(Me.gbLetter)
@@ -409,7 +419,11 @@ Partial Class CHKDSkApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CHKDSkApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - CHKDSK"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosbox_Groupbox3.ResumeLayout(False)
@@ -446,4 +460,5 @@ Partial Class CHKDSkApp
     Friend WithEvents optI As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents optR As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents optF As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

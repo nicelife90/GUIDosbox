@@ -1,11 +1,38 @@
 ﻿Option Strict On
+Option Explicit On
 
 Imports System.IO
 Imports AxShockwaveFlashObjects
 Imports System.Security.Principal
 Imports System.Collections.Specialized
+Imports System.Collections.ObjectModel
 
 Module GUIDosboxCustomFunction
+
+    ''' <summary>
+    ''' Crée un nouveau OpenFileDialogs et retourne le chemin du fichier sélectionné.
+    ''' </summary>
+    ''' <returns>Le chemin du fichier sélectionné</returns>
+    Public Function ofd() As String
+        Dim opFD As New OpenFileDialog
+        opFD.Title = "GUI Dosbox"
+        opFD.Multiselect = False
+        opFD.FileName = Nothing
+        opFD.ShowDialog()
+        Return opFD.FileName
+    End Function
+
+    ''' <summary>
+    ''' Crée un nouveau FolderBrowserDialog et retourne le chemin du dossier sélectionné.
+    ''' </summary>
+    ''' <returns>Le chemin du dossier sélectionné</returns>
+    Public Function fbd() As String
+        Dim opFD As New FolderBrowserDialog
+        opFD.RootFolder = Environment.SpecialFolder.MyComputer
+        opFD.ShowDialog()
+        Return opFD.SelectedPath
+    End Function
+    
     ''' <summary>
     ''' Retourne les compte d'utilisateurs sur l'ordinateur spécifié.
     ''' </summary>
@@ -37,14 +64,26 @@ Module GUIDosboxCustomFunction
     End Function
 
     ''' <summary>
+    ''' Renvoi la liste des lettres utilisées par les lecteurs (Drive) 
+    ''' </summary>
+    Public Function UsedDrive() As StringCollection
+        Dim lecteurs As New StringCollection
+        Dim drives As ReadOnlyCollection(Of DriveInfo) = My.Computer.FileSystem.Drives
+        For Each drive As DriveInfo In drives
+            Dim lecteur As String = drive.ToString.Substring(0, drive.ToString.Length - 1)
+            lecteurs.Add(lecteur.ToString)
+        Next
+        Return lecteurs
+    End Function
+
+
+    ''' <summary>
     ''' Renvoi une liste de lettre disponible pour un lecteur
     ''' </summary>
-    ''' <returns></returns>
     Public Function AvailableDrive() As StringCollection
 
         'Création d'un StringCollection avec les lettre de l'alphabet
         Dim alphabet As New StringCollection()
-
         Dim lowerBound As Integer = Convert.ToInt16("a"c)
         Dim upperBound As Integer = Convert.ToInt16("z"c)
         For i As Integer = lowerBound To upperBound - 1
@@ -53,9 +92,8 @@ Module GUIDosboxCustomFunction
         Next
 
         'Supprime les lettre déja utiliser par un lecteur
-        Dim drives As DriveInfo() = DriveInfo.GetDrives()
-        For Each drive As DriveInfo In drives
-            alphabet.Remove(drive.Name.Substring(0, 1).ToLower())
+        For Each drive In UsedDrive()
+            alphabet.Remove(drive.Substring(0, 1).ToLower())
         Next
 
         If alphabet.Count > 0 Then
@@ -70,7 +108,6 @@ Module GUIDosboxCustomFunction
     ''' Ex: GUIDosbox.exe /cmdc
     ''' </summary>
     ''' <returns>Avec arguments --> True, Sans arguments --> False</returns>
-    ''' <remarks></remarks>
     Public Function OpenWithCmdArgs() As Boolean
         If My.Application.CommandLineArgs.Count > 0 Then
             Return True
@@ -97,7 +134,6 @@ Module GUIDosboxCustomFunction
     ''' </summary>
     ''' <param name="header">Nom du composant AxShockwaveFlash</param>
     ''' <param name="tools">Nom de la ressource (Flash Movie)</param>
-    ''' <remarks></remarks>
     Public Sub LoadHeader(ByVal header As AxShockwaveFlash, ByVal tools As String)
         Try
             Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & tools & ".swf"
@@ -131,7 +167,6 @@ Module GUIDosboxCustomFunction
     ''' <summary>
     ''' Lance l'application en mode administrateur.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Sub RunAsAdminNow()
         Dim processInfo As New ProcessStartInfo()
         processInfo.Verb = "runas"
@@ -146,7 +181,6 @@ Module GUIDosboxCustomFunction
     ''' <summary>
     ''' Lance le bon form (tools) après avoir été lancé en mode administrateur.
     ''' </summary>
-    ''' <remarks></remarks>
     Public Sub ShowGUIDosboxForm(ByVal FormName As String)
 
         Dim ShowedForm As Windows.Forms.Form

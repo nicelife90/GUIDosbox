@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class CaclsApp
 
@@ -12,6 +13,8 @@ Public Class CaclsApp
             AdvanceMode = True
             btnApply.Visible = False
             btnHelp.Visible = False
+            btnNo.Visible = False
+            btnYes.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
             footer.AdvanceMode(AdvanceMode)
@@ -19,6 +22,8 @@ Public Class CaclsApp
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
+            btnNo.Visible = True
+            btnYes.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
             footer.AdvanceMode(AdvanceMode)
@@ -195,9 +200,7 @@ Public Class CaclsApp
 
     Private Sub btnOpenFile_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBrowse.Click
         'Sélection d'un fichier
-        OpenFileDialog1.FileName = Nothing
-        OpenFileDialog1.ShowDialog()
-        txtFile.Text = OpenFileDialog1.FileName
+        txtFile.Text = ofd()
     End Sub
 
     ''' <summary>

@@ -23,7 +23,6 @@ Partial Class CMDConsole
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CMDConsole))
-        Me.txtInput = New System.Windows.Forms.TextBox()
         Me.btnBack = New System.Windows.Forms.Button()
         Me.btnHelp = New System.Windows.Forms.Button()
         Me.lblCommande = New System.Windows.Forms.Label()
@@ -31,20 +30,11 @@ Partial Class CMDConsole
         Me.btnSend = New System.Windows.Forms.Button()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.txtInput = New GUIDosbox.GUIDosbox_Textbox()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'txtInput
-        '
-        Me.txtInput.BackColor = System.Drawing.Color.Black
-        Me.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtInput.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtInput.Location = New System.Drawing.Point(166, 460)
-        Me.txtInput.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.txtInput.Name = "txtInput"
-        Me.txtInput.Size = New System.Drawing.Size(709, 18)
-        Me.txtInput.TabIndex = 0
         '
         'btnBack
         '
@@ -141,6 +131,14 @@ Partial Class CMDConsole
         Me.flashHeader.Size = New System.Drawing.Size(886, 40)
         Me.flashHeader.TabIndex = 10
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 514)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(883, 22)
+        Me.footer.TabIndex = 11
+        '
         'myConsole
         '
         Me.myConsole.Location = New System.Drawing.Point(10, 42)
@@ -150,14 +148,27 @@ Partial Class CMDConsole
         Me.myConsole.Size = New System.Drawing.Size(865, 412)
         Me.myConsole.TabIndex = 9
         '
+        'txtInput
+        '
+        Me.txtInput.BackColor = System.Drawing.Color.Black
+        Me.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtInput.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtInput.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtInput.Location = New System.Drawing.Point(153, 460)
+        Me.txtInput.Name = "txtInput"
+        Me.txtInput.Size = New System.Drawing.Size(723, 18)
+        Me.txtInput.TabIndex = 12
+        '
         'CMDConsole
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ClientSize = New System.Drawing.Size(883, 516)
+        Me.ClientSize = New System.Drawing.Size(883, 536)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtInput)
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
@@ -166,18 +177,20 @@ Partial Class CMDConsole
         Me.Controls.Add(Me.lblCommande)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnBack)
-        Me.Controls.Add(Me.txtInput)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "CMDConsole"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - CMD Console"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents txtInput As System.Windows.Forms.TextBox
     Friend WithEvents btnBack As System.Windows.Forms.Button
     Friend WithEvents btnHelp As System.Windows.Forms.Button
     Friend WithEvents lblCommande As System.Windows.Forms.Label
@@ -186,4 +199,6 @@ Partial Class CMDConsole
     Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
+    Friend WithEvents txtInput As GUIDosbox.GUIDosbox_Textbox
 End Class

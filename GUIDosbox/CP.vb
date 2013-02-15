@@ -2,30 +2,83 @@
 'http://technet.microsoft.com/en-us/library/bb490928.aspx
 
 Option Strict On
+Option Explicit On
 Imports System.IO
 
 Public Class CP
 
 #Region "Barre de menu"
 
+    Private Sub AssocToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
+        'AssocApp (1)
+        If Not RunAsAdmin() Then
+            Try
+                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "assoc", False)
+            Catch ex As Exception
+                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+            End Try
+            frmMsgBox.Show()
+        Else
+            Me.Hide()
+            AssocApp.Show()
+        End If
+    End Sub
+
     Private Sub AttribToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AttribToolStripMenuItem.Click
+        'AttribApp (-1)
         Me.Hide()
         AttribApp.Show()
     End Sub
 
-    Private Sub ChkdskToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkdskToolStripMenuItem.Click
+    Private Sub CaclsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CaclsToolStripMenuItem.Click
+        'CaclsApp (-1)
         Me.Hide()
-        CHKDSkApp.Show()
+        CaclsApp.Show()
+    End Sub
+
+    Private Sub ChkdskToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkdskToolStripMenuItem.Click
+        'CHKDSKApp (1)
+        If Not RunAsAdmin() Then
+            Try
+                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "chkdsk", False)
+            Catch ex As Exception
+                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+            End Try
+            frmMsgBox.Show()
+        Else
+            Me.Hide()
+            CHKDSkApp.Show()
+        End If
     End Sub
 
     Private Sub CmdConsoleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdConsoleToolStripMenuItem.Click
-        Me.Hide()
-        CMDConsole.Show()
+        'CMDConsole (1)
+        If Not RunAsAdmin() Then
+            Try
+                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "cmd", False)
+            Catch ex As Exception
+                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+            End Try
+            frmMsgBox.Show()
+        Else
+            Me.Hide()
+            CMDConsole.Show()
+        End If
     End Sub
 
     Private Sub CompactToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompactToolStripMenuItem.Click
+        'CompactApp (-1)
         Me.Hide()
         CompactApp.Show()
+    End Sub
+
+    Private Sub CompToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompToolStripMenuItem.Click
+        'CompApp (-1)
+        Me.Hide()
+        CompApp.Show()
     End Sub
 
     Private Sub XcopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XcopyToolStripMenuItem.Click
@@ -44,22 +97,6 @@ Public Class CP
         End If
     End Sub
 
-    Private Sub AssocToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
-        'AssocApp
-        If Not RunAsAdmin() Then
-            Try
-                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "assoc", False)
-            Catch ex As Exception
-                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-            End Try
-            frmMsgBox.Show()
-        Else
-            Me.Hide()
-            AssocApp.Show()
-        End If
-    End Sub
-
     Private Sub AideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
         HelpApp.Show()
         Me.Hide()
@@ -74,45 +111,36 @@ Public Class CP
         WhoamiApp.Show()
     End Sub
 
-    Private Sub COMPToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles COMPToolStripMenuItem.Click
-        Me.Hide()
-        CompApp.Show()
-    End Sub
-
-    Private Sub TRACERTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TRACERTToolStripMenuItem.Click
+    Private Sub TRACERTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TracertToolStripMenuItem.Click
         Me.Hide()
         TracertApp.Show()
     End Sub
 
-    Private Sub TYPEToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TYPEToolStripMenuItem.Click
+    Private Sub TYPEToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TypeToolStripMenuItem.Click
         Me.Hide()
         TypeApp.Show()
     End Sub
 
-    Private Sub RToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RToolStripMenuItem.Click
-        Me.Hide()
-        CaclsApp.Show()
-    End Sub
-
-    Private Sub RDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RDToolStripMenuItem.Click
+    Private Sub RDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RdToolStripMenuItem.Click
         Me.Hide()
         RDApp.Show()
     End Sub
 
-    Private Sub SUBSTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SUBSTToolStripMenuItem.Click
+    Private Sub SUBSTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SubstToolStripMenuItem.Click
         Me.Hide()
         SUBSTApp.Show()
     End Sub
 
-    Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SYSTEMINFOToolStripMenuItem.Click
+    Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SystemInfoToolStripMenuItem.Click
         Me.Hide()
         SystemInfoApp.Show()
     End Sub
 
-    Private Sub RToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RToolStripMenuItem1.Click
+    Private Sub RToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhereToolStripMenuItem.Click
         Me.Hide()
         WhereApp.Show()
     End Sub
+
     Private Sub ToolStripAide_Click(sender As Object, e As EventArgs) Handles ToolStripAide.Click
         Me.Hide()
         HelpApp.Show()
@@ -283,13 +311,6 @@ Public Class CP
             MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message, _
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
-
-    End Sub
-
-    Private Sub FlashCPEN_Enter(sender As Object, e As EventArgs) Handles FlashCPEN.Enter
-
-    End Sub
-    Private Sub FlashCPFR_Enter(sender As Object, e As EventArgs) Handles FlashCPFR.Enter
 
     End Sub
 End Class

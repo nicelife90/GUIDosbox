@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class AttribApp
 
@@ -145,15 +146,12 @@ Public Class AttribApp
 
     Private Sub btnFiles_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFiles.Click
         'Sélection d'un fichier
-        OpenFileDialog1.FileName = Nothing
-        OpenFileDialog1.ShowDialog()
-        txtFile.Text = OpenFileDialog1.FileName
+        txtFile.Text = ofd()
     End Sub
 
     Private Sub btnFolders_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFolders.Click
         'Sélection d'un dossier
-        FolderBrowserDialog1.ShowDialog()
-        txtFile.Text = FolderBrowserDialog1.SelectedPath
+        txtFile.Text = fbd()
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -183,7 +181,6 @@ Public Class AttribApp
             btnBack.Text = "Retour"
             btnFiles.Text = "Fichier"
             btnFolders.Text = "Dossier"
-
         Else                               ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
             btnAide.Text = "Help"
@@ -191,7 +188,6 @@ Public Class AttribApp
             btnBack.Text = "Back"
             btnFiles.Text = "File"
             btnFolders.Text = "Folder"
-
         End If
     End Sub
 #End Region

@@ -1,5 +1,9 @@
-﻿Imports System.Runtime.InteropServices
+﻿Option Strict On
+Option Explicit On
+
+Imports System.Runtime.InteropServices
 Imports System.IO
+
 Public Class frmMsgBox
 
     'Import pour le bouclier sur le bouton 
@@ -36,4 +40,5 @@ Public Class frmMsgBox
         'Fermeture.
         Me.Close()
     End Sub
+
 End Class
