@@ -1,11 +1,12 @@
 ﻿Option Strict On
+Option Explicit On
+
 Imports System.Text
 
 ''' <summary>
 ''' Console personnalisé GUIDosbox.
 ''' </summary>
 Public Class GUIDosbox_Console
-
 
     ''' <summary>
     ''' Console personnalisé GUIDosbox.
@@ -65,13 +66,19 @@ Public Class GUIDosbox_Console
     ''' </summary>
     ''' <param name="myCommand">Commande à exécuter.</param>
     Public Function SendCommand(ByVal myCommand As String) As String
-        'Conversion de la chaine de caractères
-        Dim buffer As Byte() = Encoding.GetEncoding(850).GetBytes(myCommand)
-        'Envoi de la commande
-        myConsole.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
-        myConsole.StandardInput.WriteLine()
-        myConsole.StandardInput.Flush()
-        Return myCommand
+        If myCommand = "cls" Or myCommand = "CLS" Then
+            'Si commande = cls
+            Cls()
+            Return myCommand
+        Else
+            'Conversion de la chaine de caractères --> Support des accents
+            Dim buffer As Byte() = Encoding.GetEncoding(850).GetBytes(myCommand)
+            'Envoi de la commande
+            myConsole.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
+            myConsole.StandardInput.WriteLine()
+            myConsole.StandardInput.Flush()
+            Return myCommand
+        End If
     End Function
 
     ''' <summary>
@@ -105,13 +112,12 @@ Public Class GUIDosbox_Console
     ''' Ex: chkdsk
     ''' </param>
     Public Sub CloseConsole(Optional ByVal tool As String = "cmd")
-
+        'Arrêt et fermeture de la console
         myConsole.CancelErrorRead()
         myConsole.CancelOutputRead()
         myConsole.Close()
-
+        'Process Killing cmd.exe & tool.exe
         Try
-
             For Each RunningProcess In Process.GetProcessesByName("cmd")
                 RunningProcess.Kill()
             Next
@@ -121,11 +127,8 @@ Public Class GUIDosbox_Console
                     RunningProcess.Kill()
                 Next
             End If
-
         Catch ex As Exception
             MsgBox("L'erreur suivante c'est produite, " & ex.Message, MsgBoxStyle.Exclamation)
         End Try
-
     End Sub
-
 End Class
