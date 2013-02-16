@@ -1,4 +1,6 @@
 ﻿Option Strict On
+Option Explicit On
+
 ''' <summary>
 ''' ToolStrip Personnalisé GUIDosbox
 ''' </summary>
@@ -41,13 +43,13 @@ Public Class GUIDosbox_StatusStrip
                 'Require User
             Case 2
                 If Not RunAsAdmin() Then
-                    lblPrivilegesStatus.ForeColor = Color.MediumPurple
-                    lblPrivilegesStatus.Text = "Administrateur"
+                    lblPrivilegesStatus.ForeColor = Color.LightBlue
+                    lblPrivilegesStatus.Text = "Utilisateur"
                     lblFonctionanliteStatus.ForeColor = Color.MediumPurple
                     lblFonctionanliteStatus.Text = "Complètes"
                 Else
-                    lblPrivilegesStatus.ForeColor = Color.LightBlue
-                    lblPrivilegesStatus.Text = "Utilisateur"
+                    lblPrivilegesStatus.ForeColor = Color.MediumPurple
+                    lblPrivilegesStatus.Text = "Administrateur"
                     lblFonctionanliteStatus.ForeColor = Color.Maroon
                     lblFonctionanliteStatus.Text = "Limité"
                 End If

@@ -14,12 +14,14 @@ Public Class RDApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -36,16 +38,7 @@ Public Class RDApp
         myConsole.StartConsole()
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "rd.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.rd, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "rd.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "rd")
 
         'Mode avancé caché.
         btnSend.Hide()
@@ -53,31 +46,42 @@ Public Class RDApp
         'Option par défaut.
         optQ.Checked = True
 
+        'Définition du niveau de privilèges requis par l'utilitaire
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
         'Déclaration des constantes et variables.
-        Const Apps As String = "RD "
-        Dim Args1 As String = Nothing
-        Dim Args2 As String = Nothing
-        Dim Args3 As String = Nothing
+        Const Apps As String = "rd "
+        Dim Arguments As String = Nothing
 
-        'Argument 1 /S 
-        If optS.Checked = True Then
-            Args1 = "/S "
+        'Arguments
+        Dim args(2) As String
+        For Each arg In args
+            arg = Nothing
+        Next
+
+        'args(0) --> /S 
+        If optS.Checked Then
+            args(0) = "/S "
         End If
 
-        'Argument 2 /Q
-        If optQ.Checked = True Then
-            Args2 = "/Q "
+        'args(1) --> /Q
+        If optQ.Checked Then
+            args(1) = "/Q "
         End If
 
-        'Argument 3 Path
-        Args3 = """" & txtPath.Text & """"
+        'args(2) --> Path
+        args(2) = """" & txtPath.Text & """"
+
+        'Céation de la chaine d'arguments
+        For Each arg In args
+            Arguments += arg
+        Next
 
         'Exécution de la commande.
-        txtCmdExec.Text = myConsole.SendCommand(Apps + Args1 + Args2 + Args3)
+        txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
 
     End Sub
 
@@ -94,17 +98,13 @@ Public Class RDApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset de la console
-        myConsole.Cls()
-
-        'Reset des textbox.
-        txtPath.Text = Nothing
+        'Reset des textbox et de la console
+        ClearTextBox(Me)
     End Sub
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
         'Sélection du dossier.
-        FolderBrowserDialog1.ShowDialog()
-        txtPath.Text = FolderBrowserDialog1.SelectedPath
+        txtPath.Text = fbd()
     End Sub
 
     ''' <summary>
@@ -130,8 +130,6 @@ Public Class RDApp
             btnSend.Text = "Envoi"
             btnHelp.Text = "Aide"
             btnDossier.Text = "Dossier"
-
-
         Else                              ' boite PAS cochée=EN
             chkbxLangue.Text = "English"
             lblCmdExec.Text = "Just Executed:"
@@ -142,7 +140,6 @@ Public Class RDApp
             btnSend.Text = "Send"
             btnHelp.Text = "Help"
             btnDossier.Text = "Folder"
-
         End If
     End Sub
 #End Region

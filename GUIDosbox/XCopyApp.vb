@@ -1,6 +1,6 @@
 ﻿Option Strict On
 
-Public Class XCopyApp
+Public Class XcopyApp
 
 #Region "Mode avancé"
     'Variable pour le mode avancé.
@@ -169,7 +169,7 @@ Public Class XCopyApp
         For Each arg In args
             Arguments += arg
         Next
-        
+
         'Envoi de la commande.
         txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
     End Sub

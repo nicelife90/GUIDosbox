@@ -45,7 +45,7 @@ Partial Class CP
         Me.WhereToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhoamiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XcopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripAide = New System.Windows.Forms.ToolStripMenuItem()
+        Me.HelpToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.chkbxLangue = New System.Windows.Forms.CheckBox()
@@ -68,7 +68,7 @@ Partial Class CP
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.WindowText
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.ToolStripAide})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.HelpToolStripMenu})
         Me.MenuStrip1.Location = New System.Drawing.Point(-2, 37)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -240,14 +240,14 @@ Partial Class CP
         Me.XcopyToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.XcopyToolStripMenuItem.Text = "XCOPY"
         '
-        'ToolStripAide
+        'HelpToolStripMenu
         '
-        Me.ToolStripAide.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ToolStripAide.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.ToolStripAide.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.ToolStripAide.Name = "ToolStripAide"
-        Me.ToolStripAide.Size = New System.Drawing.Size(44, 24)
-        Me.ToolStripAide.Text = "Aide"
+        Me.HelpToolStripMenu.BackColor = System.Drawing.SystemColors.WindowText
+        Me.HelpToolStripMenu.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.HelpToolStripMenu.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.HelpToolStripMenu.Name = "HelpToolStripMenu"
+        Me.HelpToolStripMenu.Size = New System.Drawing.Size(44, 24)
+        Me.HelpToolStripMenu.Text = "Aide"
         '
         'HeaderFlashFR
         '
@@ -364,7 +364,7 @@ Partial Class CP
 
     End Sub
     Friend WithEvents MenuStrip1 As System.Windows.Forms.MenuStrip
-    Friend WithEvents ToolStripAide As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents HelpToolStripMenu As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FichierToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents QuiterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HeaderFlashFR As AxShockwaveFlashObjects.AxShockwaveFlash

@@ -38,6 +38,7 @@ Partial Class TypeApp
         Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosbox_Groupbox1.SuspendLayout()
         Me.SuspendLayout()
@@ -236,14 +237,23 @@ Partial Class TypeApp
         Me.myConsole.Size = New System.Drawing.Size(738, 356)
         Me.myConsole.TabIndex = 23
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 563)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(748, 22)
+        Me.footer.TabIndex = 35
+        '
         'TypeApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(748, 567)
+        Me.ClientSize = New System.Drawing.Size(748, 585)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.lblCmdExec)
         Me.Controls.Add(Me.optAdvanceMode)
@@ -259,6 +269,9 @@ Partial Class TypeApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "TypeApp"
         Me.Text = "GUI DosBox - TYPE"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -283,4 +296,5 @@ Partial Class TypeApp
     Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
     Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

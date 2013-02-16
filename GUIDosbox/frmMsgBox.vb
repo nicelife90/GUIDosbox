@@ -18,10 +18,19 @@ Public Class frmMsgBox
     End Sub
 
     Private Sub btnOui_Click(sender As Object, e As EventArgs) Handles btnOui.Click
-        'Démarrage de l'application en tant qu'administrateur
-        RunAsAdminNow()
-        CP.Close()
-        Me.Close()
+        'Démarrage de l'application dans le bon mode.
+        Select Case PrivilegesLevel
+            'Require Administrator
+            Case 1
+                RunAsAdminNow()
+                CP.Close()
+                Me.Close()
+                'Require User
+            Case 2
+                RunAsUserNow()
+                CP.Close()
+                Me.Close()
+        End Select
     End Sub
 
     Private Sub btnNon_Click(sender As Object, e As EventArgs) Handles btnNon.Click
@@ -31,7 +40,7 @@ Public Class frmMsgBox
                 Dim FormToShow As String
                 FormToShow = System.IO.File.ReadAllText(Path.GetTempPath & "\stf.guidb")
                 File.Delete(Path.GetTempPath & "\stf.guidb")
-                ShowGUIDosboxForm(FormToShow)
+                OpenCloseGUIDosboxForm(FormToShow, 1)
             End If
         Catch ex As Exception
             MsgBox("Impossible de supprimer les fichiers temporaires, " & ex.Message, _

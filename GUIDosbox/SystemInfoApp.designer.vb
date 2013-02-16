@@ -27,18 +27,18 @@ Partial Class SystemInfoApp
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GuiDosbox_Groupbox1 = New GUIDosbox.GUIDosbox_Groupbox()
-        Me.GuiDosbox_Groupbox2 = New GUIDosbox.GUIDosbox_Groupbox()
-        Me.GuiDosbox_Groupbox3 = New GUIDosbox.GUIDosbox_Groupbox()
-        Me.GuiDosbox_Groupbox4 = New GUIDosbox.GUIDosbox_Groupbox()
-        Me.optNH = New GUIDosbox.GUIDosbox_Checkbox()
-        Me.optP = New GUIDosbox.GUIDosbox_Checkbox()
-        Me.optU = New GUIDosbox.GUIDosbox_Checkbox()
-        Me.optS = New GUIDosbox.GUIDosbox_Checkbox()
-        Me.optFO = New GUIDosbox.GUIDosbox_Checkbox()
         Me.cbOptFO = New GUIDosbox.GUIDosbox_Combobox()
-        Me.txtOptS = New GUIDosbox.GUIDosbox_Textbox()
-        Me.txtOptU = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optNH = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.optFO = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Groupbox2 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.txtOptP = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optP = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Groupbox3 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.txtOptU = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optU = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Groupbox4 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.txtOptS = New GUIDosbox.GUIDosbox_Textbox()
+        Me.optS = New GUIDosbox.GUIDosbox_Checkbox()
         Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.btnApply = New GUIDosbox.GUIDosbox_Button()
@@ -47,6 +47,7 @@ Partial Class SystemInfoApp
         Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
         Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosbox_Groupbox1.SuspendLayout()
         Me.GuiDosbox_Groupbox2.SuspendLayout()
@@ -103,6 +104,49 @@ Partial Class SystemInfoApp
         Me.GuiDosbox_Groupbox1.TabIndex = 33
         Me.GuiDosbox_Groupbox1.TabStop = False
         '
+        'cbOptFO
+        '
+        Me.cbOptFO.BackColor = System.Drawing.Color.Black
+        Me.cbOptFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.cbOptFO.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.cbOptFO.ForeColor = System.Drawing.Color.LightBlue
+        Me.cbOptFO.FormattingEnabled = True
+        Me.cbOptFO.Location = New System.Drawing.Point(13, 35)
+        Me.cbOptFO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.cbOptFO.Name = "cbOptFO"
+        Me.cbOptFO.Size = New System.Drawing.Size(132, 19)
+        Me.cbOptFO.TabIndex = 36
+        '
+        'optNH
+        '
+        Me.optNH.AutoSize = True
+        Me.optNH.BackColor = System.Drawing.Color.Black
+        Me.optNH.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optNH.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optNH.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optNH.Location = New System.Drawing.Point(82, 7)
+        Me.optNH.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.optNH.Name = "optNH"
+        Me.optNH.Size = New System.Drawing.Size(42, 15)
+        Me.optNH.TabIndex = 24
+        Me.optNH.Text = "/NH"
+        Me.optNH.UseVisualStyleBackColor = False
+        '
+        'optFO
+        '
+        Me.optFO.AutoSize = True
+        Me.optFO.BackColor = System.Drawing.Color.Black
+        Me.optFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optFO.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optFO.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optFO.Location = New System.Drawing.Point(34, 7)
+        Me.optFO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.optFO.Name = "optFO"
+        Me.optFO.Size = New System.Drawing.Size(42, 15)
+        Me.optFO.TabIndex = 35
+        Me.optFO.Text = "/FO"
+        Me.optFO.UseVisualStyleBackColor = False
+        '
         'GuiDosbox_Groupbox2
         '
         Me.GuiDosbox_Groupbox2.BackColor = System.Drawing.Color.Black
@@ -118,6 +162,33 @@ Partial Class SystemInfoApp
         Me.GuiDosbox_Groupbox2.Size = New System.Drawing.Size(159, 70)
         Me.GuiDosbox_Groupbox2.TabIndex = 34
         Me.GuiDosbox_Groupbox2.TabStop = False
+        '
+        'txtOptP
+        '
+        Me.txtOptP.BackColor = System.Drawing.Color.Black
+        Me.txtOptP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtOptP.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtOptP.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtOptP.Location = New System.Drawing.Point(13, 35)
+        Me.txtOptP.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtOptP.Name = "txtOptP"
+        Me.txtOptP.Size = New System.Drawing.Size(132, 18)
+        Me.txtOptP.TabIndex = 26
+        '
+        'optP
+        '
+        Me.optP.AutoSize = True
+        Me.optP.BackColor = System.Drawing.Color.Black
+        Me.optP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optP.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optP.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optP.Location = New System.Drawing.Point(62, 7)
+        Me.optP.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.optP.Name = "optP"
+        Me.optP.Size = New System.Drawing.Size(35, 15)
+        Me.optP.TabIndex = 25
+        Me.optP.Text = "/P"
+        Me.optP.UseVisualStyleBackColor = False
         '
         'GuiDosbox_Groupbox3
         '
@@ -135,51 +206,17 @@ Partial Class SystemInfoApp
         Me.GuiDosbox_Groupbox3.TabIndex = 0
         Me.GuiDosbox_Groupbox3.TabStop = False
         '
-        'GuiDosbox_Groupbox4
+        'txtOptU
         '
-        Me.GuiDosbox_Groupbox4.BackColor = System.Drawing.Color.Black
-        Me.GuiDosbox_Groupbox4.BorderColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox4.Controls.Add(Me.txtOptS)
-        Me.GuiDosbox_Groupbox4.Controls.Add(Me.optS)
-        Me.GuiDosbox_Groupbox4.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.GuiDosbox_Groupbox4.ForeColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox4.Location = New System.Drawing.Point(165, 46)
-        Me.GuiDosbox_Groupbox4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.GuiDosbox_Groupbox4.Name = "GuiDosbox_Groupbox4"
-        Me.GuiDosbox_Groupbox4.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.GuiDosbox_Groupbox4.Size = New System.Drawing.Size(159, 70)
-        Me.GuiDosbox_Groupbox4.TabIndex = 0
-        Me.GuiDosbox_Groupbox4.TabStop = False
-        '
-        'optNH
-        '
-        Me.optNH.AutoSize = True
-        Me.optNH.BackColor = System.Drawing.Color.Black
-        Me.optNH.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optNH.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optNH.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optNH.Location = New System.Drawing.Point(82, 7)
-        Me.optNH.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.optNH.Name = "optNH"
-        Me.optNH.Size = New System.Drawing.Size(42, 15)
-        Me.optNH.TabIndex = 24
-        Me.optNH.Text = "/NH"
-        Me.optNH.UseVisualStyleBackColor = False
-        '
-        'optP
-        '
-        Me.optP.AutoSize = True
-        Me.optP.BackColor = System.Drawing.Color.Black
-        Me.optP.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optP.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optP.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optP.Location = New System.Drawing.Point(62, 7)
-        Me.optP.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.optP.Name = "optP"
-        Me.optP.Size = New System.Drawing.Size(35, 15)
-        Me.optP.TabIndex = 25
-        Me.optP.Text = "/P"
-        Me.optP.UseVisualStyleBackColor = False
+        Me.txtOptU.BackColor = System.Drawing.Color.Black
+        Me.txtOptU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtOptU.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtOptU.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtOptU.Location = New System.Drawing.Point(13, 35)
+        Me.txtOptU.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtOptU.Name = "txtOptU"
+        Me.txtOptU.Size = New System.Drawing.Size(132, 18)
+        Me.txtOptU.TabIndex = 27
         '
         'optU
         '
@@ -196,6 +233,34 @@ Partial Class SystemInfoApp
         Me.optU.Text = "/U"
         Me.optU.UseVisualStyleBackColor = False
         '
+        'GuiDosbox_Groupbox4
+        '
+        Me.GuiDosbox_Groupbox4.BackColor = System.Drawing.Color.Black
+        Me.GuiDosbox_Groupbox4.BorderColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox4.Controls.Add(Me.txtOptS)
+        Me.GuiDosbox_Groupbox4.Controls.Add(Me.optS)
+        Me.GuiDosbox_Groupbox4.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Groupbox4.ForeColor = System.Drawing.Color.LightBlue
+        Me.GuiDosbox_Groupbox4.Location = New System.Drawing.Point(165, 46)
+        Me.GuiDosbox_Groupbox4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GuiDosbox_Groupbox4.Name = "GuiDosbox_Groupbox4"
+        Me.GuiDosbox_Groupbox4.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GuiDosbox_Groupbox4.Size = New System.Drawing.Size(159, 70)
+        Me.GuiDosbox_Groupbox4.TabIndex = 0
+        Me.GuiDosbox_Groupbox4.TabStop = False
+        '
+        'txtOptS
+        '
+        Me.txtOptS.BackColor = System.Drawing.Color.Black
+        Me.txtOptS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtOptS.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtOptS.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtOptS.Location = New System.Drawing.Point(13, 35)
+        Me.txtOptS.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtOptS.Name = "txtOptS"
+        Me.txtOptS.Size = New System.Drawing.Size(132, 18)
+        Me.txtOptS.TabIndex = 28
+        '
         'optS
         '
         Me.optS.AutoSize = True
@@ -210,70 +275,6 @@ Partial Class SystemInfoApp
         Me.optS.TabIndex = 27
         Me.optS.Text = "/S"
         Me.optS.UseVisualStyleBackColor = False
-        '
-        'optFO
-        '
-        Me.optFO.AutoSize = True
-        Me.optFO.BackColor = System.Drawing.Color.Black
-        Me.optFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optFO.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optFO.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optFO.Location = New System.Drawing.Point(34, 7)
-        Me.optFO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.optFO.Name = "optFO"
-        Me.optFO.Size = New System.Drawing.Size(42, 15)
-        Me.optFO.TabIndex = 35
-        Me.optFO.Text = "/FO"
-        Me.optFO.UseVisualStyleBackColor = False
-        '
-        'cbOptFO
-        '
-        Me.cbOptFO.BackColor = System.Drawing.Color.Black
-        Me.cbOptFO.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.cbOptFO.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.cbOptFO.ForeColor = System.Drawing.Color.LightBlue
-        Me.cbOptFO.FormattingEnabled = True
-        Me.cbOptFO.Location = New System.Drawing.Point(13, 35)
-        Me.cbOptFO.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.cbOptFO.Name = "cbOptFO"
-        Me.cbOptFO.Size = New System.Drawing.Size(132, 19)
-        Me.cbOptFO.TabIndex = 36
-        '
-        'txtOptS
-        '
-        Me.txtOptS.BackColor = System.Drawing.Color.Black
-        Me.txtOptS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtOptS.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.txtOptS.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtOptS.Location = New System.Drawing.Point(13, 35)
-        Me.txtOptS.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtOptS.Name = "txtOptS"
-        Me.txtOptS.Size = New System.Drawing.Size(132, 18)
-        Me.txtOptS.TabIndex = 28
-        '
-        'txtOptU
-        '
-        Me.txtOptU.BackColor = System.Drawing.Color.Black
-        Me.txtOptU.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtOptU.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.txtOptU.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtOptU.Location = New System.Drawing.Point(13, 35)
-        Me.txtOptU.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtOptU.Name = "txtOptU"
-        Me.txtOptU.Size = New System.Drawing.Size(132, 18)
-        Me.txtOptU.TabIndex = 27
-        '
-        'txtOptP
-        '
-        Me.txtOptP.BackColor = System.Drawing.Color.Black
-        Me.txtOptP.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtOptP.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.txtOptP.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtOptP.Location = New System.Drawing.Point(13, 35)
-        Me.txtOptP.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtOptP.Name = "txtOptP"
-        Me.txtOptP.Size = New System.Drawing.Size(132, 18)
-        Me.txtOptP.TabIndex = 26
         '
         'btnHelp
         '
@@ -400,14 +401,23 @@ Partial Class SystemInfoApp
         Me.optAdvanceMode.Text = "Mode avancé"
         Me.optAdvanceMode.UseVisualStyleBackColor = False
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 619)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(650, 22)
+        Me.footer.TabIndex = 43
+        '
         'SystemInfoApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(650, 623)
+        Me.ClientSize = New System.Drawing.Size(650, 641)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.lblCmdExec)
@@ -424,7 +434,10 @@ Partial Class SystemInfoApp
         Me.Controls.Add(Me.myConsole)
         Me.Controls.Add(Me.chkbxLangue)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "SystemInfoApp"
         Me.Text = "GUI Dosbox - SYSTEMINFO"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -464,4 +477,5 @@ Partial Class SystemInfoApp
     Friend WithEvents lblCmdExec As GUIDosbox.GUIDosbox_Label
     Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

@@ -45,6 +45,7 @@ Partial Class SUBSTApp
         Me.btnApply = New GUIDosbox.GUIDosbox_Button()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbLecteur.SuspendLayout()
         Me.gbDossier.SuspendLayout()
@@ -337,14 +338,23 @@ Partial Class SUBSTApp
         Me.myConsole.Size = New System.Drawing.Size(648, 346)
         Me.myConsole.TabIndex = 26
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 543)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(663, 22)
+        Me.footer.TabIndex = 40
+        '
         'SUBSTApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(663, 549)
+        Me.ClientSize = New System.Drawing.Size(663, 565)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.gbLecteur)
         Me.Controls.Add(Me.gbDossier)
         Me.Controls.Add(Me.gbOption)
@@ -363,6 +373,9 @@ Partial Class SUBSTApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "SUBSTApp"
         Me.Text = "GUI DosBox - SUBST"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -399,4 +412,5 @@ Partial Class SUBSTApp
     Friend WithEvents txtDossier As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents cbLecteur As GUIDosbox.GUIDosbox_Combobox
     Friend WithEvents gbLecteur As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

@@ -7,7 +7,8 @@ Imports System.Security.Principal
 Imports System.Collections.Specialized
 Imports System.Collections.ObjectModel
 
-Module GUIDosboxCustomFunction
+
+Module GUIDosboxFunction
 
     ''' <summary>
     ''' Crée un nouveau OpenFileDialogs et retourne le chemin du fichier sélectionné.
@@ -32,7 +33,7 @@ Module GUIDosboxCustomFunction
         opFD.ShowDialog()
         Return opFD.SelectedPath
     End Function
-    
+
     ''' <summary>
     ''' Retourne les compte d'utilisateurs sur l'ordinateur spécifié.
     ''' </summary>
@@ -151,6 +152,53 @@ Module GUIDosboxCustomFunction
 #Region " Gestion des privilèges "
 
     ''' <summary>
+    ''' Requis par la fonction CheckPrivilegeLevelNeeded() et par frmMsgBox
+    ''' </summary>
+    Public PrivilegesLevel As Integer
+    ''' <summary>
+    ''' Vérifie le niveau de privilèges requis par l'utilitaire et le lance dans le bon mode
+    ''' </summary>
+    ''' <param name="Tools">Utilitaire à lancé --> Voir ShowGUIDosboxForm() dans GUIDosboxFunction</param>
+    ''' <param name="LevelNeeded">Niveau de privilèges requis, 1 --> Administrateur, 2 --> Utilisateur, 3 --> Nothing</param>
+    Public Sub CheckPrivilegeLevelNeeded(ByVal Tools As String, ByVal LevelNeeded As Integer)
+
+        'Initialisation et affectation de la variable PrivilegesLevel
+        PrivilegesLevel = LevelNeeded
+
+        Select Case LevelNeeded
+            'Require Administrator
+            Case 1
+                If Not RunAsAdmin() Then
+                    Try
+                        My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", Tools, False)
+                    Catch ex As Exception
+                        MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                               ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+                    End Try
+                    frmMsgBox.Show()
+                Else
+                    OpenCloseGUIDosboxForm(Tools, 1)
+                End If
+                'Require Users
+            Case 2
+                If RunAsAdmin() Then
+                    Try
+                        My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", Tools, False)
+                    Catch ex As Exception
+                        MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
+                               ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
+                    End Try
+                    frmMsgBox.Show()
+                Else
+                    OpenCloseGUIDosboxForm(Tools, 1)
+                End If
+                'Nothing Required
+            Case -1
+                OpenCloseGUIDosboxForm(Tools, 1)
+        End Select
+    End Sub
+
+    ''' <summary>
     ''' Vérifie le niveau d'exécution de l'application (Administrateur - Normal)
     ''' </summary>
     ''' <returns>True --> Administrateur (admin), False --> Normal (User) </returns>
@@ -179,55 +227,90 @@ Module GUIDosboxCustomFunction
     End Sub
 
     ''' <summary>
-    ''' Lance le bon form (tools) après avoir été lancé en mode administrateur.
+    ''' Lance l'application en mode Utilisateur
     ''' </summary>
-    Public Sub ShowGUIDosboxForm(ByVal FormName As String)
+    Public Sub RunAsUserNow()
+        Dim p As Process = New Process
+        p.StartInfo.FileName = "runas.exe"
+        p.StartInfo.WindowStyle = ProcessWindowStyle.Normal
+        p.StartInfo.Arguments = "/trustlevel:0x20000 " & """" & Application.ExecutablePath & """"
+        p.Start()
+        'Shell("cmd.exe /k runas /truslevel:0x20000 " & """" & Application.ExecutablePath & """", AppWinStyle.Hide)
 
-        Dim ShowedForm As Windows.Forms.Form
-
-        Select Case FormName
-            Case "assoc"
-                ShowedForm = AssocApp
-            Case "attrib"
-                ShowedForm = AttribApp
-            Case "cacls"
-                ShowedForm = CaclsApp
-            Case "chkdsk"
-                ShowedForm = CHKDSkApp
-            Case "cmd"
-                ShowedForm = CMDConsole
-            Case "compact"
-                ShowedForm = CompactApp
-            Case "comp"
-                ShowedForm = CompApp
-            Case "help"
-                ShowedForm = HelpApp
-            Case "rd"
-                ShowedForm = RDApp
-            Case "subst"
-                ShowedForm = SUBSTApp
-            Case "systeminfo"
-                ShowedForm = SystemInfoApp
-            Case "tracert"
-                ShowedForm = TracertApp
-            Case "type"
-                ShowedForm = TypeApp
-            Case "where"
-                ShowedForm = WhereApp
-            Case "whoami"
-                ShowedForm = WhoamiApp
-            Case "xcopy"
-                ShowedForm = XCopyApp
-
-            Case Else
-                ShowedForm = CP
-        End Select
-
-        CP.Hide()
-        ShowedForm.Show()
+        'Dim processInfo As New ProcessStartInfo()
+        'processInfo.FileName = Application.ExecutablePath
+        'Try
+        '    Process.Start(processInfo)
+        'Catch ex As Exception
+        '    'Do nothing. Probably the user canceled the UAC window
+        'End Try
     End Sub
 
+    ''' <summary>
+    ''' Mode 1 --> Lance le bon Form après avoir été lancé par un changement de mode (Administrateur, User). 
+    ''' Mode 2 --> Retourne le nom du Form à fermer.
+    ''' </summary>
+    ''' <param name="FormName">Nom de l'utilitaire ex: assoc</param>
+    ''' <param name="Mode">1 --> Ouvrir, 2 --> Fermer</param>
+    ''' <returns>Mode 2 --> Le nom du Form à fermer., Mode 1 --> Rien</returns>
+    Public Function OpenCloseGUIDosboxForm(ByVal FormName As String, Mode As Integer) As Windows.Forms.Form
+
+        'Variable pour le Form choisi
+        Dim Form As Windows.Forms.Form
+
+        'Sélection du Form
+        Select Case FormName
+            Case "assoc"
+                Form = AssocApp
+            Case "attrib"
+                Form = AttribApp
+            Case "cacls"
+                Form = CaclsApp
+            Case "chkdsk"
+                Form = CHKDSkApp
+            Case "cmd"
+                Form = CMDConsole
+            Case "compact"
+                Form = CompactApp
+            Case "comp"
+                Form = CompApp
+            Case "help"
+                Form = HelpApp
+            Case "rd"
+                Form = RDApp
+            Case "subst"
+                Form = SUBSTApp
+            Case "systeminfo"
+                Form = SystemInfoApp
+            Case "tracert"
+                Form = TracertApp
+            Case "type"
+                Form = TypeApp
+            Case "where"
+                Form = WhereApp
+            Case "whoami"
+                Form = WhoamiApp
+            Case "xcopy"
+                Form = XCopyApp
+            Case Else
+                Form = CP
+        End Select
+
+        'Action selon le mode --> 1 Ouvrir, 2 Fermer
+        Select Case Mode
+            Case 1 '--> Open Form
+                CP.Hide()
+                Form.Show()
+            Case 2 '--> Close Form
+                Return Form
+        End Select
+
+        Return Nothing
+
+    End Function
 #End Region
 
+
+    
 
 End Module

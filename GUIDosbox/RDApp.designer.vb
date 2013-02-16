@@ -41,6 +41,7 @@ Partial Class RDApp
         Me.optQ = New GUIDosbox.GUIDosbox_Checkbox()
         Me.optS = New GUIDosbox.GUIDosbox_Checkbox()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbDossier.SuspendLayout()
         Me.GuiDosbox_Groupbox1.SuspendLayout()
@@ -279,14 +280,23 @@ Partial Class RDApp
         Me.myConsole.Size = New System.Drawing.Size(627, 304)
         Me.myConsole.TabIndex = 26
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 490)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(638, 22)
+        Me.footer.TabIndex = 38
+        '
         'RDApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(638, 493)
+        Me.ClientSize = New System.Drawing.Size(638, 512)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.btnApply)
@@ -303,6 +313,9 @@ Partial Class RDApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "RDApp"
         Me.Text = "GUI DosBox - RD"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -332,4 +345,5 @@ Partial Class RDApp
     Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
     Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
     Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

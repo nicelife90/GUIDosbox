@@ -44,6 +44,7 @@ Partial Class WhereApp
         Me.OptR = New GUIDosbox.GUIDosbox_Checkbox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosbox_Groupbox2.SuspendLayout()
         Me.GuiDosbox_Groupbox1.SuspendLayout()
@@ -322,13 +323,22 @@ Partial Class WhereApp
         Me.myConsole.Size = New System.Drawing.Size(596, 312)
         Me.myConsole.TabIndex = 24
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 519)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(605, 22)
+        Me.footer.TabIndex = 36
+        '
         'WhereApp
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
-        Me.ClientSize = New System.Drawing.Size(605, 524)
+        Me.ClientSize = New System.Drawing.Size(605, 541)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.optAdvanceMode)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
@@ -344,6 +354,9 @@ Partial Class WhereApp
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
+        Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "WhereApp"
         Me.Text = "GUI Dosbox - WHERE"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -376,4 +389,5 @@ Partial Class WhereApp
     Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
     Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
     Friend WithEvents optAdvanceMode As GUIDosbox.GUIDosbox_Checkbox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

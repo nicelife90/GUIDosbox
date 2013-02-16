@@ -15,12 +15,14 @@ Public Class HelpApp
             btnSend.Visible = True
             txtCmdExec.Visible = True
             lblAdvanceMode.Visible = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnSend.Visible = False
             txtCmdExec.Visible = False
             lblAdvanceMode.Visible = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -37,22 +39,15 @@ Public Class HelpApp
         myConsole.StartConsole()
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "help.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.help, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "help.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "help")
 
         'Mode avancé caché
         btnSend.Visible = False
         lblAdvanceMode.Visible = False
         txtCmdExec.Visible = False
 
+        'Définition du niveau de privilèges de l'utilitaires
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
@@ -64,12 +59,12 @@ Public Class HelpApp
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
         'Arrêt de la console et retour au cp.
-        myConsole.CloseConsole()
+        myConsole.CloseConsole("help")
         CP.Show()
         Me.Close()
     End Sub
 
-    Private Sub btnClaer_Click(sender As Object, e As EventArgs) Handles btnClaer.Click
+    Private Sub btnClear_Click(sender As Object, e As EventArgs) Handles btnClear.Click
         'Reset de la console
         myConsole.Cls()
     End Sub
@@ -100,16 +95,14 @@ Public Class HelpApp
             btnBack.Text = "Retour"
             btnSend.Text = "Envoyer"
             optAdvanceMode.Text = "Mode avancé"
-            btnClaer.Text = "Effacer"
+            btnClear.Text = "Effacer"
         Else                                ' boite PAS cochée=EN 
             btnApply.Text = "Help"
             btnBack.Text = "Back"
             btnSend.Text = "Send"
             optAdvanceMode.Text = "Advance mode"
-            btnClaer.Text = "Clear"
+            btnClear.Text = "Clear"
         End If
     End Sub
 #End Region
-
-
 End Class

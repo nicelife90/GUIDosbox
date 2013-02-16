@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 ''' <summary>
 ''' Radio Bouton personnalisé GUIDosbox.

@@ -11,95 +11,57 @@ Public Class CP
 
     Private Sub AssocToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
         'AssocApp (1)
-        If Not RunAsAdmin() Then
-            Try
-                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "assoc", False)
-            Catch ex As Exception
-                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-            End Try
-            frmMsgBox.Show()
-        Else
-            Me.Hide()
-            AssocApp.Show()
-        End If
+        CheckPrivilegeLevelNeeded("assoc", 1)
     End Sub
 
     Private Sub AttribToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AttribToolStripMenuItem.Click
         'AttribApp (-1)
-        Me.Hide()
-        AttribApp.Show()
+        CheckPrivilegeLevelNeeded("attrib", -1)
     End Sub
 
     Private Sub CaclsToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CaclsToolStripMenuItem.Click
         'CaclsApp (-1)
-        Me.Hide()
-        CaclsApp.Show()
+        CheckPrivilegeLevelNeeded("cacls", -1)
     End Sub
 
     Private Sub ChkdskToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ChkdskToolStripMenuItem.Click
         'CHKDSKApp (1)
-        If Not RunAsAdmin() Then
-            Try
-                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "chkdsk", False)
-            Catch ex As Exception
-                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-            End Try
-            frmMsgBox.Show()
-        Else
-            Me.Hide()
-            CHKDSkApp.Show()
-        End If
+        CheckPrivilegeLevelNeeded("chkdsk", 1)
     End Sub
 
     Private Sub CmdConsoleToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CmdConsoleToolStripMenuItem.Click
         'CMDConsole (1)
-        If Not RunAsAdmin() Then
-            Try
-                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "cmd", False)
-            Catch ex As Exception
-                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-            End Try
-            frmMsgBox.Show()
-        Else
-            Me.Hide()
-            CMDConsole.Show()
-        End If
+        CheckPrivilegeLevelNeeded("cmd", 1)
     End Sub
 
     Private Sub CompactToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompactToolStripMenuItem.Click
         'CompactApp (-1)
-        Me.Hide()
-        CompactApp.Show()
+        CheckPrivilegeLevelNeeded("compact", -1)
     End Sub
 
     Private Sub CompToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles CompToolStripMenuItem.Click
         'CompApp (-1)
-        Me.Hide()
-        CompApp.Show()
+        CheckPrivilegeLevelNeeded("comp", -1)
     End Sub
 
+    Private Sub HelpToolStripMenu_Click(sender As Object, e As EventArgs) Handles HelpToolStripMenu.Click
+        'HelpApp (-1)
+        CheckPrivilegeLevelNeeded("help", -1)
+    End Sub
+
+    Private Sub RDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RdToolStripMenuItem.Click
+        'RDApp (-1)
+        CheckPrivilegeLevelNeeded("rd", -1)
+    End Sub
+
+    Private Sub SUBSTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SubstToolStripMenuItem.Click
+        'SubstApp (2)
+        CheckPrivilegeLevelNeeded("subst", 2)
+    End Sub
+  
     Private Sub XcopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XcopyToolStripMenuItem.Click
-        'XcopyApp
-        If Not RunAsAdmin() Then
-            Try
-                My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", "xcopy", False)
-            Catch ex As Exception
-                MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                       ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-            End Try
-            frmMsgBox.Show()
-        Else
-            Me.Hide()
-            XCopyApp.Show()
-        End If
-    End Sub
-
-    Private Sub AideToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        HelpApp.Show()
-        Me.Hide()
+        'XcopyApp (1)
+        CheckPrivilegeLevelNeeded("xcopy", 1)
     End Sub
 
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
@@ -121,15 +83,8 @@ Public Class CP
         TypeApp.Show()
     End Sub
 
-    Private Sub RDToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles RdToolStripMenuItem.Click
-        Me.Hide()
-        RDApp.Show()
-    End Sub
-
-    Private Sub SUBSTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SubstToolStripMenuItem.Click
-        Me.Hide()
-        SUBSTApp.Show()
-    End Sub
+    
+   
 
     Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SystemInfoToolStripMenuItem.Click
         Me.Hide()
@@ -141,10 +96,7 @@ Public Class CP
         WhereApp.Show()
     End Sub
 
-    Private Sub ToolStripAide_Click(sender As Object, e As EventArgs) Handles ToolStripAide.Click
-        Me.Hide()
-        HelpApp.Show()
-    End Sub
+   
 #End Region
 
 #Region "Changement de langue"
@@ -156,7 +108,7 @@ Public Class CP
 
             chkbxLangue.Text = "Français"
             FichierToolStripMenuItem.Text = "Fichier"
-            ToolStripAide.Text = "Aide"
+            HelpToolStripMenu.Text = "Aide"
             QuiterToolStripMenuItem.Text = "Quitter"
             EnglishToolStripMenuItem.Text = "Anglais"
             FrançaisToolStripMenuItem.Text = "Français"
@@ -166,7 +118,7 @@ Public Class CP
         Else
             chkbxLangue.Text = "English" ' boite PAS cochée=EN 
             FichierToolStripMenuItem.Text = "File"
-            ToolStripAide.Text = "Help"
+            HelpToolStripMenu.Text = "Help"
             QuiterToolStripMenuItem.Text = "Quit"
             FrançaisToolStripMenuItem.Text = "French"
             EnglishToolStripMenuItem.Text = "English"
@@ -248,7 +200,7 @@ Public Class CP
                 Dim FormToShow As String
                 FormToShow = System.IO.File.ReadAllText(Path.GetTempPath & "\stf.guidb")
                 File.Delete(Path.GetTempPath & "\stf.guidb")
-                ShowGUIDosboxForm(FormToShow)
+                OpenCloseGUIDosboxForm(FormToShow, 1)
             End If
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors du démmarage de l'application en mode administrateur, " & ex.Message, _

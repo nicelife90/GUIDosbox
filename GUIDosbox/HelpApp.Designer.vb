@@ -31,8 +31,9 @@ Partial Class HelpApp
         Me.btnApply = New GUIDosbox.GUIDosbox_Button()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.btnBack = New GUIDosbox.GUIDosbox_Button()
-        Me.btnClaer = New GUIDosbox.GUIDosbox_Button()
+        Me.btnClear = New GUIDosbox.GUIDosbox_Button()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -142,21 +143,21 @@ Partial Class HelpApp
         Me.btnBack.Text = "Retour"
         Me.btnBack.UseVisualStyleBackColor = False
         '
-        'btnClaer
+        'btnClear
         '
-        Me.btnClaer.BackColor = System.Drawing.Color.Black
-        Me.btnClaer.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.btnClaer.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
-        Me.btnClaer.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.btnClaer.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.btnClaer.ForeColor = System.Drawing.Color.LightBlue
-        Me.btnClaer.Location = New System.Drawing.Point(245, 498)
-        Me.btnClaer.MinimumSize = New System.Drawing.Size(0, 23)
-        Me.btnClaer.Name = "btnClaer"
-        Me.btnClaer.Size = New System.Drawing.Size(75, 23)
-        Me.btnClaer.TabIndex = 13
-        Me.btnClaer.Text = "Effacer"
-        Me.btnClaer.UseVisualStyleBackColor = False
+        Me.btnClear.BackColor = System.Drawing.Color.Black
+        Me.btnClear.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.btnClear.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer), CType(CType(40, Byte), Integer))
+        Me.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.btnClear.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.btnClear.ForeColor = System.Drawing.Color.LightBlue
+        Me.btnClear.Location = New System.Drawing.Point(245, 498)
+        Me.btnClear.MinimumSize = New System.Drawing.Size(0, 23)
+        Me.btnClear.Name = "btnClear"
+        Me.btnClear.Size = New System.Drawing.Size(75, 23)
+        Me.btnClear.TabIndex = 13
+        Me.btnClear.Text = "Effacer"
+        Me.btnClear.UseVisualStyleBackColor = False
         '
         'flashHeader
         '
@@ -167,17 +168,26 @@ Partial Class HelpApp
         Me.flashHeader.Size = New System.Drawing.Size(656, 40)
         Me.flashHeader.TabIndex = 14
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 524)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(648, 22)
+        Me.footer.TabIndex = 15
+        '
         'HelpApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ClientSize = New System.Drawing.Size(648, 525)
+        Me.ClientSize = New System.Drawing.Size(648, 546)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
-        Me.Controls.Add(Me.btnClaer)
+        Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.btnApply)
@@ -205,6 +215,7 @@ Partial Class HelpApp
     Friend WithEvents btnApply As GUIDosbox.GUIDosbox_Button
     Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button
     Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
-    Friend WithEvents btnClaer As GUIDosbox.GUIDosbox_Button
+    Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

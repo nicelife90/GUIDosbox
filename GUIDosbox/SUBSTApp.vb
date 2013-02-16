@@ -56,6 +56,8 @@ Public Class SUBSTApp
         'Mode avancé caché.
         btnSend.Hide()
 
+        footer.PrivilegeLevelNeeded(2)
+
     End Sub
 
     Private Sub FillComboBox()

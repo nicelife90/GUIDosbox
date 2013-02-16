@@ -59,6 +59,7 @@ Partial Class WhoamiApp
         Me.btnBack = New GUIDosbox.GUIDosbox_Button()
         Me.btnApply = New GUIDosbox.GUIDosbox_Button()
         Me.btnHelp = New GUIDosbox.GUIDosbox_Button()
+        Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbOptionsDomain.SuspendLayout()
         Me.gbFormat.SuspendLayout()
@@ -420,14 +421,23 @@ Partial Class WhoamiApp
         Me.btnHelp.Text = "Aide"
         Me.btnHelp.UseVisualStyleBackColor = False
         '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 502)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(685, 22)
+        Me.footer.TabIndex = 20
+        '
         'WhoamiApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ClientSize = New System.Drawing.Size(685, 507)
+        Me.ClientSize = New System.Drawing.Size(685, 524)
         Me.ControlBox = False
+        Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.gbOptionsDomain)
         Me.Controls.Add(Me.gbFormat)
         Me.Controls.Add(Me.gbOptions)
@@ -446,6 +456,8 @@ Partial Class WhoamiApp
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.MaximizeBox = False
+        Me.MinimizeBox = False
         Me.Name = "WhoamiApp"
         Me.Text = "GUI DosBox - Whoami"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -494,4 +506,5 @@ Partial Class WhoamiApp
     Friend WithEvents optUpn As GUIDosbox.GUIDosbox_RadioButton
     Friend WithEvents optNull As GUIDosbox.GUIDosbox_RadioButton
     Friend WithEvents cbFormat As GUIDosbox.GUIDosbox_Combobox
+    Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
 End Class

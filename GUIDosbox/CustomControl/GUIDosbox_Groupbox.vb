@@ -1,4 +1,6 @@
 ﻿Option Strict On
+Option Explicit On
+
 ''' <summary>
 ''' Groupbox personnalisé GUIDosbox.
 ''' </summary>
