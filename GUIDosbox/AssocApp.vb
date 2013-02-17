@@ -5,6 +5,7 @@ Public Class AssocApp
 
 #Region "Mode avancé"
 
+
     'Variable pour le mode avancé.
     Private AdvanceMode As Boolean = False
 

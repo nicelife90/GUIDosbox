@@ -65,7 +65,7 @@ Public Class CP
     End Sub
 
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
-        End
+        Me.Close()
     End Sub
 
     Private Sub WhoamiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhoamiToolStripMenuItem.Click
@@ -83,9 +83,6 @@ Public Class CP
         TypeApp.Show()
     End Sub
 
-    
-   
-
     Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SystemInfoToolStripMenuItem.Click
         Me.Hide()
         SystemInfoApp.Show()
@@ -96,7 +93,6 @@ Public Class CP
         WhereApp.Show()
     End Sub
 
-   
 #End Region
 
 #Region "Changement de langue"
@@ -105,7 +101,6 @@ Public Class CP
 
         'Changement de langue des mot du menus
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-
             chkbxLangue.Text = "Français"
             FichierToolStripMenuItem.Text = "Fichier"
             HelpToolStripMenu.Text = "Aide"
@@ -113,8 +108,6 @@ Public Class CP
             EnglishToolStripMenuItem.Text = "Anglais"
             FrançaisToolStripMenuItem.Text = "Français"
             LangueToolStripMenuItem.Text = "Langue"
-
-
         Else
             chkbxLangue.Text = "English" ' boite PAS cochée=EN 
             FichierToolStripMenuItem.Text = "File"
@@ -123,8 +116,6 @@ Public Class CP
             FrançaisToolStripMenuItem.Text = "French"
             EnglishToolStripMenuItem.Text = "English"
             LangueToolStripMenuItem.Text = "Language"
-
-
         End If
     End Sub
 
@@ -194,13 +185,13 @@ Public Class CP
         End If
 
 
-        'Ouverture du form (tools) après avoir été lancé en mode administrateur.
+        'Ouverture du form (tools) après avoir été lancé en mode utilisateur.
         Try
             If File.Exists(Path.GetTempPath & "\stf.guidb") Then
                 Dim FormToShow As String
                 FormToShow = System.IO.File.ReadAllText(Path.GetTempPath & "\stf.guidb")
                 File.Delete(Path.GetTempPath & "\stf.guidb")
-                OpenCloseGUIDosboxForm(FormToShow, 1)
+                OpenCloseGUIDosboxForm(FormToShow)
             End If
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors du démmarage de l'application en mode administrateur, " & ex.Message, _

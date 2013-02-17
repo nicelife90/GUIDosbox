@@ -7,3 +7,7 @@ TODO LIST :
 4 --> Création de fonction lancement automatique du form (admin) --> ajouter dans mode avancé checked 
 5 --> Changer bouton Help (.xml) pour Note de mise à jour
 6 --> Ajouter bouton batchfile au cp avec item ; Voir/Éditer mes commandes ; sauvegarder mes commande sous .bat & .txt ; compiller un fichier .bat ; compiller mes commande
+7 --> Tache planifier pour lancer sans prompt
+
+Dim task As New System.Diagnostics.ProcessStartInfo("schtasks /create /tn ""Test2"" /tr C:\WINDOWS\system32\calc.exe /sc daily /st 15:14:00 /ru ""System""")
+System.Diagnostics.Process.Start(task)

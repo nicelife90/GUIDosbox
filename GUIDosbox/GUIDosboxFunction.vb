@@ -7,7 +7,6 @@ Imports System.Security.Principal
 Imports System.Collections.Specialized
 Imports System.Collections.ObjectModel
 
-
 Module GUIDosboxFunction
 
     ''' <summary>
@@ -77,12 +76,10 @@ Module GUIDosboxFunction
         Return lecteurs
     End Function
 
-
     ''' <summary>
     ''' Renvoi une liste de lettre disponible pour un lecteur
     ''' </summary>
     Public Function AvailableDrive() As StringCollection
-
         'Création d'un StringCollection avec les lettre de l'alphabet
         Dim alphabet As New StringCollection()
         Dim lowerBound As Integer = Convert.ToInt16("a"c)
@@ -148,39 +145,24 @@ Module GUIDosboxFunction
         End Try
     End Sub
 
-
 #Region " Gestion des privilèges "
 
-    ''' <summary>
-    ''' Requis par la fonction CheckPrivilegeLevelNeeded() et par frmMsgBox
-    ''' </summary>
-    Public PrivilegesLevel As Integer
     ''' <summary>
     ''' Vérifie le niveau de privilèges requis par l'utilitaire et le lance dans le bon mode
     ''' </summary>
     ''' <param name="Tools">Utilitaire à lancé --> Voir ShowGUIDosboxForm() dans GUIDosboxFunction</param>
-    ''' <param name="LevelNeeded">Niveau de privilèges requis, 1 --> Administrateur, 2 --> Utilisateur, 3 --> Nothing</param>
+    ''' <param name="LevelNeeded">Niveau de privilèges requis, 1 --> Administrateur, 2 --> Utilisateur, 3 --> Requis Admin sinon Close, -1 --> Nothing</param>
     Public Sub CheckPrivilegeLevelNeeded(ByVal Tools As String, ByVal LevelNeeded As Integer)
-
-        'Initialisation et affectation de la variable PrivilegesLevel
-        PrivilegesLevel = LevelNeeded
-
         Select Case LevelNeeded
-            'Require Administrator
-            Case 1
+            Case 1 '<-- Require Administrator
                 If Not RunAsAdmin() Then
-                    Try
-                        My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", Tools, False)
-                    Catch ex As Exception
-                        MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
-                               ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
-                    End Try
-                    frmMsgBox.Show()
+                    'Avertissement
+                    frmAvertissement.Show()
                 Else
-                    OpenCloseGUIDosboxForm(Tools, 1)
+                    OpenCloseGUIDosboxForm(Tools)
                 End If
-                'Require Users
-            Case 2
+
+            Case 2 '<-- Require Users
                 If RunAsAdmin() Then
                     Try
                         My.Computer.FileSystem.WriteAllText(System.IO.Path.GetTempPath() & "\stf.guidb", Tools, False)
@@ -188,13 +170,18 @@ Module GUIDosboxFunction
                         MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
                                ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
                     End Try
-                    frmMsgBox.Show()
+                    frmMessageBox.Show()
                 Else
-                    OpenCloseGUIDosboxForm(Tools, 1)
+                    OpenCloseGUIDosboxForm(Tools)
                 End If
-                'Nothing Required
-            Case -1
-                OpenCloseGUIDosboxForm(Tools, 1)
+
+            Case 3 '<-- Ferme GUIDosbox après qu'un utilitaire est été lancé en mode utilisateur
+                If Not RunAsAdmin() Then
+                    Application.Exit()
+                End If
+
+            Case -1 '<-- Nothing Required
+                OpenCloseGUIDosboxForm(Tools)
         End Select
     End Sub
 
@@ -213,49 +200,22 @@ Module GUIDosboxFunction
     End Function
 
     ''' <summary>
-    ''' Lance l'application en mode administrateur.
-    ''' </summary>
-    Public Sub RunAsAdminNow()
-        Dim processInfo As New ProcessStartInfo()
-        processInfo.Verb = "runas"
-        processInfo.FileName = Application.ExecutablePath
-        Try
-            Process.Start(processInfo)
-        Catch ex As Exception
-            'Do nothing. Probably the user canceled the UAC window
-        End Try
-    End Sub
-
-    ''' <summary>
     ''' Lance l'application en mode Utilisateur
     ''' </summary>
     Public Sub RunAsUserNow()
         Dim p As Process = New Process
         p.StartInfo.FileName = "runas.exe"
-        p.StartInfo.WindowStyle = ProcessWindowStyle.Normal
+        p.StartInfo.WindowStyle = ProcessWindowStyle.Hidden
         p.StartInfo.Arguments = "/trustlevel:0x20000 " & """" & Application.ExecutablePath & """"
         p.Start()
-        'Shell("cmd.exe /k runas /truslevel:0x20000 " & """" & Application.ExecutablePath & """", AppWinStyle.Hide)
-
-        'Dim processInfo As New ProcessStartInfo()
-        'processInfo.FileName = Application.ExecutablePath
-        'Try
-        '    Process.Start(processInfo)
-        'Catch ex As Exception
-        '    'Do nothing. Probably the user canceled the UAC window
-        'End Try
     End Sub
 
     ''' <summary>
-    ''' Mode 1 --> Lance le bon Form après avoir été lancé par un changement de mode (Administrateur, User). 
-    ''' Mode 2 --> Retourne le nom du Form à fermer.
+    ''' Lance le bon Form après avoir été lancé en mode utilisateur. 
     ''' </summary>
     ''' <param name="FormName">Nom de l'utilitaire ex: assoc</param>
-    ''' <param name="Mode">1 --> Ouvrir, 2 --> Fermer</param>
-    ''' <returns>Mode 2 --> Le nom du Form à fermer., Mode 1 --> Rien</returns>
-    Public Function OpenCloseGUIDosboxForm(ByVal FormName As String, Mode As Integer) As Windows.Forms.Form
+    Public Sub OpenCloseGUIDosboxForm(ByVal FormName As String)
 
-        'Variable pour le Form choisi
         Dim Form As Windows.Forms.Form
 
         'Sélection du Form
@@ -291,26 +251,14 @@ Module GUIDosboxFunction
             Case "whoami"
                 Form = WhoamiApp
             Case "xcopy"
-                Form = XCopyApp
+                Form = XcopyApp
             Case Else
                 Form = CP
         End Select
 
-        'Action selon le mode --> 1 Ouvrir, 2 Fermer
-        Select Case Mode
-            Case 1 '--> Open Form
-                CP.Hide()
-                Form.Show()
-            Case 2 '--> Close Form
-                Return Form
-        End Select
-
-        Return Nothing
-
-    End Function
+        CP.Hide()
+        Form.Show()
+    End Sub
 #End Region
-
-
-    
 
 End Module

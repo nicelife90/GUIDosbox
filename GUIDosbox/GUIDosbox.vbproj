@@ -151,6 +151,12 @@
     <Compile Include="CompApp.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmAvertissement.Designer.vb">
+      <DependentUpon>frmAvertissement.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmAvertissement.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="CP.designer.vb">
       <DependentUpon>CP.vb</DependentUpon>
     </Compile>
@@ -199,10 +205,10 @@
     <Compile Include="CompactApp.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMsgBox.Designer.vb">
-      <DependentUpon>frmMsgBox.vb</DependentUpon>
+    <Compile Include="frmMessageBox.Designer.vb">
+      <DependentUpon>frmMessageBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="frmMsgBox.vb">
+    <Compile Include="frmMessageBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="GUIDosboxFunction.vb" />
@@ -301,6 +307,9 @@
     <EmbeddedResource Include="CompApp.resx">
       <DependentUpon>CompApp.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmAvertissement.resx">
+      <DependentUpon>frmAvertissement.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CP.resx">
       <DependentUpon>CP.vb</DependentUpon>
     </EmbeddedResource>
@@ -322,8 +331,8 @@
     <EmbeddedResource Include="CustomControl\GUIDosbox_StatusStrip.resx">
       <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMsgBox.resx">
-      <DependentUpon>frmMsgBox.vb</DependentUpon>
+    <EmbeddedResource Include="frmMessageBox.resx">
+      <DependentUpon>frmMessageBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HelpApp.resx">
       <DependentUpon>HelpApp.vb</DependentUpon>

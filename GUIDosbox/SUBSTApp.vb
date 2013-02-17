@@ -141,6 +141,8 @@ Public Class SUBSTApp
         myConsole.CloseConsole("SUBST")
         CP.Show()
         Me.Close()
+        'Vérifie si l'utilitaire est lancé en mode user et ce ferme si c'est la cas
+        CheckPrivilegeLevelNeeded("SUBST", 3)
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
