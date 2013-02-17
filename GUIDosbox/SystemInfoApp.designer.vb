@@ -439,6 +439,7 @@ Partial Class SystemInfoApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SystemInfoApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI Dosbox - SYSTEMINFO"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosbox_Groupbox1.ResumeLayout(False)

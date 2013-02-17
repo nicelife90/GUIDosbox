@@ -524,6 +524,7 @@ Partial Class TracertApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TracertApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - TRACERT"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosbox_Groupbox7.ResumeLayout(False)

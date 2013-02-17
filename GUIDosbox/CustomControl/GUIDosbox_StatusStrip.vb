@@ -22,9 +22,8 @@ Public Class GUIDosbox_StatusStrip
 
     ''' <summary>
     ''' Gère l'affichage dans le StatusStrip en fonction des privilèges requis par l'utilitaire.
-    ''' 1 --> Requis = Administrateur, 2 --> Requis = Utilisateur, -1 --> Rien de requis 
     ''' </summary>
-    ''' <param name="level">1 --> Requis = Administrateur, 2 --> Requis = Utilisateur, -1 --> Rien de requis</param>
+    ''' <param name="level">1 --> Requis Administrateur, 2 --> Requis Utilisateur, -1 --> Rien de requis</param>
     Public Sub PrivilegeLevelNeeded(ByVal level As Integer)
         Select Case level
             'Require Administrateur

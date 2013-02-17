@@ -29,6 +29,7 @@ Partial Class CompApp
         Me.optNArgs = New System.Windows.Forms.NumericUpDown()
         Me.optN = New GUIDosbox.GUIDosbox_Checkbox()
         Me.gbOptions = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.optOff = New GUIDosbox.GUIDosbox_Checkbox()
         Me.optC = New GUIDosbox.GUIDosbox_Checkbox()
         Me.optL = New GUIDosbox.GUIDosbox_Checkbox()
         Me.optA = New GUIDosbox.GUIDosbox_Checkbox()
@@ -48,7 +49,6 @@ Partial Class CompApp
         Me.lblCmdExec = New GUIDosbox.GUIDosbox_Label()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
-        Me.optOff = New GUIDosbox.GUIDosbox_Checkbox()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.gbNbLigne.SuspendLayout()
         CType(Me.optNArgs, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -133,6 +133,20 @@ Partial Class CompApp
         Me.gbOptions.TabIndex = 43
         Me.gbOptions.TabStop = False
         Me.gbOptions.Text = " Options"
+        '
+        'optOff
+        '
+        Me.optOff.AutoSize = True
+        Me.optOff.BackColor = System.Drawing.Color.Black
+        Me.optOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.optOff.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.optOff.ForeColor = System.Drawing.Color.RoyalBlue
+        Me.optOff.Location = New System.Drawing.Point(14, 52)
+        Me.optOff.Name = "optOff"
+        Me.optOff.Size = New System.Drawing.Size(49, 15)
+        Me.optOff.TabIndex = 48
+        Me.optOff.Text = "/OFF"
+        Me.optOff.UseVisualStyleBackColor = False
         '
         'optC
         '
@@ -397,20 +411,6 @@ Partial Class CompApp
         Me.footer.Size = New System.Drawing.Size(673, 22)
         Me.footer.TabIndex = 45
         '
-        'optOff
-        '
-        Me.optOff.AutoSize = True
-        Me.optOff.BackColor = System.Drawing.Color.Black
-        Me.optOff.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.optOff.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optOff.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.optOff.Location = New System.Drawing.Point(14, 52)
-        Me.optOff.Name = "optOff"
-        Me.optOff.Size = New System.Drawing.Size(49, 15)
-        Me.optOff.TabIndex = 48
-        Me.optOff.Text = "/OFF"
-        Me.optOff.UseVisualStyleBackColor = False
-        '
         'CompApp
         '
         Me.AcceptButton = Me.btnSend
@@ -440,6 +440,7 @@ Partial Class CompApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "CompApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - COMP"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbNbLigne.ResumeLayout(False)

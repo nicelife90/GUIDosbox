@@ -201,6 +201,7 @@ Partial Class HelpApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "HelpApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - HELP"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)

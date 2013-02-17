@@ -459,6 +459,7 @@ Partial Class WhoamiApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "WhoamiApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - Whoami"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbOptionsDomain.ResumeLayout(False)

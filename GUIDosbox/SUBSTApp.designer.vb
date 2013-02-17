@@ -377,6 +377,7 @@ Partial Class SUBSTApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "SUBSTApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - SUBST"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbLecteur.ResumeLayout(False)

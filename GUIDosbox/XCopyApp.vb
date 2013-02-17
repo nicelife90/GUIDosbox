@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class XcopyApp
 
@@ -14,7 +15,7 @@ Public Class XcopyApp
             btnApply.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
-            footer.AdvanceMode(True)
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnSend.Visible = True
@@ -22,7 +23,7 @@ Public Class XcopyApp
             btnApply.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
-            footer.AdvanceMode(False)
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -58,7 +59,7 @@ Public Class XcopyApp
         Dim Arguments As String = Nothing
 
         'Arguments
-        Dim args(20) As String
+        Dim args(19) As String
         For Each arg In args
             arg = Nothing
         Next
@@ -188,21 +189,17 @@ Public Class XcopyApp
 
     Private Sub btnFichier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFichier.Click
         'Sélection d'un fichier.
-        OpenFileDialog1.FileName = Nothing
-        OpenFileDialog1.ShowDialog()
-        txtSource.Text = OpenFileDialog1.FileName.ToString()
+        txtSource.Text = ofd()
     End Sub
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
         'Sélection d'un fichier
-        FolderBrowserDialog1.ShowDialog()
-        txtSource.Text = FolderBrowserDialog1.SelectedPath
+        txtSource.Text = fbd()
     End Sub
 
     Private Sub btnDestination_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDestination.Click
         'Sélection d'un fichier.
-        FolderBrowserDialog2.ShowDialog()
-        txtDestination.Text = FolderBrowserDialog2.SelectedPath
+        txtDestination.Text = fbd()
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click

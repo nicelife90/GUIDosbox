@@ -88,7 +88,7 @@ Partial Class frmMessageBox
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmMessageBox"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "GUIDosbox"
         Me.TopMost = True
         Me.ResumeLayout(False)

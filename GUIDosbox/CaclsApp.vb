@@ -207,7 +207,7 @@ Public Class CaclsApp
     ''' Empêche la console d'être sélectionné.
     ''' </summary>
     Private Sub myConsole_Enter() Handles myConsole.Enter
-        If AdvanceMode = True Then
+        If AdvanceMode Then
             ActiveControl = txtCmdExec
         Else
             ActiveControl = btnApply

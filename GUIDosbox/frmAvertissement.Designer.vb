@@ -69,7 +69,7 @@ Partial Class frmAvertissement
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "frmAvertissement"
-        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "GUIDosbox"
         Me.TopMost = True
         Me.ResumeLayout(False)

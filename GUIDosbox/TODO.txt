@@ -4,7 +4,6 @@ TODO LIST :
 1 --> Ajouter fonction pour compiller les batch file
 2 --> Ajouter l'historique des batch file et options de sauvegarde dans un emplacement choisi
 3 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
-4 --> Création de fonction lancement automatique du form (admin) --> ajouter dans mode avancé checked 
 5 --> Changer bouton Help (.xml) pour Note de mise à jour
 6 --> Ajouter bouton batchfile au cp avec item ; Voir/Éditer mes commandes ; sauvegarder mes commande sous .bat & .txt ; compiller un fichier .bat ; compiller mes commande
 7 --> Tache planifier pour lancer sans prompt

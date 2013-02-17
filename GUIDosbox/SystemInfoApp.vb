@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class SystemInfoApp
 
@@ -14,12 +15,14 @@ Public Class SystemInfoApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -41,19 +44,13 @@ Public Class SystemInfoApp
         cbOptFO.Items.Add("CSV")
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "system_info.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.system_info, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "system_info")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "system_info")
 
         'Mode avancé caché.
         btnSend.Hide()
+
+        'Définition du niveau de privilèges requis par l'utilitaire
+        footer.PrivilegeLevelNeeded(-1)
 
     End Sub
 
@@ -64,13 +61,10 @@ Public Class SystemInfoApp
         Dim Arguments As String = Nothing
 
         'Arguments
-        Dim Args(5) As String
-        Args(0) = Nothing
-        Args(1) = Nothing
-        Args(2) = Nothing
-        Args(3) = Nothing
-        Args(4) = Nothing
-        Args(5) = Nothing
+        Dim Args(4) As String
+        For Each arg In Args
+            arg = Nothing
+        Next
 
         'Argument 0 --> /S
         If optS.Checked Then
@@ -120,14 +114,8 @@ Public Class SystemInfoApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset de la console
-        myConsole.Cls()
-        'Reset des textbox
-        txtCmdExec.Text = Nothing
-        txtOptP.Text = Nothing
-        txtOptS.Text = Nothing
-        txtOptU.Text = Nothing
-        cbOptFO.Text = Nothing
+        'Reset de la console et des textbox
+        ClearTextBox(Me)
     End Sub
 
     ''' <summary>

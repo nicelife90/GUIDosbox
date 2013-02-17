@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class WhoamiApp
 
@@ -14,12 +15,14 @@ Public Class WhoamiApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -49,6 +52,8 @@ Public Class WhoamiApp
         cbFormat.Items.Add("LIST")
         cbFormat.Items.Add("CSV")
 
+        'Définition du niveau de privilèges requis par l'utilitaire
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(sender As Object, e As EventArgs) Handles btnApply.Click
@@ -59,15 +64,9 @@ Public Class WhoamiApp
 
         'Arguments
         Dim args(9) As String
-        args(0) = Nothing
-        args(1) = Nothing
-        args(2) = Nothing
-        args(3) = Nothing
-        args(4) = Nothing
-        args(5) = Nothing
-        args(6) = Nothing
-        args(7) = Nothing
-        args(8) = Nothing
+        For Each arg In args
+            arg = Nothing
+        Next
 
         'args(0) --> /USER
         If optUser.Checked Then
@@ -238,7 +237,4 @@ Public Class WhoamiApp
     End Sub
 #End Region
 
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
 End Class

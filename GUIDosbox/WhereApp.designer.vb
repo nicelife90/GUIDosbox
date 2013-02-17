@@ -358,6 +358,7 @@ Partial Class WhereApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "WhereApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI Dosbox - WHERE"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosbox_Groupbox2.ResumeLayout(False)

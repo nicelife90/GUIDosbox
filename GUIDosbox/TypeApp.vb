@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class TypeApp
 
@@ -14,12 +15,14 @@ Public Class TypeApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -32,7 +35,6 @@ Public Class TypeApp
 #End Region
 
     Private Sub TypeApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
-
         'Démarrage de la console.
         myConsole.StartConsole()
 
@@ -41,7 +43,9 @@ Public Class TypeApp
 
         'Loading du Flash Movie (Header)
         LoadHeader(flashHeader, "type")
-       
+
+        'Définition du niveau de privilèges requis par l'utililitaire
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
@@ -86,8 +90,7 @@ Public Class TypeApp
 
     Private Sub btnFichier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnFichier.Click
         'Sélection d'un fichier.
-        OpenFileDialog1.ShowDialog()
-        txtPathFichier.Text = OpenFileDialog1.FileName.ToString()
+        txtPathFichier.Text = ofd()
     End Sub
 
     ''' <summary>

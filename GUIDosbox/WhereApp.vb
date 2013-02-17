@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class WhereApp
 
@@ -14,12 +15,14 @@ Public Class WhereApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -43,6 +46,9 @@ Public Class WhereApp
 
         'Mode avancé caché.
         btnSend.Hide()
+
+        'Définition du niveau de privilèges requis par l'utililitaire
+        footer.PrivilegeLevelNeeded(-1)
     End Sub
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
@@ -58,11 +64,9 @@ Public Class WhereApp
 
             'Arguments
             Dim Args(4) As String
-            Args(0) = Nothing
-            Args(1) = Nothing
-            Args(2) = Nothing
-            Args(3) = Nothing
-            Args(4) = Nothing
+            For Each Arg In Args
+                Arg = Nothing
+            Next
 
             'Argument 1 --> /Q
             If OptQ.Checked Then
@@ -115,8 +119,7 @@ Public Class WhereApp
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
         'Sélection d'un dossier.
-        FolderBrowserDialog1.ShowDialog()
-        txtSource.Text = FolderBrowserDialog1.SelectedPath
+        txtSource.Text = fbd()
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -127,9 +130,22 @@ Public Class WhereApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des textbox.
+        'Reset des textbox et de la console.
         ClearTextBox(Me)
     End Sub
+
+    ''' <summary>
+    ''' Empêche la console d'être sélectionné.
+    ''' </summary>
+    Private Sub myConsole_Enter() Handles myConsole.Enter
+        If AdvanceMode = True Then
+            ActiveControl = txtCmdExec
+        Else
+            ActiveControl = btnApply
+        End If
+    End Sub
+
+#Region " Gestion de l'affichage "
 
     Private Sub OptT_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OptT.CheckedChanged
         'on bloque l'option /q quand une autre option est choisi
@@ -160,15 +176,6 @@ Public Class WhereApp
         End If
     End Sub
 
-    ''' <summary>
-    ''' Empêche la console d'être sélectionné.
-    ''' </summary>
-    Private Sub myConsole_Enter() Handles myConsole.Enter
-        If AdvanceMode = True Then
-            ActiveControl = txtCmdExec
-        Else
-            ActiveControl = btnApply
-        End If
-    End Sub
+#End Region
 
 End Class

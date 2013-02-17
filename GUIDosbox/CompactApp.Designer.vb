@@ -447,6 +447,7 @@ Partial Class CompactApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "CompactApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI Dosbox - COMPACT"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbMode.ResumeLayout(False)

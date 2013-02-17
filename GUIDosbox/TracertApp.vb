@@ -1,4 +1,5 @@
 ﻿Option Strict On
+Option Explicit On
 
 Public Class TracertApp
 
@@ -14,16 +15,18 @@ Public Class TracertApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
-    Private Sub btnSend_Click(sender As Object, e As EventArgs) Handles btnSend.Click
+    Private Sub btnSend_Click(sender As Object, e As EventArgs)Handles btnSend.Click
         'Envoi de la commande
         myConsole.SendCommand(txtCmdExec.Text)
         txtCmdExec.Text = Nothing
@@ -36,19 +39,13 @@ Public Class TracertApp
         myConsole.StartConsole()
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "tracert.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.tracert, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "tracert.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "tracert")
 
         'Mode avancé caché.
         btnSend.Hide()
+
+        'Définition du niveau de privilèges requis par l'utililitaire
+        footer.PrivilegeLevelNeeded(-1)
 
     End Sub
 
@@ -60,15 +57,9 @@ Public Class TracertApp
 
         'Arguments
         Dim Args(8) As String
-        Args(0) = Nothing
-        Args(1) = Nothing
-        Args(2) = Nothing
-        Args(3) = Nothing
-        Args(4) = Nothing
-        Args(5) = Nothing
-        Args(6) = Nothing
-        Args(7) = Nothing
-        Args(8) = Nothing
+        For Each Arg In Args
+            Arg = Nothing
+        Next
 
         'Argument 0 --> /d
         If optD.Checked Then
@@ -137,9 +128,7 @@ Public Class TracertApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset de la console
-        myConsole.Cls()
-        'Reset des textbox.
+        'Reset des textbox et de la console.
         ClearTextBox(Me)
     End Sub
 
@@ -189,8 +178,4 @@ Public Class TracertApp
     End Sub
 #End Region
 
-    
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
 End Class

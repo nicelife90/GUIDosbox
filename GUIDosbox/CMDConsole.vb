@@ -28,7 +28,7 @@ Public Class CMDConsole
     Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSend.Click
         'Envoi de la commande.
         myConsole.SendCommand(txtInput.Text)
-        txtInput.Text = ""
+        txtInput.Text = Nothing
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -71,8 +71,4 @@ Public Class CMDConsole
     End Sub
 #End Region
 
-   
-    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
-
-    End Sub
 End Class

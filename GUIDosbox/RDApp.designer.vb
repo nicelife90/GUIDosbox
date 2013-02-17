@@ -317,6 +317,7 @@ Partial Class RDApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "RDApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - RD"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.gbDossier.ResumeLayout(False)

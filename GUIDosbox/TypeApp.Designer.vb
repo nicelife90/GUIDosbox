@@ -273,6 +273,7 @@ Partial Class TypeApp
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "TypeApp"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - TYPE"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GuiDosbox_Groupbox1.ResumeLayout(False)

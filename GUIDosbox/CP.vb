@@ -58,7 +58,32 @@ Public Class CP
         'SubstApp (2)
         CheckPrivilegeLevelNeeded("subst", 2)
     End Sub
-  
+
+    Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SystemInfoToolStripMenuItem.Click
+        'SystemInfo (-1)
+        CheckPrivilegeLevelNeeded("systeminfo", -1)
+    End Sub
+
+    Private Sub TRACERTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TracertToolStripMenuItem.Click
+        'TracertApp (-1)
+        CheckPrivilegeLevelNeeded("tracert", -1)
+    End Sub
+
+    Private Sub TYPEToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TypeToolStripMenuItem.Click
+        'TypeApp (-1)
+        CheckPrivilegeLevelNeeded("where", -1)
+    End Sub
+
+    Private Sub WhereToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhereToolStripMenuItem.Click
+        'WhereApp (-1)
+        CheckPrivilegeLevelNeeded("where", -1)
+    End Sub
+
+    Private Sub WhoamiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhoamiToolStripMenuItem.Click
+        'WhoamiApp (-1)
+        CheckPrivilegeLevelNeeded("whoami", -1)
+    End Sub
+
     Private Sub XcopyToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles XcopyToolStripMenuItem.Click
         'XcopyApp (1)
         CheckPrivilegeLevelNeeded("xcopy", 1)
@@ -68,37 +93,11 @@ Public Class CP
         Me.Close()
     End Sub
 
-    Private Sub WhoamiToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhoamiToolStripMenuItem.Click
-        Me.Hide()
-        WhoamiApp.Show()
-    End Sub
-
-    Private Sub TRACERTToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TracertToolStripMenuItem.Click
-        Me.Hide()
-        TracertApp.Show()
-    End Sub
-
-    Private Sub TYPEToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TypeToolStripMenuItem.Click
-        Me.Hide()
-        TypeApp.Show()
-    End Sub
-
-    Private Sub SYSTEMINFOToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles SystemInfoToolStripMenuItem.Click
-        Me.Hide()
-        SystemInfoApp.Show()
-    End Sub
-
-    Private Sub RToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles WhereToolStripMenuItem.Click
-        Me.Hide()
-        WhereApp.Show()
-    End Sub
-
 #End Region
 
 #Region "Changement de langue"
 
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-
         'Changement de langue des mot du menus
         If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
             chkbxLangue.Text = "Français"
@@ -143,7 +142,6 @@ Public Class CP
     End Sub
 
     Private Sub EnglishToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles EnglishToolStripMenuItem.Click
-
         'langue selectionner anglais
         Me.chkbxLangue.Checked = False
         AssocApp.chkbxLangue.Checked = False
@@ -161,7 +159,6 @@ Public Class CP
         'changement du menu selon la langue
         FlashCPFR.Hide()
         FlashCPEN.Show()
-
     End Sub
 
 #End Region

@@ -1,7 +1,5 @@
 ﻿Option Strict On
-
-Imports System.Collections.ObjectModel
-Imports System.IO
+Option Explicit On
 
 Public Class SUBSTApp
 
@@ -17,12 +15,14 @@ Public Class SUBSTApp
             btnHelp.Visible = False
             btnSend.Visible = True
             txtCmdExec.Enabled = True
+            footer.AdvanceMode(AdvanceMode)
         Else
             AdvanceMode = False
             btnApply.Visible = True
             btnHelp.Visible = True
             btnSend.Visible = False
             txtCmdExec.Enabled = False
+            footer.AdvanceMode(AdvanceMode)
         End If
     End Sub
 
@@ -42,20 +42,12 @@ Public Class SUBSTApp
         FillComboBox()
 
         'Loading du header flash.
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & "subst.swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, My.Resources.subst, False)
-            flashHeader.LoadMovie(0, System.IO.Path.GetTempPath & "\" & "subst.swf")
-            flashHeader.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
+        LoadHeader(flashHeader, "subst")
 
         'Mode avancé caché.
         btnSend.Hide()
 
+        'Définition des privilèges requis
         footer.PrivilegeLevelNeeded(2)
 
     End Sub
@@ -80,19 +72,18 @@ Public Class SUBSTApp
 
     Private Sub btnApply_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnApply.Click
 
-
         'Déclaration des variable et constante
         Const Apps As String = "subst "
         Dim Arguments As String = Nothing
 
         'Arguments.
         Dim Args(2) As String
-        Args(0) = Nothing
-        Args(1) = Nothing
-        Args(2) = Nothing
+        For Each arg In Args
+            arg = Nothing
+        Next
 
         'Argument 0 --> Drive
-        If Not cbLecteur.Text = "" Then
+        If Not cbLecteur.Text = Nothing Then
             Args(0) = cbLecteur.Text & " "
         End If
 
@@ -103,9 +94,9 @@ Public Class SUBSTApp
 
         'Argument 2 --> /D
         If optD.Checked Then
-            If Not cbDelete.Text = "" Then
+            If Not cbDelete.Text = Nothing Then
                 For i As Integer = 0 To 2
-                    Args(i) = ""
+                    Args(i) = Nothing
                 Next
                 Args(2) = cbDelete.Text & " /D"
             End If
@@ -114,7 +105,7 @@ Public Class SUBSTApp
         'Argument --> Lister Seulement
         If optLister.Checked Then
             For i As Integer = 0 To 2
-                Args(i) = ""
+                Args(i) = Nothing
             Next
         End If
 
@@ -127,7 +118,6 @@ Public Class SUBSTApp
         txtCmdExec.Text = myConsole.SendCommand(Apps + Arguments)
         'Mise à jour des ComboBox.
         FillComboBox()
-
 
     End Sub
 
@@ -146,25 +136,13 @@ Public Class SUBSTApp
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
-        'Reset des texbox
-        Dim ctl As Control
-        For Each ctl In Controls
-            If TypeOf ctl Is TextBox Then
-                ctl.Text = Nothing
-            End If
-        Next
-
-        txtDossier.Text = Nothing
-
-        'Reset de la console
-        myConsole.Cls()
-
+        'Reset des texboxs et de la console
+        ClearTextBox(Me)
     End Sub
 
     Private Sub btnDossier_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnDossier.Click
         'Sélectionner de dossier.
-        FolderBrowserDialog1.ShowDialog()
-        txtDossier.Text = FolderBrowserDialog1.SelectedPath
+        txtDossier.Text = fbd()
     End Sub
 
     ''' <summary>
@@ -178,6 +156,7 @@ Public Class SUBSTApp
         End If
     End Sub
 
+#Region " Gestion de l'affichage "
     Private Sub optLister_CheckedChanged(sender As Object, e As EventArgs) Handles optLister.CheckedChanged
         'Groupbox caché si option lister est coché.
         If optLister.Checked Then
@@ -203,7 +182,8 @@ Public Class SUBSTApp
             gbOption.Visible = True
         End If
     End Sub
-
+#End Region
+   
 #Region "Language"
     Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
         If chkbxLangue.Checked = True Then
