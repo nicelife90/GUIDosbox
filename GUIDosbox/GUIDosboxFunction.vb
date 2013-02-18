@@ -157,7 +157,7 @@ Module GUIDosboxFunction
             Case 1 '<-- Require Administrator
                 If Not RunAsAdmin() Then
                     'Avertissement
-                    frmAvertissement.Show()
+                    frmNeedAdminPrivilege.Show()
                 Else
                     OpenCloseGUIDosboxForm(Tools)
                 End If
@@ -170,7 +170,7 @@ Module GUIDosboxFunction
                         MsgBox("Une erreur est survenue avec la création d'un fichier temporaire, " & _
                                ex.Message, MsgBoxStyle.Critical, "GUIDbos - Erreur")
                     End Try
-                    frmMessageBox.Show()
+                    frmNeedUserPrivilege.Show()
                 Else
                     OpenCloseGUIDosboxForm(Tools)
                 End If

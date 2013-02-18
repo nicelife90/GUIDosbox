@@ -3,9 +3,9 @@ Option Explicit On
 
 Imports System.IO
 
-Public Class frmMessageBox
+Public Class frmNeedUserPrivilege
 
-    Private Sub btnOui_Click(sender As Object, e As EventArgs) Handles btnOui.Click  
+    Private Sub btnOui_Click(sender As Object, e As EventArgs) Handles btnOui.Click
         'Lancement de l'utilitaire en mode utilisateur
         Try
             RunAsUserNow()
