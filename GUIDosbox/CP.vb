@@ -89,6 +89,12 @@ Public Class CP
         CheckPrivilegeLevelNeeded("xcopy", 1)
     End Sub
 
+    Private Sub BatToexeToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BatToexeToolStripMenuItem.Click
+        'frmBatToExe
+        Me.Hide()
+        frmBatToExe.Show()
+    End Sub
+
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
         Me.Close()
     End Sub
@@ -253,4 +259,6 @@ Public Class CP
         End Try
 
     End Sub
+
+   
 End Class

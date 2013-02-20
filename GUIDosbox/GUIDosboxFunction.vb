@@ -6,6 +6,7 @@ Imports AxShockwaveFlashObjects
 Imports System.Security.Principal
 Imports System.Collections.Specialized
 Imports System.Collections.ObjectModel
+Imports System.Reflection
 
 Module GUIDosboxFunction
 
@@ -16,6 +17,8 @@ Module GUIDosboxFunction
     Public Function ofd() As String
         Dim opFD As New OpenFileDialog
         opFD.Title = "GUI Dosbox"
+        opFD.CheckFileExists = True
+        opFD.CheckPathExists = True
         opFD.Multiselect = False
         opFD.FileName = Nothing
         opFD.ShowDialog()
@@ -143,6 +146,38 @@ Module GUIDosboxFunction
                    "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
+    End Sub
+
+    ''' <summary>
+    ''' Enregistre une ressource incorporé au projet sur le disque dur.
+    ''' </summary>
+    ''' <param name="resourceName">Nom de la ressource.</param>
+    ''' <param name="fileName">Chemin d'enregistrement.</param>
+    Public Sub SaveToDisk(ByVal resourceName As String, ByVal fileName As String)
+        ' Get a reference to the running application.
+        Dim assy As [Assembly] = [Assembly].GetExecutingAssembly()
+
+        ' Loop through each resource, looking for the image name (case-insensitive).
+        For Each resource As String In assy.GetManifestResourceNames()
+            If resource.ToLower().IndexOf(resourceName.ToLower) <> -1 Then
+                ' Get the embedded file from the assembly as a MemoryStream.
+                Using resourceStream As System.IO.Stream = assy.GetManifestResourceStream(resource)
+                    If resourceStream IsNot Nothing Then
+                        Using reader As New BinaryReader(resourceStream)
+                            ' Read the bytes from the input stream.
+                            Dim buffer() As Byte = reader.ReadBytes(CInt(resourceStream.Length))
+                            Using outputStream As New FileStream(fileName, FileMode.Create)
+                                Using writer As New BinaryWriter(outputStream)
+                                    ' Write the bytes to the output stream.
+                                    writer.Write(buffer)
+                                End Using
+                            End Using
+                        End Using
+                    End If
+                End Using
+                Exit For
+            End If
+        Next resource
     End Sub
 
 #Region " Gestion des privilèges "

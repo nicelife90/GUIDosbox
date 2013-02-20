@@ -45,6 +45,8 @@ Partial Class CP
         Me.WhereToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.WhoamiToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XcopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OutilsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BatToexeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
@@ -68,7 +70,7 @@ Partial Class CP
         Me.MenuStrip1.AutoSize = False
         Me.MenuStrip1.BackColor = System.Drawing.SystemColors.WindowText
         Me.MenuStrip1.Dock = System.Windows.Forms.DockStyle.None
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.HelpToolStripMenu})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FichierToolStripMenuItem, Me.ToolStripMenuItem1, Me.OutilsToolStripMenuItem, Me.HelpToolStripMenu})
         Me.MenuStrip1.Location = New System.Drawing.Point(-2, 37)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
@@ -240,6 +242,22 @@ Partial Class CP
         Me.XcopyToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.XcopyToolStripMenuItem.Text = "XCOPY"
         '
+        'OutilsToolStripMenuItem
+        '
+        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem})
+        Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
+        Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
+        Me.OutilsToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
+        Me.OutilsToolStripMenuItem.Text = "Outils"
+        '
+        'BatToexeToolStripMenuItem
+        '
+        Me.BatToexeToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.BatToexeToolStripMenuItem.Name = "BatToexeToolStripMenuItem"
+        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.BatToexeToolStripMenuItem.Text = ".bat To .exe"
+        '
         'HelpToolStripMenu
         '
         Me.HelpToolStripMenu.BackColor = System.Drawing.SystemColors.WindowText
@@ -394,5 +412,7 @@ Partial Class CP
     Friend WithEvents StatusStrip1 As System.Windows.Forms.StatusStrip
     Friend WithEvents lblMode As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents lblUser As System.Windows.Forms.ToolStripStatusLabel
+    Friend WithEvents OutilsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents BatToexeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class
