@@ -54,32 +54,18 @@ Public Class frmBatEdit
     Private Sub EnregistrerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem.Click
         'Enregistrement des modifications.
         Try
-            My.Computer.FileSystem.WriteAllText(TempBatch, txtEditor.Text, False)
+            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        Finally
+            NeedSave = False
         End Try
     End Sub
 
     Private Sub EnregistrerSousToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnregistrerSousToolStripMenuItem.Click
         'Affichage de la boite d'enregistrement
-        Dim opFD As New SaveFileDialog
-        opFD.AddExtension = True
-        opFD.DefaultExt = ".bat"
-        opFD.FileName = "GUIDosboxHistory"
-        opFD.Filter = "Fichiers de commandes (*.bat)|*.bat|Tous les fichiers (*.*)|*.*"
-        opFD.FilterIndex = 0
-        opFD.OverwritePrompt = True
-        opFD.Title = "Enregistrer Sous..."
-        'sauvegarde du fichier
-        Try
-            If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                My.Computer.FileSystem.WriteAllText(opFD.FileName, txtEditor.Text, False)
-            End If
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
-                  MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
-        End Try
+        batchFileSave()
     End Sub
 
     Private Sub MiseEnPageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MiseEnPageToolStripMenuItem.Click
@@ -102,8 +88,36 @@ Public Class frmBatEdit
     End Sub
 
     Private Sub QuiterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuiterToolStripMenuItem.Click
-        CP.Show()
+        'Quiter
         Me.Close()
+    End Sub
+
+    Private Sub CouperToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CouperToolStripMenuItem1.Click
+        'Couper
+        txtEditor.Cut()
+    End Sub
+
+    Private Sub CopierToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopierToolStripMenuItem1.Click
+        'Copier
+        txtEditor.Copy()
+    End Sub
+
+    Private Sub CollerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CollerToolStripMenuItem1.Click
+        'Coller
+        txtEditor.Paste()
+    End Sub
+
+    Private Sub CompillerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CompillerToolStripMenuItem.Click
+        'Enregistrement des modifications et affichage du compilateur.
+        Try
+            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
+            NeedSave = False
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                   MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        End Try
+        BuildFromTempBatch = True
+        frmBatToExe.Show()
     End Sub
 #End Region
 
@@ -112,32 +126,18 @@ Public Class frmBatEdit
     Private Sub EnregistrerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem1.Click
         'Enregistrement des modifications.
         Try
-            My.Computer.FileSystem.WriteAllText(TempBatch, txtEditor.Text, False)
+            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        Finally
+            NeedSave = False
         End Try
     End Sub
 
     Private Sub EnregistrerSousToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EnregistrerSousToolStripMenuItem1.Click
         'Affichage de la boite d'enregistrement
-        Dim opFD As New SaveFileDialog
-        opFD.AddExtension = True
-        opFD.DefaultExt = ".bat"
-        opFD.FileName = "GUIDosboxHistory"
-        opFD.Filter = "Fichiers de commandes (*.bat)|*.bat|Tous les fichiers (*.*)|*.*"
-        opFD.FilterIndex = 0
-        opFD.OverwritePrompt = True
-        opFD.Title = "Enregistrer Sous..."
-        'sauvegarde du fichier
-        Try
-            If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
-                My.Computer.FileSystem.WriteAllText(opFD.FileName, txtEditor.Text, False)
-            End If
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
-                  MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
-        End Try
+        batchFileSave()
     End Sub
 
     Private Sub MiseEnPageToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles MiseEnPageToolStripMenuItem1.Click
@@ -176,15 +176,9 @@ Public Class frmBatEdit
 
     Private Sub QuiterToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles QuiterToolStripMenuItem1.Click
         'Retour au cp
-        CP.Show()
         Me.Close()
     End Sub
 #End Region
-
-    Private Sub frmBatEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        'Retour au cp
-        CP.Show()
-    End Sub
 
 #Region " Options d'impression ajouté "
 
@@ -227,5 +221,66 @@ Public Class frmBatEdit
 
 #End Region
 
+    ''' <summary>
+    ''' Affichage de la boite d'enregistrement et enregistrement du fichier.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub batchFileSave()
+        Dim opFD As New SaveFileDialog
+        opFD.AddExtension = True
+        opFD.DefaultExt = ".bat"
+        opFD.FileName = "GUIDosboxHistory"
+        opFD.Filter = "Fichiers de commandes (*.bat)|*.bat|Tous les fichiers (*.*)|*.*"
+        opFD.FilterIndex = 0
+        opFD.OverwritePrompt = True
+        opFD.Title = "Enregistrer Sous..."
+        'sauvegarde du fichier
+        Try
+            If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                txtEditor.SaveFile(opFD.FileName, RichTextBoxStreamType.PlainText)
+            End If
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                  MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        Finally
+            NeedSave = False
+        End Try
+    End Sub
    
+
+    Private Sub frmBatEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+
+        'Message si fichier modifier et enregistrement
+        If NeedSave = True Then
+            If MsgBox("Le fichier à été modifié!" & vbCrLf & vbCrLf _
+                      & "Voulez-vous le sauvegarder avant de fermer l'éditeur?", _
+                      MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                'Enregistrement des modifications.
+                Try
+                    txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
+                Catch ex As Exception
+                    MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                           MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+                Finally
+                    NeedSave = False
+                End Try
+                CP.Show()
+            Else
+                CP.Show()
+            End If
+        Else
+            CP.Show()
+        End If
+
+    End Sub
+
+    ''' <summary>
+    ''' Variable qui indique l'état des modification dans le textbox.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private NeedSave As Boolean = False
+    Private Sub txtEditor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEditor.KeyPress
+        NeedSave = True
+    End Sub
+
 End Class

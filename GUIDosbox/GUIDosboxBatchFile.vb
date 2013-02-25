@@ -14,7 +14,13 @@ Module GUIDosboxBatchFile
     ''' Chemin pour le fichier batch temporraire.
     ''' </summary>
     ''' <remarks>Le fichier batch ce trouve dans le dossier temp de l'utilisateur.</remarks>
-    Public TempBatch As String = Path.GetTempPath & "\cmd.guidb"
+    Public TempBatch As String = Path.GetTempPath & "guidb.bat"
+
+    ''' <summary>
+    ''' Vérifie si la compillation du batch est appeler depuis l'éditeur.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public BuildFromTempBatch As Boolean = False
 
     ''' <summary>
     ''' Prépare un fichier temporaire pour stocker les commandes exéctué par les utilitaires. 
@@ -28,15 +34,15 @@ Module GUIDosboxBatchFile
             'Création du nouveau fichier temporaire
             CreateBatch()
             'Écriture des valeurs par défault dans le ficher
-            WriteBatch("REM [--> GUIDosbox <--]")
+            WriteBatch("REM -- GUIDosbox --")
             WriteBatch("REM Créé par : Nice-Life90")
             WriteBatch("REM http://www.kobixxe.com")
             WriteBatch("REM Copyright (C) 2010 - 2013 Kobixxe - Montréal")
             WriteBatch("REM Tous droits réservés")
             LineSpace(1)
-            WriteBatch("REM Ce fichier a été automatiquement créé par GUIDosbox.")
+            WriteBatch("REM Ce fichier à été automatiquement créé par GUIDosbox.")
             WriteBatch("REM Vous pouvez modifier ce fichier à votre guise à tout moment.")
-            WriteBatch("REM Il est aussi possible de le compiler en utilisant l’utilitaire Batch to Exe.")
+            WriteBatch("REM Il est aussi possible de le compiler en utilisant l'utilitaire Batch to Exe.")
             WriteBatch("REM Vous trouverez l'utilitaire dans le menu principal sous Outils > .bat To .exe.")
             WriteBatch("REM Vous trouverez sous cette ligne l'historique des commandes que vous avez effectuées avec GUIDosbox.")
             LineSpace(1)

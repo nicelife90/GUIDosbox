@@ -26,18 +26,18 @@ Partial Class frmBatToExe
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.optAsAdmin = New GUIDosbox.GUIDosbox_Checkbox()
-        Me.GuiDosbox_Groupbox2 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.gbIcone = New GUIDosbox.GUIDosbox_Groupbox()
         Me.btnBrowseIcone = New GUIDosbox.GUIDosbox_Button()
         Me.txtIcone = New GUIDosbox.GUIDosbox_Textbox()
-        Me.GuiDosbox_Groupbox1 = New GUIDosbox.GUIDosbox_Groupbox()
+        Me.gbFile = New GUIDosbox.GUIDosbox_Groupbox()
         Me.btnBrowse = New GUIDosbox.GUIDosbox_Button()
         Me.txtSource = New GUIDosbox.GUIDosbox_Textbox()
         Me.btnBack = New GUIDosbox.GUIDosbox_Button()
         Me.btnBuild = New GUIDosbox.GUIDosbox_Button()
         Me.lblStatus = New GUIDosbox.GUIDosbox_Label()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GuiDosbox_Groupbox2.SuspendLayout()
-        Me.GuiDosbox_Groupbox1.SuspendLayout()
+        Me.gbIcone.SuspendLayout()
+        Me.gbFile.SuspendLayout()
         Me.SuspendLayout()
         '
         'ProgressBar1
@@ -71,20 +71,20 @@ Partial Class frmBatToExe
         Me.optAsAdmin.Text = "Add Administrator manifest"
         Me.optAsAdmin.UseVisualStyleBackColor = False
         '
-        'GuiDosbox_Groupbox2
+        'gbIcone
         '
-        Me.GuiDosbox_Groupbox2.BackColor = System.Drawing.Color.Black
-        Me.GuiDosbox_Groupbox2.BorderColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox2.Controls.Add(Me.btnBrowseIcone)
-        Me.GuiDosbox_Groupbox2.Controls.Add(Me.txtIcone)
-        Me.GuiDosbox_Groupbox2.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.GuiDosbox_Groupbox2.ForeColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox2.Location = New System.Drawing.Point(12, 120)
-        Me.GuiDosbox_Groupbox2.Name = "GuiDosbox_Groupbox2"
-        Me.GuiDosbox_Groupbox2.Size = New System.Drawing.Size(566, 68)
-        Me.GuiDosbox_Groupbox2.TabIndex = 15
-        Me.GuiDosbox_Groupbox2.TabStop = False
-        Me.GuiDosbox_Groupbox2.Text = " Icone (Optionel)"
+        Me.gbIcone.BackColor = System.Drawing.Color.Black
+        Me.gbIcone.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbIcone.Controls.Add(Me.btnBrowseIcone)
+        Me.gbIcone.Controls.Add(Me.txtIcone)
+        Me.gbIcone.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbIcone.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbIcone.Location = New System.Drawing.Point(12, 120)
+        Me.gbIcone.Name = "gbIcone"
+        Me.gbIcone.Size = New System.Drawing.Size(566, 68)
+        Me.gbIcone.TabIndex = 15
+        Me.gbIcone.TabStop = False
+        Me.gbIcone.Text = " Icone (Optionel)"
         '
         'btnBrowseIcone
         '
@@ -114,20 +114,20 @@ Partial Class frmBatToExe
         Me.txtIcone.Size = New System.Drawing.Size(440, 18)
         Me.txtIcone.TabIndex = 11
         '
-        'GuiDosbox_Groupbox1
+        'gbFile
         '
-        Me.GuiDosbox_Groupbox1.BackColor = System.Drawing.Color.Black
-        Me.GuiDosbox_Groupbox1.BorderColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox1.Controls.Add(Me.btnBrowse)
-        Me.GuiDosbox_Groupbox1.Controls.Add(Me.txtSource)
-        Me.GuiDosbox_Groupbox1.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.GuiDosbox_Groupbox1.ForeColor = System.Drawing.Color.LightBlue
-        Me.GuiDosbox_Groupbox1.Location = New System.Drawing.Point(12, 46)
-        Me.GuiDosbox_Groupbox1.Name = "GuiDosbox_Groupbox1"
-        Me.GuiDosbox_Groupbox1.Size = New System.Drawing.Size(566, 68)
-        Me.GuiDosbox_Groupbox1.TabIndex = 14
-        Me.GuiDosbox_Groupbox1.TabStop = False
-        Me.GuiDosbox_Groupbox1.Text = " Fichier"
+        Me.gbFile.BackColor = System.Drawing.Color.Black
+        Me.gbFile.BorderColor = System.Drawing.Color.LightBlue
+        Me.gbFile.Controls.Add(Me.btnBrowse)
+        Me.gbFile.Controls.Add(Me.txtSource)
+        Me.gbFile.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.gbFile.ForeColor = System.Drawing.Color.LightBlue
+        Me.gbFile.Location = New System.Drawing.Point(12, 46)
+        Me.gbFile.Name = "gbFile"
+        Me.gbFile.Size = New System.Drawing.Size(566, 68)
+        Me.gbFile.TabIndex = 14
+        Me.gbFile.TabStop = False
+        Me.gbFile.Text = " Fichier"
         '
         'btnBrowse
         '
@@ -209,8 +209,8 @@ Partial Class frmBatToExe
         Me.ClientSize = New System.Drawing.Size(588, 254)
         Me.ControlBox = False
         Me.Controls.Add(Me.optAsAdmin)
-        Me.Controls.Add(Me.GuiDosbox_Groupbox2)
-        Me.Controls.Add(Me.GuiDosbox_Groupbox1)
+        Me.Controls.Add(Me.gbIcone)
+        Me.Controls.Add(Me.gbFile)
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.btnBuild)
@@ -225,10 +225,10 @@ Partial Class frmBatToExe
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Batch To Exe"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GuiDosbox_Groupbox2.ResumeLayout(False)
-        Me.GuiDosbox_Groupbox2.PerformLayout()
-        Me.GuiDosbox_Groupbox1.ResumeLayout(False)
-        Me.GuiDosbox_Groupbox1.PerformLayout()
+        Me.gbIcone.ResumeLayout(False)
+        Me.gbIcone.PerformLayout()
+        Me.gbFile.ResumeLayout(False)
+        Me.gbFile.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -240,8 +240,8 @@ Partial Class frmBatToExe
     Friend WithEvents txtSource As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents btnBack As GUIDosbox.GUIDosbox_Button
-    Friend WithEvents GuiDosbox_Groupbox1 As GUIDosbox.GUIDosbox_Groupbox
-    Friend WithEvents GuiDosbox_Groupbox2 As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents gbFile As GUIDosbox.GUIDosbox_Groupbox
+    Friend WithEvents gbIcone As GUIDosbox.GUIDosbox_Groupbox
     Friend WithEvents btnBrowseIcone As GUIDosbox.GUIDosbox_Button
     Friend WithEvents txtIcone As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents optAsAdmin As GUIDosbox.GUIDosbox_Checkbox

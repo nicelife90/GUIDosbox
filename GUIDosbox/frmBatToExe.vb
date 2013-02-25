@@ -26,10 +26,19 @@ Public Class frmBatToExe
 
         'Extration de l'icone par défaut
         Try
-            SaveToDisk("cmd.ico", Path.GetTempPath() & "\DefaultIcone.ico")
+            If Not File.Exists(Path.GetTempPath() & "\DefaultIcone.ico") Then
+                SaveToDisk("cmd.ico", Path.GetTempPath() & "\DefaultIcone.ico")
+            End If
         Catch ex As Exception
             MsgBox("Impossible de créé l'icone par défaut", MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur")
         End Try
+
+        'Compillation depuis l'éditeur (batch file temporraire).
+        If BuildFromTempBatch = True Then
+            txtSource.Text = TempBatch
+            gbFile.Visible = False
+        End If
+
     End Sub
 
     ''' <summary>
@@ -220,9 +229,15 @@ Public Class frmBatToExe
     End Sub
 
     Private Sub btnBack_Click(sender As Object, e As EventArgs) Handles btnBack.Click
-        'Retour au cp.
-        CP.Show()
-        Me.Close()
+        If BuildFromTempBatch Then
+            'Fermeture seulement
+            BuildFromTempBatch = False
+            Me.Close()
+        Else
+            'Retour au cp.
+            CP.Show()
+            Me.Close()
+        End If 
     End Sub
 
 End Class

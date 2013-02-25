@@ -24,6 +24,8 @@ Imports System.Text.RegularExpressions
 Public Class GUIDosbox_RichTextBox
     Inherits RichTextBox
 
+
+
 #Region " Paramètres du RichTextBox "
     ''' <summary>
     ''' Paramètres du RichTextBox par défaut
@@ -392,7 +394,6 @@ Public Class GUIDosbox_RichTextBox
         m_bPaint = True
     End Sub
 
-    
     ''' <summary>
     ''' Coloration syntaxique d'une ligne.
     ''' </summary>
@@ -424,7 +425,6 @@ Public Class GUIDosbox_RichTextBox
             ColorationProgressOutput = "Traitement des commandes"
             ColorationsProgresStatus = 37
         End If
-
 
         'Traitement des opérateurs
         If Settings.EnableOperators Then

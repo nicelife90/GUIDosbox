@@ -11,6 +11,7 @@
 
 TODO LIST :
 1 --> Ajouter les mot clé au coloration syntaxique.
+2 --> Add header to all file 
 2 --> Ajouter l'historique des batch file et options de sauvegarde dans un emplacement choisi
 3 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
 5 --> Changer bouton Help (.xml) pour Note de mise à jour
