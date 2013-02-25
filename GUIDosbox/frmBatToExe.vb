@@ -1,4 +1,13 @@
-﻿Option Explicit On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.kobixxe.com
+' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' Tous droits réservés
+
+' [--> Contenue du fichhier <-] 
+' frmBatToExe --> Permet de compiller un fichier .bat en fichier .exe
+
+Option Explicit On
 Option Strict On
 
 Imports System.IO
@@ -38,6 +47,9 @@ Public Class frmBatToExe
         "End Sub" & vbNewLine & _
         "End Module"
 
+    ''' <summary>
+    ''' Variable contenant le contenue d'un fichier xml pour un app.manifest
+    ''' </summary>
     Dim manifest As String = _
         "<?xml version=" & Chr(34) & "1.0" & Chr(34) & " encoding=" & Chr(34) & "utf-8" & Chr(34) & " standalone=" & Chr(34) & "yes" & Chr(34) & "?>" & vbNewLine & _
         "<assembly xmlns=" & Chr(34) & "urn:schemas-microsoft-com:asm.v1" & Chr(34) & " manifestVersion=" & Chr(34) & "1.0" & Chr(34) & ">" & vbNewLine & _

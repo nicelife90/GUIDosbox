@@ -1,6 +1,16 @@
-﻿
-TODO LIST :
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.kobixxe.com
+' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' Tous droits réservés
 
+' [--> Contenue du fichhier <-] 
+' Ce code est un RichTextBox au quel j'ai étendu des options d'impression et 
+' de coloration syntaxique pour les Batch File. 
+
+
+TODO LIST :
+1 --> Ajouter les mot clé au coloration syntaxique.
 2 --> Ajouter l'historique des batch file et options de sauvegarde dans un emplacement choisi
 3 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
 5 --> Changer bouton Help (.xml) pour Note de mise à jour

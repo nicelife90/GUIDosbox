@@ -95,6 +95,12 @@ Public Class CP
         frmBatToExe.Show()
     End Sub
 
+    Private Sub ÉditerBatchFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ÉditerBatchFileToolStripMenuItem.Click
+        'frmBatEdit
+        Me.Hide()
+        frmBatEdit.Show()
+    End Sub
+
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
         Me.Close()
     End Sub
@@ -208,6 +214,8 @@ Public Class CP
 
         'Préparation de l'interface d'utilisateur
         Try
+            'Batch File
+            PrepareBatchFile()
 
             'Status Strip
             lblUser.Text = "Bienvenue, " & Environment.UserName & " : "
@@ -257,8 +265,6 @@ Public Class CP
             MsgBox("Une erreur c'est produite lors de l'ouverture de cette application, " & ex.Message, _
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
-
     End Sub
 
-   
 End Class

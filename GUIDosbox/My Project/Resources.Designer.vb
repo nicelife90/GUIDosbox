@@ -93,6 +93,16 @@ Namespace My.Resources
         '''<summary>
         '''  Recherche une ressource localisée de type System.Byte[].
         '''</summary>
+        Friend ReadOnly Property bateditor() As Byte()
+            Get
+                Dim obj As Object = ResourceManager.GetObject("bateditor", resourceCulture)
+                Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Byte[].
+        '''</summary>
         Friend ReadOnly Property cacls() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("cacls", resourceCulture)
@@ -177,6 +187,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("help", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property loading() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("loading", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         

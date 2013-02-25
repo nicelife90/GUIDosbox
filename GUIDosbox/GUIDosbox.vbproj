@@ -75,8 +75,7 @@
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Resources\cmd.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>E520648F59C0BA0221B170E081E381B1EC5D39FE</ManifestCertificateThumbprint>
@@ -119,12 +118,34 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl\GUIDosbox_LineNumber.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_RichTextBox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="frmBatEdit.Designer.vb">
+      <DependentUpon>frmBatEdit.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBatEdit.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBatEditLoader.Designer.vb">
+      <DependentUpon>frmBatEditLoader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmBatEditLoader.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBatToExe.Designer.vb">
       <DependentUpon>frmBatToExe.vb</DependentUpon>
     </Compile>
     <Compile Include="frmBatToExe.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GUIDosboxBatchFile.vb" />
+    <Compile Include="GUIDosboxLanguage.vb" />
+    <Compile Include="GUIDosboxPrivileges.vb" />
+    <Compile Include="GUIDosboxColorationSyntaxique.vb" />
     <Compile Include="Tools\AssocApp.Designer.vb">
       <DependentUpon>AssocApp.vb</DependentUpon>
     </Compile>
@@ -296,6 +317,15 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_RichTextBox.resx">
+      <DependentUpon>GUIDosbox_RichTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBatEdit.resx">
+      <DependentUpon>frmBatEdit.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBatEditLoader.resx">
+      <DependentUpon>frmBatEditLoader.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBatToExe.resx">
       <DependentUpon>frmBatToExe.vb</DependentUpon>
     </EmbeddedResource>
@@ -408,15 +438,6 @@
       <WrapperTool>aximp</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
-    <COMReference Include="ShockwaveFlashObjects">
-      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\style2.css" />
@@ -509,6 +530,8 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\batchtoexe.swf" />
+    <EmbeddedResource Include="Resources\bateditor.swf" />
+    <EmbeddedResource Include="Resources\loading.gif" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

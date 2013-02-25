@@ -47,6 +47,7 @@ Partial Class CP
         Me.XcopyToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutilsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BatToexeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ÉditerBatchFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
@@ -244,7 +245,7 @@ Partial Class CP
         '
         'OutilsToolStripMenuItem
         '
-        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem})
+        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem, Me.ÉditerBatchFileToolStripMenuItem})
         Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
@@ -255,8 +256,15 @@ Partial Class CP
         '
         Me.BatToexeToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.BatToexeToolStripMenuItem.Name = "BatToexeToolStripMenuItem"
-        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
         Me.BatToexeToolStripMenuItem.Text = ".bat To .exe"
+        '
+        'ÉditerBatchFileToolStripMenuItem
+        '
+        Me.ÉditerBatchFileToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ÉditerBatchFileToolStripMenuItem.Name = "ÉditerBatchFileToolStripMenuItem"
+        Me.ÉditerBatchFileToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.ÉditerBatchFileToolStripMenuItem.Text = "Éditer Batch File"
         '
         'HelpToolStripMenu
         '
@@ -414,5 +422,6 @@ Partial Class CP
     Friend WithEvents lblUser As System.Windows.Forms.ToolStripStatusLabel
     Friend WithEvents OutilsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BatToexeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ÉditerBatchFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

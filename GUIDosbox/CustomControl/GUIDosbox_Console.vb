@@ -77,6 +77,8 @@ Public Class GUIDosbox_Console
             myConsole.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
             myConsole.StandardInput.WriteLine()
             myConsole.StandardInput.Flush()
+            'Écriture de la commande dans le batch file.
+            WriteBatch(myCommand)
             Return myCommand
         End If
     End Function
