@@ -24,8 +24,6 @@ Imports System.Text.RegularExpressions
 Public Class GUIDosbox_RichTextBox
     Inherits RichTextBox
 
-
-
 #Region " Paramètres du RichTextBox "
     ''' <summary>
     ''' Paramètres du RichTextBox par défaut
@@ -408,9 +406,11 @@ Public Class GUIDosbox_RichTextBox
         ColorationsProgresStatus = 0
 
         ' Traitement du @
-        ProcessRegex("@", Color.HotPink)
-        ColorationsProgresStatus = 12
-        ColorationProgressOutput = "Traitement des @"
+        If Settings.EnableArobas Then
+            ProcessRegex("@", Settings.ArobasColor)
+            ColorationsProgresStatus = 12
+            ColorationProgressOutput = "Traitement des @"
+        End If
 
         ' Traitement des mots clées
         If Settings.EnableKeywords Then
@@ -460,7 +460,7 @@ Public Class GUIDosbox_RichTextBox
             ColorationsProgresStatus = 100
             ColorationProgressOutput = "Traitement des commentaires"
         End If
-        
+
         SelectionStart = nPosition
         SelectionLength = 0
         SelectionColor = Color.Black
@@ -541,6 +541,7 @@ Public Class GUIDosbox_RichTextBox
         Next i
     End Sub
 #End Region
+
 End Class
 
 ''' <summary>
@@ -568,8 +569,11 @@ Public Class SyntaxSettings
     Private m_colorAnchor As Color = Color.Brown
     Private m_colorOperator As Color = Color.Red
     Private m_colorVariable As Color = Color.Purple
+    Private m_colorArobas As Color = Color.DeepPink
+
 
     'Variable ON/OFF
+    Private m_bEnableArobas As Boolean = True
     Private m_bEnableKeywords As Boolean = True
     Private m_bEnableCommands As Boolean = True
     Private m_bEnableComments As Boolean = True
@@ -611,6 +615,18 @@ Public Class SyntaxSettings
     End Property
 
     ' ------------------- ON/OFF ---------------------------
+
+    ''' <summary>
+    ''' Activation/Désactivation de la coloration des @.
+    ''' </summary>
+    Public Property EnableArobas() As Boolean
+        Get
+            Return m_bEnableArobas
+        End Get
+        Set(ByVal value As Boolean)
+            m_bEnableArobas = value
+        End Set
+    End Property
 
     ''' <summary>
     ''' Activation/Désactivation de la coloration des mots clées.
@@ -697,6 +713,18 @@ Public Class SyntaxSettings
     End Property
 
     ' -------------------  Couleurs  ---------------------------
+
+    ''' <summary>
+    ''' Couleur des mots clés.
+    ''' </summary>
+    Public Property ArobasColor() As Color
+        Get
+            Return m_colorArobas
+        End Get
+        Set(ByVal value As Color)
+            m_colorArobas = value
+        End Set
+    End Property
 
     ''' <summary>
     ''' Couleur des mots clés.

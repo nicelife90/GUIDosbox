@@ -18,6 +18,7 @@ Module GUIDosboxManageSettings
     ''' </summary>
     ''' <remarks>Cette structure est utiliser par frmApplicationSettings</remarks>
     Public Structure ParamColorationSyntaxique
+        Public ArobasColor As Color
         Public AnchorColor As Color
         Public CommandsColor As Color
         Public CommentColor As Color
@@ -25,6 +26,7 @@ Module GUIDosboxManageSettings
         Public KeywordColor As Color
         Public OperatorColor As Color
         Public VariableColor As Color
+        Public ArobasState As Boolean
         Public AnchorState As Boolean
         Public CommandsState As Boolean
         Public CommentsState As Boolean
@@ -46,6 +48,7 @@ Module GUIDosboxManageSettings
             Case 2 '-->  'Reset de l'onglet Coloration Syntaxique
                 'Reset des paramêtres
                 With My.Settings
+                    .ArobasColor = Color.DeepPink
                     .AnchorColor = Color.Brown
                     .CommandsColor = Color.DeepSkyBlue
                     .CommentColor = Color.Green
@@ -53,6 +56,7 @@ Module GUIDosboxManageSettings
                     .KeywordColor = Color.Blue
                     .OperatorColor = Color.Red
                     .VariableColor = Color.Purple
+                    .ArobasState = True
                     .AnchorState = True
                     .CommandsState = True
                     .CommentsState = True
@@ -89,20 +93,22 @@ Module GUIDosboxManageSettings
                 'Définition des nouveaux paramètres
                 Dim newSettings As ParamColorationSyntaxique = CType(mySettings, ParamColorationSyntaxique)
                 With My.Settings
-                    If (newSettings.AnchorColor = Nothing) Then
-                        .AnchorColor = newSettings.AnchorColor
-                    End If
+                    'Couleur
+                    .ArobasColor = newSettings.ArobasColor
+                    .AnchorColor = newSettings.AnchorColor
                     .CommandsColor = newSettings.CommandsColor
                     .CommentColor = newSettings.CommentColor
                     .IntegerColor = newSettings.IntegerColor
                     .KeywordColor = newSettings.KeywordColor
                     .OperatorColor = newSettings.OperatorColor
                     .VariableColor = newSettings.VariableColor
+                    'États
+                    .ArobasState = newSettings.ArobasState
                     .AnchorState = newSettings.AnchorState
-                    .CommandsState = newSettings.AnchorState
+                    .CommandsState = newSettings.CommandsState
                     .CommentsState = newSettings.CommentsState
                     .IntegerState = newSettings.IntegerState
-                    .KeywordsState = newSettings.OperatorState
+                    .KeywordsState = newSettings.KeywordsState
                     .OperatorState = newSettings.OperatorState
                     .VariableState = newSettings.VariableState
                 End With
@@ -110,6 +116,8 @@ Module GUIDosboxManageSettings
                 'Enregistrement des paramètres
                 My.Settings.Save()
                 My.Settings.Reload()
+
+            Case 3 '--> Onglet Éditeur
 
         End Select
 

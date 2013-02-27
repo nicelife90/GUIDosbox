@@ -47,7 +47,9 @@ Partial Class frmApplicationSettings
         Me.pbColorIntegers = New System.Windows.Forms.PictureBox()
         Me.tabEditeur = New System.Windows.Forms.TabPage()
         Me.cd = New System.Windows.Forms.ColorDialog()
+        Me.optArobas = New System.Windows.Forms.CheckBox()
         Me.GuiDosbox_Checkbox1 = New GUIDosbox.GUIDosbox_Checkbox()
+        Me.GuiDosbox_Label8 = New GUIDosbox.GUIDosbox_Label()
         Me.lblKeywords = New GUIDosbox.GUIDosbox_Label()
         Me.GuiDosbox_Label9 = New GUIDosbox.GUIDosbox_Label()
         Me.GuiDosbox_Label10 = New GUIDosbox.GUIDosbox_Label()
@@ -62,6 +64,8 @@ Partial Class frmApplicationSettings
         Me.GuiDosbox_Label4 = New GUIDosbox.GUIDosbox_Label()
         Me.GuiDosbox_Label3 = New GUIDosbox.GUIDosbox_Label()
         Me.GuiDosbox_Label2 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label14 = New GUIDosbox.GUIDosbox_Label()
+        Me.pbColorArobas = New System.Windows.Forms.PictureBox()
         Me.tabGeneral.SuspendLayout()
         Me.TabControl1.SuspendLayout()
         Me.tabColoration.SuspendLayout()
@@ -74,6 +78,7 @@ Partial Class frmApplicationSettings
         CType(Me.pbColorComments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbColorOperators, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbColorIntegers, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pbColorArobas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'tabGeneral
@@ -154,6 +159,8 @@ Partial Class frmApplicationSettings
         '
         'gbSyntaxtOnOff
         '
+        Me.gbSyntaxtOnOff.Controls.Add(Me.optArobas)
+        Me.gbSyntaxtOnOff.Controls.Add(Me.GuiDosbox_Label8)
         Me.gbSyntaxtOnOff.Controls.Add(Me.optOperators)
         Me.gbSyntaxtOnOff.Controls.Add(Me.optComments)
         Me.gbSyntaxtOnOff.Controls.Add(Me.optVariables)
@@ -241,6 +248,8 @@ Partial Class frmApplicationSettings
         '
         'gbSyntaxColor
         '
+        Me.gbSyntaxColor.Controls.Add(Me.GuiDosbox_Label14)
+        Me.gbSyntaxColor.Controls.Add(Me.pbColorArobas)
         Me.gbSyntaxColor.Controls.Add(Me.GuiDosbox_Label1)
         Me.gbSyntaxColor.Controls.Add(Me.GuiDosbox_Label7)
         Me.gbSyntaxColor.Controls.Add(Me.pbColorKeywords)
@@ -347,6 +356,15 @@ Partial Class frmApplicationSettings
         '
         Me.cd.FullOpen = True
         '
+        'optArobas
+        '
+        Me.optArobas.AutoSize = True
+        Me.optArobas.Location = New System.Drawing.Point(438, 111)
+        Me.optArobas.Name = "optArobas"
+        Me.optArobas.Size = New System.Drawing.Size(15, 14)
+        Me.optArobas.TabIndex = 38
+        Me.optArobas.UseVisualStyleBackColor = True
+        '
         'GuiDosbox_Checkbox1
         '
         Me.GuiDosbox_Checkbox1.AutoSize = True
@@ -361,6 +379,18 @@ Partial Class frmApplicationSettings
         Me.GuiDosbox_Checkbox1.Text = "Activer / Désactiver Coloration Syntaxique"
         Me.GuiDosbox_Checkbox1.UseVisualStyleBackColor = False
         '
+        'GuiDosbox_Label8
+        '
+        Me.GuiDosbox_Label8.AutoSize = True
+        Me.GuiDosbox_Label8.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label8.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Label8.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.GuiDosbox_Label8.Location = New System.Drawing.Point(230, 112)
+        Me.GuiDosbox_Label8.Name = "GuiDosbox_Label8"
+        Me.GuiDosbox_Label8.Size = New System.Drawing.Size(180, 11)
+        Me.GuiDosbox_Label8.TabIndex = 37
+        Me.GuiDosbox_Label8.Text = "Coloration des arobas (@)"
+        '
         'lblKeywords
         '
         Me.lblKeywords.AutoSize = True
@@ -369,9 +399,9 @@ Partial Class frmApplicationSettings
         Me.lblKeywords.ForeColor = System.Drawing.SystemColors.GrayText
         Me.lblKeywords.Location = New System.Drawing.Point(16, 25)
         Me.lblKeywords.Name = "lblKeywords"
-        Me.lblKeywords.Size = New System.Drawing.Size(180, 11)
+        Me.lblKeywords.Size = New System.Drawing.Size(173, 11)
         Me.lblKeywords.TabIndex = 23
-        Me.lblKeywords.Text = "Coloration des mots clées"
+        Me.lblKeywords.Text = "Coloration des mots clés"
         '
         'GuiDosbox_Label9
         '
@@ -453,9 +483,9 @@ Partial Class frmApplicationSettings
         Me.GuiDosbox_Label1.ForeColor = System.Drawing.SystemColors.GrayText
         Me.GuiDosbox_Label1.Location = New System.Drawing.Point(16, 25)
         Me.GuiDosbox_Label1.Name = "GuiDosbox_Label1"
-        Me.GuiDosbox_Label1.Size = New System.Drawing.Size(159, 11)
+        Me.GuiDosbox_Label1.Size = New System.Drawing.Size(152, 11)
         Me.GuiDosbox_Label1.TabIndex = 23
-        Me.GuiDosbox_Label1.Text = "Couleur des mots clées"
+        Me.GuiDosbox_Label1.Text = "Couleur des mots clés"
         '
         'GuiDosbox_Label7
         '
@@ -529,12 +559,35 @@ Partial Class frmApplicationSettings
         Me.GuiDosbox_Label2.TabIndex = 24
         Me.GuiDosbox_Label2.Text = "Couleur des commandes"
         '
+        'GuiDosbox_Label14
+        '
+        Me.GuiDosbox_Label14.AutoSize = True
+        Me.GuiDosbox_Label14.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label14.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.GuiDosbox_Label14.ForeColor = System.Drawing.SystemColors.GrayText
+        Me.GuiDosbox_Label14.Location = New System.Drawing.Point(230, 113)
+        Me.GuiDosbox_Label14.Name = "GuiDosbox_Label14"
+        Me.GuiDosbox_Label14.Size = New System.Drawing.Size(159, 11)
+        Me.GuiDosbox_Label14.TabIndex = 31
+        Me.GuiDosbox_Label14.Text = "Couleur des arobas (@)"
+        '
+        'pbColorArobas
+        '
+        Me.pbColorArobas.BackColor = System.Drawing.Color.Black
+        Me.pbColorArobas.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbColorArobas.Location = New System.Drawing.Point(414, 106)
+        Me.pbColorArobas.Name = "pbColorArobas"
+        Me.pbColorArobas.Size = New System.Drawing.Size(23, 23)
+        Me.pbColorArobas.TabIndex = 30
+        Me.pbColorArobas.TabStop = False
+        '
         'frmApplicationSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(686, 411)
+        Me.ControlBox = False
         Me.Controls.Add(Me.TabControl1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -558,6 +611,7 @@ Partial Class frmApplicationSettings
         CType(Me.pbColorComments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbColorOperators, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbColorIntegers, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pbColorArobas, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -600,4 +654,8 @@ Partial Class frmApplicationSettings
     Friend WithEvents btnCsCancel As System.Windows.Forms.Button
     Friend WithEvents btnCsApply As System.Windows.Forms.Button
     Friend WithEvents btnCsDefault As System.Windows.Forms.Button
+    Friend WithEvents optArobas As System.Windows.Forms.CheckBox
+    Friend WithEvents GuiDosbox_Label8 As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents GuiDosbox_Label14 As GUIDosbox.GUIDosbox_Label
+    Friend WithEvents pbColorArobas As System.Windows.Forms.PictureBox
 End Class

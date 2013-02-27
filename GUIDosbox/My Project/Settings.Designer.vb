@@ -221,6 +221,30 @@ Namespace My
                 Me("IntegerState") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ArobasState() As Boolean
+            Get
+                Return CType(Me("ArobasState"),Boolean)
+            End Get
+            Set
+                Me("ArobasState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("DeepPink")>  _
+        Public Property ArobasColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("ArobasColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("ArobasColor") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

@@ -44,10 +44,10 @@ Module GUIDosboxColorationSyntaxique
              "COLOR", "COMP", "COMPACT", "CONVERT", "COPY", "DATE", "DEL", "DIR", "DISKCOMP", "DISKCOPY", _
              "DISKPART", "DOSKEY", "DRIVERQUERY", "ENDLOCAL", "ERASE", "FC", "FIND", "FINDSTR", "FORMAT", _
              "FSUTIL", "FTYPE", "GPRESULT", "GRAFTABL", "HELP", "ICACLS", "LABEL", "MD", "MKDIR", "MKLINK", _
-             "MODE", "MORE", "MOVE", "OPENFILES", "PATH", "POPD", "PRINT", "PROMPT", "PUSHD", "RD", "RECOVER", _
-             "REN", "RENAME", "REPLACE", "RMDIR", "ROBOCOPY", "SETLOCAL", "SC", "SCHTASKS", "SHIFT", "SHUTDOWN", _
-             "SLMGR", "SORT", "START", "SUBST", "SYSTEMINFO", "TASKLIST", "TASKKILL", "TIME", "TITLE", "TREE", _
-             "TYPE", "VER", "VERIFY ", "VOL", "XCOPY" _
+             "MODE", "MORE", "MOVE", "NET", "OPENFILES", "PATH", "POPD", "PRINT", "PROMPT", "PUSHD", "RD", _
+             "RECOVER", "REN", "RENAME", "REPLACE", "RMDIR", "ROBOCOPY", "SETLOCAL", "SC", "SCHTASKS", "SHIFT", _
+             "SHUTDOWN", "SLMGR", "SORT", "START", "SUBST", "SYSTEMINFO", "TASKLIST", "TASKKILL", "TIME", "TITLE", _
+             "TREE", "TYPE", "VER", "VERIFY ", "VOL", "XCOPY" _
             }
 
         For Each Command As String In Commands
@@ -60,23 +60,27 @@ Module GUIDosboxColorationSyntaxique
         ' Préparation de tous les mot clés
         TextBox.CompileKeywords()
 
-        ' Couleur de la coloration Syntaxique.
-        TextBox.Settings.KeywordColor = Color.Blue
-        TextBox.Settings.KeywordCommandsColor = Color.DeepSkyBlue
-        TextBox.Settings.AnchorColor = Color.Brown
-        TextBox.Settings.VariableColor = Color.Purple
-        TextBox.Settings.OperatorColor = Color.Red
-        TextBox.Settings.CommentColor = Color.Green
-        TextBox.Settings.IntegerColor = Color.Maroon
+        With My.Settings
+            ' Couleur de la coloration Syntaxique.
+            TextBox.Settings.ArobasColor = .ArobasColor
+            TextBox.Settings.KeywordColor = .KeywordColor
+            TextBox.Settings.KeywordCommandsColor = .CommandsColor
+            TextBox.Settings.AnchorColor = .AnchorColor
+            TextBox.Settings.VariableColor = .VariableColor
+            TextBox.Settings.OperatorColor = .OperatorColor
+            TextBox.Settings.CommentColor = .CommentColor
+            TextBox.Settings.IntegerColor = .IntegerColor
 
-        'Activation / Désactivation de la colorations 
-        TextBox.Settings.EnableKeywords = True
-        TextBox.Settings.EnableCommands = True
-        TextBox.Settings.EnableComments = True
-        TextBox.Settings.EnableAnchors = True
-        TextBox.Settings.EnableVariables = True
-        TextBox.Settings.EnableOperators = True
-        TextBox.Settings.EnableIntegers = False
+            'Activation / Désactivation de la colorations 
+            TextBox.Settings.EnableArobas = .ArobasState
+            TextBox.Settings.EnableKeywords = .KeywordsState
+            TextBox.Settings.EnableCommands = .CommandsState
+            TextBox.Settings.EnableComments = .CommentsState
+            TextBox.Settings.EnableAnchors = .AnchorState
+            TextBox.Settings.EnableVariables = .VariableState
+            TextBox.Settings.EnableOperators = .OperatorState
+            TextBox.Settings.EnableIntegers = .IntegerState
+        End With
 
         ' Coloration du texte
         TextBox.ProcessAllLines()

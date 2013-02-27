@@ -6,13 +6,17 @@
 
 ' [--> Contenue du fichhier <-] 
 ' frmApplicationSettings --> Form qui permet de choisr les paramètres de l'application.
+' Ce form dépend du module --> GUIDosboxManageSettings
 
 Option Strict On
 Option Explicit On
 
 Public Class frmApplicationSettings
 
-
+    ''' <summary>
+    ''' Stoke les paramètres temporraire.
+    ''' </summary>
+    Dim tmpColorationSyntaxique As New ParamColorationSyntaxique
 
 #Region " TabControl Tweak "
     ''' <summary>
@@ -58,10 +62,9 @@ Public Class frmApplicationSettings
     ''' </summary>
     Public Sub LoadGUIDosboxSettings()
 
-        '------------->> Initialiser la structure ne meme temp qui l'interface.
-
         With My.Settings
-            'Affichage des couleur choisi.
+            'Affichage des couleur actuellement choisi.
+            pbColorArobas.BackColor = .ArobasColor
             pbColorAnchors.BackColor = .AnchorColor
             pbColorCommands.BackColor = .CommandsColor
             pbColorComments.BackColor = .CommentColor
@@ -70,100 +73,209 @@ Public Class frmApplicationSettings
             pbColorOperators.BackColor = .OperatorColor
             pbColorVariables.BackColor = .VariableColor
 
-            'Affichage des paramètres choisi.
-            If .AnchorState = True Then
+            'Affichage des paramètres actuellement choisi.
+            If .ArobasState Then
+                optArobas.Checked = True
+            Else
+                optArobas.Checked = False
+            End If
+
+            If .AnchorState Then
                 optAnchors.Checked = True
+            Else
+                optAnchors.Checked = False
             End If
-            If .CommandsState = True Then
+
+            If .CommandsState Then
                 optCommands.Checked = True
+            Else
+                optCommands.Checked = False
             End If
-            If .CommentsState = True Then
+
+            If .CommentsState Then
                 optComments.Checked = True
+            Else
+                optComments.Checked = False
             End If
-            If .IntegerState = True Then
+
+            If .IntegerState Then
                 optInteger.Checked = True
+            Else
+                optInteger.Checked = False
             End If
-            If .KeywordsState = True Then
+
+            If .KeywordsState Then
                 optKeywords.Checked = True
+            Else
+                optKeywords.Checked = False
             End If
+
             If .OperatorState Then
                 optOperators.Checked = True
+            Else
+                optOperators.Checked = False
             End If
+
             If .VariableState Then
                 optVariables.Checked = True
+            Else
+                optVariables.Checked = False
             End If
-        End With
-    End Sub
 
+            'Affectation des valeurs actuelle à la structure paramColorationSyntaxique
+            'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
+            tmpColorationSyntaxique.ArobasColor = .ArobasColor
+            tmpColorationSyntaxique.AnchorColor = .AnchorColor
+            tmpColorationSyntaxique.CommandsColor = .CommandsColor
+            tmpColorationSyntaxique.CommentColor = .CommentColor
+            tmpColorationSyntaxique.IntegerColor = .IntegerColor
+            tmpColorationSyntaxique.KeywordColor = .KeywordColor
+            tmpColorationSyntaxique.OperatorColor = .OperatorColor
+            tmpColorationSyntaxique.VariableColor = .VariableColor
+            tmpColorationSyntaxique.ArobasState = .ArobasState
+            tmpColorationSyntaxique.AnchorState = .AnchorState
+            tmpColorationSyntaxique.CommandsState = .CommandsState
+            tmpColorationSyntaxique.CommentsState = .CommentsState
+            tmpColorationSyntaxique.IntegerState = .IntegerState
+            tmpColorationSyntaxique.KeywordsState = .KeywordsState
+            tmpColorationSyntaxique.OperatorState = .OperatorState
+            tmpColorationSyntaxique.VariableState = .VariableState
+        End With
+
+    End Sub
 
 #Region " Tab Coloration Syntaxique "
 
-    ''' <summary>
-    ''' Stoke les paramètres temporraire.
-    ''' </summary>
-    Dim tmpColorationSyntaxque As New ParamColorationSyntaxique
-
+    Private Sub pbColorArobas_Click(sender As Object, e As EventArgs) Handles pbColorArobas.Click
+        If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            pbColorArobas.BackColor = cd.Color
+            tmpColorationSyntaxique.ArobasColor = cd.Color
+        End If
+    End Sub
 
     Private Sub pbColorKeywords_Click(sender As Object, e As EventArgs) Handles pbColorKeywords.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorKeywords.BackColor = cd.Color
-            tmpColorationSyntaxque.KeywordColor = cd.Color
+            tmpColorationSyntaxique.KeywordColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorCommands_Click(sender As Object, e As EventArgs) Handles pbColorCommands.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorCommands.BackColor = cd.Color
-            tmpColorationSyntaxque.CommandsColor = cd.Color
+            tmpColorationSyntaxique.CommandsColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorAnchors_Click(sender As Object, e As EventArgs) Handles pbColorAnchors.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorAnchors.BackColor = cd.Color
-            tmpColorationSyntaxque.AnchorColor = cd.Color
+            tmpColorationSyntaxique.AnchorColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorIntegers_Click(sender As Object, e As EventArgs) Handles pbColorIntegers.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorIntegers.BackColor = cd.Color
-            tmpColorationSyntaxque.IntegerColor = cd.Color
+            tmpColorationSyntaxique.IntegerColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorVariables_Click(sender As Object, e As EventArgs) Handles pbColorVariables.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorVariables.BackColor = cd.Color
-            tmpColorationSyntaxque.VariableColor = cd.Color
+            tmpColorationSyntaxique.VariableColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorOperators_Click(sender As Object, e As EventArgs) Handles pbColorOperators.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
             pbColorOperators.BackColor = cd.Color
-            tmpColorationSyntaxque.OperatorColor = cd.Color
+            tmpColorationSyntaxique.OperatorColor = cd.Color
         End If
     End Sub
 
     Private Sub pbColorComments_Click(sender As Object, e As EventArgs) Handles pbColorComments.Click
         If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
-            pbColorOperators.BackColor = cd.Color
-            tmpColorationSyntaxque.OperatorColor = cd.Color
+            pbColorComments.BackColor = cd.Color
+            tmpColorationSyntaxique.CommentColor = cd.Color
+        End If
+    End Sub
+
+    Private Sub optArobas_CheckedChanged(sender As Object, e As EventArgs) Handles optArobas.CheckedChanged
+        If optArobas.Checked Then
+            tmpColorationSyntaxique.ArobasState = True
+        Else
+            tmpColorationSyntaxique.ArobasState = False
+        End If
+    End Sub
+
+    Private Sub optKeywords_CheckedChanged(sender As Object, e As EventArgs) Handles optKeywords.CheckedChanged
+        If optKeywords.Checked Then
+            tmpColorationSyntaxique.KeywordsState = True
+        Else
+            tmpColorationSyntaxique.KeywordsState = False
+        End If
+    End Sub
+
+    Private Sub optCommands_CheckedChanged(sender As Object, e As EventArgs) Handles optCommands.CheckedChanged
+        If optCommands.Checked Then
+            tmpColorationSyntaxique.CommandsState = True
+        Else
+            tmpColorationSyntaxique.CommandsState = False
+        End If
+    End Sub
+
+    Private Sub optAnchors_CheckedChanged(sender As Object, e As EventArgs) Handles optAnchors.CheckedChanged
+        If optAnchors.Checked Then
+            tmpColorationSyntaxique.AnchorState = True
+        Else
+            tmpColorationSyntaxique.AnchorState = False
+        End If
+    End Sub
+
+    Private Sub optInteger_CheckedChanged(sender As Object, e As EventArgs) Handles optInteger.CheckedChanged
+        If optInteger.Checked Then
+            tmpColorationSyntaxique.IntegerState = True
+        Else
+            tmpColorationSyntaxique.IntegerState = False
+        End If
+    End Sub
+
+    Private Sub optVariables_CheckedChanged(sender As Object, e As EventArgs) Handles optVariables.CheckedChanged
+        If optVariables.Checked Then
+            tmpColorationSyntaxique.VariableState = True
+        Else
+            tmpColorationSyntaxique.VariableState = False
+        End If
+    End Sub
+
+    Private Sub optOperators_CheckedChanged(sender As Object, e As EventArgs) Handles optOperators.CheckedChanged
+        If optOperators.Checked Then
+            tmpColorationSyntaxique.OperatorState = True
+        Else
+            tmpColorationSyntaxique.OperatorState = False
+        End If
+    End Sub
+
+    Private Sub optComments_CheckedChanged(sender As Object, e As EventArgs) Handles optComments.CheckedChanged
+        If optComments.Checked Then
+            tmpColorationSyntaxique.CommentsState = True
+        Else
+            tmpColorationSyntaxique.CommentsState = False
         End If
     End Sub
 
     Private Sub btnCsDefault_Click(sender As Object, e As EventArgs) Handles btnCsDefault.Click
-        'Reset des settings de la coloration syntaxique.
+        'btnCsDefault --> Reset des settings de la coloration syntaxique.
         ResetGUIDosboxSettings(2)
         LoadGUIDosboxSettings()
     End Sub
 
     Private Sub btnCsApply_Click(sender As Object, e As EventArgs) Handles btnCsApply.Click
         'btnCsApply --> Enregistrement et retour au cp
-        SaveGUIDosboxSetting(tmpColorationSyntaxque, 2)
+        SaveGUIDosboxSetting(tmpColorationSyntaxique, 2)
         LoadGUIDosboxSettings()
-        MsgBox(tmpColorationSyntaxque.AnchorState.ToString)
         Me.Close()
         CP.Show()
     End Sub
@@ -174,8 +286,5 @@ Public Class frmApplicationSettings
         CP.Show()
     End Sub
 #End Region
-
-
-
 
 End Class
