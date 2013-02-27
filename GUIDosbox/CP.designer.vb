@@ -28,6 +28,7 @@ Partial Class CP
         Me.LangueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FrançaisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ParamètresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.QuiterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.AssocToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,7 +84,7 @@ Partial Class CP
         'FichierToolStripMenuItem
         '
         Me.FichierToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LangueToolStripMenuItem, Me.QuiterToolStripMenuItem})
+        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LangueToolStripMenuItem, Me.ParamètresToolStripMenuItem, Me.QuiterToolStripMenuItem})
         Me.FichierToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
@@ -95,7 +96,7 @@ Partial Class CP
         Me.LangueToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FrançaisToolStripMenuItem, Me.EnglishToolStripMenuItem})
         Me.LangueToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.LangueToolStripMenuItem.Name = "LangueToolStripMenuItem"
-        Me.LangueToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.LangueToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LangueToolStripMenuItem.Text = "Langue"
         '
         'FrançaisToolStripMenuItem
@@ -112,12 +113,19 @@ Partial Class CP
         Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
         Me.EnglishToolStripMenuItem.Text = "English"
         '
+        'ParamètresToolStripMenuItem
+        '
+        Me.ParamètresToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ParamètresToolStripMenuItem.Name = "ParamètresToolStripMenuItem"
+        Me.ParamètresToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ParamètresToolStripMenuItem.Text = "Paramètres"
+        '
         'QuiterToolStripMenuItem
         '
         Me.QuiterToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
         Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.QuiterToolStripMenuItem.Name = "QuiterToolStripMenuItem"
-        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(115, 22)
+        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.QuiterToolStripMenuItem.Text = "Quitter"
         '
         'ToolStripMenuItem1
@@ -423,5 +431,6 @@ Partial Class CP
     Friend WithEvents OutilsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents BatToexeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ÉditerBatchFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ParamètresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

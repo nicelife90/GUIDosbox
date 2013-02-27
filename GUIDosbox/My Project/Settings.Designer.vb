@@ -53,6 +53,174 @@ Namespace My
                 Return defaultInstance
             End Get
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Blue")>  _
+        Public Property KeywordColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("KeywordColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("KeywordColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("DeepSkyBlue")>  _
+        Public Property CommandsColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("CommandsColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("CommandsColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Brown")>  _
+        Public Property AnchorColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("AnchorColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("AnchorColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Purple")>  _
+        Public Property VariableColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("VariableColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("VariableColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Red")>  _
+        Public Property OperatorColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("OperatorColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("OperatorColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Green")>  _
+        Public Property CommentColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("CommentColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("CommentColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Maroon")>  _
+        Public Property IntegerColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("IntegerColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("IntegerColor") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property KeywordsState() As Boolean
+            Get
+                Return CType(Me("KeywordsState"),Boolean)
+            End Get
+            Set
+                Me("KeywordsState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property CommandsState() As Boolean
+            Get
+                Return CType(Me("CommandsState"),Boolean)
+            End Get
+            Set
+                Me("CommandsState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property AnchorState() As Boolean
+            Get
+                Return CType(Me("AnchorState"),Boolean)
+            End Get
+            Set
+                Me("AnchorState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property VariableState() As Boolean
+            Get
+                Return CType(Me("VariableState"),Boolean)
+            End Get
+            Set
+                Me("VariableState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property OperatorState() As Boolean
+            Get
+                Return CType(Me("OperatorState"),Boolean)
+            End Get
+            Set
+                Me("OperatorState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property CommentsState() As Boolean
+            Get
+                Return CType(Me("CommentsState"),Boolean)
+            End Get
+            Set
+                Me("CommentsState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property IntegerState() As Boolean
+            Get
+                Return CType(Me("IntegerState"),Boolean)
+            End Get
+            Set
+                Me("IntegerState") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

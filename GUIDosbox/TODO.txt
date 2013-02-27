@@ -10,13 +10,14 @@
 
 
 TODO LIST :
-1 --> Ajouter les mot clé au coloration syntaxique.
+1 --> Ajouter au CP --> Sauvegarder le batch sous... , 
 2 --> Add header to all file 
-2 --> Ajouter l'historique des batch file et options de sauvegarde dans un emplacement choisi
 3 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
+4 --> Ajouter un menu Paramètre --> ajouter coloration syntaxique on/off
 5 --> Changer bouton Help (.xml) pour Note de mise à jour
-6 --> Ajouter bouton batchfile au cp avec item ; Voir/Éditer mes commandes ; sauvegarder mes commande sous .bat & .txt ;  compiller mes commande
 7 --> Tache planifier pour lancer sans prompt
+8 --> Ajouter Prompt au cp --> Enregistrer le batch avant de quitter.
+9 --> Ajouter image miniature au menu -->frmBatEditor
 
 Dim task As New System.Diagnostics.ProcessStartInfo("schtasks /create /tn ""Test2"" /tr C:\WINDOWS\system32\calc.exe /sc daily /st 15:14:00 /ru ""System""")
 System.Diagnostics.Process.Start(task)

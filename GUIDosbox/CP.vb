@@ -101,7 +101,14 @@ Public Class CP
         frmBatEdit.Show()
     End Sub
 
+    Private Sub ParamètresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParamètresToolStripMenuItem.Click
+        'Paramètres
+        frmApplicationSettings.Show()
+        Me.Hide()
+    End Sub
+
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
+        'Quiter
         Me.Close()
     End Sub
 
@@ -267,4 +274,5 @@ Public Class CP
         End Try
     End Sub
 
+  
 End Class

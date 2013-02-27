@@ -428,12 +428,11 @@ Public Class GUIDosbox_RichTextBox
 
         'Traitement des opérateurs
         If Settings.EnableOperators Then
-            ProcessRegex("\+|\*|=|<|>|\||\?", Settings.OperatorColor)
+            ProcessRegex("\+|\*|=|<|>|>>|\||\?", Settings.OperatorColor)
             ColorationProgressOutput = "Traitement des opérateurs"
             ColorationsProgresStatus = 50
         End If
 
-     
         'Traitement des variables
         If Settings.EnableVariables Then
             ProcessRegex("%+[a-zA-Z0-9]+%", Settings.VariableColor)

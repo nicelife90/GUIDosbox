@@ -124,6 +124,12 @@
     <Compile Include="CustomControl\GUIDosbox_RichTextBox.vb">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="frmApplicationSettings.Designer.vb">
+      <DependentUpon>frmApplicationSettings.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmApplicationSettings.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="frmBatEdit.Designer.vb">
       <DependentUpon>frmBatEdit.vb</DependentUpon>
     </Compile>
@@ -142,10 +148,11 @@
     <Compile Include="frmBatToExe.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUIDosboxBatchFile.vb" />
-    <Compile Include="GUIDosboxLanguage.vb" />
-    <Compile Include="GUIDosboxPrivileges.vb" />
-    <Compile Include="GUIDosboxColorationSyntaxique.vb" />
+    <Compile Include="Module\GUIDosboxBatchFile.vb" />
+    <Compile Include="Module\GUIDosboxManageSettings.vb" />
+    <Compile Include="Module\GUIDosboxLanguage.vb" />
+    <Compile Include="Module\GUIDosboxPrivileges.vb" />
+    <Compile Include="Module\GUIDosboxColorationSyntaxique.vb" />
     <Compile Include="Tools\AssocApp.Designer.vb">
       <DependentUpon>AssocApp.vb</DependentUpon>
     </Compile>
@@ -239,7 +246,7 @@
     <Compile Include="frmNeedUserPrivilege.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GUIDosboxFunction.vb" />
+    <Compile Include="Module\GUIDosboxFunction.vb" />
     <Compile Include="Tools\HelpApp.Designer.vb">
       <DependentUpon>HelpApp.vb</DependentUpon>
     </Compile>
@@ -319,6 +326,9 @@
   <ItemGroup>
     <EmbeddedResource Include="CustomControl\GUIDosbox_RichTextBox.resx">
       <DependentUpon>GUIDosbox_RichTextBox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmApplicationSettings.resx">
+      <DependentUpon>frmApplicationSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBatEdit.resx">
       <DependentUpon>frmBatEdit.vb</DependentUpon>
@@ -412,6 +422,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="My Project\app.manifest">
       <SubType>Designer</SubType>
     </None>

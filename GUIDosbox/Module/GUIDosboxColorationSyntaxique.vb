@@ -30,7 +30,9 @@ Module GUIDosboxColorationSyntaxique
 
         ' Ajout des mots clé à la coloration syntaxique
         Dim Keywords() As String = _
-            {"cls", "echo", "echo.", "if", "not", "set", "goto", "pause", "con"}
+            {"CLS", "ECHO", "ECHO.", "IF", "NOT", "SET", "GOTO", "PAUSE", "CON", "IN", _
+             "DO", "CHOICE", "EXIST", "CALL", "SHIFT", "ERRORLEVEL", "EXIT", "NUL", _
+             "FOR", "BREAK"}
 
         For Each Keyword As String In Keywords
             TextBox.Settings.Keywords.Add(Keyword)
@@ -38,7 +40,15 @@ Module GUIDosboxColorationSyntaxique
 
         ' Ajout des commande à la coloration syntaxique
         Dim Commands() As String = _
-            {"title", "color", "mode", "ping"}
+            {"ASSOC", "ATTRIB", "BCDEDIT", "CACLS", "CD", "CHCP", "CHDIR", "CHKDSK", "CHKNTFS", "CMD", _
+             "COLOR", "COMP", "COMPACT", "CONVERT", "COPY", "DATE", "DEL", "DIR", "DISKCOMP", "DISKCOPY", _
+             "DISKPART", "DOSKEY", "DRIVERQUERY", "ENDLOCAL", "ERASE", "FC", "FIND", "FINDSTR", "FORMAT", _
+             "FSUTIL", "FTYPE", "GPRESULT", "GRAFTABL", "HELP", "ICACLS", "LABEL", "MD", "MKDIR", "MKLINK", _
+             "MODE", "MORE", "MOVE", "OPENFILES", "PATH", "POPD", "PRINT", "PROMPT", "PUSHD", "RD", "RECOVER", _
+             "REN", "RENAME", "REPLACE", "RMDIR", "ROBOCOPY", "SETLOCAL", "SC", "SCHTASKS", "SHIFT", "SHUTDOWN", _
+             "SLMGR", "SORT", "START", "SUBST", "SYSTEMINFO", "TASKLIST", "TASKKILL", "TIME", "TITLE", "TREE", _
+             "TYPE", "VER", "VERIFY ", "VOL", "XCOPY" _
+            }
 
         For Each Command As String In Commands
             TextBox.Settings.KeywordsCommands.Add(Command)
