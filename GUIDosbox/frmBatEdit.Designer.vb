@@ -59,14 +59,14 @@ Partial Class frmBatEdit
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
         Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
-        Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.PanelMain = New System.Windows.Forms.Panel()
         Me.txtEditor = New GUIDosbox.GUIDosbox_RichTextBox()
         Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
         Me.GuiDosbox_LineNumber1 = New GUIDosbox.GUIDosbox_LineNumber()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClickMenu.SuspendLayout()
-        Me.Panel1.SuspendLayout()
+        Me.PanelMain.SuspendLayout()
         Me.SuspendLayout()
         '
         'flashHeader
@@ -201,7 +201,7 @@ Partial Class frmBatEdit
         '
         Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.CompillerToolStripMenuItem.Name = "CompillerToolStripMenuItem"
-        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CompillerToolStripMenuItem.Text = ".bat To .exe"
         '
         'RightClickMenu
@@ -301,18 +301,18 @@ Partial Class frmBatEdit
         Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
         Me.PrintPreviewDialog1.Visible = False
         '
-        'Panel1
+        'PanelMain
         '
-        Me.Panel1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
+        Me.PanelMain.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.Panel1.BackColor = System.Drawing.Color.Gainsboro
-        Me.Panel1.Controls.Add(Me.txtEditor)
-        Me.Panel1.Location = New System.Drawing.Point(27, 82)
-        Me.Panel1.Name = "Panel1"
-        Me.Panel1.Padding = New System.Windows.Forms.Padding(8)
-        Me.Panel1.Size = New System.Drawing.Size(894, 619)
-        Me.Panel1.TabIndex = 6
+        Me.PanelMain.BackColor = System.Drawing.Color.Gainsboro
+        Me.PanelMain.Controls.Add(Me.txtEditor)
+        Me.PanelMain.Location = New System.Drawing.Point(27, 82)
+        Me.PanelMain.Name = "PanelMain"
+        Me.PanelMain.Padding = New System.Windows.Forms.Padding(8)
+        Me.PanelMain.Size = New System.Drawing.Size(894, 619)
+        Me.PanelMain.TabIndex = 6
         '
         'txtEditor
         '
@@ -384,7 +384,7 @@ Partial Class frmBatEdit
         Me.ClientSize = New System.Drawing.Size(921, 701)
         Me.ContextMenuStrip = Me.RightClickMenu
         Me.Controls.Add(Me.GuiDosbox_LineNumber1)
-        Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.flashHeader)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
@@ -397,7 +397,7 @@ Partial Class frmBatEdit
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.RightClickMenu.ResumeLayout(False)
-        Me.Panel1.ResumeLayout(False)
+        Me.PanelMain.ResumeLayout(False)
         Me.ResumeLayout(False)
 
     End Sub
@@ -429,7 +429,7 @@ Partial Class frmBatEdit
     Friend WithEvents AperçuDimpressionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents MiseEnPageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents Panel1 As System.Windows.Forms.Panel
+    Friend WithEvents PanelMain As System.Windows.Forms.Panel
     Friend WithEvents GuiDosbox_LineNumber1 As GUIDosbox.GUIDosbox_LineNumber
     Friend WithEvents txtEditor As GUIDosbox.GUIDosbox_RichTextBox
     Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker

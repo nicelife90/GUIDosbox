@@ -50,5 +50,11 @@
     <Setting Name="ArobasColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">DeepPink</Value>
     </Setting>
+    <Setting Name="EditorFont" Type="System.Drawing.Font" Scope="User">
+      <Value Profile="(Default)">Lucida Console, 9pt</Value>
+    </Setting>
+    <Setting Name="EditorBGColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Gainsboro</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

@@ -37,6 +37,15 @@ Module GUIDosboxManageSettings
     End Structure
 
     ''' <summary>
+    ''' Structure pour stocker les paramètres temporraire de l'onglet éditeur avant l'application
+    ''' </summary>
+    ''' <remarks>Cette structure est utiliser par frmApplicationSettings</remarks>
+    Public Structure ParamEditor
+        Public EditorFont As Font
+        Public EditorBgColor As Color
+    End Structure
+
+    ''' <summary>
     ''' Reset les paramètres de l'application en partie ou en entier.
     ''' </summary>
     ''' <param name="ResetMetode">1 --> Onglet Général, 2 --> Onglet Coloration syntaxique, 3 --> Onglet éditeur, -1 --> Tous les paramêtres</param>
@@ -71,6 +80,15 @@ Module GUIDosboxManageSettings
                 My.Settings.Reload()
 
             Case 3 '-->  'Reset de l'onglet Éditeur
+                'Reset des paramètres
+                With My.Settings
+                    .EditorFont = New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
+                    .EditorBGColor = Color.Gainsboro
+                End With
+
+                'Enregistrement de nouveau paramêtres.
+                My.Settings.Save()
+                My.Settings.Reload()
 
             Case -1 '-->  'Reset de tous les paramêtres
 
@@ -118,6 +136,18 @@ Module GUIDosboxManageSettings
                 My.Settings.Reload()
 
             Case 3 '--> Onglet Éditeur
+                'Définition des nouveaux paramètres
+                Dim newSettings As ParamEditor = CType(mySettings, ParamEditor)
+                With My.Settings
+                    'Couleur
+                    .EditorBGColor = newSettings.EditorBgColor
+                    'Police de caractères
+                    .EditorFont = newSettings.EditorFont
+                End With
+
+                'Enregistrement des paramètres
+                My.Settings.Save()
+                My.Settings.Reload()
 
         End Select
 

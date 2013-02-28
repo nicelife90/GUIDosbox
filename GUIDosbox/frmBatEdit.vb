@@ -17,6 +17,14 @@ Public Class frmBatEdit
 
 #Region " Load "
     Private Sub frmBatEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+        'Application des paramètres d'utilisateur
+        With My.Settings
+            PanelMain.BackColor = .EditorBGColor
+            txtEditor.BackColor = .EditorBGColor
+            txtEditor.Font = .EditorFont
+        End With
+
         'Lancement du formulaire de loading
         BackgroundWorker1.RunWorkerAsync()
 

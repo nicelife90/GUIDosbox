@@ -24,6 +24,7 @@ Module GUIDosboxColorationSyntaxique
 
     ''' <summary>
     ''' Fais la coloration syntaxique d'un batch file dans le GUIDosbox_RichTextBox.
+    ''' Ce sub est situé dans GUIDosboxColorationSyntaxique
     ''' </summary>
     ''' <param name="TextBox">Nom de GUIDosbox_RichTextBox</param>
     Public Sub ColorationSyntaxique(ByVal TextBox As GUIDosbox_RichTextBox)

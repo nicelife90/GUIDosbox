@@ -245,6 +245,30 @@ Namespace My
                 Me("ArobasColor") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Lucida Console, 9pt")>  _
+        Public Property EditorFont() As Global.System.Drawing.Font
+            Get
+                Return CType(Me("EditorFont"),Global.System.Drawing.Font)
+            End Get
+            Set
+                Me("EditorFont") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Gainsboro")>  _
+        Public Property EditorBGColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("EditorBGColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("EditorBGColor") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

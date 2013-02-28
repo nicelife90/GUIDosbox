@@ -22,6 +22,7 @@ Partial Class CP
     'Ne la modifiez pas à l'aide de l'éditeur de code.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CP))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -58,6 +59,8 @@ Partial Class CP
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.lblMode = New System.Windows.Forms.ToolStripStatusLabel()
         Me.lblUser = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
+        Me.GuiDosbox_ProgressBar1 = New GUIDosbox.GUIDosbox_ProgressBar()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.HeaderFlashFR, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.FlashCPFR, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,7 +99,7 @@ Partial Class CP
         Me.LangueToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FrançaisToolStripMenuItem, Me.EnglishToolStripMenuItem})
         Me.LangueToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.LangueToolStripMenuItem.Name = "LangueToolStripMenuItem"
-        Me.LangueToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LangueToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.LangueToolStripMenuItem.Text = "Langue"
         '
         'FrançaisToolStripMenuItem
@@ -117,7 +120,7 @@ Partial Class CP
         '
         Me.ParamètresToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.ParamètresToolStripMenuItem.Name = "ParamètresToolStripMenuItem"
-        Me.ParamètresToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ParamètresToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.ParamètresToolStripMenuItem.Text = "Paramètres"
         '
         'QuiterToolStripMenuItem
@@ -125,7 +128,7 @@ Partial Class CP
         Me.QuiterToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
         Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.QuiterToolStripMenuItem.Name = "QuiterToolStripMenuItem"
-        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(138, 22)
         Me.QuiterToolStripMenuItem.Text = "Quitter"
         '
         'ToolStripMenuItem1
@@ -362,12 +365,33 @@ Partial Class CP
         Me.lblUser.Size = New System.Drawing.Size(75, 17)
         Me.lblUser.Text = "{UserName}"
         '
+        'Timer1
+        '
+        Me.Timer1.Enabled = True
+        '
+        'GuiDosbox_ProgressBar1
+        '
+        Me.GuiDosbox_ProgressBar1.BackgroundImage = CType(resources.GetObject("GuiDosbox_ProgressBar1.BackgroundImage"), System.Drawing.Image)
+        Me.GuiDosbox_ProgressBar1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.GuiDosbox_ProgressBar1.FillProgress = 0
+        Me.GuiDosbox_ProgressBar1.Location = New System.Drawing.Point(54, 195)
+        Me.GuiDosbox_ProgressBar1.MaximumSize = New System.Drawing.Size(596, 80)
+        Me.GuiDosbox_ProgressBar1.MinimumSize = New System.Drawing.Size(596, 80)
+        Me.GuiDosbox_ProgressBar1.Name = "GuiDosbox_ProgressBar1"
+        Me.GuiDosbox_ProgressBar1.OutputText = "Prêt"
+        Me.GuiDosbox_ProgressBar1.Size = New System.Drawing.Size(596, 80)
+        Me.GuiDosbox_ProgressBar1.TabIndex = 11
+        Me.GuiDosbox_ProgressBar1.Visible = False
+        '
         'CP
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.WindowText
+        Me.BackgroundImage = Global.GUIDosbox.My.Resources.Resources.MainBG
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(705, 470)
+        Me.Controls.Add(Me.GuiDosbox_ProgressBar1)
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.FlashHeader)
@@ -375,6 +399,7 @@ Partial Class CP
         Me.Controls.Add(Me.HeaderFlashFR)
         Me.Controls.Add(Me.FlashCPFR)
         Me.Controls.Add(Me.FlashCPEN)
+        Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MainMenuStrip = Me.MenuStrip1
@@ -432,5 +457,7 @@ Partial Class CP
     Friend WithEvents BatToexeToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ÉditerBatchFileToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ParamètresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents Timer1 As System.Windows.Forms.Timer
+    Friend WithEvents GuiDosbox_ProgressBar1 As GUIDosbox.GUIDosbox_ProgressBar
 
 End Class

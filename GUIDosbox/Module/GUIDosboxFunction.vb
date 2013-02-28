@@ -156,6 +156,34 @@ Module GUIDosboxFunction
     End Sub
 
     ''' <summary>
+    ''' Permet d'appeler un délais de (x) secondes dans l'exécution du code.
+    ''' </summary>
+    ''' <param name="dblSecs">Nombre de secondes.</param>
+    Public Sub Delay(ByVal dblSecs As Double)
+        Const OneSec As Double = 1.0# / (1440.0# * 60.0#)
+        Dim dblWaitTil As Date
+        Now.AddSeconds(OneSec)
+        dblWaitTil = Now.AddSeconds(OneSec).AddSeconds(dblSecs)
+        Do Until Now > dblWaitTil
+            Application.DoEvents()
+        Loop
+    End Sub
+
+    ''' <summary>
+    ''' Vérifie si une connexion internet est disponible.
+    ''' </summary>
+    ''' <returns>True = Connexion internet, False = aucune connexion web.</returns>
+    ''' 
+    Public Function connexionInternet() As Boolean
+        Try
+            My.Computer.Network.Ping("www.google.com")
+            Return True
+        Catch ex As Exception
+            Return False
+        End Try
+    End Function
+
+    ''' <summary>
     ''' Enregistre une ressource incorporé au projet sur le disque dur.
     ''' </summary>
     ''' <param name="resourceName">Nom de la ressource.</param>
@@ -185,42 +213,5 @@ Module GUIDosboxFunction
             End If
         Next resource
     End Sub
-
-   
-
-   
-    'Public Function FormCount(ByVal frmname As String) As Long
-    '    Dim counter As Integer = 0
-    '    Dim frm As Form
-    '    For Each frm In Application.OpenForms
-    '        If StrComp(frm.Name, frmname, CompareMethod.Text) = 0 Then
-    '            counter += 1
-    '        End If
-    '    Next frm
-    '    Return counter
-    'End Function
-
-    Public Function FormCount(ByVal frmname As String) As Long
-        Dim counter As Integer = 0
-        Dim frm As Form
-        For Each frm In Application.OpenForms
-            If StrComp(frm.Name, frmname, CompareMethod.Text) = 0 Then
-                counter += 1
-            End If
-        Next frm
-        Return counter
-    End Function
-
-
-    ' return True if a form is loaded
-    Public Function IsLoaded(ByVal frmname As String) As Boolean
-        If FormCount(frmname) > 0 Then
-            Return True
-        Else
-            Return False
-        End If
-    End Function
-
-    
 
 End Module

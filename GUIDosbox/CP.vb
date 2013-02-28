@@ -3,6 +3,7 @@
 
 Option Strict On
 Option Explicit On
+
 Imports System.IO
 
 Public Class CP
@@ -219,6 +220,20 @@ Public Class CP
 
     Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        'On supprime l'ancien fichier de mise à jour
+        If My.Computer.FileSystem.FileExists(file_path + "update.exe") Then
+            My.Computer.FileSystem.DeleteFile(file_path + "update.exe")
+        End If
+
+        'On vérifie si une mise à jour est disponible           
+        If connexionInternet() = True Then
+            bgworkerCheckVersion.RunWorkerAsync()
+        Else
+            MsgBox("Vous n'êtes pas connectés à internet!" & vbCrLf _
+            & "Il est donc impossible de vérifier si une mise à jour de l'application est disponible.", _
+             MsgBoxStyle.Information, "Connexion internet indisponible")
+        End If
+
         'Préparation de l'interface d'utilisateur
         Try
             'Batch File
@@ -274,5 +289,4 @@ Public Class CP
         End Try
     End Sub
 
-  
 End Class

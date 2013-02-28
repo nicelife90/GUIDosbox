@@ -96,6 +96,9 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="GUIDB.Picker">
+      <HintPath>.\GUIDB.Picker.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.DirectoryServices" />
@@ -120,6 +123,12 @@
   <ItemGroup>
     <Compile Include="CustomControl\GUIDosbox_LineNumber.vb">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_ProgressBar.Designer.vb">
+      <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_ProgressBar.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_RichTextBox.vb">
       <SubType>Component</SubType>
@@ -153,6 +162,7 @@
     <Compile Include="Module\GUIDosboxLanguage.vb" />
     <Compile Include="Module\GUIDosboxPrivileges.vb" />
     <Compile Include="Module\GUIDosboxColorationSyntaxique.vb" />
+    <Compile Include="Module\GUIDosboxUpdater.vb" />
     <Compile Include="Tools\AssocApp.Designer.vb">
       <DependentUpon>AssocApp.vb</DependentUpon>
     </Compile>
@@ -324,6 +334,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_ProgressBar.resx">
+      <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_RichTextBox.resx">
       <DependentUpon>GUIDosbox_RichTextBox.vb</DependentUpon>
     </EmbeddedResource>
@@ -543,6 +556,9 @@
     <EmbeddedResource Include="Resources\batchtoexe.swf" />
     <EmbeddedResource Include="Resources\bateditor.swf" />
     <EmbeddedResource Include="Resources\loading.gif" />
+    <EmbeddedResource Include="Resources\progressBar.png" />
+    <EmbeddedResource Include="Resources\progressBarBG.png" />
+    <EmbeddedResource Include="Resources\MainBG.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

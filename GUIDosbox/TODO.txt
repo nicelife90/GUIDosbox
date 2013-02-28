@@ -14,6 +14,7 @@ TODO LIST :
 2 --> Add header to all file 
 3 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
 4 --> Ajouter un menu Paramètre --> ajouter coloration syntaxique on/off
+5 --> ajouter l'updater
 5 --> Changer bouton Help (.xml) pour Note de mise à jour
 7 --> Tache planifier pour lancer sans prompt
 8 --> Ajouter Prompt au cp --> Enregistrer le batch avant de quitter.

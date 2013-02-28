@@ -14,9 +14,14 @@ Option Explicit On
 Public Class frmApplicationSettings
 
     ''' <summary>
-    ''' Stoke les paramètres temporraire.
+    ''' Stoke les paramètres temporraire de l'onglet Coloration Syntaxique.
     ''' </summary>
     Dim tmpColorationSyntaxique As New ParamColorationSyntaxique
+
+    ''' <summary>
+    ''' Stoke les paramètres temporraire de l'onglet Editor.
+    ''' </summary>
+    Dim tmpEditor As New ParamEditor
 
 #Region " TabControl Tweak "
     ''' <summary>
@@ -27,7 +32,7 @@ Public Class frmApplicationSettings
     '''     Me.TabControl1.ItemSize = New System.Drawing.Size(30, 170)
     '''     Me.TabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
     ''' </summary>
-    Private Sub TabControl1_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles TabControl1.DrawItem
+    Private Sub TabControl1_DrawItem(ByVal sender As Object, ByVal e As System.Windows.Forms.DrawItemEventArgs) Handles TabControlMain.DrawItem
         Dim g As Graphics
         Dim sText As String
         Dim iX As Integer
@@ -61,6 +66,10 @@ Public Class frmApplicationSettings
     ''' Paramètres l'interface d'utilisateur selon les setting choisi.
     ''' </summary>
     Public Sub LoadGUIDosboxSettings()
+
+        ' =================================================================== '
+        ' ================= Onglet Coloration Syntaxique ==================== '
+        ' =================================================================== '
 
         With My.Settings
             'Affichage des couleur actuellement choisi.
@@ -140,6 +149,22 @@ Public Class frmApplicationSettings
             tmpColorationSyntaxique.KeywordsState = .KeywordsState
             tmpColorationSyntaxique.OperatorState = .OperatorState
             tmpColorationSyntaxique.VariableState = .VariableState
+
+            ' =================================================================== '
+            ' ========================== Onglet Editeur ========================= '
+            ' =================================================================== '
+
+            'Affichage de la couleur actuellement choisi.
+            pbEditorColor.BackColor = .EditorBGColor
+
+            'Affichage de la police actuellement choisi.
+            fpEditorFont.Value = .EditorFont
+
+            'Affectation des valeurs actuelle à la structure paramColorationSyntaxique
+            'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
+            tmpEditor.EditorBgColor = .EditorBGColor
+            tmpEditor.EditorFont = .EditorFont
+
         End With
 
     End Sub
@@ -282,6 +307,39 @@ Public Class frmApplicationSettings
 
     Private Sub btnCsCancel_Click(sender As Object, e As EventArgs) Handles btnCsCancel.Click
         'btnCsCancel --> Retour au cp.
+        Me.Close()
+        CP.Show()
+    End Sub
+#End Region
+
+#Region " Tab Éditeur "
+    Private Sub pbEditorColor_Click(sender As Object, e As EventArgs) Handles pbEditorColor.Click
+        If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            pbEditorColor.BackColor = cd.Color
+            tmpEditor.EditorBgColor = cd.Color
+        End If
+    End Sub
+
+    Private Sub fpEditorFont_ValueChanged(sender As Object, e As EventArgs) Handles fpEditorFont.ValueChanged
+        tmpEditor.EditorFont = fpEditorFont.Value
+    End Sub
+
+    Private Sub btnEdtDefault_Click(sender As Object, e As EventArgs) Handles btnEdtDefault.Click
+        'btnEdtDefault --> Reset des settings de l'éditeur.
+        ResetGUIDosboxSettings(3)
+        LoadGUIDosboxSettings()
+    End Sub
+
+    Private Sub btnEdtApply_Click(sender As Object, e As EventArgs) Handles btnEdtApply.Click
+        'btnEdtApply --> Enregistrement et retour au cp
+        SaveGUIDosboxSetting(tmpEditor, 3)
+        LoadGUIDosboxSettings()
+        Me.Close()
+        CP.Show()
+    End Sub
+
+    Private Sub btnEdtCancel_Click(sender As Object, e As EventArgs) Handles btnEdtCancel.Click
+        'btnEdtCancel --> Retour au cp.
         Me.Close()
         CP.Show()
     End Sub
