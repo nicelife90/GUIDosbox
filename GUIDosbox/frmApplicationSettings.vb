@@ -14,6 +14,11 @@ Option Explicit On
 Public Class frmApplicationSettings
 
     ''' <summary>
+    ''' Stoke les paramètres temporraire de l'onglet Général.
+    ''' </summary>
+    Dim tmpGeneral As New ParamGeneral
+
+    ''' <summary>
     ''' Stoke les paramètres temporraire de l'onglet Coloration Syntaxique.
     ''' </summary>
     Dim tmpColorationSyntaxique As New ParamColorationSyntaxique
@@ -62,10 +67,36 @@ Public Class frmApplicationSettings
         LoadGUIDosboxSettings()
     End Sub
 
+#Region " Load GUIDOSBOX Settings "
     ''' <summary>
     ''' Paramètres l'interface d'utilisateur selon les setting choisi.
     ''' </summary>
     Public Sub LoadGUIDosboxSettings()
+
+        ' =================================================================== '
+        ' ========================== Onglet Général ========================= '
+        ' =================================================================== '
+
+        With My.Settings
+            'Affichage des paramètres actuellement choisi.
+            If .ColororationState Then
+                optColorationOnOff.Checked = True
+            Else
+                optColorationOnOff.Checked = False
+            End If
+
+            If .UpdateState Then
+                optAutoUpdate.Checked = True
+            Else
+                optAutoUpdate.Checked = False
+            End If
+
+            'Affectation des valeurs actuelle à la structure paramGeneral
+            'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
+            tmpGeneral.ColorationState = .ColororationState
+            tmpGeneral.UpdateState = .UpdateState
+
+        End With
 
         ' =================================================================== '
         ' ================= Onglet Coloration Syntaxique ==================== '
@@ -160,7 +191,7 @@ Public Class frmApplicationSettings
             'Affichage de la police actuellement choisi.
             fpEditorFont.Value = .EditorFont
 
-            'Affectation des valeurs actuelle à la structure paramColorationSyntaxique
+            'Affectation des valeurs actuelle à la structure paramEditor
             'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
             tmpEditor.EditorBgColor = .EditorBGColor
             tmpEditor.EditorFont = .EditorFont
@@ -168,6 +199,54 @@ Public Class frmApplicationSettings
         End With
 
     End Sub
+#End Region
+
+#Region " Tab Général"
+
+    Private Sub optColorationOnOff_CheckedChanged(sender As Object, e As EventArgs) Handles optColorationOnOff.CheckedChanged
+        If optColorationOnOff.Checked Then
+            tmpGeneral.ColorationState = True
+        Else
+            tmpGeneral.ColorationState = False
+        End If
+    End Sub
+
+    Private Sub optAutoUpdate_CheckedChanged(sender As Object, e As EventArgs) Handles optAutoUpdate.CheckedChanged
+        If optAutoUpdate.Checked Then
+            tmpGeneral.UpdateState = True
+        Else
+            tmpGeneral.UpdateState = False
+        End If
+    End Sub
+
+    Private Sub btnGenDefault_Click(sender As Object, e As EventArgs) Handles btnGenDefault.Click
+        'btnEdtDefault --> Reset des settings de l'éditeur.
+        ResetGUIDosboxSettings(1)
+        LoadGUIDosboxSettings()
+    End Sub
+
+    Private Sub btnAllDefault_Click(sender As Object, e As EventArgs) Handles btnAllDefault.Click
+        'btnEdtDefault --> Reset des settings de l'éditeur.
+        ResetGUIDosboxSettings(-1)
+        LoadGUIDosboxSettings()
+    End Sub
+
+    Private Sub btnGenApply_Click(sender As Object, e As EventArgs) Handles btnGenApply.Click
+        'btnEdtApply --> Enregistrement et retour au cp
+        SaveGUIDosboxSetting(tmpGeneral, 1)
+        SaveGUIDosboxSetting(tmpColorationSyntaxique, 2)
+        SaveGUIDosboxSetting(tmpEditor, 3)
+        Me.Close()
+        CP.Show()
+    End Sub
+
+    Private Sub btnGenCancel_Click(sender As Object, e As EventArgs) Handles btnGenCancel.Click
+        ' Retour au cp.
+        Me.Close()
+        CP.Show()
+    End Sub
+
+#End Region
 
 #Region " Tab Coloration Syntaxique "
 
@@ -299,8 +378,9 @@ Public Class frmApplicationSettings
 
     Private Sub btnCsApply_Click(sender As Object, e As EventArgs) Handles btnCsApply.Click
         'btnCsApply --> Enregistrement et retour au cp
+        SaveGUIDosboxSetting(tmpGeneral, 1)
         SaveGUIDosboxSetting(tmpColorationSyntaxique, 2)
-        LoadGUIDosboxSettings()
+        SaveGUIDosboxSetting(tmpEditor, 3)
         Me.Close()
         CP.Show()
     End Sub
@@ -332,14 +412,15 @@ Public Class frmApplicationSettings
 
     Private Sub btnEdtApply_Click(sender As Object, e As EventArgs) Handles btnEdtApply.Click
         'btnEdtApply --> Enregistrement et retour au cp
+        SaveGUIDosboxSetting(tmpGeneral, 1)
+        SaveGUIDosboxSetting(tmpColorationSyntaxique, 2)
         SaveGUIDosboxSetting(tmpEditor, 3)
-        LoadGUIDosboxSettings()
         Me.Close()
         CP.Show()
     End Sub
 
     Private Sub btnEdtCancel_Click(sender As Object, e As EventArgs) Handles btnEdtCancel.Click
-        'btnEdtCancel --> Retour au cp.
+        ' Retour au cp.
         Me.Close()
         CP.Show()
     End Sub

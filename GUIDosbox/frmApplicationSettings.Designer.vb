@@ -38,7 +38,6 @@ Partial Class frmApplicationSettings
         Me.btnCsApply = New System.Windows.Forms.Button()
         Me.gbSyntaxtOnOff = New System.Windows.Forms.GroupBox()
         Me.optArobas = New System.Windows.Forms.CheckBox()
-        Me.GuiDosbox_Label8 = New GUIDosbox.GUIDosbox_Label()
         Me.optOperators = New System.Windows.Forms.CheckBox()
         Me.optComments = New System.Windows.Forms.CheckBox()
         Me.optVariables = New System.Windows.Forms.CheckBox()
@@ -46,28 +45,13 @@ Partial Class frmApplicationSettings
         Me.optCommands = New System.Windows.Forms.CheckBox()
         Me.optAnchors = New System.Windows.Forms.CheckBox()
         Me.optKeywords = New System.Windows.Forms.CheckBox()
-        Me.lblKeywords = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label9 = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label10 = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label11 = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label12 = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label13 = New GUIDosbox.GUIDosbox_Label()
-        Me.lblCommands = New GUIDosbox.GUIDosbox_Label()
         Me.gbSyntaxColor = New System.Windows.Forms.GroupBox()
-        Me.GuiDosbox_Label14 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorArobas = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label1 = New GUIDosbox.GUIDosbox_Label()
-        Me.GuiDosbox_Label7 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorKeywords = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label6 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorCommands = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label5 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorAnchors = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label4 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorVariables = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label3 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorComments = New System.Windows.Forms.PictureBox()
-        Me.GuiDosbox_Label2 = New GUIDosbox.GUIDosbox_Label()
         Me.pbColorOperators = New System.Windows.Forms.PictureBox()
         Me.pbColorIntegers = New System.Windows.Forms.PictureBox()
         Me.tabEditeur = New System.Windows.Forms.TabPage()
@@ -80,6 +64,22 @@ Partial Class frmApplicationSettings
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pbEditorColor = New System.Windows.Forms.PictureBox()
         Me.cd = New System.Windows.Forms.ColorDialog()
+        Me.GuiDosbox_Label8 = New GUIDosbox.GUIDosbox_Label()
+        Me.lblKeywords = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label9 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label10 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label11 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label12 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label13 = New GUIDosbox.GUIDosbox_Label()
+        Me.lblCommands = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label14 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label1 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label7 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label6 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label5 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label4 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label3 = New GUIDosbox.GUIDosbox_Label()
+        Me.GuiDosbox_Label2 = New GUIDosbox.GUIDosbox_Label()
         Me.tabGeneral.SuspendLayout()
         Me.gbParametres.SuspendLayout()
         Me.TabControlMain.SuspendLayout()
@@ -294,18 +294,6 @@ Partial Class frmApplicationSettings
         Me.optArobas.TabIndex = 38
         Me.optArobas.UseVisualStyleBackColor = True
         '
-        'GuiDosbox_Label8
-        '
-        Me.GuiDosbox_Label8.AutoSize = True
-        Me.GuiDosbox_Label8.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label8.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label8.Location = New System.Drawing.Point(240, 113)
-        Me.GuiDosbox_Label8.Name = "GuiDosbox_Label8"
-        Me.GuiDosbox_Label8.Size = New System.Drawing.Size(153, 14)
-        Me.GuiDosbox_Label8.TabIndex = 37
-        Me.GuiDosbox_Label8.Text = "Coloration des arobas (@)"
-        '
         'optOperators
         '
         Me.optOperators.AutoSize = True
@@ -369,90 +357,6 @@ Partial Class frmApplicationSettings
         Me.optKeywords.TabIndex = 30
         Me.optKeywords.UseVisualStyleBackColor = True
         '
-        'lblKeywords
-        '
-        Me.lblKeywords.AutoSize = True
-        Me.lblKeywords.BackColor = System.Drawing.Color.Transparent
-        Me.lblKeywords.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblKeywords.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.lblKeywords.Location = New System.Drawing.Point(37, 25)
-        Me.lblKeywords.Name = "lblKeywords"
-        Me.lblKeywords.Size = New System.Drawing.Size(143, 14)
-        Me.lblKeywords.TabIndex = 23
-        Me.lblKeywords.Text = "Coloration des mots clés"
-        '
-        'GuiDosbox_Label9
-        '
-        Me.GuiDosbox_Label9.AutoSize = True
-        Me.GuiDosbox_Label9.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label9.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label9.Location = New System.Drawing.Point(37, 113)
-        Me.GuiDosbox_Label9.Name = "GuiDosbox_Label9"
-        Me.GuiDosbox_Label9.Size = New System.Drawing.Size(134, 14)
-        Me.GuiDosbox_Label9.TabIndex = 29
-        Me.GuiDosbox_Label9.Text = "Coloration des chiffres"
-        '
-        'GuiDosbox_Label10
-        '
-        Me.GuiDosbox_Label10.AutoSize = True
-        Me.GuiDosbox_Label10.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label10.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label10.Location = New System.Drawing.Point(240, 84)
-        Me.GuiDosbox_Label10.Name = "GuiDosbox_Label10"
-        Me.GuiDosbox_Label10.Size = New System.Drawing.Size(174, 14)
-        Me.GuiDosbox_Label10.TabIndex = 28
-        Me.GuiDosbox_Label10.Text = "Coloration des commentaires"
-        '
-        'GuiDosbox_Label11
-        '
-        Me.GuiDosbox_Label11.AutoSize = True
-        Me.GuiDosbox_Label11.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label11.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label11.Location = New System.Drawing.Point(240, 55)
-        Me.GuiDosbox_Label11.Name = "GuiDosbox_Label11"
-        Me.GuiDosbox_Label11.Size = New System.Drawing.Size(153, 14)
-        Me.GuiDosbox_Label11.TabIndex = 27
-        Me.GuiDosbox_Label11.Text = "Coloration des opérateurs"
-        '
-        'GuiDosbox_Label12
-        '
-        Me.GuiDosbox_Label12.AutoSize = True
-        Me.GuiDosbox_Label12.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label12.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label12.Location = New System.Drawing.Point(240, 26)
-        Me.GuiDosbox_Label12.Name = "GuiDosbox_Label12"
-        Me.GuiDosbox_Label12.Size = New System.Drawing.Size(145, 14)
-        Me.GuiDosbox_Label12.TabIndex = 26
-        Me.GuiDosbox_Label12.Text = "Coloration des variables"
-        '
-        'GuiDosbox_Label13
-        '
-        Me.GuiDosbox_Label13.AutoSize = True
-        Me.GuiDosbox_Label13.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label13.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label13.Location = New System.Drawing.Point(37, 84)
-        Me.GuiDosbox_Label13.Name = "GuiDosbox_Label13"
-        Me.GuiDosbox_Label13.Size = New System.Drawing.Size(131, 14)
-        Me.GuiDosbox_Label13.TabIndex = 25
-        Me.GuiDosbox_Label13.Text = "Coloration des Ancres"
-        '
-        'lblCommands
-        '
-        Me.lblCommands.AutoSize = True
-        Me.lblCommands.BackColor = System.Drawing.Color.Transparent
-        Me.lblCommands.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.lblCommands.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.lblCommands.Location = New System.Drawing.Point(37, 54)
-        Me.lblCommands.Name = "lblCommands"
-        Me.lblCommands.Size = New System.Drawing.Size(160, 14)
-        Me.lblCommands.TabIndex = 24
-        Me.lblCommands.Text = "Coloration des commandes"
-        '
         'gbSyntaxColor
         '
         Me.gbSyntaxColor.Controls.Add(Me.GuiDosbox_Label14)
@@ -479,18 +383,6 @@ Partial Class frmApplicationSettings
         Me.gbSyntaxColor.TabStop = False
         Me.gbSyntaxColor.Text = " Couleurs "
         '
-        'GuiDosbox_Label14
-        '
-        Me.GuiDosbox_Label14.AutoSize = True
-        Me.GuiDosbox_Label14.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label14.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label14.Location = New System.Drawing.Point(216, 113)
-        Me.GuiDosbox_Label14.Name = "GuiDosbox_Label14"
-        Me.GuiDosbox_Label14.Size = New System.Drawing.Size(139, 14)
-        Me.GuiDosbox_Label14.TabIndex = 31
-        Me.GuiDosbox_Label14.Text = "Couleur des arobas (@)"
-        '
         'pbColorArobas
         '
         Me.pbColorArobas.BackColor = System.Drawing.Color.Black
@@ -500,30 +392,6 @@ Partial Class frmApplicationSettings
         Me.pbColorArobas.Size = New System.Drawing.Size(20, 20)
         Me.pbColorArobas.TabIndex = 30
         Me.pbColorArobas.TabStop = False
-        '
-        'GuiDosbox_Label1
-        '
-        Me.GuiDosbox_Label1.AutoSize = True
-        Me.GuiDosbox_Label1.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label1.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label1.Location = New System.Drawing.Point(13, 25)
-        Me.GuiDosbox_Label1.Name = "GuiDosbox_Label1"
-        Me.GuiDosbox_Label1.Size = New System.Drawing.Size(129, 14)
-        Me.GuiDosbox_Label1.TabIndex = 23
-        Me.GuiDosbox_Label1.Text = "Couleur des mots clés"
-        '
-        'GuiDosbox_Label7
-        '
-        Me.GuiDosbox_Label7.AutoSize = True
-        Me.GuiDosbox_Label7.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label7.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label7.Location = New System.Drawing.Point(13, 113)
-        Me.GuiDosbox_Label7.Name = "GuiDosbox_Label7"
-        Me.GuiDosbox_Label7.Size = New System.Drawing.Size(120, 14)
-        Me.GuiDosbox_Label7.TabIndex = 29
-        Me.GuiDosbox_Label7.Text = "Couleur des chiffres"
         '
         'pbColorKeywords
         '
@@ -535,18 +403,6 @@ Partial Class frmApplicationSettings
         Me.pbColorKeywords.TabIndex = 16
         Me.pbColorKeywords.TabStop = False
         '
-        'GuiDosbox_Label6
-        '
-        Me.GuiDosbox_Label6.AutoSize = True
-        Me.GuiDosbox_Label6.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label6.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label6.Location = New System.Drawing.Point(216, 84)
-        Me.GuiDosbox_Label6.Name = "GuiDosbox_Label6"
-        Me.GuiDosbox_Label6.Size = New System.Drawing.Size(160, 14)
-        Me.GuiDosbox_Label6.TabIndex = 28
-        Me.GuiDosbox_Label6.Text = "Couleur des commentaires"
-        '
         'pbColorCommands
         '
         Me.pbColorCommands.BackColor = System.Drawing.Color.Black
@@ -556,18 +412,6 @@ Partial Class frmApplicationSettings
         Me.pbColorCommands.Size = New System.Drawing.Size(20, 20)
         Me.pbColorCommands.TabIndex = 17
         Me.pbColorCommands.TabStop = False
-        '
-        'GuiDosbox_Label5
-        '
-        Me.GuiDosbox_Label5.AutoSize = True
-        Me.GuiDosbox_Label5.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label5.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label5.Location = New System.Drawing.Point(216, 54)
-        Me.GuiDosbox_Label5.Name = "GuiDosbox_Label5"
-        Me.GuiDosbox_Label5.Size = New System.Drawing.Size(139, 14)
-        Me.GuiDosbox_Label5.TabIndex = 27
-        Me.GuiDosbox_Label5.Text = "Couleur des opérateurs"
         '
         'pbColorAnchors
         '
@@ -579,18 +423,6 @@ Partial Class frmApplicationSettings
         Me.pbColorAnchors.TabIndex = 18
         Me.pbColorAnchors.TabStop = False
         '
-        'GuiDosbox_Label4
-        '
-        Me.GuiDosbox_Label4.AutoSize = True
-        Me.GuiDosbox_Label4.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label4.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label4.Location = New System.Drawing.Point(216, 25)
-        Me.GuiDosbox_Label4.Name = "GuiDosbox_Label4"
-        Me.GuiDosbox_Label4.Size = New System.Drawing.Size(131, 14)
-        Me.GuiDosbox_Label4.TabIndex = 26
-        Me.GuiDosbox_Label4.Text = "Couleur des variables"
-        '
         'pbColorVariables
         '
         Me.pbColorVariables.BackColor = System.Drawing.Color.Black
@@ -601,18 +433,6 @@ Partial Class frmApplicationSettings
         Me.pbColorVariables.TabIndex = 19
         Me.pbColorVariables.TabStop = False
         '
-        'GuiDosbox_Label3
-        '
-        Me.GuiDosbox_Label3.AutoSize = True
-        Me.GuiDosbox_Label3.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label3.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label3.Location = New System.Drawing.Point(13, 84)
-        Me.GuiDosbox_Label3.Name = "GuiDosbox_Label3"
-        Me.GuiDosbox_Label3.Size = New System.Drawing.Size(117, 14)
-        Me.GuiDosbox_Label3.TabIndex = 25
-        Me.GuiDosbox_Label3.Text = "Couleur des Ancres"
-        '
         'pbColorComments
         '
         Me.pbColorComments.BackColor = System.Drawing.Color.Black
@@ -622,18 +442,6 @@ Partial Class frmApplicationSettings
         Me.pbColorComments.Size = New System.Drawing.Size(20, 20)
         Me.pbColorComments.TabIndex = 20
         Me.pbColorComments.TabStop = False
-        '
-        'GuiDosbox_Label2
-        '
-        Me.GuiDosbox_Label2.AutoSize = True
-        Me.GuiDosbox_Label2.BackColor = System.Drawing.Color.Transparent
-        Me.GuiDosbox_Label2.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.GuiDosbox_Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.GuiDosbox_Label2.Location = New System.Drawing.Point(13, 54)
-        Me.GuiDosbox_Label2.Name = "GuiDosbox_Label2"
-        Me.GuiDosbox_Label2.Size = New System.Drawing.Size(146, 14)
-        Me.GuiDosbox_Label2.TabIndex = 24
-        Me.GuiDosbox_Label2.Text = "Couleur des commandes"
         '
         'pbColorOperators
         '
@@ -765,6 +573,198 @@ Partial Class frmApplicationSettings
         'cd
         '
         Me.cd.FullOpen = True
+        '
+        'GuiDosbox_Label8
+        '
+        Me.GuiDosbox_Label8.AutoSize = True
+        Me.GuiDosbox_Label8.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label8.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label8.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label8.Location = New System.Drawing.Point(240, 113)
+        Me.GuiDosbox_Label8.Name = "GuiDosbox_Label8"
+        Me.GuiDosbox_Label8.Size = New System.Drawing.Size(153, 14)
+        Me.GuiDosbox_Label8.TabIndex = 37
+        Me.GuiDosbox_Label8.Text = "Coloration des arobas (@)"
+        '
+        'lblKeywords
+        '
+        Me.lblKeywords.AutoSize = True
+        Me.lblKeywords.BackColor = System.Drawing.Color.Transparent
+        Me.lblKeywords.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblKeywords.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.lblKeywords.Location = New System.Drawing.Point(37, 25)
+        Me.lblKeywords.Name = "lblKeywords"
+        Me.lblKeywords.Size = New System.Drawing.Size(143, 14)
+        Me.lblKeywords.TabIndex = 23
+        Me.lblKeywords.Text = "Coloration des mots clés"
+        '
+        'GuiDosbox_Label9
+        '
+        Me.GuiDosbox_Label9.AutoSize = True
+        Me.GuiDosbox_Label9.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label9.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label9.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label9.Location = New System.Drawing.Point(37, 113)
+        Me.GuiDosbox_Label9.Name = "GuiDosbox_Label9"
+        Me.GuiDosbox_Label9.Size = New System.Drawing.Size(134, 14)
+        Me.GuiDosbox_Label9.TabIndex = 29
+        Me.GuiDosbox_Label9.Text = "Coloration des chiffres"
+        '
+        'GuiDosbox_Label10
+        '
+        Me.GuiDosbox_Label10.AutoSize = True
+        Me.GuiDosbox_Label10.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label10.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label10.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label10.Location = New System.Drawing.Point(240, 84)
+        Me.GuiDosbox_Label10.Name = "GuiDosbox_Label10"
+        Me.GuiDosbox_Label10.Size = New System.Drawing.Size(174, 14)
+        Me.GuiDosbox_Label10.TabIndex = 28
+        Me.GuiDosbox_Label10.Text = "Coloration des commentaires"
+        '
+        'GuiDosbox_Label11
+        '
+        Me.GuiDosbox_Label11.AutoSize = True
+        Me.GuiDosbox_Label11.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label11.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label11.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label11.Location = New System.Drawing.Point(240, 55)
+        Me.GuiDosbox_Label11.Name = "GuiDosbox_Label11"
+        Me.GuiDosbox_Label11.Size = New System.Drawing.Size(153, 14)
+        Me.GuiDosbox_Label11.TabIndex = 27
+        Me.GuiDosbox_Label11.Text = "Coloration des opérateurs"
+        '
+        'GuiDosbox_Label12
+        '
+        Me.GuiDosbox_Label12.AutoSize = True
+        Me.GuiDosbox_Label12.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label12.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label12.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label12.Location = New System.Drawing.Point(240, 26)
+        Me.GuiDosbox_Label12.Name = "GuiDosbox_Label12"
+        Me.GuiDosbox_Label12.Size = New System.Drawing.Size(145, 14)
+        Me.GuiDosbox_Label12.TabIndex = 26
+        Me.GuiDosbox_Label12.Text = "Coloration des variables"
+        '
+        'GuiDosbox_Label13
+        '
+        Me.GuiDosbox_Label13.AutoSize = True
+        Me.GuiDosbox_Label13.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label13.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label13.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label13.Location = New System.Drawing.Point(37, 84)
+        Me.GuiDosbox_Label13.Name = "GuiDosbox_Label13"
+        Me.GuiDosbox_Label13.Size = New System.Drawing.Size(131, 14)
+        Me.GuiDosbox_Label13.TabIndex = 25
+        Me.GuiDosbox_Label13.Text = "Coloration des Ancres"
+        '
+        'lblCommands
+        '
+        Me.lblCommands.AutoSize = True
+        Me.lblCommands.BackColor = System.Drawing.Color.Transparent
+        Me.lblCommands.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblCommands.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.lblCommands.Location = New System.Drawing.Point(37, 54)
+        Me.lblCommands.Name = "lblCommands"
+        Me.lblCommands.Size = New System.Drawing.Size(160, 14)
+        Me.lblCommands.TabIndex = 24
+        Me.lblCommands.Text = "Coloration des commandes"
+        '
+        'GuiDosbox_Label14
+        '
+        Me.GuiDosbox_Label14.AutoSize = True
+        Me.GuiDosbox_Label14.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label14.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label14.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label14.Location = New System.Drawing.Point(216, 113)
+        Me.GuiDosbox_Label14.Name = "GuiDosbox_Label14"
+        Me.GuiDosbox_Label14.Size = New System.Drawing.Size(139, 14)
+        Me.GuiDosbox_Label14.TabIndex = 31
+        Me.GuiDosbox_Label14.Text = "Couleur des arobas (@)"
+        '
+        'GuiDosbox_Label1
+        '
+        Me.GuiDosbox_Label1.AutoSize = True
+        Me.GuiDosbox_Label1.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label1.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label1.Location = New System.Drawing.Point(13, 25)
+        Me.GuiDosbox_Label1.Name = "GuiDosbox_Label1"
+        Me.GuiDosbox_Label1.Size = New System.Drawing.Size(129, 14)
+        Me.GuiDosbox_Label1.TabIndex = 23
+        Me.GuiDosbox_Label1.Text = "Couleur des mots clés"
+        '
+        'GuiDosbox_Label7
+        '
+        Me.GuiDosbox_Label7.AutoSize = True
+        Me.GuiDosbox_Label7.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label7.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label7.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label7.Location = New System.Drawing.Point(13, 113)
+        Me.GuiDosbox_Label7.Name = "GuiDosbox_Label7"
+        Me.GuiDosbox_Label7.Size = New System.Drawing.Size(120, 14)
+        Me.GuiDosbox_Label7.TabIndex = 29
+        Me.GuiDosbox_Label7.Text = "Couleur des chiffres"
+        '
+        'GuiDosbox_Label6
+        '
+        Me.GuiDosbox_Label6.AutoSize = True
+        Me.GuiDosbox_Label6.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label6.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label6.Location = New System.Drawing.Point(216, 84)
+        Me.GuiDosbox_Label6.Name = "GuiDosbox_Label6"
+        Me.GuiDosbox_Label6.Size = New System.Drawing.Size(160, 14)
+        Me.GuiDosbox_Label6.TabIndex = 28
+        Me.GuiDosbox_Label6.Text = "Couleur des commentaires"
+        '
+        'GuiDosbox_Label5
+        '
+        Me.GuiDosbox_Label5.AutoSize = True
+        Me.GuiDosbox_Label5.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label5.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label5.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label5.Location = New System.Drawing.Point(216, 54)
+        Me.GuiDosbox_Label5.Name = "GuiDosbox_Label5"
+        Me.GuiDosbox_Label5.Size = New System.Drawing.Size(139, 14)
+        Me.GuiDosbox_Label5.TabIndex = 27
+        Me.GuiDosbox_Label5.Text = "Couleur des opérateurs"
+        '
+        'GuiDosbox_Label4
+        '
+        Me.GuiDosbox_Label4.AutoSize = True
+        Me.GuiDosbox_Label4.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label4.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label4.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label4.Location = New System.Drawing.Point(216, 25)
+        Me.GuiDosbox_Label4.Name = "GuiDosbox_Label4"
+        Me.GuiDosbox_Label4.Size = New System.Drawing.Size(131, 14)
+        Me.GuiDosbox_Label4.TabIndex = 26
+        Me.GuiDosbox_Label4.Text = "Couleur des variables"
+        '
+        'GuiDosbox_Label3
+        '
+        Me.GuiDosbox_Label3.AutoSize = True
+        Me.GuiDosbox_Label3.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label3.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label3.Location = New System.Drawing.Point(13, 84)
+        Me.GuiDosbox_Label3.Name = "GuiDosbox_Label3"
+        Me.GuiDosbox_Label3.Size = New System.Drawing.Size(117, 14)
+        Me.GuiDosbox_Label3.TabIndex = 25
+        Me.GuiDosbox_Label3.Text = "Couleur des Ancres"
+        '
+        'GuiDosbox_Label2
+        '
+        Me.GuiDosbox_Label2.AutoSize = True
+        Me.GuiDosbox_Label2.BackColor = System.Drawing.Color.Transparent
+        Me.GuiDosbox_Label2.Font = New System.Drawing.Font("Georgia", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GuiDosbox_Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.GuiDosbox_Label2.Location = New System.Drawing.Point(13, 54)
+        Me.GuiDosbox_Label2.Name = "GuiDosbox_Label2"
+        Me.GuiDosbox_Label2.Size = New System.Drawing.Size(146, 14)
+        Me.GuiDosbox_Label2.TabIndex = 24
+        Me.GuiDosbox_Label2.Text = "Couleur des commandes"
         '
         'frmApplicationSettings
         '

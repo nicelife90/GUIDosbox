@@ -56,5 +56,11 @@
     <Setting Name="EditorBGColor" Type="System.Drawing.Color" Scope="User">
       <Value Profile="(Default)">Gainsboro</Value>
     </Setting>
+    <Setting Name="ColororationState" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="UpdateState" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

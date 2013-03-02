@@ -1,6 +1,6 @@
 ﻿' [--> GUIDosbox <--]
 ' Créé par : Nice-Life90
-' http://www.kobixxe.com
+' http://www.guidosbox.com
 ' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
 ' Tous droits réservés
 

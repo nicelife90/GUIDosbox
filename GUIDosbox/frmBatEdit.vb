@@ -42,7 +42,10 @@ Public Class frmBatEdit
         End Try
 
         'Coloration Syntaxique --> GUIDosboxColorationSyntaxique.
-        ColorationSyntaxique(txtEditor)
+        If My.Settings.ColororationState Then
+            ColorationSyntaxique(txtEditor)
+        End If
+
     End Sub
 
     Private Sub frmBatEdit_Shown(sender As Object, e As EventArgs) Handles Me.Shown

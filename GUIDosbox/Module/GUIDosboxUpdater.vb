@@ -20,6 +20,7 @@ Module GUIDosboxUpdater
     ''' </summary>
     ''' <remarks></remarks>
     Public file_path As String = Path.GetTempPath
+    Public UpdateFromMenu As Boolean = False
     Private application_name As String = My.Application.Info.ProductName
     Public WithEvents bgworkerCheckVersion As BackgroundWorker = New BackgroundWorker
 
@@ -44,8 +45,8 @@ Module GUIDosboxUpdater
     Private Sub bgworkerCheckVersion_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles bgworkerCheckVersion.DoWork
         Try
             'Constante pour la vérification de`la version du programme
-            Const CheckVersionURL As String = "https://dl.dropbox.com/u/68710014/Launcher335/version"
-            Const ActualVersion As String = "4.0.9" '-> ici pour changer la version du programme
+            Const CheckVersionURL As String = "http://www.guidosbox.com/update/version"
+            Const ActualVersion As String = "1.0.1" '-> ici pour changer la version du programme
 
             'Supression de l'ancien fichier de version.
             If My.Computer.FileSystem.FileExists(file_path + "version") Then
@@ -54,7 +55,7 @@ Module GUIDosboxUpdater
 
             'Téléchargement du nouveau fichier de version.
             My.Computer.Network.DownloadFile(CheckVersionURL, file_path + "version")
-
+          
             'Lecture du nouveau fichier version.
             If My.Computer.FileSystem.FileExists(file_path + "version") Then
 
@@ -79,17 +80,17 @@ Module GUIDosboxUpdater
                         bgworkerCheckVersion.CancelAsync()
                     Else
                         'On supprime le fichier de version.
-                        If My.Computer.FileSystem.FileExists(file_path + "\version") Then
-                            My.Computer.FileSystem.DeleteFile(file_path + "\version")
+                        If My.Computer.FileSystem.FileExists(file_path + "version") Then
+                            My.Computer.FileSystem.DeleteFile(file_path + "version")
                         End If
                         'On cancel le lancement de la mise à jour.
                         bgworkerCheckVersion.CancelAsync()
                     End If
 
                 Else '-> Si l'utilisateur tente de vérifier les mise à jour à partir du menu.
-                    'If UpdateFromMenu = True Then
-                    '    MsgBox("Aucune mise à jour disponible actuellement.", MsgBoxStyle.Information, application_name & " - Mise à jour")
-                    'End If
+                    If UpdateFromMenu = True Then
+                        MsgBox("Aucune mise à jour disponible actuellement.", MsgBoxStyle.Information, application_name & " - Mise à jour")
+                    End If
                 End If
 
             Else
@@ -125,13 +126,13 @@ Module GUIDosboxUpdater
     Private Sub DownloadUpdate()
         Try
             'On supprime le fichier de version.
-            If My.Computer.FileSystem.FileExists(file_path + "\version") Then
-                My.Computer.FileSystem.DeleteFile(file_path + "\version")
+            If My.Computer.FileSystem.FileExists(file_path + "version") Then
+                My.Computer.FileSystem.DeleteFile(file_path + "version")
             End If
 
             'On supprime l'ancien fichier de mise à jour.
-            If My.Computer.FileSystem.FileExists(file_path + "\update.exe") Then
-                My.Computer.FileSystem.DeleteFile(file_path + "\update.exe")
+            If My.Computer.FileSystem.FileExists(file_path + "update.exe") Then
+                My.Computer.FileSystem.DeleteFile(file_path + "update.exe")
             End If
 
             'On télécharge la mise à jour.
@@ -139,12 +140,14 @@ Module GUIDosboxUpdater
             wc = New System.Net.WebClient()
             AddHandler wc.DownloadProgressChanged, AddressOf OnDownloadProgressChanged
             AddHandler wc.DownloadFileCompleted, AddressOf OnFileDownloadCompleted
-            wc.DownloadFileAsync(New Uri("https://dl.dropbox.com/u/68710014/Launcher335/update.exe"), file_path + "\update.exe")
+            wc.DownloadFileAsync(New Uri("http://www.guidosbox.com/update/update.exe"), file_path + "update.exe")
 
         Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors du téléchargement de la mise à jour, " + ex.Message, MsgBoxStyle.Critical, application_name & " - Mise à jour")
+            MsgBox("Une erreur c'est produite lors du téléchargement de la mise à jour, " + _
+                   ex.Message, MsgBoxStyle.Critical, application_name & " - Mise à jour")
         End Try
     End Sub
+
 
     ''' <summary>
     ''' Évenement qui ce produit tous au long du téléchargement de la mise à jours
@@ -171,7 +174,7 @@ Module GUIDosboxUpdater
             File.WriteAllText(file_path + "GUIDB_Name", System.Diagnostics.Process.GetCurrentProcess().MainModule.FileName)
 
             'Démmarage de la mise à jour
-            Process.Start(file_path + "\update.exe")
+            Process.Start(file_path + "update.exe")
         Catch ex As Exception
             MsgBox("Une erreur c'est produite avec le lancement de la mise à jour, " & ex.Message)
         End Try

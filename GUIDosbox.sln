@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "GUIDosbox", "GUIDosbox\GUIDosbox.vbproj", "{6358C54E-D276-4240-8925-DAD9EE59FFBD}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Updater", "Updater\Updater.vbproj", "{D3852701-190C-4382-A736-1D043C01C9DA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x86 = Debug|x86
@@ -13,6 +15,10 @@ Global
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|x86.Build.0 = Debug|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|x86.ActiveCfg = Release|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|x86.Build.0 = Release|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|x86.ActiveCfg = Debug|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|x86.Build.0 = Debug|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|x86.ActiveCfg = Release|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

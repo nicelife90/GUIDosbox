@@ -269,6 +269,30 @@ Namespace My
                 Me("EditorBGColor") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property ColororationState() As Boolean
+            Get
+                Return CType(Me("ColororationState"),Boolean)
+            End Get
+            Set
+                Me("ColororationState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property UpdateState() As Boolean
+            Get
+                Return CType(Me("UpdateState"),Boolean)
+            End Get
+            Set
+                Me("UpdateState") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

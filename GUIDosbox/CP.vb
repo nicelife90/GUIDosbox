@@ -108,6 +108,23 @@ Public Class CP
         Me.Hide()
     End Sub
 
+    Private Sub MiseÀJourToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MiseÀJourToolStripMenuItem.Click
+        Try
+            'On vérifie si une mise à jour est disponible           
+            If connexionInternet() = True Then
+                UpdateFromMenu = True
+                bgworkerCheckVersion.RunWorkerAsync()
+            Else
+                MsgBox("Vous n'êtes pas connectés à internet!" & vbCrLf _
+                & "Il est donc impossible de vérifier si une mise à jour de l'application est disponible.", _
+                 MsgBoxStyle.Information, "Connexion internet indisponible")
+            End If
+        Catch ex As Exception
+            MsgBox("La vérification des mise à jour est déjà en cours d'exécution.", _
+                MsgBoxStyle.Information, "GUI Dosbox - Avertissement")
+        End Try
+    End Sub
+
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
         'Quiter
         Me.Close()
@@ -220,20 +237,33 @@ Public Class CP
 
     Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'On supprime l'ancien fichier de mise à jour
-        If My.Computer.FileSystem.FileExists(file_path + "update.exe") Then
-            My.Computer.FileSystem.DeleteFile(file_path + "update.exe")
-        End If
+        'Supression des vieux fichiers de mise à jour
+        Try
+            If File.Exists(file_path + "update.exe") Then
+                File.Delete(file_path + "update.exe")
+            End If
+        Catch ex As Exception
+            MsgBox("Impossible de supprimer les anciens fichiers de mise à jour." _
+                   + vbCrLf + vbCrLf + ex.Message, MsgBoxStyle.Information, _
+                   "GUI Dosbox - Avertissement")
+        End Try
 
-        'On vérifie si une mise à jour est disponible           
-        If connexionInternet() = True Then
-            bgworkerCheckVersion.RunWorkerAsync()
-        Else
-            MsgBox("Vous n'êtes pas connectés à internet!" & vbCrLf _
-            & "Il est donc impossible de vérifier si une mise à jour de l'application est disponible.", _
-             MsgBoxStyle.Information, "Connexion internet indisponible")
-        End If
-
+        'On vérifie si une mise à jour est disponible  
+        Try
+            If My.Settings.UpdateState Then '--> Paramètres GUIDOSBOX
+                If connexionInternet() = True Then
+                    bgworkerCheckVersion.RunWorkerAsync()
+                Else
+                    MsgBox("Vous n'êtes pas connectés à internet!" & vbCrLf _
+                    & "Il est donc impossible de vérifier si une mise à jour de l'application est disponible.", _
+                     MsgBoxStyle.Information, "Connexion internet indisponible")
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Impossible de vérifier la mise à jour, " & vbCrLf & vbCrLf & ex.Message, _
+                MsgBoxStyle.Information, "GUI Dosbox - Avertissement")
+        End Try
+        
         'Préparation de l'interface d'utilisateur
         Try
             'Batch File
@@ -288,5 +318,4 @@ Public Class CP
                    MsgBoxStyle.Information, My.Application.GetType.Name)
         End Try
     End Sub
-
 End Class

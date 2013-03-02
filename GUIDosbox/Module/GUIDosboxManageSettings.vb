@@ -14,7 +14,7 @@ Option Explicit On
 Module GUIDosboxManageSettings
 
     ''' <summary>
-    ''' Structure pour stocker les paramètres temporraire de l'onglet coloration syntaxique avant l'application
+    ''' Structure pour stocker les paramètres temporraire de l'onglet coloration syntaxique avant l'application des paramètres
     ''' </summary>
     ''' <remarks>Cette structure est utiliser par frmApplicationSettings</remarks>
     Public Structure ParamColorationSyntaxique
@@ -37,7 +37,7 @@ Module GUIDosboxManageSettings
     End Structure
 
     ''' <summary>
-    ''' Structure pour stocker les paramètres temporraire de l'onglet éditeur avant l'application
+    ''' Structure pour stocker les paramètres temporraire de l'onglet éditeur avant l'application des paramètres
     ''' </summary>
     ''' <remarks>Cette structure est utiliser par frmApplicationSettings</remarks>
     Public Structure ParamEditor
@@ -46,16 +46,30 @@ Module GUIDosboxManageSettings
     End Structure
 
     ''' <summary>
+    ''' Structure pour stocker les paramètres temporraire de l'onglet général avant l'application des paramètres
+    ''' </summary>
+    ''' <remarks>Cette structure est utiliser par frmApplicationSettings</remarks>
+    Public Structure ParamGeneral
+        Public ColorationState As Boolean
+        Public UpdateState As Boolean
+    End Structure
+
+    ''' <summary>
     ''' Reset les paramètres de l'application en partie ou en entier.
     ''' </summary>
-    ''' <param name="ResetMetode">1 --> Onglet Général, 2 --> Onglet Coloration syntaxique, 3 --> Onglet éditeur, -1 --> Tous les paramêtres</param>
+    ''' <param name="ResetMetode">1 --> Onglet Général, 2 --> Onglet Coloration syntaxique, 3 --> Onglet éditeur, -1 --> Tous les paramètres</param>
     Public Sub ResetGUIDosboxSettings(ByVal ResetMetode As Integer)
         Select Case ResetMetode
 
             Case 1 '-->  'Reset de l'onglet Général
+                With My.Settings
+                    .ColororationState = True
+                    .UpdateState = True
+                End With
+                My.Settings.Save()
+                My.Settings.Reload()
 
             Case 2 '-->  'Reset de l'onglet Coloration Syntaxique
-                'Reset des paramêtres
                 With My.Settings
                     .ArobasColor = Color.DeepPink
                     .AnchorColor = Color.Brown
@@ -74,24 +88,42 @@ Module GUIDosboxManageSettings
                     .OperatorState = True
                     .VariableState = True
                 End With
-
-                'Enregistrement de nouveau paramêtres.
                 My.Settings.Save()
                 My.Settings.Reload()
 
             Case 3 '-->  'Reset de l'onglet Éditeur
-                'Reset des paramètres
                 With My.Settings
                     .EditorFont = New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
                     .EditorBGColor = Color.Gainsboro
                 End With
-
-                'Enregistrement de nouveau paramêtres.
                 My.Settings.Save()
                 My.Settings.Reload()
 
-            Case -1 '-->  'Reset de tous les paramêtres
-
+            Case -1 '-->  'Reset de tous les paramètres
+                With My.Settings
+                    .ColororationState = True
+                    .UpdateState = True
+                    .ArobasColor = Color.DeepPink
+                    .AnchorColor = Color.Brown
+                    .CommandsColor = Color.DeepSkyBlue
+                    .CommentColor = Color.Green
+                    .IntegerColor = Color.Maroon
+                    .KeywordColor = Color.Blue
+                    .OperatorColor = Color.Red
+                    .VariableColor = Color.Purple
+                    .ArobasState = True
+                    .AnchorState = True
+                    .CommandsState = True
+                    .CommentsState = True
+                    .IntegerState = False
+                    .KeywordsState = True
+                    .OperatorState = True
+                    .VariableState = True
+                    .EditorFont = New Font("Lucida Console", 9, FontStyle.Regular, GraphicsUnit.Point)
+                    .EditorBGColor = Color.Gainsboro
+                End With
+                My.Settings.Save()
+                My.Settings.Reload()
         End Select
 
     End Sub
@@ -105,7 +137,17 @@ Module GUIDosboxManageSettings
         Select Case onglet
 
             Case 1 '--> Onglet général
-              
+                'Définition des nouveaux paramètres
+                Dim newSettings As ParamGeneral = CType(mySettings, ParamGeneral)
+                With My.Settings
+                    .ColororationState = newSettings.ColorationState
+                    .UpdateState = newSettings.UpdateState
+                End With
+
+                'Enregistrement des paramètres
+                My.Settings.Save()
+                My.Settings.Reload()
+
 
             Case 2 '--> Onglet Coloration Syntaxique
                 'Définition des nouveaux paramètres
