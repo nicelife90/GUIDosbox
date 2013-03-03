@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Imports System.IO

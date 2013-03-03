@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class AssocApp
@@ -36,7 +42,7 @@ Public Class AssocApp
     End Sub
 
 #End Region
-   
+
     Private Sub AssocApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Démarrage de la console
         myConsole.StartConsole()
@@ -114,29 +120,4 @@ Public Class AssocApp
             ActiveControl = btnApply
         End If
     End Sub
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-            chkbxLangue.Text = "Français"
-            lblTypeFichier.Text = "Type de Fichier"
-            lblCommande.Text = "Commande"
-            btnApply.Text = "Appliquer"
-            btnBack.Text = "Retour"
-            btnClear.Text = "Effacer"
-            btnExtShow.Text = "Voir les .ext"
-            btnHelp.Text = "Aide"
-        Else
-            chkbxLangue.Text = "English" ' boite PAS cochée=EN 
-            lblTypeFichier.Text = "File Type"
-            lblCommande.Text = "Command"
-            btnApply.Text = "Apply"
-            btnBack.Text = "Back"
-            btnClear.Text = "Clear"
-            btnExtShow.Text = "View .ext's"
-            btnHelp.Text = "Help"
-        End If
-    End Sub
-#End Region
-
 End Class

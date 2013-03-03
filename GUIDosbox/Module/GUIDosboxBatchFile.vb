@@ -1,9 +1,10 @@
 ﻿' [--> GUIDosbox <--]
 ' Créé par : Nice-Life90
-' http://www.kobixxe.com
-' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
 ' Tous droits réservés
 
+' [--> Contenue du fichhier <-] 
 ' Ce Module contient toutes les fonctions et méthodes pour les outils reliés au Batch File.
 
 Imports System.IO
@@ -21,6 +22,12 @@ Module GUIDosboxBatchFile
     ''' </summary>
     ''' <remarks></remarks>
     Public BuildFromTempBatch As Boolean = False
+
+    ''' <summary>
+    ''' Sauvegarde l'index de la commande à afficher lors de l'appuis sur les flèches.
+    ''' </summary>
+    ''' <remarks>Cette Variable sert a la proc/dure ShowLastCommand.</remarks>
+    Public CommandIndex As Integer = 0
 
     ''' <summary>
     ''' Prépare un fichier temporaire pour stocker les commandes exéctué par les utilitaires. 
@@ -52,6 +59,35 @@ Module GUIDosboxBatchFile
             MsgBox("Une erreur c'est produite avec la préparation du nouveau fichier batch temporraire." _
                    & vbNewLine & vbNewLine & ex.Message, MsgBoxStyle.Exclamation, Application.ProductName & " - Erreur")
         End Try
+    End Sub
+
+    ''' <summary>
+    ''' Affiche la derniere commande exécuter lorsque la flèche vers le haut est apuyer.
+    ''' </summary>
+    ''' <param name="Textbox">Textbox dans la quel afficher la commande.</param>
+    Public Sub ShowLastCommand(ByVal Textbox As GUIDosbox_Textbox)
+
+        'Reset du textbox
+        Textbox.Text = Nothing
+
+        'Lecture du fichier et création d'un tableau
+        Dim lines() As String = File.ReadAllLines(TempBatch)
+        Dim lineArray As New ArrayList()
+
+        'Ajout des ligne au tableau
+        For x As Integer = 0 To lines.GetUpperBound(0)
+            lineArray.Add(lines(x))
+        Next
+
+        'Sélection de la ligne à afficher.
+        Dim lineToShow As Integer
+        lineToShow = lineArray.Count - CommandIndex
+
+        'Affichage de la ligne.
+        If CommandIndex > 0 Then
+            Textbox.Text = lineArray.Item(lineToShow).ToString
+        End If
+
     End Sub
 
     ''' <summary>

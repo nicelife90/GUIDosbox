@@ -26,10 +26,6 @@ Partial Class CP
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CP))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LangueToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FrançaisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.MiseÀJourToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ParamètresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -54,9 +50,10 @@ Partial Class CP
         Me.BatToexeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ÉditerBatchFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FrançaisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.FlashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPEN = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
@@ -90,65 +87,49 @@ Partial Class CP
         'FichierToolStripMenuItem
         '
         Me.FichierToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.LangueToolStripMenuItem, Me.ToolStripSeparator2, Me.MiseÀJourToolStripMenuItem, Me.ParamètresToolStripMenuItem, Me.ToolStripSeparator1, Me.QuiterToolStripMenuItem})
+        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.MiseÀJourToolStripMenuItem, Me.ParamètresToolStripMenuItem, Me.ToolStripSeparator1, Me.QuiterToolStripMenuItem})
         Me.FichierToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
         Me.FichierToolStripMenuItem.Size = New System.Drawing.Size(56, 24)
         Me.FichierToolStripMenuItem.Text = "Fichier"
         '
-        'LangueToolStripMenuItem
-        '
-        Me.LangueToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.FrançaisToolStripMenuItem, Me.EnglishToolStripMenuItem})
-        Me.LangueToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.LangueToolStripMenuItem.Name = "LangueToolStripMenuItem"
-        Me.LangueToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.LangueToolStripMenuItem.Text = "Langue"
-        '
-        'FrançaisToolStripMenuItem
-        '
-        Me.FrançaisToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.FrançaisToolStripMenuItem.Name = "FrançaisToolStripMenuItem"
-        Me.FrançaisToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
-        Me.FrançaisToolStripMenuItem.Text = "Français"
-        '
-        'EnglishToolStripMenuItem
-        '
-        Me.EnglishToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.EnglishToolStripMenuItem.Name = "EnglishToolStripMenuItem"
-        Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(118, 22)
-        Me.EnglishToolStripMenuItem.Text = "English"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(149, 6)
-        '
         'MiseÀJourToolStripMenuItem
         '
-        Me.MiseÀJourToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.MiseÀJourToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.MiseÀJourToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.Media_Player
+        Me.MiseÀJourToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.MiseÀJourToolStripMenuItem.Name = "MiseÀJourToolStripMenuItem"
-        Me.MiseÀJourToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.MiseÀJourToolStripMenuItem.RightToLeft = System.Windows.Forms.RightToLeft.No
+        Me.MiseÀJourToolStripMenuItem.ShortcutKeyDisplayString = ""
+        Me.MiseÀJourToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
+        Me.MiseÀJourToolStripMenuItem.Size = New System.Drawing.Size(192, 38)
         Me.MiseÀJourToolStripMenuItem.Text = "Mise à jour"
         '
         'ParamètresToolStripMenuItem
         '
-        Me.ParamètresToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ParamètresToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.ParamètresToolStripMenuItem.Image = CType(resources.GetObject("ParamètresToolStripMenuItem.Image"), System.Drawing.Image)
+        Me.ParamètresToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ParamètresToolStripMenuItem.Name = "ParamètresToolStripMenuItem"
-        Me.ParamètresToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ParamètresToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.ParamètresToolStripMenuItem.Size = New System.Drawing.Size(192, 38)
         Me.ParamètresToolStripMenuItem.Text = "Paramètres"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(189, 6)
         '
         'QuiterToolStripMenuItem
         '
         Me.QuiterToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.QuiterToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.Xion
+        Me.QuiterToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.QuiterToolStripMenuItem.Name = "QuiterToolStripMenuItem"
-        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.QuiterToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
+        Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(192, 38)
         Me.QuiterToolStripMenuItem.Text = "Quitter"
         '
         'ToolStripMenuItem1
@@ -156,7 +137,7 @@ Partial Class CP
         Me.ToolStripMenuItem1.BackColor = System.Drawing.SystemColors.ActiveCaptionText
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AssocToolStripMenuItem, Me.AttribToolStripMenuItem, Me.CaclsToolStripMenuItem, Me.ChkdskToolStripMenuItem, Me.CmdConsoleToolStripMenuItem, Me.CompactToolStripMenuItem, Me.CompToolStripMenuItem, Me.RdToolStripMenuItem, Me.SubstToolStripMenuItem, Me.SystemInfoToolStripMenuItem, Me.TracertToolStripMenuItem, Me.TypeToolStripMenuItem, Me.WhereToolStripMenuItem, Me.WhoamiToolStripMenuItem, Me.XcopyToolStripMenuItem})
         Me.ToolStripMenuItem1.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ToolStripMenuItem1.ForeColor = System.Drawing.Color.RoyalBlue
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
         Me.ToolStripMenuItem1.Size = New System.Drawing.Size(86, 24)
         Me.ToolStripMenuItem1.Text = "Applications"
@@ -164,7 +145,7 @@ Partial Class CP
         'AssocToolStripMenuItem
         '
         Me.AssocToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.AssocToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.AssocToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.AssocToolStripMenuItem.Name = "AssocToolStripMenuItem"
         Me.AssocToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.AssocToolStripMenuItem.Text = "ASSOC"
@@ -172,14 +153,14 @@ Partial Class CP
         'AttribToolStripMenuItem
         '
         Me.AttribToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.AttribToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.AttribToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.AttribToolStripMenuItem.Name = "AttribToolStripMenuItem"
         Me.AttribToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.AttribToolStripMenuItem.Text = "ATTRIB"
         '
         'CaclsToolStripMenuItem
         '
-        Me.CaclsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CaclsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CaclsToolStripMenuItem.Name = "CaclsToolStripMenuItem"
         Me.CaclsToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.CaclsToolStripMenuItem.Text = "CACLS"
@@ -187,7 +168,7 @@ Partial Class CP
         'ChkdskToolStripMenuItem
         '
         Me.ChkdskToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.ChkdskToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ChkdskToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.ChkdskToolStripMenuItem.Name = "ChkdskToolStripMenuItem"
         Me.ChkdskToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.ChkdskToolStripMenuItem.Text = "CHKDSK"
@@ -195,7 +176,7 @@ Partial Class CP
         'CmdConsoleToolStripMenuItem
         '
         Me.CmdConsoleToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.CmdConsoleToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CmdConsoleToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CmdConsoleToolStripMenuItem.Name = "CmdConsoleToolStripMenuItem"
         Me.CmdConsoleToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.CmdConsoleToolStripMenuItem.Text = "CMD CONSOLE"
@@ -203,35 +184,35 @@ Partial Class CP
         'CompactToolStripMenuItem
         '
         Me.CompactToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.CompactToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CompactToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CompactToolStripMenuItem.Name = "CompactToolStripMenuItem"
         Me.CompactToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.CompactToolStripMenuItem.Text = "COMPACT"
         '
         'CompToolStripMenuItem
         '
-        Me.CompToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CompToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CompToolStripMenuItem.Name = "CompToolStripMenuItem"
         Me.CompToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.CompToolStripMenuItem.Text = "COMP"
         '
         'RdToolStripMenuItem
         '
-        Me.RdToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.RdToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.RdToolStripMenuItem.Name = "RdToolStripMenuItem"
         Me.RdToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.RdToolStripMenuItem.Text = "RD"
         '
         'SubstToolStripMenuItem
         '
-        Me.SubstToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.SubstToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.SubstToolStripMenuItem.Name = "SubstToolStripMenuItem"
         Me.SubstToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.SubstToolStripMenuItem.Text = "SUBST"
         '
         'SystemInfoToolStripMenuItem
         '
-        Me.SystemInfoToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.SystemInfoToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.SystemInfoToolStripMenuItem.Name = "SystemInfoToolStripMenuItem"
         Me.SystemInfoToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.SystemInfoToolStripMenuItem.Text = "SYSTEM INFO"
@@ -239,21 +220,21 @@ Partial Class CP
         'TracertToolStripMenuItem
         '
         Me.TracertToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
-        Me.TracertToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.TracertToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.TracertToolStripMenuItem.Name = "TracertToolStripMenuItem"
         Me.TracertToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.TracertToolStripMenuItem.Text = "TRACERT"
         '
         'TypeToolStripMenuItem
         '
-        Me.TypeToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.TypeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.TypeToolStripMenuItem.Name = "TypeToolStripMenuItem"
         Me.TypeToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.TypeToolStripMenuItem.Text = "TYPE"
         '
         'WhereToolStripMenuItem
         '
-        Me.WhereToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.WhereToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.WhereToolStripMenuItem.Name = "WhereToolStripMenuItem"
         Me.WhereToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.WhereToolStripMenuItem.Text = "WHERE"
@@ -261,7 +242,7 @@ Partial Class CP
         'WhoamiToolStripMenuItem
         '
         Me.WhoamiToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.WhoamiToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.WhoamiToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.WhoamiToolStripMenuItem.Name = "WhoamiToolStripMenuItem"
         Me.WhoamiToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.WhoamiToolStripMenuItem.Text = "WHOAMI"
@@ -269,7 +250,7 @@ Partial Class CP
         'XcopyToolStripMenuItem
         '
         Me.XcopyToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.XcopyToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.XcopyToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.XcopyToolStripMenuItem.Name = "XcopyToolStripMenuItem"
         Me.XcopyToolStripMenuItem.Size = New System.Drawing.Size(157, 22)
         Me.XcopyToolStripMenuItem.Text = "XCOPY"
@@ -278,33 +259,58 @@ Partial Class CP
         '
         Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem, Me.ÉditerBatchFileToolStripMenuItem})
         Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
         Me.OutilsToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.OutilsToolStripMenuItem.Text = "Outils"
         '
         'BatToexeToolStripMenuItem
         '
-        Me.BatToexeToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.BatToexeToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.BatToexeToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.Gear
+        Me.BatToexeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BatToexeToolStripMenuItem.Name = "BatToexeToolStripMenuItem"
-        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.BatToexeToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(217, 38)
         Me.BatToexeToolStripMenuItem.Text = ".bat To .exe"
         '
         'ÉditerBatchFileToolStripMenuItem
         '
-        Me.ÉditerBatchFileToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ÉditerBatchFileToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.ÉditerBatchFileToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.Writing
+        Me.ÉditerBatchFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ÉditerBatchFileToolStripMenuItem.Name = "ÉditerBatchFileToolStripMenuItem"
-        Me.ÉditerBatchFileToolStripMenuItem.Size = New System.Drawing.Size(164, 22)
+        Me.ÉditerBatchFileToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
+        Me.ÉditerBatchFileToolStripMenuItem.Size = New System.Drawing.Size(217, 38)
         Me.ÉditerBatchFileToolStripMenuItem.Text = "Éditer Batch File"
         '
         'HelpToolStripMenu
         '
         Me.HelpToolStripMenu.BackColor = System.Drawing.SystemColors.WindowText
         Me.HelpToolStripMenu.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.HelpToolStripMenu.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.HelpToolStripMenu.ForeColor = System.Drawing.Color.RoyalBlue
         Me.HelpToolStripMenu.Name = "HelpToolStripMenu"
+        Me.HelpToolStripMenu.ShortcutKeys = System.Windows.Forms.Keys.F5
         Me.HelpToolStripMenu.Size = New System.Drawing.Size(44, 24)
         Me.HelpToolStripMenu.Text = "Aide"
+        '
+        'FrançaisToolStripMenuItem
+        '
+        Me.FrançaisToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.FrançaisToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.quebec
+        Me.FrançaisToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.FrançaisToolStripMenuItem.Name = "FrançaisToolStripMenuItem"
+        Me.FrançaisToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
+        Me.FrançaisToolStripMenuItem.Text = "Français"
+        '
+        'EnglishToolStripMenuItem
+        '
+        Me.EnglishToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.EnglishToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.anglais
+        Me.EnglishToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.EnglishToolStripMenuItem.Name = "EnglishToolStripMenuItem"
+        Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
+        Me.EnglishToolStripMenuItem.Text = "Anglais"
         '
         'HeaderFlashFR
         '
@@ -323,19 +329,6 @@ Partial Class CP
         Me.FlashCPFR.OcxState = CType(resources.GetObject("FlashCPFR.OcxState"), System.Windows.Forms.AxHost.State)
         Me.FlashCPFR.Size = New System.Drawing.Size(918, 696)
         Me.FlashCPFR.TabIndex = 4
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.chkbxLangue.Location = New System.Drawing.Point(678, 68)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 6
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'FlashHeader
         '
@@ -415,7 +408,6 @@ Partial Class CP
         Me.Controls.Add(Me.StatusStrip1)
         Me.Controls.Add(Me.MenuStrip1)
         Me.Controls.Add(Me.FlashHeader)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.HeaderFlashFR)
         Me.Controls.Add(Me.FlashCPFR)
         Me.Controls.Add(Me.FlashCPEN)
@@ -448,8 +440,6 @@ Partial Class CP
     Friend WithEvents QuiterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HeaderFlashFR As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents FlashCPFR As AxShockwaveFlashObjects.AxShockwaveFlash
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
-    Friend WithEvents LangueToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FrançaisToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EnglishToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FlashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
@@ -479,7 +469,6 @@ Partial Class CP
     Friend WithEvents ParamètresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents Timer1 As System.Windows.Forms.Timer
     Friend WithEvents GuiDosbox_ProgressBar1 As GUIDosbox.GUIDosbox_ProgressBar
-    Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents MiseÀJourToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
 

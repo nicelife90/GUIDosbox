@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class XcopyApp
@@ -282,34 +288,6 @@ Public Class XcopyApp
         Else
             OptS.Visible = True
             MyBase.Refresh()
-        End If
-    End Sub
-#End Region
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-            chkbxLangue.Text = "Français"
-            lblCmdExec.Text = "Commande éxecutée:"
-            gbRecomander.Text = "Recommandés"
-            btnSend.Text = "Appliquer"
-            btnBack.Text = "Retour"
-            btnClear.Text = "Effacer"
-            btnDestination.Text = "Dossier"
-            btnDossier.Text = "Dossier"
-            btnFichier.Text = "Fichier"
-            btnHelp.Text = "Aide"
-        Else                                ' boite PAS cochée=EN 
-            chkbxLangue.Text = "English"
-            lblCmdExec.Text = "Just executed:"
-            gbRecomander.Text = "Recommended"
-            btnSend.Text = "Apply"
-            btnBack.Text = "Back"
-            btnClear.Text = "Clear"
-            btnDestination.Text = "Folder"
-            btnDossier.Text = "Folder"
-            btnFichier.Text = "File"
-            btnHelp.Text = "Help"
         End If
     End Sub
 #End Region

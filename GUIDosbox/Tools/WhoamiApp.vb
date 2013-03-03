@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class WhoamiApp
@@ -220,20 +226,6 @@ Public Class WhoamiApp
 
     Private Sub optFO_CheckedChanged(sender As Object, e As EventArgs) Handles optFO.CheckedChanged
         optNull.Checked = True
-    End Sub
-#End Region
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-            chkbxLangue.Text = "Français"
-            btnBack.Text = "Retour"
-
-        Else                                ' boite PAS cochée=EN 
-            chkbxLangue.Text = "English"
-            btnBack.Text = "Back"
-
-        End If
     End Sub
 #End Region
 

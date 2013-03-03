@@ -158,8 +158,8 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Module\GUIDosboxBatchFile.vb" />
+    <Compile Include="Module\GUIDosboxFlashLoader.vb" />
     <Compile Include="Module\GUIDosboxManageSettings.vb" />
-    <Compile Include="Module\GUIDosboxLanguage.vb" />
     <Compile Include="Module\GUIDosboxPrivileges.vb" />
     <Compile Include="Module\GUIDosboxColorationSyntaxique.vb" />
     <Compile Include="Module\GUIDosboxUpdater.vb" />
@@ -231,12 +231,6 @@
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_RadioButton.vb">
       <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Rectangle.Designer.vb">
-      <DependentUpon>GUIDosbox_Rectangle.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Rectangle.vb">
-      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_StatusStrip.Designer.vb">
       <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
@@ -387,9 +381,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Label.resx">
       <DependentUpon>GUIDosbox_Label.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_Rectangle.resx">
-      <DependentUpon>GUIDosbox_Rectangle.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_StatusStrip.resx">
       <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
@@ -559,6 +550,13 @@
     <EmbeddedResource Include="Resources\progressBar.png" />
     <EmbeddedResource Include="Resources\progressBarBG.png" />
     <EmbeddedResource Include="Resources\MainBG.png" />
+    <EmbeddedResource Include="Resources\Gear.png" />
+    <EmbeddedResource Include="Resources\Media-Player.png" />
+    <EmbeddedResource Include="Resources\Wrench.png" />
+    <EmbeddedResource Include="Resources\Writing.png" />
+    <EmbeddedResource Include="Resources\Xion.png" />
+    <EmbeddedResource Include="Resources\anglais.png" />
+    <EmbeddedResource Include="Resources\quebec.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

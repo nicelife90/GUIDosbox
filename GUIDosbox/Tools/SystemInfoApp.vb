@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class SystemInfoApp
@@ -128,31 +134,5 @@ Public Class SystemInfoApp
             ActiveControl = btnApply
         End If
     End Sub
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then
-            chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCmdExec.Text = "Commande exécutée:"
-            optAdvanceMode.Text = "Mode Avancé"
-            btnApply.Text = "Appliquer"
-            btnBack.Text = "Retour"
-            btnClear.Text = "Effacer"
-            btnSend.Text = "Envoi"
-            btnHelp.Text = "Aide"
-
-        Else                              ' boite PAS cochée=EN
-            chkbxLangue.Text = "English"
-            lblCmdExec.Text = "Just Executed:"
-            optAdvanceMode.Text = "Advanced Mode"
-            btnApply.Text = "Applyr"
-            btnBack.Text = "Back"
-            btnClear.Text = "Clear"
-            btnSend.Text = "Send"
-            btnHelp.Text = "Help"
-
-        End If
-    End Sub
-#End Region
 
 End Class

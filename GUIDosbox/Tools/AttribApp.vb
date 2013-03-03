@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class AttribApp
@@ -171,25 +177,5 @@ Public Class AttribApp
             ActiveControl = btnApply
         End If
     End Sub
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then ' boite cochée=FR donc, default pour la checkbox est checked
-            chkbxLangue.Text = "Français"
-            btnAide.Text = "Aide"
-            btnApply.Text = "Appliquer"
-            btnBack.Text = "Retour"
-            btnFiles.Text = "Fichier"
-            btnFolders.Text = "Dossier"
-        Else                               ' boite PAS cochée=EN
-            chkbxLangue.Text = "English"
-            btnAide.Text = "Help"
-            btnApply.Text = "Apply"
-            btnBack.Text = "Back"
-            btnFiles.Text = "File"
-            btnFolders.Text = "Folder"
-        End If
-    End Sub
-#End Region
 
 End Class

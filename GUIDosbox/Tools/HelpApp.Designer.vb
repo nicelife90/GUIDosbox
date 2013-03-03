@@ -23,7 +23,6 @@ Partial Class HelpApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HelpApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.lblAdvanceMode = New GUIDosbox.GUIDosbox_Label()
         Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
@@ -36,19 +35,6 @@ Partial Class HelpApp
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.ForeColor = System.Drawing.Color.LightSkyBlue
-        Me.chkbxLangue.Location = New System.Drawing.Point(621, 12)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 5
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'lblAdvanceMode
         '
@@ -84,10 +70,10 @@ Partial Class HelpApp
         'optAdvanceMode
         '
         Me.optAdvanceMode.AutoSize = True
-        Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Black
         Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.optAdvanceMode.ForeColor = System.Drawing.Color.LightBlue
+        Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
         Me.optAdvanceMode.Location = New System.Drawing.Point(3, 507)
         Me.optAdvanceMode.Name = "optAdvanceMode"
         Me.optAdvanceMode.Size = New System.Drawing.Size(98, 15)
@@ -185,7 +171,6 @@ Partial Class HelpApp
         Me.ClientSize = New System.Drawing.Size(648, 546)
         Me.ControlBox = False
         Me.Controls.Add(Me.footer)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnBack)
@@ -208,7 +193,6 @@ Partial Class HelpApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
     Friend WithEvents lblAdvanceMode As GUIDosbox.GUIDosbox_Label

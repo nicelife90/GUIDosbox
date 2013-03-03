@@ -24,7 +24,6 @@ Partial Class WhoamiApp
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(WhoamiApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip2 = New System.Windows.Forms.ToolTip(Me.components)
         Me.ToolTip3 = New System.Windows.Forms.ToolTip(Me.components)
@@ -65,20 +64,6 @@ Partial Class WhoamiApp
         Me.gbFormat.SuspendLayout()
         Me.gbOptions.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.ForeColor = System.Drawing.Color.RoyalBlue
-        Me.chkbxLangue.Location = New System.Drawing.Point(419, 486)
-        Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 4
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -451,7 +436,6 @@ Partial Class WhoamiApp
         Me.Controls.Add(Me.btnBack)
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnHelp)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -472,7 +456,6 @@ Partial Class WhoamiApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents ToolTip1 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip2 As System.Windows.Forms.ToolTip
     Friend WithEvents ToolTip3 As System.Windows.Forms.ToolTip

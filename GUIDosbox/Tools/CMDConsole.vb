@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class CMDConsole
@@ -50,25 +56,5 @@ Public Class CMDConsole
     Private Sub myConsole_Enter() Handles myConsole.Enter
         ActiveControl = txtInput
     End Sub
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then
-            chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            lblCommande.Text = "Ligne de Commande:"
-            btnBack.Text = "Retour"
-            btnClear.Text = "Effacer"
-            btnHelp.Text = "Aide"
-            btnSend.Text = "Envoyer"
-        Else                              ' boite PAS cochée=EN
-            chkbxLangue.Text = "English"
-            lblCommande.Text = "Command line:"
-            btnBack.Text = "Back"
-            btnClear.Text = "Clear"
-            btnHelp.Text = "Help"
-            btnSend.Text = "Send"
-        End If
-    End Sub
-#End Region
 
 End Class

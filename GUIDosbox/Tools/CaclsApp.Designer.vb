@@ -23,7 +23,6 @@ Partial Class CaclsApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CaclsApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GuiDosboxGroupbox6 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.btnBrowse = New GUIDosbox.GUIDosbox_Button()
@@ -79,19 +78,6 @@ Partial Class CaclsApp
         Me.GuiDosboxGroupbox3.SuspendLayout()
         Me.GuiDosboxGroupbox4.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(29, 498)
-        Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(5, 3, 5, 3)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 19
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -790,7 +776,6 @@ Partial Class CaclsApp
         Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -818,7 +803,6 @@ Partial Class CaclsApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents optT As System.Windows.Forms.CheckBox
     Friend WithEvents optM As System.Windows.Forms.CheckBox
     Friend WithEvents optL As System.Windows.Forms.CheckBox

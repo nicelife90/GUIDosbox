@@ -28,7 +28,6 @@ Partial Class CMDConsole
         Me.lblCommande = New System.Windows.Forms.Label()
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnSend = New System.Windows.Forms.Button()
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
@@ -108,20 +107,6 @@ Partial Class CMDConsole
         Me.btnSend.Text = "Envoyer"
         Me.btnSend.UseVisualStyleBackColor = True
         '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.ForeColor = System.Drawing.SystemColors.Window
-        Me.chkbxLangue.Location = New System.Drawing.Point(732, 490)
-        Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 8
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
-        '
         'flashHeader
         '
         Me.flashHeader.Enabled = True
@@ -171,7 +156,6 @@ Partial Class CMDConsole
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.btnSend)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.lblCommande)
@@ -196,7 +180,6 @@ Partial Class CMDConsole
     Friend WithEvents lblCommande As System.Windows.Forms.Label
     Friend WithEvents btnClear As System.Windows.Forms.Button
     Friend WithEvents btnSend As System.Windows.Forms.Button
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip

@@ -23,7 +23,6 @@ Partial Class TracertApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TracertApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GuiDosbox_Groupbox7 = New GUIDosbox.GUIDosbox_Groupbox()
         Me.optD = New GUIDosbox.GUIDosbox_Checkbox()
@@ -66,18 +65,6 @@ Partial Class TracertApp
         Me.gbForce.SuspendLayout()
         Me.gbHotes.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(26, 562)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 19
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -514,7 +501,6 @@ Partial Class TracertApp
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
@@ -547,7 +533,6 @@ Partial Class TracertApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents btnSend As GUIDosbox.GUIDosbox_Button

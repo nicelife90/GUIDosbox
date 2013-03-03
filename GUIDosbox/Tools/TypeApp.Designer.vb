@@ -23,7 +23,6 @@ Partial Class TypeApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TypeApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
@@ -42,18 +41,6 @@ Partial Class TypeApp
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GuiDosbox_Groupbox1.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(5, 518)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 19
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'OpenFileDialog1
         '
@@ -263,7 +250,6 @@ Partial Class TypeApp
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.btnSend)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
@@ -282,7 +268,6 @@ Partial Class TypeApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash

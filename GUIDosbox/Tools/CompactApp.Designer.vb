@@ -24,7 +24,6 @@ Partial Class CompactApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(CompactApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbMode = New GUIDosbox.GUIDosbox_Groupbox()
         Me.optC = New GUIDosbox.GUIDosbox_RadioButton()
@@ -55,18 +54,6 @@ Partial Class CompactApp
         Me.gbDossier.SuspendLayout()
         Me.gbOptions.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(5, 427)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 16
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -439,7 +426,6 @@ Partial Class CompactApp
         Me.Controls.Add(Me.btnHelp)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
@@ -460,7 +446,6 @@ Partial Class CompactApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents btnHelp As GUIDosbox.GUIDosbox_Button

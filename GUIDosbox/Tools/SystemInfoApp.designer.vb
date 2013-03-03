@@ -23,7 +23,6 @@ Partial Class SystemInfoApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(SystemInfoApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.GuiDosbox_Groupbox1 = New GUIDosbox.GUIDosbox_Groupbox()
@@ -54,19 +53,6 @@ Partial Class SystemInfoApp
         Me.GuiDosbox_Groupbox3.SuspendLayout()
         Me.GuiDosbox_Groupbox4.SuspendLayout()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(12, 573)
-        Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 19
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'myConsole
         '
@@ -432,7 +418,6 @@ Partial Class SystemInfoApp
         Me.Controls.Add(Me.GuiDosbox_Groupbox1)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
@@ -454,7 +439,6 @@ Partial Class SystemInfoApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents GuiDosbox_Groupbox1 As GUIDosbox.GUIDosbox_Groupbox

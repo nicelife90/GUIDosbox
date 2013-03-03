@@ -1,4 +1,10 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+Option Strict On
 Option Explicit On
 
 Public Class CompactApp
@@ -157,40 +163,6 @@ Public Class CompactApp
         Else
             txtRealPath.Show()
             btnFichier.Show()
-        End If
-    End Sub
-#End Region
-
-#Region "Language"
-    Private Sub chkbxLangue_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkbxLangue.CheckedChanged
-        If chkbxLangue.Checked = True Then
-            chkbxLangue.Text = "Français" ' boite cochée=FR donc, default pour la checkbox est checked
-            gbDossier.Text = "Dossier"
-            optC.Text = "Compresser /C"
-            optU.Text = "Décompresser /U"
-            optS.Text = "/S Sous-Répertoire"
-            lblCmdExec.Text = "Commande executée:"
-            btnApply.Text = "Appliquer"
-            btnBack.Text = "Retour"
-            btnClear.Text = "Effacer"
-            btnHelp.Text = "Aide"
-            btnDossier.Text = "Dossier"
-            btnFichier.Text = "Fichier"
-
-        Else                              'boite PAS cochée=EN
-            chkbxLangue.Text = "English"
-            gbDossier.Text = "Folder"
-            optC.Text = "Compress /C"
-            optU.Text = "Uncompress /U"
-            optS.Text = "/S Subdirectories"
-            lblCmdExec.Text = "Just executed:"
-            btnApply.Text = "Apply"
-            btnBack.Text = "Back"
-            btnClear.Text = "Clear"
-            btnHelp.Text = "Help"
-            btnDossier.Text = "Folder"
-            btnFichier.Text = "File"
-
         End If
     End Sub
 #End Region

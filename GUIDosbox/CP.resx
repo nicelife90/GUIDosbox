@@ -123,6 +123,32 @@
   <metadata name="MenuStrip1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ParamètresToolStripMenuItem.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAIGNIUk0AAIcbAACL/wABAPYAAIHuAAB6
+        TwAA6mkAADapAAAjTZW0nxoAAAAJcEhZcwAACwwAAAsMAT9AIsgAAAQ9SURBVFhHvZdJaJ1VFMfjWJVo
+        EjWaSOZ5JvM8D2Y2ExlJYhIzz1kUsSIOiODChYKg7sVVW4qIrUJpFyLVhUtXRdwpFquoaJuY4/93fR/E
+        qfS9fs8DP77v3e9yz7n3nvO/90WEwR4SRaJcpIrbxf9izeJd8bW4Ln4XV8UnYkc8KsJi94k3xEFdXZ0N
+        Dw/b5OSkTUxM2MjIiHV0dFh2drbp+9viHuGrMeB7OTk5Njs7a4uLi475+XkbGxuzpqYmHH8nWJke8aDw
+        1U7gfGFhwVZXV219fd3W1tZsYGAAxz+Ks+Jp0SUyxL3CN8sWV0ZHR53zra0t297eNn6r/TPxvHhCFApm
+        fqfw1Y7n5ua6Jd/c3LSdnR3b3d21qqoqAnhJlIiHxV3CdyPxTjc3N9vKyoqb+d7engsiLy+PAJ4K9Amb
+        xYvPe3t7bXl52a0AQWxsbOCc8hsSd4j/snwR9+draJYoLnV3d7stIAdIPoJR+4HYpNO/WIp4XaAPHTSE
+        ao+JTzs7O10FLC0tua3gOTQ0RBA/i1fEAwJ7RDwnvs3MzOT7NdEuQk7Ml8X++Pi4zczM2NzcnKt9ntPT
+        006MAuJzSbwoLqekpFhtba1VVlbS/qUoEyEl6DOJiYnW1dXllI4gUL6pqSn3RIBoRwvq6+stIyPDOUaU
+        eKanpxPAWyJJ3MaAwdjx+Ph4NxAB9PX1OUeDg4MO3vv7+62np8fYnvb2dqNSGhoarLq62goLC3H+lRgU
+        0QwYjO3FxsZaSUmJG7ClpcU5QOs92traXDuzpQ+Bogvl5eVeef4gTghELKjl3xaHCA+DMWhNTY1z4MFv
+        2gmwtLTUiouL3YyzsrIsISHBmzkCVSkixU3bhjiMjIy0qKgoi46OtpiYmL9AG9BPfC9+ExzJP4nL4qRY
+        FzgPaulXxEFcXJwlJydbamqqpaWluUQC3mkjw9UP5++LF8Sr4rXA+7J4XGSJoGaOnO6T8ZQUe5ifn28F
+        BQUO3tkSvpGY6ntKjIgKUSxKRYFIFlHiRsr4D3tSXGeGRUVFbl/Lysrc/gPvtPGNANX3jBgQlNbdAoGB
+        oJx6Ni2ukTwVFRWufEgybjtwNLMJUH1ZdsoK5yE5PGqT4lcuGThqbGx0ddza2urwappvBKi+HwgOHl+c
+        N4lfcM5McUZd/73GCYA+6vuhGBbs8S1fNji7PyKjqWdmzow95wiO55zEU99zgoTzxTlGtl4hqdhzHB1d
+        epQNXQ/M/GMxKjhafbntcCDUiKuUGirGicVKAAGRjIFj9LwYE/zh8O2qxT8XVuCLpKQkV+/UOasByGlA
+        aC6ICZEmfL3nsQIJglvsPkGgchyj5AQqqPaLggpJF7469+x+US/49/KNOET39eT0os4954hMWIxt4NrE
+        /7td8aZ4RzwregV7HjbnnhEEms2hgZ5XC26vscKXUrtZIxBme0zcsrrd2CIi/gBq2/A8BdeJmwAAAABJ
+        RU5ErkJggg==
+</value>
+  </data>
   <metadata name="HeaderFlashFR.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -1279,9 +1305,6 @@
         cwBlAAAACAAMAAAAZgBhAGwAcwBlAAAACAAEAAAAMAAAAAs=
 </value>
   </data>
-  <metadata name="chkbxLangue.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <metadata name="FlashHeader.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -2276,7 +2299,6 @@
   <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>252, 23</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="GuiDosbox_ProgressBar1.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAlQAAABdCAYAAABjCPjIAAAAIGNIUk0AAIcbAACL/wABAPYAAIHuAAB6

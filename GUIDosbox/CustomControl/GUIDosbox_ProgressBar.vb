@@ -1,22 +1,25 @@
 ﻿' [--> GUIDosbox <--]
 ' Créé par : Nice-Life90
 ' http://www.guidosbox.com
-' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
 ' Tous droits réservés
 
 ' [--> Contenue du fichhier <-] 
-' Ce fichier est un control d'utilisateur personaliser
-' Il contient une bare de progression 
+' Ce fichier est un control d'utilisateur personalisé.
+' Il contient une bare de progression.
 
 Option Strict On
 Option Explicit On
 
-'Importation des dépendences
 Imports System.Drawing
 Imports System.IO
 Imports System.ComponentModel
 Imports System.Drawing.Color
 
+''' <summary>
+''' ProgressBar Personalicé.
+''' </summary>
+''' <remarks></remarks>
 Public Class GUIDosbox_ProgressBar
 
     Dim pgbWidth As Integer = 0

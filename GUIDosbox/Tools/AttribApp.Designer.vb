@@ -26,7 +26,6 @@ Partial Class AttribApp
         Me.optL = New System.Windows.Forms.CheckBox()
         Me.optD = New System.Windows.Forms.CheckBox()
         Me.optS = New System.Windows.Forms.CheckBox()
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.gbH = New GUIDosbox.GUIDosbox_Groupbox()
         Me.optHNull = New System.Windows.Forms.RadioButton()
@@ -106,18 +105,6 @@ Partial Class AttribApp
         Me.optS.TabIndex = 0
         Me.optS.Text = "/ S"
         Me.optS.UseVisualStyleBackColor = True
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(12, 66)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 24
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -625,7 +612,6 @@ Partial Class AttribApp
         Me.Controls.Add(Me.btnApply)
         Me.Controls.Add(Me.btnClear)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.ForeColor = System.Drawing.Color.White
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
@@ -669,7 +655,6 @@ Partial Class AttribApp
     Friend WithEvents optSNull As System.Windows.Forms.RadioButton
     Friend WithEvents optHNull As System.Windows.Forms.RadioButton
     Friend WithEvents optINull As System.Windows.Forms.RadioButton
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents btnClear As GUIDosbox.GUIDosbox_Button

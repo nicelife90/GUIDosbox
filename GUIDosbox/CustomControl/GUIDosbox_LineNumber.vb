@@ -1,6 +1,19 @@
-﻿Option Strict Off
+﻿' [--> GUIDosbox <--]
+' Créé par : nogChoco
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+' [--> Contenue du fichhier <-] 
+' Ce code est un controle personalisé.
+' Il permet d'être lié à un RichTextBox et affiche les numéro de ligne.
+
+Option Strict Off
+Option Explicit On
+
 <System.ComponentModel.DefaultProperty("ParentRichTextBox")> _
-Public Class GUIDosbox_LineNumber : Inherits System.Windows.Forms.Control
+Public Class GUIDosbox_LineNumber
+    Inherits System.Windows.Forms.Control
 
     Private Class LineNumberItem
         Friend LineNumber As Integer

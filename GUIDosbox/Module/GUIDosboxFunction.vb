@@ -1,8 +1,10 @@
-﻿'Créé par : Nice-Life90
-'http://www.kobixxe.com
-'Copyright (C) 2010 - 2013 Kobixxe - Montréal 
-'Tous droits réservés
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
 
+' [--> Contenue du fichhier <-] 
 ' Ce Module contient toutes les fonctions et méthodes simple utilisées par le projet.
 
 Option Strict On
@@ -10,7 +12,6 @@ Option Explicit On
 
 Imports System.IO
 Imports System.Reflection
-Imports AxShockwaveFlashObjects
 Imports System.Collections.ObjectModel
 Imports System.Collections.Specialized
 
@@ -135,24 +136,6 @@ Module GUIDosboxFunction
                 CType(ctrl, TextBox).Text = String.Empty
             End If
         Next ctrl
-    End Sub
-
-    ''' <summary>
-    ''' Charge le Header (Flash Movie) à partir des ressources incorporées.
-    ''' </summary>
-    ''' <param name="header">Nom du composant AxShockwaveFlash</param>
-    ''' <param name="tools">Nom de la ressource (Flash Movie)</param>
-    Public Sub LoadHeader(ByVal header As AxShockwaveFlash, ByVal tools As String)
-        Try
-            Dim MoviePath As String = System.IO.Path.GetTempPath & "\" & tools & ".swf"
-            My.Computer.FileSystem.WriteAllBytes(MoviePath, CType(My.Resources.ResourceManager.GetObject(tools), Byte()), False)
-            header.LoadMovie(0, System.IO.Path.GetTempPath & "\" & tools & ".swf")
-            header.Play()
-        Catch ex As Exception
-            MsgBox("Une erreur c'est produite lors du chargement de cette fenêtre, " & ex.Message & vbCrLf & vbCrLf & _
-                   "Cette erreur n'empèche pas le bon fonctionnement de l'application.", _
-                   MsgBoxStyle.Information, My.Application.GetType.Name)
-        End Try
     End Sub
 
     ''' <summary>

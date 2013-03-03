@@ -1,4 +1,14 @@
-﻿Option Strict On
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
+
+' [--> Contenue du fichhier <-] 
+' Ce code est le controle principal de cette application
+' Il s'agit de la console intégré dans GUIDosbox.
+
+Option Strict On
 Option Explicit On
 
 Imports System.Text

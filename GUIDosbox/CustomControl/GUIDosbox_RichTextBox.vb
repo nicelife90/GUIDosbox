@@ -1,7 +1,7 @@
 ﻿' [--> GUIDosbox <--]
 ' Créé par : Nice-Life90
-' http://www.kobixxe.com
-' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
 ' Tous droits réservés
 
 ' [--> Contenue du fichhier <-] 
@@ -21,6 +21,10 @@ Imports System.Drawing.Printing
 Imports System.Runtime.InteropServices
 Imports System.Text.RegularExpressions
 
+''' <summary>
+''' RichTextBox personalisé avec options d'impression et de coloration syntaxique.
+''' </summary>
+''' <remarks></remarks>
 Public Class GUIDosbox_RichTextBox
     Inherits RichTextBox
 

@@ -1,8 +1,10 @@
-﻿'Créé par : Nice-Life90
-'http://www.kobixxe.com
-'Copyright (C) 2010 - 2013 Kobixxe - Montréal 
-'Tous droits réservés
+﻿' [--> GUIDosbox <--]
+' Créé par : Nice-Life90
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
+' Tous droits réservés
 
+' [--> Contenue du fichhier <-] 
 ' Ce Module contient toutes les fonctions et méthodes pour la gestion des privilèges.
 ' Certain Tools de ce projet doivent être exécuter avec des privilèges différent sur le système.
 

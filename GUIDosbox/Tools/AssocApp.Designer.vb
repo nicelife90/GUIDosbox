@@ -23,7 +23,6 @@ Partial Class AssocApp
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(AssocApp))
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.btnSend = New GUIDosbox.GUIDosbox_Button()
         Me.optAdvanceMode = New GUIDosbox.GUIDosbox_Checkbox()
@@ -44,19 +43,6 @@ Partial Class AssocApp
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(6, 487)
-        Me.chkbxLangue.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 18
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -87,7 +73,7 @@ Partial Class AssocApp
         'optAdvanceMode
         '
         Me.optAdvanceMode.AutoSize = True
-        Me.optAdvanceMode.BackColor = System.Drawing.Color.Transparent
+        Me.optAdvanceMode.BackColor = System.Drawing.Color.Black
         Me.optAdvanceMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.optAdvanceMode.Font = New System.Drawing.Font("Lucida Console", 8.0!)
         Me.optAdvanceMode.ForeColor = System.Drawing.Color.RoyalBlue
@@ -317,7 +303,6 @@ Partial Class AssocApp
         Me.Controls.Add(Me.txtExtFile)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Controls.Add(Me.ShapeContainer1)
         Me.DoubleBuffered = True
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
@@ -335,7 +320,6 @@ Partial Class AssocApp
         Me.PerformLayout()
 
     End Sub
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents txtExtFile As GUIDosbox.GUIDosbox_Textbox

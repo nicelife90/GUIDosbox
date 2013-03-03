@@ -26,7 +26,6 @@ Partial Class XcopyApp
         Me.FolderBrowserDialog1 = New System.Windows.Forms.FolderBrowserDialog()
         Me.OpenFileDialog1 = New System.Windows.Forms.OpenFileDialog()
         Me.FolderBrowserDialog2 = New System.Windows.Forms.FolderBrowserDialog()
-        Me.chkbxLangue = New System.Windows.Forms.CheckBox()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.lblSource = New GUIDosbox.GUIDosbox_Label()
         Me.btnFichier = New GUIDosbox.GUIDosbox_Button()
@@ -83,18 +82,6 @@ Partial Class XcopyApp
         'OpenFileDialog1
         '
         Me.OpenFileDialog1.FileName = "OpenFileDialog1"
-        '
-        'chkbxLangue
-        '
-        Me.chkbxLangue.AutoSize = True
-        Me.chkbxLangue.Checked = True
-        Me.chkbxLangue.CheckState = System.Windows.Forms.CheckState.Checked
-        Me.chkbxLangue.Location = New System.Drawing.Point(17, 478)
-        Me.chkbxLangue.Name = "chkbxLangue"
-        Me.chkbxLangue.Size = New System.Drawing.Size(15, 14)
-        Me.chkbxLangue.TabIndex = 49
-        Me.chkbxLangue.UseVisualStyleBackColor = True
-        Me.chkbxLangue.Visible = False
         '
         'flashHeader
         '
@@ -726,7 +713,7 @@ Partial Class XcopyApp
         Me.footer.Size = New System.Drawing.Size(721, 22)
         Me.footer.TabIndex = 74
         '
-        'XCopyApp
+        'XcopyApp
         '
         Me.AcceptButton = Me.btnSend
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 11.0!)
@@ -756,14 +743,13 @@ Partial Class XcopyApp
         Me.Controls.Add(Me.txtSource)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
-        Me.Controls.Add(Me.chkbxLangue)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.LightBlue
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
-        Me.Name = "XCopyApp"
+        Me.Name = "XcopyApp"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "GUI DosBox - XCOPY"
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).EndInit()
@@ -784,7 +770,6 @@ Partial Class XcopyApp
     Friend WithEvents FolderBrowserDialog1 As System.Windows.Forms.FolderBrowserDialog
     Friend WithEvents OpenFileDialog1 As System.Windows.Forms.OpenFileDialog
     Friend WithEvents FolderBrowserDialog2 As System.Windows.Forms.FolderBrowserDialog
-    Friend WithEvents chkbxLangue As System.Windows.Forms.CheckBox
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents txtSource As GUIDosbox.GUIDosbox_Textbox

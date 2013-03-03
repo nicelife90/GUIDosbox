@@ -1,7 +1,7 @@
 ﻿' [--> GUIDosbox <--]
 ' Créé par : Nice-Life90
-' http://www.kobixxe.com
-' Copyright (C) 2010 - 2013 Kobixxe - Montréal 
+' http://www.guidosbox.com
+' Copyright (C) 2010 - 2013 GUIDosbox - Montréal 
 ' Tous droits réservés
 
 ' [--> Contenue du fichhier <-] 
