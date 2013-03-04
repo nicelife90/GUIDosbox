@@ -23,18 +23,18 @@ Public Class CMDConsole
 
     Private Sub btnHelp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnHelp.Click
         'Affichage de l'aide.
-        txtInput.Text = myConsole.SendCommand("cmd /?")
+        txtCmdExec.Text = myConsole.SendCommand("cmd /?")
     End Sub
 
     Private Sub btnClear_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnClear.Click
         'Reset des textbox et de la console.
-        ClearTextBox(Me) 
+        ClearTextBox(Me)
     End Sub
 
     Private Sub btnSend_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnSend.Click
         'Envoi de la commande.
-        myConsole.SendCommand(txtInput.Text)
-        txtInput.Text = Nothing
+        myConsole.SendCommand(txtCmdExec.Text)
+        txtCmdExec.Text = Nothing
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -54,7 +54,20 @@ Public Class CMDConsole
     ''' Empêche la console d'être sélectionné.
     ''' </summary>
     Private Sub myConsole_Enter() Handles myConsole.Enter
-        ActiveControl = txtInput
+        ActiveControl = txtCmdExec
+    End Sub
+
+    ''' <summary>
+    ''' Permet d'afficher les commande précédente à l'aide des flèches.
+    ''' </summary>
+    ''' <param name="e">Retourne un Keycode</param>
+    ''' <remarks>La procédure de ce sub est dans GUIDosboxBatchFile </remarks>
+    Private Sub txtCmdExec_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCmdExec.KeyUp
+        'Affichage des commande exécuter à l'aide des flèches.
+        Dim Key As Keys = e.KeyCode
+        If Key = Keys.Up Or Key = Keys.Down Or Key = Keys.Enter Then
+            ShowLastCommand(txtCmdExec, Key)
+        End If
     End Sub
 
 End Class

@@ -38,6 +38,18 @@ Public Class TypeApp
         txtCmdExec.Text = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Permet d'afficher les commande précédente à l'aide des flèches.
+    ''' </summary>
+    ''' <param name="e">Retourne un Keycode</param>
+    ''' <remarks>La procédure de ce sub est dans GUIDosboxBatchFile </remarks>
+    Private Sub txtCmdExec_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCmdExec.KeyUp
+        'Affichage des commande exécuter à l'aide des flèches.
+        Dim Key As Keys = e.KeyCode
+        If Key = Keys.Up Or Key = Keys.Down Or Key = Keys.Enter Then
+            ShowLastCommand(txtCmdExec, Key)
+        End If
+    End Sub
 #End Region
 
     Private Sub TypeApp_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load

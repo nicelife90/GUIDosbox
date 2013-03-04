@@ -83,12 +83,19 @@ Public Class GUIDosbox_Console
         Else
             'Conversion de la chaine de caractères --> Support des accents
             Dim buffer As Byte() = Encoding.GetEncoding(850).GetBytes(myCommand)
-            'Envoi de la commande
+
+            'Envoi de la commande à la console
             myConsole.StandardInput.BaseStream.Write(buffer, 0, buffer.Length)
             myConsole.StandardInput.WriteLine()
             myConsole.StandardInput.Flush()
+
             'Écriture de la commande dans le batch file.
-            WriteBatch(myCommand)
+            'Si la commande n'est pas vide.
+            If myCommand <> Nothing Then
+                WriteBatch(myCommand)
+            End If
+
+            'Retour de la commande
             Return myCommand
         End If
     End Function
@@ -143,4 +150,5 @@ Public Class GUIDosbox_Console
             MsgBox("L'erreur suivante c'est produite, " & ex.Message, MsgBoxStyle.Exclamation)
         End Try
     End Sub
+
 End Class

@@ -26,8 +26,16 @@ Module GUIDosboxBatchFile
     ''' <summary>
     ''' Sauvegarde l'index de la commande à afficher lors de l'appuis sur les flèches.
     ''' </summary>
-    ''' <remarks>Cette Variable sert a la proc/dure ShowLastCommand.</remarks>
+    ''' <remarks>Cette Variable sert a la procédure ShowLastCommand.</remarks>
     Public CommandIndex As Integer = 0
+
+    ''' <summary>
+    ''' Sauvegarde l'index maximum de la ligne à afficher
+    ''' Permet de ne pas retourner plus haut que le nombre de ligne dans le fichier
+    ''' ce qui entrainerais une erreur. 
+    ''' </summary>
+    ''' <remarks></remarks>
+    Public CommandMaxIndex As Integer
 
     ''' <summary>
     ''' Prépare un fichier temporaire pour stocker les commandes exéctué par les utilitaires. 
@@ -62,12 +70,13 @@ Module GUIDosboxBatchFile
     End Sub
 
     ''' <summary>
-    ''' Affiche la derniere commande exécuter lorsque la flèche vers le haut est apuyer.
+    ''' Affiche les commande éxécuter quand une flèche est appuyé sur le clavié.
     ''' </summary>
-    ''' <param name="Textbox">Textbox dans la quel afficher la commande.</param>
-    Public Sub ShowLastCommand(ByVal Textbox As GUIDosbox_Textbox)
+    ''' <param name="Textbox">Le textbox dans le quel afficher la commande</param>
+    ''' <param name="Key">Le code de la touche appuyer</param>
+    Public Sub ShowLastCommand(ByVal Textbox As GUIDosbox_Textbox, ByVal Key As Keys)
 
-        'Reset du textbox
+        'On efface le textbox
         Textbox.Text = Nothing
 
         'Lecture du fichier et création d'un tableau
@@ -79,15 +88,47 @@ Module GUIDosboxBatchFile
             lineArray.Add(lines(x))
         Next
 
+        'Calcul du nombre de ligne maximum et affectation de la valeur
+        CommandMaxIndex = lines.Count - 13 '--> -13 pour ne pas afficher les 13 premières lignes 
+
+        'Si la flèche du haut
+        If Key = Keys.Up Then
+            If CommandMaxIndex > CommandIndex Then
+                CommandIndex += 1
+            End If
+        End If
+
+        'Si la flèche du bas
+        If Key = Keys.Down Then
+            If CommandIndex > 0 Then
+                CommandIndex -= 1
+            End If
+        End If
+
+        'Si Enter
+        If Key = Keys.Enter Then
+            CommandIndex = 0
+        End If
+
         'Sélection de la ligne à afficher.
-        Dim lineToShow As Integer
-        lineToShow = lineArray.Count - CommandIndex
+        Dim lineToShow As Integer = lineArray.Count - CommandIndex
 
         'Affichage de la ligne.
         If CommandIndex > 0 Then
             Textbox.Text = lineArray.Item(lineToShow).ToString
         End If
+    End Sub
 
+    ''' <summary>
+    ''' Effecte la valeur de l'index maximum à la variable CommandMaxIndex 
+    ''' Ce sub compte le nombre de ligne dans le fichier batch et enleve douze au total de ligne
+    ''' pour empêcher d'afficher les 12 première ligne du fichier qui sont des commentaire.
+    ''' </summary>
+    Public Sub SetMaxIndex()
+        'Calcul du nombre de ligne maximum
+        Dim lines() As String = File.ReadAllLines(TempBatch)
+        'Afectation de la valeur.
+        CommandMaxIndex = lines.Count - 13
     End Sub
 
     ''' <summary>

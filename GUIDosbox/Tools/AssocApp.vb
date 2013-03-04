@@ -11,7 +11,6 @@ Public Class AssocApp
 
 #Region "Mode avancé"
 
-
     'Variable pour le mode avancé.
     Private AdvanceMode As Boolean = False
 
@@ -41,6 +40,18 @@ Public Class AssocApp
         txtCmdExec.Text = Nothing
     End Sub
 
+    ''' <summary>
+    ''' Permet d'afficher les commande précédente à l'aide des flèches.
+    ''' </summary>
+    ''' <param name="e">Retourne un Keycode</param>
+    ''' <remarks>La procédure de ce sub est dans GUIDosboxBatchFile </remarks>
+    Private Sub txtCmdExec_KeyUp(sender As Object, e As KeyEventArgs) Handles txtCmdExec.KeyUp
+        'Affichage des commande exécuter à l'aide des flèches.
+        Dim Key As Keys = e.KeyCode
+        If Key = Keys.Up Or Key = Keys.Down Or Key = Keys.Enter Then
+            ShowLastCommand(txtCmdExec, Key)
+        End If
+    End Sub
 #End Region
 
     Private Sub AssocApp_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -84,7 +95,6 @@ Public Class AssocApp
         'Envoi de la commande
         txtCmdExec.Text = myConsole.SendCommand(App + Arguments)
 
-
     End Sub
 
     Private Sub btnBack_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnBack.Click
@@ -120,4 +130,5 @@ Public Class AssocApp
             ActiveControl = btnApply
         End If
     End Sub
+
 End Class

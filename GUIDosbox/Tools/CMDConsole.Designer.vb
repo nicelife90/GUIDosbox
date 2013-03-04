@@ -31,7 +31,7 @@ Partial Class CMDConsole
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
-        Me.txtInput = New GUIDosbox.GUIDosbox_Textbox()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -133,16 +133,16 @@ Partial Class CMDConsole
         Me.myConsole.Size = New System.Drawing.Size(865, 412)
         Me.myConsole.TabIndex = 9
         '
-        'txtInput
+        'txtCmdExec
         '
-        Me.txtInput.BackColor = System.Drawing.Color.Black
-        Me.txtInput.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.txtInput.Font = New System.Drawing.Font("Lucida Console", 8.0!)
-        Me.txtInput.ForeColor = System.Drawing.Color.LightBlue
-        Me.txtInput.Location = New System.Drawing.Point(153, 460)
-        Me.txtInput.Name = "txtInput"
-        Me.txtInput.Size = New System.Drawing.Size(723, 18)
-        Me.txtInput.TabIndex = 12
+        Me.txtCmdExec.BackColor = System.Drawing.Color.Black
+        Me.txtCmdExec.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.txtCmdExec.Font = New System.Drawing.Font("Lucida Console", 8.0!)
+        Me.txtCmdExec.ForeColor = System.Drawing.Color.LightBlue
+        Me.txtCmdExec.Location = New System.Drawing.Point(153, 460)
+        Me.txtCmdExec.Name = "txtCmdExec"
+        Me.txtCmdExec.Size = New System.Drawing.Size(723, 18)
+        Me.txtCmdExec.TabIndex = 12
         '
         'CMDConsole
         '
@@ -152,7 +152,7 @@ Partial Class CMDConsole
         Me.BackColor = System.Drawing.SystemColors.WindowText
         Me.ClientSize = New System.Drawing.Size(883, 536)
         Me.ControlBox = False
-        Me.Controls.Add(Me.txtInput)
+        Me.Controls.Add(Me.txtCmdExec)
         Me.Controls.Add(Me.footer)
         Me.Controls.Add(Me.flashHeader)
         Me.Controls.Add(Me.myConsole)
@@ -183,5 +183,5 @@ Partial Class CMDConsole
     Friend WithEvents myConsole As GUIDosbox.GUIDosbox_Console
     Friend WithEvents flashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents footer As GUIDosbox.GUIDosbox_StatusStrip
-    Friend WithEvents txtInput As GUIDosbox.GUIDosbox_Textbox
+    Friend WithEvents txtCmdExec As GUIDosbox.GUIDosbox_Textbox
 End Class
