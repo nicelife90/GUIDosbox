@@ -100,21 +100,21 @@ Partial Class frmBatEdit
         Me.FichierToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
         Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnregistrerToolStripMenuItem, Me.EnregistrerSousToolStripMenuItem, Me.ToolStripSeparator4, Me.MiseEnPageToolStripMenuItem, Me.AperçuAvantImpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem, Me.ToolStripSeparator5, Me.QuiterToolStripMenuItem})
         Me.FichierToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
-        Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
         Me.FichierToolStripMenuItem.Size = New System.Drawing.Size(56, 24)
         Me.FichierToolStripMenuItem.Text = "Fichier"
         '
         'EnregistrerToolStripMenuItem
         '
-        Me.EnregistrerToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.EnregistrerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.EnregistrerToolStripMenuItem.Name = "EnregistrerToolStripMenuItem"
         Me.EnregistrerToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.EnregistrerToolStripMenuItem.Text = "Enregistrer"
         '
         'EnregistrerSousToolStripMenuItem
         '
-        Me.EnregistrerSousToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.EnregistrerSousToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.EnregistrerSousToolStripMenuItem.Name = "EnregistrerSousToolStripMenuItem"
         Me.EnregistrerSousToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.EnregistrerSousToolStripMenuItem.Text = "Enregistrer sous..."
@@ -126,21 +126,21 @@ Partial Class frmBatEdit
         '
         'MiseEnPageToolStripMenuItem
         '
-        Me.MiseEnPageToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.MiseEnPageToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.MiseEnPageToolStripMenuItem.Name = "MiseEnPageToolStripMenuItem"
         Me.MiseEnPageToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.MiseEnPageToolStripMenuItem.Text = "Mise en page"
         '
         'AperçuAvantImpressionToolStripMenuItem
         '
-        Me.AperçuAvantImpressionToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.AperçuAvantImpressionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.AperçuAvantImpressionToolStripMenuItem.Name = "AperçuAvantImpressionToolStripMenuItem"
         Me.AperçuAvantImpressionToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.AperçuAvantImpressionToolStripMenuItem.Text = "Aperçu avant impression"
         '
         'ImprimerToolStripMenuItem
         '
-        Me.ImprimerToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.ImprimerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.ImprimerToolStripMenuItem.Name = "ImprimerToolStripMenuItem"
         Me.ImprimerToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.ImprimerToolStripMenuItem.Text = "Imprimer"
@@ -153,7 +153,7 @@ Partial Class frmBatEdit
         'QuiterToolStripMenuItem
         '
         Me.QuiterToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.QuiterToolStripMenuItem.Name = "QuiterToolStripMenuItem"
         Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.QuiterToolStripMenuItem.Text = "Quitter"
@@ -162,46 +162,46 @@ Partial Class frmBatEdit
         '
         Me.EditionToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CouperToolStripMenuItem1, Me.CopierToolStripMenuItem1, Me.CollerToolStripMenuItem1})
         Me.EditionToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.EditionToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.EditionToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.EditionToolStripMenuItem.Name = "EditionToolStripMenuItem"
         Me.EditionToolStripMenuItem.Size = New System.Drawing.Size(57, 24)
         Me.EditionToolStripMenuItem.Text = "Edition"
         '
         'CouperToolStripMenuItem1
         '
-        Me.CouperToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CouperToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CouperToolStripMenuItem1.Name = "CouperToolStripMenuItem1"
-        Me.CouperToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
+        Me.CouperToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.CouperToolStripMenuItem1.Text = "Couper"
         '
         'CopierToolStripMenuItem1
         '
-        Me.CopierToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CopierToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CopierToolStripMenuItem1.Name = "CopierToolStripMenuItem1"
-        Me.CopierToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
+        Me.CopierToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.CopierToolStripMenuItem1.Text = "Copier"
         '
         'CollerToolStripMenuItem1
         '
-        Me.CollerToolStripMenuItem1.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CollerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CollerToolStripMenuItem1.Name = "CollerToolStripMenuItem1"
-        Me.CollerToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
+        Me.CollerToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
         Me.CollerToolStripMenuItem1.Text = "Coller"
         '
         'OutilsToolStripMenuItem
         '
         Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompillerToolStripMenuItem})
         Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
         Me.OutilsToolStripMenuItem.Size = New System.Drawing.Size(51, 24)
         Me.OutilsToolStripMenuItem.Text = "Outils"
         '
         'CompillerToolStripMenuItem
         '
-        Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CompillerToolStripMenuItem.Name = "CompillerToolStripMenuItem"
-        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CompillerToolStripMenuItem.Text = ".bat To .exe"
         '
         'RightClickMenu

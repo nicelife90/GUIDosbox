@@ -61,16 +61,6 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property anglais() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("anglais", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Recherche une ressource localisée de type System.Byte[].
         '''</summary>
         Friend ReadOnly Property assoc() As Byte()
@@ -270,7 +260,7 @@ Namespace My.Resources
         ''' &lt;!--TITRE ET TEXTE ACCOMPAGNATEUR --&gt;
         '''&lt;p align=&quot;justify&quot;&gt;Tout dabord bienvenue dans &lt;span class=&quot;highlight&quot;&gt;GUI-DOSBOX&lt;/span&gt;&lt;/p&gt;
         '''&lt;p align=&quot;center&quot;&gt;&lt;span class=&quot;highlight&quot;&gt;Ici, une mince description suivie de quelques petits conseils sur chaque application est disponible.&lt;/span&gt;&lt;/p&gt;
-        '''&lt;p align=&quot;justify&quot;&gt;&lt;span class=&quot;subtitle&quot;&gt;Pour le fonctionnement du programme , la [le reste de la chaîne a été tronqué]&quot;;.
+        '''&lt;p align=&quot;justify&quot;&gt;&lt;span class=&quot;subtitle&quot;&gt;Pour le fonctionnement du programme , la techniqu [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_1() As String
             Get
@@ -303,7 +293,7 @@ Namespace My.Resources
         '''  &lt;span class=&quot;subtitle&quot;&gt;Menu&lt;/span&gt;
         '''  &lt;p align=&quot;justify&quot;&gt;Sous l&apos;onglet &quot;Fichier&quot;, se trouve les options de langue, les langues disponibles sont le Français et l&apos;anglais. Toutes les applications lançables à l&apos;intérieur de GUIDosBox sont sous le volet &quot;Applications&quot;. Le volet &quot;Aide&quot; liste les applications et indique leur utilité.
         '''  &lt;span class=&quot;subtitle&quot;&gt;Applications&lt;/span&gt;
-        '''  &lt;p align= [le reste de la chaîne a été tronqué]&quot;;.
+        '''  &lt;p align=&quot;justify [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_2() As String
             Get
@@ -320,7 +310,7 @@ Namespace My.Resources
         '''  &lt;span class=&quot;subtitle&quot;&gt;Menus&lt;/span&gt;
         '''  &lt;p align=&quot;justify&quot;&gt;In the &quot;File&quot; menu, you may find the language options, available languages happen to be English or french at the momment. Every application launchable from GUIDosBox can be found in the &quot;Aplications&quot; menu. The &quot;Help&quot; menu lists evey application and their use.
         '''  &lt;span class=&quot;subtitle&quot;&gt;Applications&lt;/span&gt;
-        '''  &lt;p align=&quot;justify&quot;&gt;An [le reste de la chaîne a été tronqué]&quot;;.
+        '''  &lt;p align=&quot;justify&quot;&gt;An online  [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_20() As String
             Get
@@ -341,7 +331,8 @@ Namespace My.Resources
         '''      &lt;![CDATA[&lt;a href=&quot;http://www.fr.kobixxe.com/produits.php&quot; target=&quot;_parent&quot; class=&quot;subtitle&quot;&gt;kobixxe.com/produits&lt;/a&gt;
         '''&lt;p align=&quot;justify&quot;&gt; &lt;a href=&quot;http://www.kobixxe.com&quot; target=&quot;_parent&quot;&gt;Kobixxe Devlopers&lt;/a&gt; Est fier de présenter GUIDosBox,   &lt;/p&gt; 
         '''&lt;p align=&quot;right&quot;&gt; Copyright 2011&lt;/p&gt;
-        '''&lt;p align=&quot;right&quot;&gt; tout droits réser [le reste de la chaîne a été tronqué]&quot;;.
+        '''&lt;p align=&quot;right&quot;&gt; tout droits réservés&lt;/p&gt;]]&gt;
+        '''  [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_3() As String
             Get
@@ -362,7 +353,8 @@ Namespace My.Resources
         '''      &lt;![CDATA[&lt;a href=&quot;http://www.en.kobixxe.com/produits.php&quot; target=&quot;_parent&quot; class=&quot;subtitle&quot;&gt;kobixxe.com/produits&lt;/a&gt;
         '''&lt;p align=&quot;justify&quot;&gt; &lt;a href=&quot;http://www.kobixxe.com&quot; target=&quot;_parent&quot;&gt;Kobixxe Devlopers&lt;/a&gt; Is proud to present GUIDosBox,   &lt;/p&gt; 
         '''&lt;p align=&quot;right&quot;&gt; Copyright 2011&lt;/p&gt;
-        '''&lt;p align=&quot;right&quot;&gt; all rights reserved [le reste de la chaîne a été tronqué]&quot;;.
+        '''&lt;p align=&quot;right&quot;&gt; all rights reserved&lt;/p&gt;]]&gt;
+        '''     [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_30() As String
             Get
@@ -391,22 +383,22 @@ Namespace My.Resources
         End Property
         
         '''<summary>
-        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property quebec() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("quebec", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
-            End Get
-        End Property
-        
-        '''<summary>
         '''  Recherche une ressource localisée de type System.Byte[].
         '''</summary>
         Friend ReadOnly Property rd() As Byte()
             Get
                 Dim obj As Object = ResourceManager.GetObject("rd", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property save() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("save", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -445,7 +437,9 @@ Namespace My.Resources
         '''
         '''.note {
         '''	font-family: Arial, Helvetica, sans-serif;
-        '''	font-size: 12p [le reste de la chaîne a été tronqué]&quot;;.
+        '''	font-size: 12px;
+        '''	color: #9999FF;
+        '''}.
         '''</summary>
         Friend ReadOnly Property style() As String
             Get
@@ -488,7 +482,9 @@ Namespace My.Resources
         '''
         '''.note {
         '''	font-family: Arial, Helvetica, sans-serif;
-        '''	font-size: 12p [le reste de la chaîne a été tronqué]&quot;;.
+        '''	font-size: 12px;
+        '''	color: #9999FF;
+        '''}.
         '''</summary>
         Friend ReadOnly Property style2() As String
             Get

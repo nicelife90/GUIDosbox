@@ -49,9 +49,8 @@ Partial Class CP
         Me.OutilsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BatToexeToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ÉditerBatchFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.EnregistrerSousToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HelpToolStripMenu = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FrançaisToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.EnglishToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.HeaderFlashFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashCPFR = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.FlashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
@@ -257,7 +256,7 @@ Partial Class CP
         '
         'OutilsToolStripMenuItem
         '
-        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem, Me.ÉditerBatchFileToolStripMenuItem})
+        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BatToexeToolStripMenuItem, Me.ÉditerBatchFileToolStripMenuItem, Me.EnregistrerSousToolStripMenuItem})
         Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
@@ -271,7 +270,7 @@ Partial Class CP
         Me.BatToexeToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.BatToexeToolStripMenuItem.Name = "BatToexeToolStripMenuItem"
         Me.BatToexeToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
-        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(217, 38)
+        Me.BatToexeToolStripMenuItem.Size = New System.Drawing.Size(311, 38)
         Me.BatToexeToolStripMenuItem.Text = ".bat To .exe"
         '
         'ÉditerBatchFileToolStripMenuItem
@@ -281,8 +280,19 @@ Partial Class CP
         Me.ÉditerBatchFileToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
         Me.ÉditerBatchFileToolStripMenuItem.Name = "ÉditerBatchFileToolStripMenuItem"
         Me.ÉditerBatchFileToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.E), System.Windows.Forms.Keys)
-        Me.ÉditerBatchFileToolStripMenuItem.Size = New System.Drawing.Size(217, 38)
+        Me.ÉditerBatchFileToolStripMenuItem.Size = New System.Drawing.Size(311, 38)
         Me.ÉditerBatchFileToolStripMenuItem.Text = "Éditer Batch File"
+        '
+        'EnregistrerSousToolStripMenuItem
+        '
+        Me.EnregistrerSousToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.EnregistrerSousToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.save
+        Me.EnregistrerSousToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
+        Me.EnregistrerSousToolStripMenuItem.Name = "EnregistrerSousToolStripMenuItem"
+        Me.EnregistrerSousToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.Shift) _
+            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.EnregistrerSousToolStripMenuItem.Size = New System.Drawing.Size(311, 38)
+        Me.EnregistrerSousToolStripMenuItem.Text = "Enregistrer Batch File sous..."
         '
         'HelpToolStripMenu
         '
@@ -293,24 +303,6 @@ Partial Class CP
         Me.HelpToolStripMenu.ShortcutKeys = System.Windows.Forms.Keys.F5
         Me.HelpToolStripMenu.Size = New System.Drawing.Size(44, 24)
         Me.HelpToolStripMenu.Text = "Aide"
-        '
-        'FrançaisToolStripMenuItem
-        '
-        Me.FrançaisToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.FrançaisToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.quebec
-        Me.FrançaisToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.FrançaisToolStripMenuItem.Name = "FrançaisToolStripMenuItem"
-        Me.FrançaisToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
-        Me.FrançaisToolStripMenuItem.Text = "Français"
-        '
-        'EnglishToolStripMenuItem
-        '
-        Me.EnglishToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.EnglishToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.anglais
-        Me.EnglishToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None
-        Me.EnglishToolStripMenuItem.Name = "EnglishToolStripMenuItem"
-        Me.EnglishToolStripMenuItem.Size = New System.Drawing.Size(205, 38)
-        Me.EnglishToolStripMenuItem.Text = "Anglais"
         '
         'HeaderFlashFR
         '
@@ -440,8 +432,6 @@ Partial Class CP
     Friend WithEvents QuiterToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents HeaderFlashFR As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents FlashCPFR As AxShockwaveFlashObjects.AxShockwaveFlash
-    Friend WithEvents FrançaisToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents EnglishToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents FlashHeader As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents FlashCPEN As AxShockwaveFlashObjects.AxShockwaveFlash
     Friend WithEvents ToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
@@ -471,5 +461,6 @@ Partial Class CP
     Friend WithEvents GuiDosbox_ProgressBar1 As GUIDosbox.GUIDosbox_ProgressBar
     Friend WithEvents MiseÀJourToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents EnregistrerSousToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 
 End Class

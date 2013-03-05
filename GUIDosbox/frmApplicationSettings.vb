@@ -91,11 +91,17 @@ Public Class frmApplicationSettings
                 optAutoUpdate.Checked = False
             End If
 
+            If .WarningState Then
+                optSaveWarning.Checked = True
+            Else
+                optSaveWarning.Checked = False
+            End If
+
             'Affectation des valeurs actuelle à la structure paramGeneral
             'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
             tmpGeneral.ColorationState = .ColororationState
             tmpGeneral.UpdateState = .UpdateState
-
+            tmpGeneral.WarningState = .WarningState
         End With
 
         ' =================================================================== '
@@ -216,6 +222,14 @@ Public Class frmApplicationSettings
             tmpGeneral.UpdateState = True
         Else
             tmpGeneral.UpdateState = False
+        End If
+    End Sub
+
+    Private Sub optSaveWarning_CheckedChanged(sender As Object, e As EventArgs) Handles optSaveWarning.CheckedChanged
+        If optSaveWarning.Checked Then
+            tmpGeneral.WarningState = True
+        Else
+            tmpGeneral.WarningState = False
         End If
     End Sub
 

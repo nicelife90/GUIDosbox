@@ -248,6 +248,11 @@ Public Class frmBatEdit
         'sauvegarde du fichier
         Try
             If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                'Supression de l'anciene version du fichier si existe
+                If File.Exists(opFD.FileName) Then
+                    File.Delete(opFD.FileName)
+                End If
+                'Création du nouveau fichier.
                 txtEditor.SaveFile(opFD.FileName, RichTextBoxStreamType.PlainText)
             End If
         Catch ex As Exception

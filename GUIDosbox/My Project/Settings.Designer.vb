@@ -293,6 +293,18 @@ Namespace My
                 Me("UpdateState") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property WarningState() As Boolean
+            Get
+                Return CType(Me("WarningState"),Boolean)
+            End Get
+            Set
+                Me("WarningState") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

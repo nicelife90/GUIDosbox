@@ -64,6 +64,7 @@ Partial Class frmApplicationSettings
         Me.Label1 = New System.Windows.Forms.Label()
         Me.pbEditorColor = New System.Windows.Forms.PictureBox()
         Me.cd = New System.Windows.Forms.ColorDialog()
+        Me.optSaveWarning = New System.Windows.Forms.CheckBox()
         Me.GuiDosbox_Label8 = New GUIDosbox.GUIDosbox_Label()
         Me.lblKeywords = New GUIDosbox.GUIDosbox_Label()
         Me.GuiDosbox_Label9 = New GUIDosbox.GUIDosbox_Label()
@@ -117,12 +118,13 @@ Partial Class frmApplicationSettings
         '
         'gbParametres
         '
+        Me.gbParametres.Controls.Add(Me.optSaveWarning)
         Me.gbParametres.Controls.Add(Me.optAutoUpdate)
         Me.gbParametres.Controls.Add(Me.optColorationOnOff)
         Me.gbParametres.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.gbParametres.Location = New System.Drawing.Point(12, 9)
         Me.gbParametres.Name = "gbParametres"
-        Me.gbParametres.Size = New System.Drawing.Size(438, 80)
+        Me.gbParametres.Size = New System.Drawing.Size(438, 106)
         Me.gbParametres.TabIndex = 5
         Me.gbParametres.TabStop = False
         Me.gbParametres.Text = " Paramètres Général "
@@ -153,7 +155,7 @@ Partial Class frmApplicationSettings
         '
         Me.btnGenDefault.Font = New System.Drawing.Font("Georgia", 8.25!)
         Me.btnGenDefault.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.btnGenDefault.Location = New System.Drawing.Point(332, 95)
+        Me.btnGenDefault.Location = New System.Drawing.Point(332, 121)
         Me.btnGenDefault.Name = "btnGenDefault"
         Me.btnGenDefault.Size = New System.Drawing.Size(118, 23)
         Me.btnGenDefault.TabIndex = 4
@@ -574,6 +576,17 @@ Partial Class frmApplicationSettings
         '
         Me.cd.FullOpen = True
         '
+        'optSaveWarning
+        '
+        Me.optSaveWarning.AutoSize = True
+        Me.optSaveWarning.Font = New System.Drawing.Font("Georgia", 8.25!)
+        Me.optSaveWarning.Location = New System.Drawing.Point(12, 70)
+        Me.optSaveWarning.Name = "optSaveWarning"
+        Me.optSaveWarning.Size = New System.Drawing.Size(256, 18)
+        Me.optSaveWarning.TabIndex = 9
+        Me.optSaveWarning.Text = "Message d'avertissement à la fermeture "
+        Me.optSaveWarning.UseVisualStyleBackColor = True
+        '
         'GuiDosbox_Label8
         '
         Me.GuiDosbox_Label8.AutoSize = True
@@ -862,4 +875,5 @@ Partial Class frmApplicationSettings
     Friend WithEvents pbEditorColor As System.Windows.Forms.PictureBox
     Friend WithEvents fpEditorFont As GUIDB.Forms.Controls.FontPicker
     Friend WithEvents Label2 As System.Windows.Forms.Label
+    Friend WithEvents optSaveWarning As System.Windows.Forms.CheckBox
 End Class

@@ -555,8 +555,7 @@
     <EmbeddedResource Include="Resources\Wrench.png" />
     <EmbeddedResource Include="Resources\Writing.png" />
     <EmbeddedResource Include="Resources\Xion.png" />
-    <EmbeddedResource Include="Resources\anglais.png" />
-    <EmbeddedResource Include="Resources\quebec.png" />
+    <EmbeddedResource Include="Resources\save.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

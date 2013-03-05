@@ -14,7 +14,7 @@ Imports System.IO
 
 Public Class CP
 
-#Region "Barre de menu"
+#Region " Barre de menu "
 
     Private Sub AssocToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AssocToolStripMenuItem.Click
         'AssocApp (1)
@@ -131,6 +131,33 @@ Public Class CP
         End Try
     End Sub
 
+    Private Sub EnregistrerSousToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnregistrerSousToolStripMenuItem.Click
+        'Affichage de la boite d'enregistrement et enregistrement du fichier.
+        Dim opFD As New SaveFileDialog
+        opFD.AddExtension = True
+        opFD.DefaultExt = ".bat"
+        opFD.FileName = "GUIDosboxHistory"
+        opFD.Filter = "Fichiers de commandes (*.bat)|*.bat|Tous les fichiers (*.*)|*.*"
+        opFD.FilterIndex = 0
+        opFD.OverwritePrompt = True
+
+        opFD.Title = "Enregistrer Sous..."
+        'sauvegarde du fichier
+        Try
+            If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                'Spression de l'ancienne version du fichier si existe
+                If File.Exists(opFD.FileName) Then
+                    File.Delete(opFD.FileName)
+                End If
+                'Création du nouveau fichier.
+                File.Copy(TempBatch, opFD.FileName)
+            End If
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'enregistrement, " & ex.Message, _
+                  MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        End Try
+    End Sub
+
     Private Sub QuiterToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles QuiterToolStripMenuItem.Click
         'Quiter
         Me.Close()
@@ -138,7 +165,8 @@ Public Class CP
 
 #End Region
 
-#Region "Parramètres de démarrage"
+#Region " Parramètres de démarrage "
+
     Private Sub CP_Shown(sender As Object, e As EventArgs) Handles Me.Shown
 
         'Permet d'accepter les arguments de démarrage
@@ -153,9 +181,8 @@ Public Class CP
                     MsgBox("salut")
 
             End Select
-          
-        End If
 
+        End If
 
         'Ouverture du form (tools) après avoir été lancé en mode utilisateur.
         Try
@@ -171,6 +198,22 @@ Public Class CP
         End Try
 
     End Sub
+#End Region
+
+#Region " Parramètres de fermeture "
+
+    Private Sub CP_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        'Message avertissement - Enregistrer
+        If My.Settings.WarningState = True Then
+            If MsgBox("Vous êtes sur le point de fermer GUIDosbox." & vbCrLf & _
+                  "Voulez-vous enregistrer le Batch File créé lors de cette utilisation de GUIDosbox.", _
+               MsgBoxStyle.YesNo, "GUI Dosbox - Message") = MsgBoxResult.Yes Then
+                'Appel de EnregistrerSousToolStripMenuItem
+                Call EnregistrerSousToolStripMenuItem_Click(sender, e)
+            End If
+        End If
+    End Sub
+
 #End Region
 
     Private Sub CP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -201,7 +244,7 @@ Public Class CP
             MsgBox("Impossible de vérifier la mise à jour, " & vbCrLf & vbCrLf & ex.Message, _
                 MsgBoxStyle.Information, "GUI Dosbox - Avertissement")
         End Try
-        
+
         'Préparation de l'interface d'utilisateur
         Try
             'Création du Batch File

@@ -52,6 +52,7 @@ Module GUIDosboxManageSettings
     Public Structure ParamGeneral
         Public ColorationState As Boolean
         Public UpdateState As Boolean
+        Public WarningState As Boolean
     End Structure
 
     ''' <summary>
@@ -65,6 +66,7 @@ Module GUIDosboxManageSettings
                 With My.Settings
                     .ColororationState = True
                     .UpdateState = True
+                    .WarningState = True
                 End With
                 My.Settings.Save()
                 My.Settings.Reload()
@@ -103,6 +105,7 @@ Module GUIDosboxManageSettings
                 With My.Settings
                     .ColororationState = True
                     .UpdateState = True
+                    .WarningState = True
                     .ArobasColor = Color.DeepPink
                     .AnchorColor = Color.Brown
                     .CommandsColor = Color.DeepSkyBlue
@@ -142,6 +145,7 @@ Module GUIDosboxManageSettings
                 With My.Settings
                     .ColororationState = newSettings.ColorationState
                     .UpdateState = newSettings.UpdateState
+                    .WarningState = newSettings.WarningState
                 End With
 
                 'Enregistrement des paramètres

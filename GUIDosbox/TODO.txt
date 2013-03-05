@@ -10,12 +10,10 @@
 
 
 TODO LIST :
-1 --> Ajouter au CP --> Sauvegarder le batch sous... , 
-2 --> Ajouter Prompt au cp --> Enregistrer le batch avant de quitter et paramètres dans le paneau.
-3 --> Traduire GUIDosbox, Créé un système de changement de langue.
-4 --> Ajouter function flêche par en haut dans txtbox (voir les ancienne commande)
-5 --> Tache planifier pour lancer sans prompt
-6 --> Terminer la documentation dans guidosbox.
+1 --> Traduire GUIDosbox, Créé un système de changement de langue.
+2 --> Tache planifier pour lancer sans prompt
+3 --> Terminer la documentation dans guidosbox.
+4 --> Ajouter invisble au compilateur
 
 
 Dim task As New System.Diagnostics.ProcessStartInfo("schtasks /create /tn ""Test2"" /tr C:\WINDOWS\system32\calc.exe /sc daily /st 15:14:00 /ru ""System""")
