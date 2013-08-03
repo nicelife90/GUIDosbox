@@ -49,10 +49,10 @@ Module GUIDosboxBatchFile
             'Création du nouveau fichier temporaire
             CreateBatch()
             'Écriture des valeurs par défault dans le ficher
-            WriteBatch("REM -- GUIDosbox --")
+            WriteBatch("REM [--> GUIDosbox <--]")
             WriteBatch("REM Créé par : Nice-Life90")
-            WriteBatch("REM http://www.kobixxe.com")
-            WriteBatch("REM Copyright (C) 2010 - 2013 Kobixxe - Montréal")
+            WriteBatch("REM http://www.guidosbox.com")
+            WriteBatch("REM Copyright (C) 2010 - 2013 GUI Dosbox - Montréal")
             WriteBatch("REM Tous droits réservés")
             LineSpace(1)
             WriteBatch("REM Ce fichier à été automatiquement créé par GUIDosbox.")

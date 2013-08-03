@@ -150,5 +150,4 @@ Public Class GUIDosbox_Console
             MsgBox("L'erreur suivante c'est produite, " & ex.Message, MsgBoxStyle.Exclamation)
         End Try
     End Sub
-
 End Class

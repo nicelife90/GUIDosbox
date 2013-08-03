@@ -14,7 +14,8 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>C:\Users\Yanick\Desktop\</PublishUrl>
     <Install>true</Install>
@@ -96,8 +97,26 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Fireball.CodeEditor">
+      <HintPath>DLL\Fireball.CodeEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fireball.CodeEditor.SyntaxFiles">
+      <HintPath>DLL\Fireball.CodeEditor.SyntaxFiles.dll</HintPath>
+    </Reference>
+    <Reference Include="Fireball.Core">
+      <HintPath>DLL\Fireball.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Fireball.SyntaxDocument">
+      <HintPath>DLL\Fireball.SyntaxDocument.dll</HintPath>
+    </Reference>
+    <Reference Include="Fireball.Win32">
+      <HintPath>DLL\Fireball.Win32.dll</HintPath>
+    </Reference>
+    <Reference Include="Fireball.Windows.Forms">
+      <HintPath>DLL\Fireball.Windows.Forms.dll</HintPath>
+    </Reference>
     <Reference Include="GUIDB.Picker">
-      <HintPath>.\GUIDB.Picker.dll</HintPath>
+      <HintPath>DLL\GUIDB.Picker.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -121,17 +140,11 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomControl\GUIDosbox_LineNumber.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="CustomControl\GUIDosbox_ProgressBar.Designer.vb">
       <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_ProgressBar.vb">
       <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_RichTextBox.vb">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmApplicationSettings.Designer.vb">
       <DependentUpon>frmApplicationSettings.vb</DependentUpon>
@@ -145,12 +158,6 @@
     <Compile Include="frmBatEdit.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmBatEditLoader.Designer.vb">
-      <DependentUpon>frmBatEditLoader.vb</DependentUpon>
-    </Compile>
-    <Compile Include="frmBatEditLoader.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="frmBatToExe.Designer.vb">
       <DependentUpon>frmBatToExe.vb</DependentUpon>
     </Compile>
@@ -161,7 +168,6 @@
     <Compile Include="Module\GUIDosboxFlashLoader.vb" />
     <Compile Include="Module\GUIDosboxManageSettings.vb" />
     <Compile Include="Module\GUIDosboxPrivileges.vb" />
-    <Compile Include="Module\GUIDosboxColorationSyntaxique.vb" />
     <Compile Include="Module\GUIDosboxUpdater.vb" />
     <Compile Include="Tools\AssocApp.Designer.vb">
       <DependentUpon>AssocApp.vb</DependentUpon>
@@ -331,17 +337,11 @@
     <EmbeddedResource Include="CustomControl\GUIDosbox_ProgressBar.resx">
       <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_RichTextBox.resx">
-      <DependentUpon>GUIDosbox_RichTextBox.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="frmApplicationSettings.resx">
       <DependentUpon>frmApplicationSettings.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBatEdit.resx">
       <DependentUpon>frmBatEdit.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="frmBatEditLoader.resx">
-      <DependentUpon>frmBatEditLoader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmBatToExe.resx">
       <DependentUpon>frmBatToExe.vb</DependentUpon>
@@ -460,9 +460,13 @@
     <EmbeddedResource Include="Resources\page_30.xml" />
     <EmbeddedResource Include="Resources\page_20.xml" />
     <EmbeddedResource Include="Resources\page_10.xml" />
-    <EmbeddedResource Include="Resources\page_3.xml" />
+    <EmbeddedResource Include="Resources\page_3.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\page_2.xml" />
-    <EmbeddedResource Include="Resources\page_1.xml" />
+    <EmbeddedResource Include="Resources\page_1.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resources\Menu_GuiDosBox.swf" />
     <EmbeddedResource Include="Resources\Menu_EN_GuiDosBox.swf" />
     <EmbeddedResource Include="Resources\headerGUIDOSBOX.swf" />
@@ -557,6 +561,9 @@
     <EmbeddedResource Include="Resources\Xion.png" />
     <EmbeddedResource Include="Resources\save.png" />
     <Content Include="TODO.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="DLL\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -24,9 +24,12 @@ Partial Class frmBatEdit
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBatEdit))
+        Dim LineMarginRender2 As Fireball.Windows.Forms.LineMarginRender = New Fireball.Windows.Forms.LineMarginRender()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OuvrirToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator7 = New System.Windows.Forms.ToolStripSeparator()
         Me.EnregistrerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnregistrerSousToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
@@ -42,7 +45,6 @@ Partial Class frmBatEdit
         Me.OutilsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompillerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RightClickMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.EnregistrerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnregistrerSousToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
@@ -55,14 +57,15 @@ Partial Class frmBatEdit
         Me.CollerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.QuiterToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.PageSetupDialog1 = New System.Windows.Forms.PageSetupDialog()
-        Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
-        Me.PrintDocument1 = New System.Drawing.Printing.PrintDocument()
-        Me.PrintPreviewDialog1 = New System.Windows.Forms.PrintPreviewDialog()
+        Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
+        Me.PrintDialog = New System.Windows.Forms.PrintDialog()
+        Me.PrintPreviewDialog = New System.Windows.Forms.PrintPreviewDialog()
         Me.PanelMain = New System.Windows.Forms.Panel()
-        Me.txtEditor = New GUIDosbox.GUIDosbox_RichTextBox()
-        Me.BackgroundWorker1 = New System.ComponentModel.BackgroundWorker()
-        Me.GuiDosbox_LineNumber1 = New GUIDosbox.GUIDosbox_LineNumber()
+        Me.txtEditor = New Fireball.Windows.Forms.CodeEditorControl()
+        Me.SyntaxDocument = New Fireball.Syntax.SyntaxDocument(Me.components)
+        Me.PageSetupDialog = New System.Windows.Forms.PageSetupDialog()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CompillerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClickMenu.SuspendLayout()
@@ -98,12 +101,24 @@ Partial Class frmBatEdit
         'FichierToolStripMenuItem
         '
         Me.FichierToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
-        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnregistrerToolStripMenuItem, Me.EnregistrerSousToolStripMenuItem, Me.ToolStripSeparator4, Me.MiseEnPageToolStripMenuItem, Me.AperçuAvantImpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem, Me.ToolStripSeparator5, Me.QuiterToolStripMenuItem})
+        Me.FichierToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OuvrirToolStripMenuItem, Me.ToolStripSeparator7, Me.EnregistrerToolStripMenuItem, Me.EnregistrerSousToolStripMenuItem, Me.ToolStripSeparator4, Me.MiseEnPageToolStripMenuItem, Me.AperçuAvantImpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem, Me.ToolStripSeparator5, Me.QuiterToolStripMenuItem})
         Me.FichierToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold)
         Me.FichierToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.FichierToolStripMenuItem.Name = "FichierToolStripMenuItem"
         Me.FichierToolStripMenuItem.Size = New System.Drawing.Size(56, 24)
         Me.FichierToolStripMenuItem.Text = "Fichier"
+        '
+        'OuvrirToolStripMenuItem
+        '
+        Me.OuvrirToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.OuvrirToolStripMenuItem.Name = "OuvrirToolStripMenuItem"
+        Me.OuvrirToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
+        Me.OuvrirToolStripMenuItem.Text = "Ouvrir"
+        '
+        'ToolStripSeparator7
+        '
+        Me.ToolStripSeparator7.Name = "ToolStripSeparator7"
+        Me.ToolStripSeparator7.Size = New System.Drawing.Size(208, 6)
         '
         'EnregistrerToolStripMenuItem
         '
@@ -171,21 +186,21 @@ Partial Class frmBatEdit
         '
         Me.CouperToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CouperToolStripMenuItem1.Name = "CouperToolStripMenuItem1"
-        Me.CouperToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.CouperToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CouperToolStripMenuItem1.Text = "Couper"
         '
         'CopierToolStripMenuItem1
         '
         Me.CopierToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CopierToolStripMenuItem1.Name = "CopierToolStripMenuItem1"
-        Me.CopierToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.CopierToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CopierToolStripMenuItem1.Text = "Copier"
         '
         'CollerToolStripMenuItem1
         '
         Me.CollerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CollerToolStripMenuItem1.Name = "CollerToolStripMenuItem1"
-        Me.CollerToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.CollerToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CollerToolStripMenuItem1.Text = "Coller"
         '
         'OutilsToolStripMenuItem
@@ -201,19 +216,14 @@ Partial Class frmBatEdit
         '
         Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CompillerToolStripMenuItem.Name = "CompillerToolStripMenuItem"
-        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CompillerToolStripMenuItem.Text = ".bat To .exe"
         '
         'RightClickMenu
         '
-        Me.RightClickMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator1, Me.EnregistrerToolStripMenuItem1, Me.EnregistrerSousToolStripMenuItem1, Me.ToolStripSeparator2, Me.MiseEnPageToolStripMenuItem1, Me.AperçuDimpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem1, Me.ToolStripSeparator6, Me.CopierToolStripMenuItem, Me.CouperToolStripMenuItem, Me.CollerToolStripMenuItem, Me.ToolStripSeparator3, Me.QuiterToolStripMenuItem1})
+        Me.RightClickMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnregistrerToolStripMenuItem1, Me.EnregistrerSousToolStripMenuItem1, Me.ToolStripSeparator2, Me.MiseEnPageToolStripMenuItem1, Me.AperçuDimpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem1, Me.ToolStripSeparator6, Me.CopierToolStripMenuItem, Me.CouperToolStripMenuItem, Me.CollerToolStripMenuItem, Me.ToolStripSeparator1, Me.CompillerToolStripMenuItem1, Me.ToolStripSeparator3, Me.QuiterToolStripMenuItem1})
         Me.RightClickMenu.Name = "RightClickMenu"
-        Me.RightClickMenu.Size = New System.Drawing.Size(184, 226)
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(180, 6)
+        Me.RightClickMenu.Size = New System.Drawing.Size(184, 270)
         '
         'EnregistrerToolStripMenuItem1
         '
@@ -284,22 +294,22 @@ Partial Class frmBatEdit
         Me.QuiterToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
         Me.QuiterToolStripMenuItem1.Text = "Quiter"
         '
-        'PrintDialog1
-        '
-        Me.PrintDialog1.UseEXDialog = True
-        '
-        'PrintDocument1
+        'PrintDoc
         '
         '
-        'PrintPreviewDialog1
+        'PrintDialog
         '
-        Me.PrintPreviewDialog1.AutoScrollMargin = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.AutoScrollMinSize = New System.Drawing.Size(0, 0)
-        Me.PrintPreviewDialog1.ClientSize = New System.Drawing.Size(400, 300)
-        Me.PrintPreviewDialog1.Enabled = True
-        Me.PrintPreviewDialog1.Icon = CType(resources.GetObject("PrintPreviewDialog1.Icon"), System.Drawing.Icon)
-        Me.PrintPreviewDialog1.Name = "PrintPreviewDialog1"
-        Me.PrintPreviewDialog1.Visible = False
+        Me.PrintDialog.UseEXDialog = True
+        '
+        'PrintPreviewDialog
+        '
+        Me.PrintPreviewDialog.AutoScrollMargin = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog.AutoScrollMinSize = New System.Drawing.Size(0, 0)
+        Me.PrintPreviewDialog.ClientSize = New System.Drawing.Size(400, 300)
+        Me.PrintPreviewDialog.Enabled = True
+        Me.PrintPreviewDialog.Icon = CType(resources.GetObject("PrintPreviewDialog.Icon"), System.Drawing.Icon)
+        Me.PrintPreviewDialog.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog.Visible = False
         '
         'PanelMain
         '
@@ -308,73 +318,63 @@ Partial Class frmBatEdit
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.PanelMain.BackColor = System.Drawing.Color.Gainsboro
         Me.PanelMain.Controls.Add(Me.txtEditor)
-        Me.PanelMain.Location = New System.Drawing.Point(27, 82)
+        Me.PanelMain.Location = New System.Drawing.Point(0, 82)
         Me.PanelMain.Name = "PanelMain"
         Me.PanelMain.Padding = New System.Windows.Forms.Padding(8)
-        Me.PanelMain.Size = New System.Drawing.Size(894, 619)
+        Me.PanelMain.Size = New System.Drawing.Size(921, 619)
         Me.PanelMain.TabIndex = 6
         '
         'txtEditor
         '
-        Me.txtEditor.BackColor = System.Drawing.Color.Gainsboro
-        Me.txtEditor.BorderStyle = System.Windows.Forms.BorderStyle.None
-        Me.txtEditor.ContextMenuStrip = Me.RightClickMenu
-        Me.txtEditor.DetectUrls = False
+        Me.txtEditor.ActiveView = Fireball.Windows.Forms.CodeEditor.ActiveView.BottomRight
+        Me.txtEditor.AutoListPosition = Nothing
+        Me.txtEditor.AutoListSelectedText = "a123"
+        Me.txtEditor.AutoListVisible = False
+        Me.txtEditor.CopyAsRTF = False
         Me.txtEditor.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.txtEditor.EnableAutoDragDrop = True
-        Me.txtEditor.Font = New System.Drawing.Font("Lucida Console", 9.0!)
-        Me.txtEditor.ForeColor = System.Drawing.Color.Black
+        Me.txtEditor.Document = Me.SyntaxDocument
+        Me.txtEditor.InfoTipCount = 1
+        Me.txtEditor.InfoTipPosition = Nothing
+        Me.txtEditor.InfoTipSelectedIndex = 1
+        Me.txtEditor.InfoTipVisible = False
+        LineMarginRender2.Bounds = New System.Drawing.Rectangle(19, 0, 19, 16)
+        Me.txtEditor.LineMarginRender = LineMarginRender2
         Me.txtEditor.Location = New System.Drawing.Point(8, 8)
+        Me.txtEditor.LockCursorUpdate = False
         Me.txtEditor.Name = "txtEditor"
-        Me.txtEditor.Size = New System.Drawing.Size(878, 603)
-        Me.txtEditor.TabIndex = 0
-        Me.txtEditor.Text = ""
+        Me.txtEditor.Saved = False
+        Me.txtEditor.ShowScopeIndicator = False
+        Me.txtEditor.Size = New System.Drawing.Size(905, 603)
+        Me.txtEditor.SmoothScroll = False
+        Me.txtEditor.SplitviewH = -4
+        Me.txtEditor.SplitviewV = -4
+        Me.txtEditor.TabGuideColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer))
+        Me.txtEditor.TabIndex = 1
+        Me.txtEditor.Text = "CodeEditorControl1"
+        Me.txtEditor.WhitespaceColor = System.Drawing.SystemColors.ControlDark
         '
-        'BackgroundWorker1
+        'SyntaxDocument
         '
-        Me.BackgroundWorker1.WorkerReportsProgress = True
-        Me.BackgroundWorker1.WorkerSupportsCancellation = True
+        Me.SyntaxDocument.Lines = New String() {""}
+        Me.SyntaxDocument.MaxUndoBufferSize = 1000
+        Me.SyntaxDocument.Modified = False
+        Me.SyntaxDocument.UndoStep = 0
         '
-        'GuiDosbox_LineNumber1
+        'PageSetupDialog
         '
-        Me.GuiDosbox_LineNumber1._SeeThroughMode_ = False
-        Me.GuiDosbox_LineNumber1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.GuiDosbox_LineNumber1.AutoSizing = False
-        Me.GuiDosbox_LineNumber1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.GuiDosbox_LineNumber1.BackgroundGradient_AlphaColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer))
-        Me.GuiDosbox_LineNumber1.BackgroundGradient_BetaColor = System.Drawing.Color.LightSteelBlue
-        Me.GuiDosbox_LineNumber1.BackgroundGradient_Direction = System.Drawing.Drawing2D.LinearGradientMode.Horizontal
-        Me.GuiDosbox_LineNumber1.BorderLines_Color = System.Drawing.Color.SlateGray
-        Me.GuiDosbox_LineNumber1.BorderLines_Style = System.Drawing.Drawing2D.DashStyle.Dot
-        Me.GuiDosbox_LineNumber1.BorderLines_Thickness = 1.0!
-        Me.GuiDosbox_LineNumber1.DockSide = GUIDosbox.GUIDosbox_LineNumber.LineNumberDockSide.None
-        Me.GuiDosbox_LineNumber1.ForeColor = System.Drawing.Color.Black
-        Me.GuiDosbox_LineNumber1.GridLines_Color = System.Drawing.Color.SlateGray
-        Me.GuiDosbox_LineNumber1.GridLines_Style = System.Drawing.Drawing2D.DashStyle.Dot
-        Me.GuiDosbox_LineNumber1.GridLines_Thickness = 1.0!
-        Me.GuiDosbox_LineNumber1.LineNrs_Alignment = System.Drawing.ContentAlignment.MiddleRight
-        Me.GuiDosbox_LineNumber1.LineNrs_AntiAlias = True
-        Me.GuiDosbox_LineNumber1.LineNrs_AsHexadecimal = False
-        Me.GuiDosbox_LineNumber1.LineNrs_ClippedByItemRectangle = True
-        Me.GuiDosbox_LineNumber1.LineNrs_LeadingZeroes = True
-        Me.GuiDosbox_LineNumber1.LineNrs_Offset = New System.Drawing.Size(0, 0)
-        Me.GuiDosbox_LineNumber1.Location = New System.Drawing.Point(0, 81)
-        Me.GuiDosbox_LineNumber1.Margin = New System.Windows.Forms.Padding(0)
-        Me.GuiDosbox_LineNumber1.MarginLines_Color = System.Drawing.Color.SlateGray
-        Me.GuiDosbox_LineNumber1.MarginLines_Side = GUIDosbox.GUIDosbox_LineNumber.LineNumberDockSide.Right
-        Me.GuiDosbox_LineNumber1.MarginLines_Style = System.Drawing.Drawing2D.DashStyle.Solid
-        Me.GuiDosbox_LineNumber1.MarginLines_Thickness = 1.0!
-        Me.GuiDosbox_LineNumber1.Name = "GuiDosbox_LineNumber1"
-        Me.GuiDosbox_LineNumber1.Padding = New System.Windows.Forms.Padding(0, 0, 2, 0)
-        Me.GuiDosbox_LineNumber1.ParentRichTextBox = Me.txtEditor
-        Me.GuiDosbox_LineNumber1.Show_BackgroundGradient = False
-        Me.GuiDosbox_LineNumber1.Show_BorderLines = False
-        Me.GuiDosbox_LineNumber1.Show_GridLines = False
-        Me.GuiDosbox_LineNumber1.Show_LineNrs = True
-        Me.GuiDosbox_LineNumber1.Show_MarginLines = True
-        Me.GuiDosbox_LineNumber1.Size = New System.Drawing.Size(30, 620)
-        Me.GuiDosbox_LineNumber1.TabIndex = 6
+        Me.PageSetupDialog.Document = Me.PrintDoc
+        Me.PageSetupDialog.EnableMetric = True
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(180, 6)
+        '
+        'CompillerToolStripMenuItem1
+        '
+        Me.CompillerToolStripMenuItem1.Name = "CompillerToolStripMenuItem1"
+        Me.CompillerToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.CompillerToolStripMenuItem1.Text = "Compiller"
         '
         'frmBatEdit
         '
@@ -383,9 +383,8 @@ Partial Class frmBatEdit
         Me.BackColor = System.Drawing.Color.Black
         Me.ClientSize = New System.Drawing.Size(921, 701)
         Me.ContextMenuStrip = Me.RightClickMenu
-        Me.Controls.Add(Me.GuiDosbox_LineNumber1)
-        Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.MenuStrip1)
+        Me.Controls.Add(Me.PanelMain)
         Me.Controls.Add(Me.flashHeader)
         Me.Font = New System.Drawing.Font("Lucida Console", 8.25!)
         Me.ForeColor = System.Drawing.Color.LightBlue
@@ -410,7 +409,6 @@ Partial Class frmBatEdit
     Friend WithEvents ImprimerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AperçuAvantImpressionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RightClickMenu As System.Windows.Forms.ContextMenuStrip
-    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents EnregistrerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EnregistrerSousToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator2 As System.Windows.Forms.ToolStripSeparator
@@ -421,18 +419,14 @@ Partial Class frmBatEdit
     Friend WithEvents QuiterToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator4 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
-    Friend WithEvents PageSetupDialog1 As System.Windows.Forms.PageSetupDialog
-    Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
-    Friend WithEvents PrintDocument1 As System.Drawing.Printing.PrintDocument
-    Friend WithEvents PrintPreviewDialog1 As System.Windows.Forms.PrintPreviewDialog
+    Friend WithEvents PrintDialog As System.Windows.Forms.PrintDialog
+    Friend WithEvents PrintDoc As System.Drawing.Printing.PrintDocument
+    Friend WithEvents PrintPreviewDialog As System.Windows.Forms.PrintPreviewDialog
     Friend WithEvents ImprimerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AperçuDimpressionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents MiseEnPageToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents PanelMain As System.Windows.Forms.Panel
-    Friend WithEvents GuiDosbox_LineNumber1 As GUIDosbox.GUIDosbox_LineNumber
-    Friend WithEvents txtEditor As GUIDosbox.GUIDosbox_RichTextBox
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents MiseEnPageToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents EditionToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CouperToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
@@ -440,4 +434,11 @@ Partial Class frmBatEdit
     Friend WithEvents CollerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents OutilsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CompillerToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OuvrirToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator7 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents txtEditor As Fireball.Windows.Forms.CodeEditorControl
+    Friend WithEvents SyntaxDocument As Fireball.Syntax.SyntaxDocument
+    Friend WithEvents PageSetupDialog As System.Windows.Forms.PageSetupDialog
+    Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
+    Friend WithEvents CompillerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
 End Class

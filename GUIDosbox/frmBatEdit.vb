@@ -11,22 +11,35 @@ Option Strict On
 Option Explicit On
 
 Imports System.IO
+Imports System.Text
 Imports System.Runtime.InteropServices
+Imports Fireball.CodeEditor.SyntaxFiles
+Imports System.Drawing.Printing
 
 Public Class frmBatEdit
 
-#Region " Load "
+    ''' <summary>
+    ''' Variable qui indique l'état des modification dans le textbox.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private NeedSave As Boolean = False
+    Private Sub txtEditor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEditor.KeyPress
+        NeedSave = True
+    End Sub
+
+#Region " Loading - Closing "
+
     Private Sub frmBatEdit_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'Format de l'éditeur
+        CodeEditorSyntaxLoader.SetSyntax(txtEditor, SyntaxLanguage.DOSBatch)
 
         'Application des paramètres d'utilisateur
         With My.Settings
             PanelMain.BackColor = .EditorBGColor
             txtEditor.BackColor = .EditorBGColor
-            txtEditor.Font = .EditorFont
+            txtEditor.FontName = .EditorFont.Name
+            txtEditor.FontSize = .EditorFont.SizeInPoints
         End With
-
-        'Lancement du formulaire de loading
-        BackgroundWorker1.RunWorkerAsync()
 
         'Loading du Flash Header
         LoadHeader(flashHeader, "bateditor")
@@ -34,38 +47,63 @@ Public Class frmBatEdit
         'Affichage du batch file
         Try
             If File.Exists(TempBatch) Then
-                txtEditor.Text = My.Computer.FileSystem.ReadAllText(TempBatch)
+                txtEditor.Document.Text = My.Computer.FileSystem.ReadAllText(TempBatch)
+
             End If
         Catch ex As Exception
             MsgBox("Impossible de charger le Batch File." & vbNewLine & vbNewLine & ex.Message, _
                    MsgBoxStyle.Exclamation, "GUIDosbox - Erreur de chargement")
         End Try
 
-        'Coloration Syntaxique --> GUIDosboxColorationSyntaxique.
-        If My.Settings.ColororationState Then
-            ColorationSyntaxique(txtEditor)
+        'Mise en page par défaut
+        Dim PageSetup As New PageSettings
+        With PageSetup
+            .Margins.Left = 50
+            .Margins.Right = 50
+            .Margins.Top = 50
+            .Margins.Bottom = 50
+            .Landscape = False
+        End With
+        PrintDoc.DefaultPageSettings = PageSetup
+
+
+    End Sub
+
+    Private Sub frmBatEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
+        'Message si fichier modifier et enregistrement
+        If NeedSave = True Then
+            If MsgBox("Le fichier à été modifié!" & vbCrLf & vbCrLf _
+                      & "Voulez-vous le sauvegarder avant de fermer l'éditeur?", _
+                      MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
+                'Enregistrement des modifications.
+                Try
+                    File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+                Catch ex As Exception
+                    MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                           MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+                Finally
+                    NeedSave = False
+                End Try
+                CP.Show()
+            Else
+                CP.Show()
+            End If
+        Else
+            CP.Show()
         End If
-
     End Sub
 
-    Private Sub frmBatEdit_Shown(sender As Object, e As EventArgs) Handles Me.Shown
-        'Variable pour le loader --> frmBatLoader
-        loaded = True
-    End Sub
-
-    Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
-        'Démarrage du loader 
-        Dim frm As Windows.Forms.Form = New frmBatEditLoader
-        loaded = False
-        frm.ShowDialog()
-    End Sub
 #End Region
 
 #Region " Barre de menu "
+    Private Sub OuvrirToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OuvrirToolStripMenuItem.Click
+        batchFileOpen()
+    End Sub
+
     Private Sub EnregistrerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem.Click
         'Enregistrement des modifications.
         Try
-            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
@@ -81,21 +119,25 @@ Public Class frmBatEdit
 
     Private Sub MiseEnPageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MiseEnPageToolStripMenuItem.Click
         'Mise en page
-        PageSetupDialog1.Document = PrintDocument1
-        PageSetupDialog1.ShowDialog()
+        PageSetupDialog.Document = PrintDoc
+        PageSetupDialog.ShowDialog()
     End Sub
 
     Private Sub AperçuAvantImpressionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AperçuAvantImpressionToolStripMenuItem.Click
         'Aperçu avant impression
-        PrintPreviewDialog1.Document = PrintDocument1
-        If (PrintPreviewDialog1.ShowDialog = DialogResult.OK) Then
-            PrintDocument1.Print()
+        PrintPreviewDialog.Document = PrintDoc
+        If (PrintPreviewDialog.ShowDialog = Windows.Forms.DialogResult.OK) Then
+            PrintDoc.Print()
         End If
     End Sub
 
     Private Sub ImprimerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ImprimerToolStripMenuItem.Click
         'Impression
-        PrintDocument1.Print()
+        PrintDialog.PrinterSettings = PrintDoc.PrinterSettings
+        If PrintDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            PrintDoc.PrinterSettings = PrintDialog.PrinterSettings
+            PrintDoc.Print()
+        End If
     End Sub
 
     Private Sub QuiterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles QuiterToolStripMenuItem.Click
@@ -121,7 +163,7 @@ Public Class frmBatEdit
     Private Sub CompillerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CompillerToolStripMenuItem.Click
         'Enregistrement des modifications et affichage du compilateur.
         Try
-            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
             NeedSave = False
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
@@ -133,11 +175,10 @@ Public Class frmBatEdit
 #End Region
 
 #Region " Right-Click Context Menu "
-
     Private Sub EnregistrerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem1.Click
         'Enregistrement des modifications.
         Try
-            txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
@@ -153,21 +194,38 @@ Public Class frmBatEdit
 
     Private Sub MiseEnPageToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles MiseEnPageToolStripMenuItem1.Click
         'Mise en page
-        PageSetupDialog1.Document = PrintDocument1
-        PageSetupDialog1.ShowDialog()
+        PageSetupDialog.Document = PrintDoc
+        PageSetupDialog.ShowDialog()
     End Sub
 
     Private Sub AperçuDimpressionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AperçuDimpressionToolStripMenuItem.Click
         'Arperçu avant impression
-        PrintPreviewDialog1.Document = PrintDocument1
-        If (PrintPreviewDialog1.ShowDialog = DialogResult.OK) Then
-            PrintDocument1.Print()
+        PrintPreviewDialog.Document = PrintDoc
+        If (PrintPreviewDialog.ShowDialog = DialogResult.OK) Then
+            PrintDoc.Print()
         End If
     End Sub
 
     Private Sub ImprimerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ImprimerToolStripMenuItem1.Click
-        'impression
-        PrintDocument1.Print()
+        'Impression
+        PrintDialog.PrinterSettings = PrintDoc.PrinterSettings
+        If PrintDialog.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            PrintDoc.PrinterSettings = PrintDialog.PrinterSettings
+            PrintDoc.Print()
+        End If
+    End Sub
+
+    Private Sub CompillerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CompillerToolStripMenuItem1.Click
+        'Enregistrement des modifications et affichage du compilateur.
+        Try
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+            NeedSave = False
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                   MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        End Try
+        BuildFromTempBatch = True
+        frmBatToExe.Show()
     End Sub
 
     Private Sub CollerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CollerToolStripMenuItem.Click
@@ -191,46 +249,100 @@ Public Class frmBatEdit
     End Sub
 #End Region
 
-#Region " Options d'impression ajouté "
+#Region " Function d'impression "
+    Dim lstLinesToPrint As New List(Of String)
 
-    'Initialisation des options d'impression ajouté --> GUIDosbox_RichTextBox
-    'Ce code à `été créé par Microsoft.
+    Private Sub PrintDocument1_BeginPrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles PrintDoc.BeginPrint
+        Dim cFont As Font = New Font(txtEditor.FontName, txtEditor.FontSize)
+        Dim fntText As Font = cFont
+        Dim txtWidth As Integer = PrintDoc.DefaultPageSettings.PaperSize.Width - PrintDoc.DefaultPageSettings.Margins.Left - PrintDoc.DefaultPageSettings.Margins.Right
+        Dim stringSize As New SizeF
 
-    Private m_nFirstCharOnPage As Integer
+        Dim g = Me.CreateGraphics
 
-    Private Sub PrintDocument1_BeginPrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles PrintDocument1.BeginPrint
-        ' Start at the beginning of the text
-        m_nFirstCharOnPage = 0
+        lstLinesToPrint.Clear()
+
+        For intCounter = 0 To txtEditor.Document.Lines.Count - 1
+            stringSize = g.MeasureString(txtEditor.Document.Lines(intCounter), fntText)
+            If stringSize.Width < txtWidth Then
+                '-- The line fits so just go ahead and add it to the list of things to print.
+                lstLinesToPrint.Add(txtEditor.Document.Lines(intCounter))
+            Else
+                '-- Otherwise the line is too long so we need to break it up, and rebuild it to fit.
+                Dim LeftMargin As Integer = PrintDoc.DefaultPageSettings.Margins.Left
+                Dim TopMargin As Integer = PrintDoc.DefaultPageSettings.Margins.Top
+                Dim sfBuffer As SizeF = g.MeasureString("M", fntText)
+                Dim layOutRec As New RectangleF(LeftMargin, TopMargin, txtWidth - sfBuffer.Width, fntText.Height)
+                Dim string_format As New StringFormat
+                string_format.Trimming = StringTrimming.Word
+                Dim CharactersFitted As Integer = 0
+                Dim LinesFilled As Integer = 0 '-- Not using this for example but need to pass it into the method.
+
+                For intFittedChar = 0 To txtEditor.Document.Lines(intCounter).Length - 1
+                    '-- See how many characters will fit on one line in the page margins
+                    g.MeasureString(txtEditor.Document.Lines(intCounter).Substring(intFittedChar), fntText, New SizeF(layOutRec.Width, layOutRec.Height) _
+                                    , string_format, CharactersFitted, LinesFilled)
+
+                    lstLinesToPrint.Add(txtEditor.Document.Lines(intCounter).Substring(intFittedChar, CharactersFitted))
+
+                    intFittedChar += CharactersFitted - 1
+                Next
+            End If
+        Next
     End Sub
 
-    Private Sub PrintDocument1_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDocument1.PrintPage
-        ' To print the boundaries of the current page margins
-        ' uncomment the next line:
-        'e.Graphics.DrawRectangle(System.Drawing.Pens.Blue, e.MarginBounds)
-
-
-        ' make the RichTextBoxEx calculate and render as much text as will
-        ' fit on the page and remember the last character printed for the
-        ' beginning of the next page
-        m_nFirstCharOnPage = txtEditor.FormatRange(False, _
-                                                e, _
-                                                m_nFirstCharOnPage, _
-                                                txtEditor.TextLength)
-
-        ' check if there are more pages to print
-        If (m_nFirstCharOnPage < txtEditor.TextLength) Then
-            e.HasMorePages = True
-        Else
-            e.HasMorePages = False
-        End If
+    Private Sub PrintDocument1_PrintPage(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles PrintDoc.PrintPage
+        Static intStart As Integer
+        Dim cFont As Font = New Font(txtEditor.FontName, txtEditor.FontSize)
+        Dim fntText As Font = cFont
+        Dim txtHeight As Integer
+        Dim LeftMargin As Integer = PrintDoc.DefaultPageSettings.Margins.Left
+        Dim TopMargin As Integer = PrintDoc.DefaultPageSettings.Margins.Top
+        txtHeight = PrintDoc.DefaultPageSettings.PaperSize.Height - PrintDoc.DefaultPageSettings.Margins.Top - PrintDoc.DefaultPageSettings.Margins.Bottom
+        Dim LinesPerPage As Integer = CInt(Math.Round(txtHeight / (fntText.Height + 0.025)))
+        'e.Graphics.DrawRectangle(Pens.Red, e.MarginBounds)
+        Dim intLineNumber As Integer
+        For intCounter = intStart To lstLinesToPrint.Count - 1
+            e.Graphics.DrawString(lstLinesToPrint(intCounter), fntText, Brushes.Black, LeftMargin, fntText.Height * intLineNumber + TopMargin)
+            intLineNumber += 1
+            If intLineNumber > LinesPerPage - 1 Then
+                intStart = intCounter
+                e.HasMorePages = True '-- This is recursive. It will call the Print Page Sub again when it's set to true.
+                Exit For
+            End If
+        Next
     End Sub
-
-    Private Sub PrintDocument1_EndPrint(ByVal sender As Object, ByVal e As System.Drawing.Printing.PrintEventArgs) Handles PrintDocument1.EndPrint
-        ' Clean up cached information
-        txtEditor.FormatRangeDone()
-    End Sub
-
 #End Region
+
+    ''' <summary>
+    ''' Affichage de la boite d'enregistrement et enregistrement du fichier.
+    ''' </summary>
+    ''' <remarks></remarks>
+    Private Sub batchFileOpen()
+        'Création du Browser
+        Dim opFD As New OpenFileDialog
+        opFD.AddExtension = True
+        opFD.DefaultExt = ".bat"
+        opFD.FileName = "GUIDosboxHistory"
+        opFD.Filter = "Fichiers de commandes (*.bat)|*.bat|Tous les fichiers (*.*)|*.*"
+        opFD.FilterIndex = 0
+        opFD.Title = "Ouvrir un fichier .bat"
+
+        Try
+            If opFD.ShowDialog() = Windows.Forms.DialogResult.OK Then
+                'Lecture du contenue
+                If File.Exists(opFD.FileName) Then
+                    txtEditor.Document.Text = Nothing
+                    txtEditor.Document.Text = File.ReadAllText(opFD.FileName, Encoding.GetEncoding(1252))
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox("Une erreur c'est produite lors de l'enregistrement", _
+                  MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
+        Finally
+            NeedSave = False
+        End Try
+    End Sub
 
     ''' <summary>
     ''' Affichage de la boite d'enregistrement et enregistrement du fichier.
@@ -253,7 +365,7 @@ Public Class frmBatEdit
                     File.Delete(opFD.FileName)
                 End If
                 'Création du nouveau fichier.
-                txtEditor.SaveFile(opFD.FileName, RichTextBoxStreamType.PlainText)
+                File.WriteAllText(opFD.FileName, txtEditor.Document.Text, Encoding.GetEncoding(1252))
             End If
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
@@ -262,41 +374,4 @@ Public Class frmBatEdit
             NeedSave = False
         End Try
     End Sub
-   
-
-    Private Sub frmBatEdit_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-
-        'Message si fichier modifier et enregistrement
-        If NeedSave = True Then
-            If MsgBox("Le fichier à été modifié!" & vbCrLf & vbCrLf _
-                      & "Voulez-vous le sauvegarder avant de fermer l'éditeur?", _
-                      MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
-                'Enregistrement des modifications.
-                Try
-                    txtEditor.SaveFile(TempBatch, RichTextBoxStreamType.PlainText)
-                Catch ex As Exception
-                    MsgBox("Une erreur c'est produite lors de l'enregistrement", _
-                           MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
-                Finally
-                    NeedSave = False
-                End Try
-                CP.Show()
-            Else
-                CP.Show()
-            End If
-        Else
-            CP.Show()
-        End If
-
-    End Sub
-
-    ''' <summary>
-    ''' Variable qui indique l'état des modification dans le textbox.
-    ''' </summary>
-    ''' <remarks></remarks>
-    Private NeedSave As Boolean = False
-    Private Sub txtEditor_KeyPress(sender As Object, e As KeyPressEventArgs) Handles txtEditor.KeyPress
-        NeedSave = True
-    End Sub
-
 End Class
