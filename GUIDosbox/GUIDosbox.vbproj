@@ -61,7 +61,7 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionExplicit>On</OptionExplicit>
+    <OptionExplicit>Off</OptionExplicit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionCompare>Binary</OptionCompare>
@@ -369,12 +369,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CP.resx">
       <DependentUpon>CP.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Button.resx">
       <DependentUpon>GUIDosbox_Button.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Console.resx">
       <DependentUpon>GUIDosbox_Console.vb</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_Groupbox.resx">
       <DependentUpon>GUIDosbox_Groupbox.vb</DependentUpon>
@@ -550,7 +553,6 @@
   <ItemGroup>
     <EmbeddedResource Include="Resources\batchtoexe.swf" />
     <EmbeddedResource Include="Resources\bateditor.swf" />
-    <EmbeddedResource Include="Resources\loading.gif" />
     <EmbeddedResource Include="Resources\progressBar.png" />
     <EmbeddedResource Include="Resources\progressBarBG.png" />
     <EmbeddedResource Include="Resources\MainBG.png" />
@@ -560,6 +562,17 @@
     <EmbeddedResource Include="Resources\Writing.png" />
     <EmbeddedResource Include="Resources\Xion.png" />
     <EmbeddedResource Include="Resources\save.png" />
+    <EmbeddedResource Include="Resources\clipboard_cut_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\clipboard_copy_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\clipboard_past_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\cog_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\folder_open_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\print_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\save_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\delete_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\doc_lines_stright_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\eye_icon&amp;16.png" />
+    <None Include="Resources\wrench_icon&amp;16.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>

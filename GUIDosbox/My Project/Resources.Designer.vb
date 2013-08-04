@@ -121,6 +121,36 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property clipboard_copy_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("clipboard_copy_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property clipboard_cut_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("clipboard_cut_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property clipboard_past_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("clipboard_past_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Icon semblable à (Icône).
         '''</summary>
         Friend ReadOnly Property cmd() As System.Drawing.Icon
@@ -137,6 +167,16 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("cmd1", resourceCulture)
                 Return CType(obj,Byte())
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property cog_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("cog_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -173,6 +213,46 @@ Namespace My.Resources
         '''<summary>
         '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property delete_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("delete_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property doc_lines_stright_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("doc_lines_stright_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property eye_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("eye_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property folder_open_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("folder_open_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Gear() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Gear", resourceCulture)
@@ -197,16 +277,6 @@ Namespace My.Resources
             Get
                 Dim obj As Object = ResourceManager.GetObject("help", resourceCulture)
                 Return CType(obj,Byte())
-            End Get
-        End Property
-        
-        '''<summary>
-        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
-        '''</summary>
-        Friend ReadOnly Property loading() As System.Drawing.Bitmap
-            Get
-                Dim obj As Object = ResourceManager.GetObject("loading", resourceCulture)
-                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -323,18 +393,22 @@ Namespace My.Resources
         '''<summary>
         '''  Recherche une chaîne localisée semblable à &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
         '''&lt;items&gt;
-        '''
         '''  &lt;item&gt;
-        '''    &lt;content&gt;&lt;![CDATA[&lt;span class=&quot;title&quot;&gt;GUI DosBox - Info&lt;/span&gt; ]]&gt;&lt;/content&gt;
+        '''    &lt;content&gt;&lt;![CDATA[&lt;span class=&quot;title&quot;&gt;À propos - GUI Dosbox&lt;/span&gt; ]]&gt;&lt;/content&gt;
         '''  &lt;/item&gt;
-        '''
         '''  &lt;item&gt;
         '''    &lt;content&gt;
-        '''      &lt;![CDATA[&lt;a href=&quot;http://www.fr.kobixxe.com/produits.php&quot; target=&quot;_parent&quot; class=&quot;subtitle&quot;&gt;kobixxe.com/produits&lt;/a&gt;
-        '''&lt;p align=&quot;justify&quot;&gt; &lt;a href=&quot;http://www.kobixxe.com&quot; target=&quot;_parent&quot;&gt;Kobixxe Devlopers&lt;/a&gt; Est fier de présenter GUIDosBox,   &lt;/p&gt; 
-        '''&lt;p align=&quot;right&quot;&gt; Copyright 2011&lt;/p&gt;
-        '''&lt;p align=&quot;right&quot;&gt; tout droits réservés&lt;/p&gt;]]&gt;
-        '''  [le reste de la chaîne a été tronqué]&quot;;.
+        '''      &lt;![CDATA[&lt;p align=&quot;center&quot;&gt;Nous sommes heureux de vous présenter GUI DosBox.&lt;/p&gt;
+        '''      
+        '''&lt;p align=&quot;center&quot;&gt;Cette application a été développé par :
+        '''Yanick Lafontaine
+        '''Jesse Vaudois
+        '''
+        '''Dans le cadre d’un projet personnel.&lt;/p&gt;
+        '''
+        '''&lt;p align=&quot;center&quot;&gt;&lt;a href=&quot;http://www.guidosbox.com&quot; target=&quot;_parent&quot;&gt;Visiter notre site web.&lt;/a&gt;&lt;/p&gt;
+        '''
+        '''&lt;p align [le reste de la chaîne a été tronqué]&quot;;.
         '''</summary>
         Friend ReadOnly Property page_3() As String
             Get
@@ -361,6 +435,16 @@ Namespace My.Resources
         Friend ReadOnly Property page_30() As String
             Get
                 Return ResourceManager.GetString("page_30", resourceCulture)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property print_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("print_icon_16", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
         
@@ -400,6 +484,16 @@ Namespace My.Resources
         Friend ReadOnly Property save() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("save", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property save_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("save_icon_16", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
@@ -558,6 +652,16 @@ Namespace My.Resources
         Friend ReadOnly Property Wrench() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Wrench", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Recherche une ressource localisée de type System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property wrench_icon_16() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("wrench_icon_16", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

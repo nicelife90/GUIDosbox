@@ -12,6 +12,7 @@ Public Class CMDConsole
     Private Sub CMDConsole_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles MyBase.Load
         'Démmarage de la console.
         myConsole.StartConsole()
+      
 
         'Loading du header flash.
         LoadHeader(flashHeader, "cmd1")
@@ -70,4 +71,7 @@ Public Class CMDConsole
         End If
     End Sub
 
+    Private Sub myConsole_Enter(sender As Object, e As EventArgs) Handles myConsole.Enter
+
+    End Sub
 End Class

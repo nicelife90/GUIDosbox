@@ -12,6 +12,7 @@ Option Strict On
 Option Explicit On
 
 Imports System.Text
+Imports System.ComponentModel
 
 ''' <summary>
 ''' Console personnalisé GUIDosbox.
@@ -23,6 +24,7 @@ Public Class GUIDosbox_Console
     ''' </summary>
     ''' <remarks>Déclaration d'un process avec évenement</remarks>
     Public WithEvents myConsole As Process
+
     Public Delegate Sub AppendOutputTextDelegate(ByVal text As String)
 
     ''' <summary>
@@ -150,4 +152,49 @@ Public Class GUIDosbox_Console
             MsgBox("L'erreur suivante c'est produite, " & ex.Message, MsgBoxStyle.Exclamation)
         End Try
     End Sub
+
+#Region " Console Custom Property "
+
+    ''' <summary>
+    ''' Couleur de fond de la console GUI Dosbox.
+    ''' </summary>
+    <Category("GUI Dosbox Console Property")>
+    <Description("Couleur de fond de la console GUI Dosbox.")>
+    Public Property ConsoleBackColor As Color
+        Get
+            Return txtOutput.BackColor
+        End Get
+        Set(value As Color)
+            txtOutput.BackColor = value
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' Couleur du texte de la console GUI Dosbox.
+    ''' </summary>
+    <Category("GUI Dosbox Console Property")>
+    <Description("Couleur du texte de la console GUI Dosbox.")>
+    Public Property ConsoleForeColor As Color
+        Get
+            Return txtOutput.ForeColor
+        End Get
+        Set(ByVal value As Color)
+            txtOutput.ForeColor = value
+        End Set
+    End Property
+
+    ''' <summary>
+    ''' Police de caractère de la console GUI Dosbox.
+    ''' </summary>
+    <Category("GUI Dosbox Console Property")>
+    <Description("Police de caractère de la console GUI Dosbox.")>
+    Public Property ConsoleFont As Font
+        Get
+            Return txtOutput.Font
+        End Get
+        Set(ByVal value As Font)
+            txtOutput.Font = value
+        End Set
+    End Property
+#End Region
 End Class

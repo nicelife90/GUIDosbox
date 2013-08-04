@@ -68,7 +68,7 @@ Namespace My
         
         <Global.System.Configuration.UserScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Gainsboro")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("White")>  _
         Public Property EditorBGColor() As Global.System.Drawing.Color
             Get
                 Return CType(Me("EditorBGColor"),Global.System.Drawing.Color)
@@ -99,6 +99,18 @@ Namespace My
             End Get
             Set
                 Me("WarningState") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(), _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")> _
+        Public Property EditorHightLightLine() As Boolean
+            Get
+                Return CType(Me("EditorHightLightLine"), Boolean)
+            End Get
+            Set(value As Boolean)
+                Me("EditorHightLightLine") = value
             End Set
         End Property
     End Class

@@ -110,8 +110,7 @@ Public Class CP
 
     Private Sub ParamètresToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ParamètresToolStripMenuItem.Click
         'Paramètres
-        frmApplicationSettings.Show()
-        Me.Hide()
+        frmApplicationSettings.ShowDialog()
     End Sub
 
     Private Sub MiseÀJourToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MiseÀJourToolStripMenuItem.Click

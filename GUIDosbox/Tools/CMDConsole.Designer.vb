@@ -29,9 +29,9 @@ Partial Class CMDConsole
         Me.btnClear = New System.Windows.Forms.Button()
         Me.btnSend = New System.Windows.Forms.Button()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
+        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         Me.footer = New GUIDosbox.GUIDosbox_StatusStrip()
         Me.myConsole = New GUIDosbox.GUIDosbox_Console()
-        Me.txtCmdExec = New GUIDosbox.GUIDosbox_Textbox()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -116,23 +116,6 @@ Partial Class CMDConsole
         Me.flashHeader.Size = New System.Drawing.Size(886, 40)
         Me.flashHeader.TabIndex = 10
         '
-        'footer
-        '
-        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.footer.Location = New System.Drawing.Point(0, 514)
-        Me.footer.Name = "footer"
-        Me.footer.Size = New System.Drawing.Size(883, 22)
-        Me.footer.TabIndex = 11
-        '
-        'myConsole
-        '
-        Me.myConsole.Location = New System.Drawing.Point(10, 42)
-        Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
-        Me.myConsole.myConsole = Nothing
-        Me.myConsole.Name = "myConsole"
-        Me.myConsole.Size = New System.Drawing.Size(865, 412)
-        Me.myConsole.TabIndex = 9
-        '
         'txtCmdExec
         '
         Me.txtCmdExec.BackColor = System.Drawing.Color.Black
@@ -143,6 +126,27 @@ Partial Class CMDConsole
         Me.txtCmdExec.Name = "txtCmdExec"
         Me.txtCmdExec.Size = New System.Drawing.Size(723, 18)
         Me.txtCmdExec.TabIndex = 12
+        '
+        'footer
+        '
+        Me.footer.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.footer.Location = New System.Drawing.Point(0, 514)
+        Me.footer.Name = "footer"
+        Me.footer.Size = New System.Drawing.Size(883, 22)
+        Me.footer.TabIndex = 11
+        '
+        'myConsole
+        '
+        Me.myConsole.BackColor = System.Drawing.SystemColors.WindowText
+        Me.myConsole.ConsoleBackColor = System.Drawing.Color.FromArgb(CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer), CType(CType(17, Byte), Integer))
+        Me.myConsole.ConsoleFont = New System.Drawing.Font("Lucida Console", 8.25!)
+        Me.myConsole.ConsoleForeColor = System.Drawing.Color.LightBlue
+        Me.myConsole.Location = New System.Drawing.Point(10, 42)
+        Me.myConsole.Margin = New System.Windows.Forms.Padding(4, 3, 4, 3)
+        Me.myConsole.myConsole = Nothing
+        Me.myConsole.Name = "myConsole"
+        Me.myConsole.Size = New System.Drawing.Size(865, 412)
+        Me.myConsole.TabIndex = 9
         '
         'CMDConsole
         '

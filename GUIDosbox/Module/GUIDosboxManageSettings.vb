@@ -20,6 +20,7 @@ Module GUIDosboxManageSettings
     Public Structure ParamEditor
         Public EditorFont As Font
         Public EditorBgColor As Color
+        Public EditorHightLightLine As Boolean
     End Structure
 
     ''' <summary>
@@ -50,7 +51,8 @@ Module GUIDosboxManageSettings
             Case 3 '-->  'Reset de l'onglet Éditeur
                 With My.Settings
                     .EditorFont = New Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point)
-                    .EditorBGColor = Color.Gainsboro
+                    .EditorBGColor = Color.White
+                    .EditorHightLightLine = True
                 End With
                 My.Settings.Save()
                 My.Settings.Reload()
@@ -60,7 +62,8 @@ Module GUIDosboxManageSettings
                     .UpdateState = True
                     .WarningState = True
                     .EditorFont = New Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point)
-                    .EditorBGColor = Color.Gainsboro
+                    .EditorBGColor = Color.White
+                    .EditorHightLightLine = True
                 End With
                 My.Settings.Save()
                 My.Settings.Reload()
@@ -88,7 +91,6 @@ Module GUIDosboxManageSettings
                 My.Settings.Save()
                 My.Settings.Reload()
 
-
             Case 3 '--> Onglet Éditeur
                 'Définition des nouveaux paramètres
                 Dim newSettings As ParamEditor = CType(mySettings, ParamEditor)
@@ -97,14 +99,13 @@ Module GUIDosboxManageSettings
                     .EditorBGColor = newSettings.EditorBgColor
                     'Police de caractères
                     .EditorFont = newSettings.EditorFont
+                    'Higlight Line
+                    .EditorHightLightLine = newSettings.EditorHightLightLine
                 End With
 
                 'Enregistrement des paramètres
                 My.Settings.Save()
                 My.Settings.Reload()
-
         End Select
-
     End Sub
-
 End Module

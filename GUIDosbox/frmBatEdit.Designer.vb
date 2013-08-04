@@ -24,7 +24,7 @@ Partial Class frmBatEdit
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(frmBatEdit))
-        Dim LineMarginRender2 As Fireball.Windows.Forms.LineMarginRender = New Fireball.Windows.Forms.LineMarginRender()
+        Dim LineMarginRender1 As Fireball.Windows.Forms.LineMarginRender = New Fireball.Windows.Forms.LineMarginRender()
         Me.flashHeader = New AxShockwaveFlashObjects.AxShockwaveFlash()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.FichierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -44,6 +44,7 @@ Partial Class frmBatEdit
         Me.CollerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OutilsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CompillerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.OptionsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RightClickMenu = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EnregistrerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EnregistrerSousToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
@@ -55,6 +56,8 @@ Partial Class frmBatEdit
         Me.CopierToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CouperToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CollerToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.CompillerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.QuiterToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PrintDoc = New System.Drawing.Printing.PrintDocument()
@@ -64,8 +67,6 @@ Partial Class frmBatEdit
         Me.txtEditor = New Fireball.Windows.Forms.CodeEditorControl()
         Me.SyntaxDocument = New Fireball.Syntax.SyntaxDocument(Me.components)
         Me.PageSetupDialog = New System.Windows.Forms.PageSetupDialog()
-        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.CompillerToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         CType(Me.flashHeader, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         Me.RightClickMenu.SuspendLayout()
@@ -110,7 +111,9 @@ Partial Class frmBatEdit
         '
         'OuvrirToolStripMenuItem
         '
+        Me.OuvrirToolStripMenuItem.BackColor = System.Drawing.SystemColors.Control
         Me.OuvrirToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.OuvrirToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.folder_open_icon_16
         Me.OuvrirToolStripMenuItem.Name = "OuvrirToolStripMenuItem"
         Me.OuvrirToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.OuvrirToolStripMenuItem.Text = "Ouvrir"
@@ -123,6 +126,7 @@ Partial Class frmBatEdit
         'EnregistrerToolStripMenuItem
         '
         Me.EnregistrerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.EnregistrerToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.save_icon_16
         Me.EnregistrerToolStripMenuItem.Name = "EnregistrerToolStripMenuItem"
         Me.EnregistrerToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.EnregistrerToolStripMenuItem.Text = "Enregistrer"
@@ -142,6 +146,7 @@ Partial Class frmBatEdit
         'MiseEnPageToolStripMenuItem
         '
         Me.MiseEnPageToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.MiseEnPageToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.doc_lines_stright_icon_16
         Me.MiseEnPageToolStripMenuItem.Name = "MiseEnPageToolStripMenuItem"
         Me.MiseEnPageToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.MiseEnPageToolStripMenuItem.Text = "Mise en page"
@@ -149,6 +154,7 @@ Partial Class frmBatEdit
         'AperçuAvantImpressionToolStripMenuItem
         '
         Me.AperçuAvantImpressionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.AperçuAvantImpressionToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.eye_icon_16
         Me.AperçuAvantImpressionToolStripMenuItem.Name = "AperçuAvantImpressionToolStripMenuItem"
         Me.AperçuAvantImpressionToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.AperçuAvantImpressionToolStripMenuItem.Text = "Aperçu avant impression"
@@ -156,6 +162,7 @@ Partial Class frmBatEdit
         'ImprimerToolStripMenuItem
         '
         Me.ImprimerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.ImprimerToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.print_icon_16
         Me.ImprimerToolStripMenuItem.Name = "ImprimerToolStripMenuItem"
         Me.ImprimerToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.ImprimerToolStripMenuItem.Text = "Imprimer"
@@ -169,6 +176,7 @@ Partial Class frmBatEdit
         '
         Me.QuiterToolStripMenuItem.BackColor = System.Drawing.SystemColors.WindowText
         Me.QuiterToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.QuiterToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.delete_icon_16
         Me.QuiterToolStripMenuItem.Name = "QuiterToolStripMenuItem"
         Me.QuiterToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.QuiterToolStripMenuItem.Text = "Quitter"
@@ -185,6 +193,7 @@ Partial Class frmBatEdit
         'CouperToolStripMenuItem1
         '
         Me.CouperToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CouperToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_cut_icon_16
         Me.CouperToolStripMenuItem1.Name = "CouperToolStripMenuItem1"
         Me.CouperToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CouperToolStripMenuItem1.Text = "Couper"
@@ -192,6 +201,7 @@ Partial Class frmBatEdit
         'CopierToolStripMenuItem1
         '
         Me.CopierToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CopierToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_copy_icon_16
         Me.CopierToolStripMenuItem1.Name = "CopierToolStripMenuItem1"
         Me.CopierToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CopierToolStripMenuItem1.Text = "Copier"
@@ -199,13 +209,14 @@ Partial Class frmBatEdit
         'CollerToolStripMenuItem1
         '
         Me.CollerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CollerToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_past_icon_16
         Me.CollerToolStripMenuItem1.Name = "CollerToolStripMenuItem1"
         Me.CollerToolStripMenuItem1.Size = New System.Drawing.Size(114, 22)
         Me.CollerToolStripMenuItem1.Text = "Coller"
         '
         'OutilsToolStripMenuItem
         '
-        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompillerToolStripMenuItem})
+        Me.OutilsToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.CompillerToolStripMenuItem, Me.OptionsToolStripMenuItem})
         Me.OutilsToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OutilsToolStripMenuItem.ForeColor = System.Drawing.Color.RoyalBlue
         Me.OutilsToolStripMenuItem.Name = "OutilsToolStripMenuItem"
@@ -215,83 +226,133 @@ Partial Class frmBatEdit
         'CompillerToolStripMenuItem
         '
         Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CompillerToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.cog_icon_16
         Me.CompillerToolStripMenuItem.Name = "CompillerToolStripMenuItem"
-        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
+        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.CompillerToolStripMenuItem.Text = ".bat To .exe"
+        '
+        'OptionsToolStripMenuItem
+        '
+        Me.OptionsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.OptionsToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.wrench_icon_16
+        Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OptionsToolStripMenuItem.Text = "Options"
         '
         'RightClickMenu
         '
         Me.RightClickMenu.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.EnregistrerToolStripMenuItem1, Me.EnregistrerSousToolStripMenuItem1, Me.ToolStripSeparator2, Me.MiseEnPageToolStripMenuItem1, Me.AperçuDimpressionToolStripMenuItem, Me.ImprimerToolStripMenuItem1, Me.ToolStripSeparator6, Me.CopierToolStripMenuItem, Me.CouperToolStripMenuItem, Me.CollerToolStripMenuItem, Me.ToolStripSeparator1, Me.CompillerToolStripMenuItem1, Me.ToolStripSeparator3, Me.QuiterToolStripMenuItem1})
         Me.RightClickMenu.Name = "RightClickMenu"
-        Me.RightClickMenu.Size = New System.Drawing.Size(184, 270)
+        Me.RightClickMenu.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
+        Me.RightClickMenu.Size = New System.Drawing.Size(208, 248)
         '
         'EnregistrerToolStripMenuItem1
         '
+        Me.EnregistrerToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EnregistrerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.EnregistrerToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.save_icon_16
         Me.EnregistrerToolStripMenuItem1.Name = "EnregistrerToolStripMenuItem1"
-        Me.EnregistrerToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.EnregistrerToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
         Me.EnregistrerToolStripMenuItem1.Text = "Enregistrer"
         '
         'EnregistrerSousToolStripMenuItem1
         '
+        Me.EnregistrerSousToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.EnregistrerSousToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.EnregistrerSousToolStripMenuItem1.Name = "EnregistrerSousToolStripMenuItem1"
-        Me.EnregistrerSousToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.EnregistrerSousToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
         Me.EnregistrerSousToolStripMenuItem1.Text = "Enregistrer Sous..."
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(180, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(204, 6)
         '
         'MiseEnPageToolStripMenuItem1
         '
+        Me.MiseEnPageToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.MiseEnPageToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.MiseEnPageToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.doc_lines_stright_icon_16
         Me.MiseEnPageToolStripMenuItem1.Name = "MiseEnPageToolStripMenuItem1"
-        Me.MiseEnPageToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.MiseEnPageToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
         Me.MiseEnPageToolStripMenuItem1.Text = "Mise en page"
         '
         'AperçuDimpressionToolStripMenuItem
         '
+        Me.AperçuDimpressionToolStripMenuItem.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.AperçuDimpressionToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.AperçuDimpressionToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.eye_icon_16
         Me.AperçuDimpressionToolStripMenuItem.Name = "AperçuDimpressionToolStripMenuItem"
-        Me.AperçuDimpressionToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.AperçuDimpressionToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.AperçuDimpressionToolStripMenuItem.Text = "Aperçu d'impression"
         '
         'ImprimerToolStripMenuItem1
         '
+        Me.ImprimerToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.ImprimerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.ImprimerToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.print_icon_16
         Me.ImprimerToolStripMenuItem1.Name = "ImprimerToolStripMenuItem1"
-        Me.ImprimerToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.ImprimerToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
         Me.ImprimerToolStripMenuItem1.Text = "Imprimer"
         '
         'ToolStripSeparator6
         '
         Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(180, 6)
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(204, 6)
         '
         'CopierToolStripMenuItem
         '
+        Me.CopierToolStripMenuItem.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CopierToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CopierToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_copy_icon_16
         Me.CopierToolStripMenuItem.Name = "CopierToolStripMenuItem"
-        Me.CopierToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CopierToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.CopierToolStripMenuItem.Text = "Copier"
         '
         'CouperToolStripMenuItem
         '
+        Me.CouperToolStripMenuItem.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CouperToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CouperToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_cut_icon_16
         Me.CouperToolStripMenuItem.Name = "CouperToolStripMenuItem"
-        Me.CouperToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CouperToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.CouperToolStripMenuItem.Text = "Couper"
         '
         'CollerToolStripMenuItem
         '
+        Me.CollerToolStripMenuItem.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CollerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CollerToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.clipboard_past_icon_16
         Me.CollerToolStripMenuItem.Name = "CollerToolStripMenuItem"
-        Me.CollerToolStripMenuItem.Size = New System.Drawing.Size(183, 22)
+        Me.CollerToolStripMenuItem.Size = New System.Drawing.Size(207, 22)
         Me.CollerToolStripMenuItem.Text = "Coller"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(204, 6)
+        '
+        'CompillerToolStripMenuItem1
+        '
+        Me.CompillerToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CompillerToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.CompillerToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.cog_icon_16
+        Me.CompillerToolStripMenuItem1.Name = "CompillerToolStripMenuItem1"
+        Me.CompillerToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
+        Me.CompillerToolStripMenuItem1.Text = "Compiller"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(180, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(204, 6)
         '
         'QuiterToolStripMenuItem1
         '
+        Me.QuiterToolStripMenuItem1.Font = New System.Drawing.Font("Consolas", 9.0!, CType((System.Drawing.FontStyle.Bold Or System.Drawing.FontStyle.Italic), System.Drawing.FontStyle), System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.QuiterToolStripMenuItem1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.QuiterToolStripMenuItem1.Image = Global.GUIDosbox.My.Resources.Resources.delete_icon_16
         Me.QuiterToolStripMenuItem1.Name = "QuiterToolStripMenuItem1"
-        Me.QuiterToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
+        Me.QuiterToolStripMenuItem1.Size = New System.Drawing.Size(207, 22)
         Me.QuiterToolStripMenuItem1.Text = "Quiter"
         '
         'PrintDoc
@@ -309,6 +370,7 @@ Partial Class frmBatEdit
         Me.PrintPreviewDialog.Enabled = True
         Me.PrintPreviewDialog.Icon = CType(resources.GetObject("PrintPreviewDialog.Icon"), System.Drawing.Icon)
         Me.PrintPreviewDialog.Name = "PrintPreviewDialog1"
+        Me.PrintPreviewDialog.ShowIcon = False
         Me.PrintPreviewDialog.Visible = False
         '
         'PanelMain
@@ -333,24 +395,27 @@ Partial Class frmBatEdit
         Me.txtEditor.CopyAsRTF = False
         Me.txtEditor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.txtEditor.Document = Me.SyntaxDocument
+        Me.txtEditor.HighLightActiveLine = True
+        Me.txtEditor.HighLightedLineColor = System.Drawing.Color.FromArgb(CType(CType(231, Byte), Integer), CType(CType(244, Byte), Integer), CType(CType(250, Byte), Integer))
         Me.txtEditor.InfoTipCount = 1
         Me.txtEditor.InfoTipPosition = Nothing
         Me.txtEditor.InfoTipSelectedIndex = 1
         Me.txtEditor.InfoTipVisible = False
-        LineMarginRender2.Bounds = New System.Drawing.Rectangle(19, 0, 19, 16)
-        Me.txtEditor.LineMarginRender = LineMarginRender2
+        LineMarginRender1.Bounds = New System.Drawing.Rectangle(0, 0, 19, 16)
+        Me.txtEditor.LineMarginRender = LineMarginRender1
         Me.txtEditor.Location = New System.Drawing.Point(8, 8)
         Me.txtEditor.LockCursorUpdate = False
         Me.txtEditor.Name = "txtEditor"
         Me.txtEditor.Saved = False
+        Me.txtEditor.ShowGutterMargin = False
         Me.txtEditor.ShowScopeIndicator = False
         Me.txtEditor.Size = New System.Drawing.Size(905, 603)
         Me.txtEditor.SmoothScroll = False
+        Me.txtEditor.SplitView = False
         Me.txtEditor.SplitviewH = -4
         Me.txtEditor.SplitviewV = -4
         Me.txtEditor.TabGuideColor = System.Drawing.Color.FromArgb(CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer), CType(CType(233, Byte), Integer))
         Me.txtEditor.TabIndex = 1
-        Me.txtEditor.Text = "CodeEditorControl1"
         Me.txtEditor.WhitespaceColor = System.Drawing.SystemColors.ControlDark
         '
         'SyntaxDocument
@@ -364,17 +429,6 @@ Partial Class frmBatEdit
         '
         Me.PageSetupDialog.Document = Me.PrintDoc
         Me.PageSetupDialog.EnableMetric = True
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(180, 6)
-        '
-        'CompillerToolStripMenuItem1
-        '
-        Me.CompillerToolStripMenuItem1.Name = "CompillerToolStripMenuItem1"
-        Me.CompillerToolStripMenuItem1.Size = New System.Drawing.Size(183, 22)
-        Me.CompillerToolStripMenuItem1.Text = "Compiller"
         '
         'frmBatEdit
         '
@@ -441,4 +495,5 @@ Partial Class frmBatEdit
     Friend WithEvents PageSetupDialog As System.Windows.Forms.PageSetupDialog
     Friend WithEvents ToolStripSeparator1 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents CompillerToolStripMenuItem1 As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents OptionsToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
 End Class

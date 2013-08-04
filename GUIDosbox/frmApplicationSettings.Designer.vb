@@ -43,6 +43,7 @@ Partial Class frmApplicationSettings
         Me.btnAllDefault = New System.Windows.Forms.Button()
         Me.TabControlMain = New System.Windows.Forms.TabControl()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
+        Me.cbHighLightLine = New System.Windows.Forms.CheckBox()
         Me.tabEditeur.SuspendLayout()
         Me.gbParamEditeur.SuspendLayout()
         CType(Me.pbEditorColor, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -73,7 +74,7 @@ Partial Class frmApplicationSettings
         '
         Me.btnEdtDefault.Font = New System.Drawing.Font("Georgia", 8.25!)
         Me.btnEdtDefault.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.btnEdtDefault.Location = New System.Drawing.Point(326, 110)
+        Me.btnEdtDefault.Location = New System.Drawing.Point(326, 136)
         Me.btnEdtDefault.Name = "btnEdtDefault"
         Me.btnEdtDefault.Size = New System.Drawing.Size(124, 23)
         Me.btnEdtDefault.TabIndex = 37
@@ -104,6 +105,7 @@ Partial Class frmApplicationSettings
         '
         'gbParamEditeur
         '
+        Me.gbParamEditeur.Controls.Add(Me.cbHighLightLine)
         Me.gbParamEditeur.Controls.Add(Me.Label2)
         Me.gbParamEditeur.Controls.Add(Me.fpEditorFont)
         Me.gbParamEditeur.Controls.Add(Me.Label1)
@@ -111,7 +113,7 @@ Partial Class frmApplicationSettings
         Me.gbParamEditeur.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.gbParamEditeur.Location = New System.Drawing.Point(12, 9)
         Me.gbParamEditeur.Name = "gbParamEditeur"
-        Me.gbParamEditeur.Size = New System.Drawing.Size(438, 95)
+        Me.gbParamEditeur.Size = New System.Drawing.Size(438, 117)
         Me.gbParamEditeur.TabIndex = 0
         Me.gbParamEditeur.TabStop = False
         Me.gbParamEditeur.Text = " Paramètres de l'éditeur "
@@ -273,6 +275,17 @@ Partial Class frmApplicationSettings
         Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControlMain.TabIndex = 0
         '
+        'cbHighLightLine
+        '
+        Me.cbHighLightLine.AutoSize = True
+        Me.cbHighLightLine.Font = New System.Drawing.Font("Georgia", 8.25!)
+        Me.cbHighLightLine.Location = New System.Drawing.Point(9, 86)
+        Me.cbHighLightLine.Name = "cbHighLightLine"
+        Me.cbHighLightLine.Size = New System.Drawing.Size(254, 18)
+        Me.cbHighLightLine.TabIndex = 10
+        Me.cbHighLightLine.Text = "Mettre en évidence la ligne sélectionnée"
+        Me.cbHighLightLine.UseVisualStyleBackColor = True
+        '
         'frmApplicationSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -319,4 +332,5 @@ Partial Class frmApplicationSettings
     Friend WithEvents btnAllDefault As System.Windows.Forms.Button
     Friend WithEvents TabControlMain As System.Windows.Forms.TabControl
     Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
+    Friend WithEvents cbHighLightLine As System.Windows.Forms.CheckBox
 End Class

@@ -8,6 +8,8 @@
 ' Ce Module contient toutes les fonctions et méthodes pour les outils reliés au Batch File.
 
 Imports System.IO
+Imports System.Text
+
 
 Module GUIDosboxBatchFile
 
@@ -49,6 +51,8 @@ Module GUIDosboxBatchFile
             'Création du nouveau fichier temporaire
             CreateBatch()
             'Écriture des valeurs par défault dans le ficher
+            WriteBatch("@echo off")
+            LineSpace(1)
             WriteBatch("REM [--> GUIDosbox <--]")
             WriteBatch("REM Créé par : Nice-Life90")
             WriteBatch("REM http://www.guidosbox.com")
@@ -61,7 +65,6 @@ Module GUIDosboxBatchFile
             WriteBatch("REM Vous trouverez l'utilitaire dans le menu principal sous Outils > .bat To .exe.")
             WriteBatch("REM Vous trouverez sous cette ligne l'historique des commandes que vous avez effectuées avec GUIDosbox.")
             LineSpace(1)
-            WriteBatch("@echo off")
         Catch ex As Exception
             'Message d'erreur
             MsgBox("Une erreur c'est produite avec la préparation du nouveau fichier batch temporraire." _
@@ -169,7 +172,7 @@ Module GUIDosboxBatchFile
     Public Sub WriteBatch(ByVal Text As String)
         Try
             If File.Exists(TempBatch) Then
-                Using sw As StreamWriter = New StreamWriter(TempBatch, True)
+                Using sw As StreamWriter = New StreamWriter(TempBatch, True, Encoding.UTF8)
                     sw.WriteLine(Text)
                     sw.Close()
                 End Using

@@ -52,11 +52,6 @@ Public Class frmApplicationSettings
     End Sub
 #End Region
 
-    Private Sub frmApplicationSettings_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
-        'Retour au cp
-        CP.Show()
-    End Sub
-
     Private Sub frmApplicationSettings_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Mise à jour de l'interface d'utilisateur selon les bon paramètres
         LoadGUIDosboxSettings()
@@ -73,14 +68,15 @@ Public Class frmApplicationSettings
         ' =================================================================== '
 
         With My.Settings
-          
 
+            'Mise à jour auto
             If .UpdateState Then
                 optAutoUpdate.Checked = True
             Else
                 optAutoUpdate.Checked = False
             End If
 
+            'Closing Warning
             If .WarningState Then
                 optSaveWarning.Checked = True
             Else
@@ -96,20 +92,27 @@ Public Class frmApplicationSettings
         ' =================================================================== '
         ' ========================== Onglet Editeur ========================= '
         ' =================================================================== '
-     
+
         With My.Settings
-           
+
             'Affichage de la couleur actuellement choisi.
             pbEditorColor.BackColor = .EditorBGColor
 
             'Affichage de la police actuellement choisi.
             fpEditorFont.Value = .EditorFont
 
+            'HightLight Line
+            If .EditorHightLightLine Then
+                cbHighLightLine.Checked = True
+            Else
+                cbHighLightLine.Checked = False
+            End If
+
             'Affectation des valeurs actuelle à la structure paramEditor
             'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
             tmpEditor.EditorBgColor = .EditorBGColor
             tmpEditor.EditorFont = .EditorFont
-
+            tmpEditor.EditorHightLightLine = .EditorHightLightLine
         End With
 
     End Sub
@@ -149,14 +152,14 @@ Public Class frmApplicationSettings
         'btnEdtApply --> Enregistrement et retour au cp
         SaveGUIDosboxSetting(tmpGeneral, 1)
         SaveGUIDosboxSetting(tmpEditor, 3)
+        DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
-        CP.Show()
     End Sub
 
     Private Sub btnGenCancel_Click(sender As Object, e As EventArgs) Handles btnGenCancel.Click
         ' Retour au cp.
+        DialogResult = Windows.Forms.DialogResult.Cancel
         Me.Close()
-        CP.Show()
     End Sub
 
 #End Region
@@ -173,6 +176,14 @@ Public Class frmApplicationSettings
         tmpEditor.EditorFont = fpEditorFont.Value
     End Sub
 
+    Private Sub cbHighLightLine_CheckedChanged(sender As Object, e As EventArgs) Handles cbHighLightLine.CheckedChanged
+        If cbHighLightLine.Checked Then
+            tmpEditor.EditorHightLightLine = True
+        Else
+            tmpEditor.EditorHightLightLine = False
+        End If
+    End Sub
+
     Private Sub btnEdtDefault_Click(sender As Object, e As EventArgs) Handles btnEdtDefault.Click
         'btnEdtDefault --> Reset des settings de l'éditeur.
         ResetGUIDosboxSettings(3)
@@ -183,18 +194,14 @@ Public Class frmApplicationSettings
         'btnEdtApply --> Enregistrement et retour au cp
         SaveGUIDosboxSetting(tmpGeneral, 1)
         SaveGUIDosboxSetting(tmpEditor, 3)
+        DialogResult = Windows.Forms.DialogResult.OK
         Me.Close()
-        CP.Show()
     End Sub
 
     Private Sub btnEdtCancel_Click(sender As Object, e As EventArgs) Handles btnEdtCancel.Click
         ' Retour au cp.
+        DialogResult = Windows.Forms.DialogResult.Cancel
         Me.Close()
-        CP.Show()
     End Sub
 #End Region
-
-    
-   
-    
 End Class

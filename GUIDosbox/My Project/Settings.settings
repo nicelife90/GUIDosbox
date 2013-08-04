@@ -6,12 +6,15 @@
       <Value Profile="(Default)">Consolas, 9.75pt</Value>
     </Setting>
     <Setting Name="EditorBGColor" Type="System.Drawing.Color" Scope="User">
-      <Value Profile="(Default)">Gainsboro</Value>
+      <Value Profile="(Default)">White</Value>
     </Setting>
     <Setting Name="UpdateState" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="WarningState" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="EditorHightLightLine" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
   </Settings>

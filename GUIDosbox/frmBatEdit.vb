@@ -39,6 +39,7 @@ Public Class frmBatEdit
             txtEditor.BackColor = .EditorBGColor
             txtEditor.FontName = .EditorFont.Name
             txtEditor.FontSize = .EditorFont.SizeInPoints
+            txtEditor.HighLightActiveLine = .EditorHightLightLine
         End With
 
         'Loading du Flash Header
@@ -47,8 +48,7 @@ Public Class frmBatEdit
         'Affichage du batch file
         Try
             If File.Exists(TempBatch) Then
-                txtEditor.Document.Text = My.Computer.FileSystem.ReadAllText(TempBatch)
-
+                txtEditor.Document.Text = File.ReadAllText(TempBatch, Encoding.UTF8)
             End If
         Catch ex As Exception
             MsgBox("Impossible de charger le Batch File." & vbNewLine & vbNewLine & ex.Message, _
@@ -77,7 +77,7 @@ Public Class frmBatEdit
                       MsgBoxStyle.YesNo) = MsgBoxResult.Yes Then
                 'Enregistrement des modifications.
                 Try
-                    File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+                    File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.UTF8)
                 Catch ex As Exception
                     MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                            MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
@@ -103,7 +103,7 @@ Public Class frmBatEdit
     Private Sub EnregistrerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem.Click
         'Enregistrement des modifications.
         Try
-            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.UTF8)
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
@@ -163,7 +163,7 @@ Public Class frmBatEdit
     Private Sub CompillerToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CompillerToolStripMenuItem.Click
         'Enregistrement des modifications et affichage du compilateur.
         Try
-            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.UTF8)
             NeedSave = False
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
@@ -172,13 +172,27 @@ Public Class frmBatEdit
         BuildFromTempBatch = True
         frmBatToExe.Show()
     End Sub
+
+    Private Sub OptionsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OptionsToolStripMenuItem.Click
+        'Options
+        If frmApplicationSettings.ShowDialog = Windows.Forms.DialogResult.OK Then
+            'Application des paramètres d'utilisateur
+            With My.Settings
+                PanelMain.BackColor = .EditorBGColor
+                txtEditor.BackColor = .EditorBGColor
+                txtEditor.FontName = .EditorFont.Name
+                txtEditor.FontSize = .EditorFont.SizeInPoints
+                txtEditor.HighLightActiveLine = .EditorHightLightLine
+            End With
+        End If
+    End Sub
 #End Region
 
 #Region " Right-Click Context Menu "
     Private Sub EnregistrerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles EnregistrerToolStripMenuItem1.Click
         'Enregistrement des modifications.
         Try
-            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.UTF8)
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
                    MsgBoxStyle.Exclamation, "GUI Dosbox - Erreur d'enregistrement")
@@ -218,7 +232,7 @@ Public Class frmBatEdit
     Private Sub CompillerToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CompillerToolStripMenuItem1.Click
         'Enregistrement des modifications et affichage du compilateur.
         Try
-            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+            File.WriteAllText(TempBatch, txtEditor.Document.Text, Encoding.UTF8)
             NeedSave = False
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _
@@ -333,7 +347,7 @@ Public Class frmBatEdit
                 'Lecture du contenue
                 If File.Exists(opFD.FileName) Then
                     txtEditor.Document.Text = Nothing
-                    txtEditor.Document.Text = File.ReadAllText(opFD.FileName, Encoding.GetEncoding(1252))
+                    txtEditor.Document.Text = File.ReadAllText(opFD.FileName, Encoding.UTF8)
                 End If
             End If
         Catch ex As Exception
@@ -365,7 +379,7 @@ Public Class frmBatEdit
                     File.Delete(opFD.FileName)
                 End If
                 'Création du nouveau fichier.
-                File.WriteAllText(opFD.FileName, txtEditor.Document.Text, Encoding.GetEncoding(1252))
+                File.WriteAllText(opFD.FileName, txtEditor.Document.Text, Encoding.UTF8)
             End If
         Catch ex As Exception
             MsgBox("Une erreur c'est produite lors de l'enregistrement", _

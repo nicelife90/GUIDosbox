@@ -1,18 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <items>
-
   <item>
-    <content><![CDATA[<span class="title">GUI DosBox - Info</span> ]]></content>
+    <content><![CDATA[<span class="title">À propos - GUI Dosbox</span> ]]></content>
   </item>
-
   <item>
     <content>
-      <![CDATA[<a href="http://www.fr.kobixxe.com/produits.php" target="_parent" class="subtitle">kobixxe.com/produits</a>
-<p align="justify"> <a href="http://www.kobixxe.com" target="_parent">Kobixxe Devlopers</a> Est fier de présenter GUIDosBox,   </p> 
-<p align="right"> Copyright 2011</p>
-<p align="right"> tout droits réservés</p>]]>
+      <![CDATA[<p align="center">Nous sommes heureux de vous présenter GUI DosBox.</p>
+      
+<p align="center">Cette application a été développé par :
+Yanick Lafontaine
+Jesse Vaudois
+
+Dans le cadre d’un projet personnel.</p>
+
+<p align="center"><a href="http://www.guidosbox.com" target="_parent">Visiter notre site web.</a></p>
+
+<p align="center">Copyright © 2010 - 2013</p>
+<p align="center">GUI Dosbox - Montréal</p>
+<p align="center">Tous droits réservés</p>]]>
     </content>
-
   </item>
-
 </items>
