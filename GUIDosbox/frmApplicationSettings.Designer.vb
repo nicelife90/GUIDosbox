@@ -29,6 +29,9 @@ Partial Class frmApplicationSettings
         Me.btnEdtCancel = New System.Windows.Forms.Button()
         Me.btnEdtApply = New System.Windows.Forms.Button()
         Me.gbParamEditeur = New System.Windows.Forms.GroupBox()
+        Me.Label3 = New System.Windows.Forms.Label()
+        Me.pbLineColor = New System.Windows.Forms.PictureBox()
+        Me.cbHighLightLine = New System.Windows.Forms.CheckBox()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.fpEditorFont = New GUIDB.Forms.Controls.FontPicker()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -43,9 +46,9 @@ Partial Class frmApplicationSettings
         Me.btnAllDefault = New System.Windows.Forms.Button()
         Me.TabControlMain = New System.Windows.Forms.TabControl()
         Me.FontDialog1 = New System.Windows.Forms.FontDialog()
-        Me.cbHighLightLine = New System.Windows.Forms.CheckBox()
         Me.tabEditeur.SuspendLayout()
         Me.gbParamEditeur.SuspendLayout()
+        CType(Me.pbLineColor, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.pbEditorColor, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.tabGeneral.SuspendLayout()
         Me.gbParametres.SuspendLayout()
@@ -74,7 +77,7 @@ Partial Class frmApplicationSettings
         '
         Me.btnEdtDefault.Font = New System.Drawing.Font("Georgia", 8.25!)
         Me.btnEdtDefault.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.btnEdtDefault.Location = New System.Drawing.Point(326, 136)
+        Me.btnEdtDefault.Location = New System.Drawing.Point(326, 169)
         Me.btnEdtDefault.Name = "btnEdtDefault"
         Me.btnEdtDefault.Size = New System.Drawing.Size(124, 23)
         Me.btnEdtDefault.TabIndex = 37
@@ -105,6 +108,8 @@ Partial Class frmApplicationSettings
         '
         'gbParamEditeur
         '
+        Me.gbParamEditeur.Controls.Add(Me.Label3)
+        Me.gbParamEditeur.Controls.Add(Me.pbLineColor)
         Me.gbParamEditeur.Controls.Add(Me.cbHighLightLine)
         Me.gbParamEditeur.Controls.Add(Me.Label2)
         Me.gbParamEditeur.Controls.Add(Me.fpEditorFont)
@@ -113,17 +118,50 @@ Partial Class frmApplicationSettings
         Me.gbParamEditeur.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.gbParamEditeur.Location = New System.Drawing.Point(12, 9)
         Me.gbParamEditeur.Name = "gbParamEditeur"
-        Me.gbParamEditeur.Size = New System.Drawing.Size(438, 117)
+        Me.gbParamEditeur.Size = New System.Drawing.Size(438, 154)
         Me.gbParamEditeur.TabIndex = 0
         Me.gbParamEditeur.TabStop = False
         Me.gbParamEditeur.Text = " Paramètres de l'éditeur "
+        '
+        'Label3
+        '
+        Me.Label3.AutoSize = True
+        Me.Label3.Font = New System.Drawing.Font("Georgia", 8.25!)
+        Me.Label3.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
+        Me.Label3.Location = New System.Drawing.Point(6, 114)
+        Me.Label3.Name = "Label3"
+        Me.Label3.Size = New System.Drawing.Size(188, 14)
+        Me.Label3.TabIndex = 12
+        Me.Label3.Text = "Couleur de la ligne sélectionnée"
+        '
+        'pbLineColor
+        '
+        Me.pbLineColor.BackColor = System.Drawing.Color.Black
+        Me.pbLineColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.pbLineColor.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.pbLineColor.Location = New System.Drawing.Point(202, 111)
+        Me.pbLineColor.Name = "pbLineColor"
+        Me.pbLineColor.Size = New System.Drawing.Size(20, 20)
+        Me.pbLineColor.TabIndex = 11
+        Me.pbLineColor.TabStop = False
+        '
+        'cbHighLightLine
+        '
+        Me.cbHighLightLine.AutoSize = True
+        Me.cbHighLightLine.Font = New System.Drawing.Font("Georgia", 8.25!)
+        Me.cbHighLightLine.Location = New System.Drawing.Point(9, 84)
+        Me.cbHighLightLine.Name = "cbHighLightLine"
+        Me.cbHighLightLine.Size = New System.Drawing.Size(254, 18)
+        Me.cbHighLightLine.TabIndex = 10
+        Me.cbHighLightLine.Text = "Mettre en évidence la ligne sélectionnée"
+        Me.cbHighLightLine.UseVisualStyleBackColor = True
         '
         'Label2
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Georgia", 8.25!)
         Me.Label2.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
-        Me.Label2.Location = New System.Drawing.Point(6, 61)
+        Me.Label2.Location = New System.Drawing.Point(6, 58)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(181, 14)
         Me.Label2.TabIndex = 5
@@ -135,10 +173,10 @@ Partial Class frmApplicationSettings
         Me.fpEditorFont.Context = Nothing
         Me.fpEditorFont.Font = New System.Drawing.Font("Georgia", 8.25!)
         Me.fpEditorFont.ForeColor = System.Drawing.SystemColors.WindowText
-        Me.fpEditorFont.Location = New System.Drawing.Point(193, 58)
+        Me.fpEditorFont.Location = New System.Drawing.Point(202, 55)
         Me.fpEditorFont.Name = "fpEditorFont"
         Me.fpEditorFont.ReadOnly = False
-        Me.fpEditorFont.Size = New System.Drawing.Size(239, 20)
+        Me.fpEditorFont.Size = New System.Drawing.Size(230, 20)
         Me.fpEditorFont.TabIndex = 4
         Me.fpEditorFont.Text = "Microsoft Sans Serif; 8,25pt"
         Me.fpEditorFont.Value = New System.Drawing.Font("Microsoft Sans Serif", 8.25!)
@@ -157,8 +195,9 @@ Partial Class frmApplicationSettings
         'pbEditorColor
         '
         Me.pbEditorColor.BackColor = System.Drawing.Color.Black
+        Me.pbEditorColor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.pbEditorColor.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.pbEditorColor.Location = New System.Drawing.Point(193, 30)
+        Me.pbEditorColor.Location = New System.Drawing.Point(202, 26)
         Me.pbEditorColor.Name = "pbEditorColor"
         Me.pbEditorColor.Size = New System.Drawing.Size(20, 20)
         Me.pbEditorColor.TabIndex = 0
@@ -275,17 +314,6 @@ Partial Class frmApplicationSettings
         Me.TabControlMain.SizeMode = System.Windows.Forms.TabSizeMode.Fixed
         Me.TabControlMain.TabIndex = 0
         '
-        'cbHighLightLine
-        '
-        Me.cbHighLightLine.AutoSize = True
-        Me.cbHighLightLine.Font = New System.Drawing.Font("Georgia", 8.25!)
-        Me.cbHighLightLine.Location = New System.Drawing.Point(9, 86)
-        Me.cbHighLightLine.Name = "cbHighLightLine"
-        Me.cbHighLightLine.Size = New System.Drawing.Size(254, 18)
-        Me.cbHighLightLine.TabIndex = 10
-        Me.cbHighLightLine.Text = "Mettre en évidence la ligne sélectionnée"
-        Me.cbHighLightLine.UseVisualStyleBackColor = True
-        '
         'frmApplicationSettings
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -304,6 +332,7 @@ Partial Class frmApplicationSettings
         Me.tabEditeur.ResumeLayout(False)
         Me.gbParamEditeur.ResumeLayout(False)
         Me.gbParamEditeur.PerformLayout()
+        CType(Me.pbLineColor, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.pbEditorColor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.tabGeneral.ResumeLayout(False)
         Me.gbParametres.ResumeLayout(False)
@@ -333,4 +362,6 @@ Partial Class frmApplicationSettings
     Friend WithEvents TabControlMain As System.Windows.Forms.TabControl
     Friend WithEvents FontDialog1 As System.Windows.Forms.FontDialog
     Friend WithEvents cbHighLightLine As System.Windows.Forms.CheckBox
+    Friend WithEvents Label3 As System.Windows.Forms.Label
+    Friend WithEvents pbLineColor As System.Windows.Forms.PictureBox
 End Class

@@ -21,6 +21,7 @@ Module GUIDosboxManageSettings
         Public EditorFont As Font
         Public EditorBgColor As Color
         Public EditorHightLightLine As Boolean
+        Public EditorLineColor As Color
     End Structure
 
     ''' <summary>
@@ -53,6 +54,7 @@ Module GUIDosboxManageSettings
                     .EditorFont = New Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point)
                     .EditorBGColor = Color.White
                     .EditorHightLightLine = True
+                    .EditorLineColor = Color.FromArgb(231, 244, 250)
                 End With
                 My.Settings.Save()
                 My.Settings.Reload()
@@ -64,6 +66,7 @@ Module GUIDosboxManageSettings
                     .EditorFont = New Font("Consolas", 10, FontStyle.Regular, GraphicsUnit.Point)
                     .EditorBGColor = Color.White
                     .EditorHightLightLine = True
+                    .EditorLineColor = Color.FromArgb(231, 244, 250)
                 End With
                 My.Settings.Save()
                 My.Settings.Reload()
@@ -101,6 +104,8 @@ Module GUIDosboxManageSettings
                     .EditorFont = newSettings.EditorFont
                     'Higlight Line
                     .EditorHightLightLine = newSettings.EditorHightLightLine
+                    'HightLineColor
+                    .EditorLineColor = newSettings.EditorLineColor
                 End With
 
                 'Enregistrement des paramètres

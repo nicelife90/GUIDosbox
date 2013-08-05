@@ -7,16 +7,32 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Updater", "Updater\Updater.
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|x86.ActiveCfg = Debug|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Debug|x86.Build.0 = Debug|x86
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|Any CPU.ActiveCfg = Release|x86
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|Mixed Platforms.Build.0 = Release|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|x86.ActiveCfg = Release|x86
 		{6358C54E-D276-4240-8925-DAD9EE59FFBD}.Release|x86.Build.0 = Release|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|x86.ActiveCfg = Debug|x86
 		{D3852701-190C-4382-A736-1D043C01C9DA}.Debug|x86.Build.0 = Debug|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|Any CPU.ActiveCfg = Release|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|Mixed Platforms.Build.0 = Release|x86
 		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|x86.ActiveCfg = Release|x86
 		{D3852701-190C-4382-A736-1D043C01C9DA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection

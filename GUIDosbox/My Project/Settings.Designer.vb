@@ -102,15 +102,27 @@ Namespace My
             End Set
         End Property
         
-        <Global.System.Configuration.UserScopedSettingAttribute(), _
-         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(), _
-         Global.System.Configuration.DefaultSettingValueAttribute("True")> _
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
         Public Property EditorHightLightLine() As Boolean
             Get
-                Return CType(Me("EditorHightLightLine"), Boolean)
+                Return CType(Me("EditorHightLightLine"),Boolean)
             End Get
-            Set(value As Boolean)
+            Set
                 Me("EditorHightLightLine") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("231, 244, 250")>  _
+        Public Property EditorLineColor() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("EditorLineColor"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("EditorLineColor") = value
             End Set
         End Property
     End Class

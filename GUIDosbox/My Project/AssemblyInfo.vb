@@ -8,12 +8,12 @@ Imports System.Runtime.InteropServices
 
 ' Passez en revue les valeurs des attributs de l'assembly
 
-<Assembly: AssemblyTitle("GUI DosBox")> 
-<Assembly: AssemblyDescription("CMD GUI")> 
-<Assembly: AssemblyCompany("Kobixxe Developers")> 
-<Assembly: AssemblyProduct("GUI DosBox")> 
-<Assembly: AssemblyCopyright("Copyright © Kobixxe Developers 2011")> 
-<Assembly: AssemblyTrademark("Kobixxe Developers")> 
+<Assembly: AssemblyTitle("GUI Dosbox")> 
+<Assembly: AssemblyDescription("Console cmd GUI")> 
+<Assembly: AssemblyCompany("GUI Dosbox")> 
+<Assembly: AssemblyProduct("GUI Dosbox")> 
+<Assembly: AssemblyCopyright("Copyright © GUI Dosbox 2010 - 2013")> 
+<Assembly: AssemblyTrademark("GUI Dosbox")> 
 
 <Assembly: ComVisible(False)>
 
@@ -31,5 +31,5 @@ Imports System.Runtime.InteropServices
 ' en utilisant '*', comme indiqué ci-dessous :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.1.1.1")> 
-<Assembly: AssemblyFileVersion("1.1.1.1")> 
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 

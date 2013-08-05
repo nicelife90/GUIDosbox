@@ -40,6 +40,7 @@ Public Class frmBatEdit
             txtEditor.FontName = .EditorFont.Name
             txtEditor.FontSize = .EditorFont.SizeInPoints
             txtEditor.HighLightActiveLine = .EditorHightLightLine
+            txtEditor.HighLightedLineColor = .EditorLineColor
         End With
 
         'Loading du Flash Header
@@ -183,6 +184,7 @@ Public Class frmBatEdit
                 txtEditor.FontName = .EditorFont.Name
                 txtEditor.FontSize = .EditorFont.SizeInPoints
                 txtEditor.HighLightActiveLine = .EditorHightLightLine
+                txtEditor.HighLightedLineColor = .EditorLineColor
             End With
         End If
     End Sub
@@ -275,6 +277,7 @@ Public Class frmBatEdit
         Dim g = Me.CreateGraphics
 
         lstLinesToPrint.Clear()
+
 
         For intCounter = 0 To txtEditor.Document.Lines.Count - 1
             stringSize = g.MeasureString(txtEditor.Document.Lines(intCounter), fntText)

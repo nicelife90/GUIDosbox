@@ -108,11 +108,15 @@ Public Class frmApplicationSettings
                 cbHighLightLine.Checked = False
             End If
 
+            'HightLightLineColor
+            pbLineColor.BackColor = .EditorLineColor
+
             'Affectation des valeurs actuelle à la structure paramEditor
             'Load les valeurs actuellement sauvegarder dans settings avant d'être modifier 
             tmpEditor.EditorBgColor = .EditorBGColor
             tmpEditor.EditorFont = .EditorFont
             tmpEditor.EditorHightLightLine = .EditorHightLightLine
+            tmpEditor.EditorLineColor = .EditorLineColor
         End With
 
     End Sub
@@ -184,6 +188,13 @@ Public Class frmApplicationSettings
         End If
     End Sub
 
+    Private Sub pbLineColor_Click(sender As Object, e As EventArgs) Handles pbLineColor.Click
+        If cd.ShowDialog() = Windows.Forms.DialogResult.OK Then
+            pbLineColor.BackColor = cd.Color
+            tmpEditor.EditorLineColor = cd.Color
+        End If
+    End Sub
+
     Private Sub btnEdtDefault_Click(sender As Object, e As EventArgs) Handles btnEdtDefault.Click
         'btnEdtDefault --> Reset des settings de l'éditeur.
         ResetGUIDosboxSettings(3)
@@ -204,4 +215,6 @@ Public Class frmApplicationSettings
         Me.Close()
     End Sub
 #End Region
+
+   
 End Class

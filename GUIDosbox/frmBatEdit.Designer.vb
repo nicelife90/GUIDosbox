@@ -228,7 +228,7 @@ Partial Class frmBatEdit
         Me.CompillerToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.CompillerToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.cog_icon_16
         Me.CompillerToolStripMenuItem.Name = "CompillerToolStripMenuItem"
-        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CompillerToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.CompillerToolStripMenuItem.Text = ".bat To .exe"
         '
         'OptionsToolStripMenuItem
@@ -236,7 +236,7 @@ Partial Class frmBatEdit
         Me.OptionsToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(11, Byte), Integer), CType(CType(110, Byte), Integer), CType(CType(140, Byte), Integer))
         Me.OptionsToolStripMenuItem.Image = Global.GUIDosbox.My.Resources.Resources.wrench_icon_16
         Me.OptionsToolStripMenuItem.Name = "OptionsToolStripMenuItem"
-        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OptionsToolStripMenuItem.Size = New System.Drawing.Size(139, 22)
         Me.OptionsToolStripMenuItem.Text = "Options"
         '
         'RightClickMenu

@@ -17,5 +17,8 @@
     <Setting Name="EditorHightLightLine" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="EditorLineColor" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">231, 244, 250</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

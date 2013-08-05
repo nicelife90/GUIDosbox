@@ -13,7 +13,7 @@
     <AssemblyName>GUIDosbox</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -61,7 +61,7 @@
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
-    <OptionExplicit>Off</OptionExplicit>
+    <OptionExplicit>On</OptionExplicit>
   </PropertyGroup>
   <PropertyGroup>
     <OptionCompare>Binary</OptionCompare>
@@ -140,11 +140,44 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomControl\GUIDosbox_Button.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Checkbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Combobox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Console.Designer.vb">
+      <DependentUpon>GUIDosbox_Console.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Console.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Groupbox.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Label.vb">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="CustomControl\GUIDosbox_ProgressBar.Designer.vb">
       <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
     </Compile>
     <Compile Include="CustomControl\GUIDosbox_ProgressBar.vb">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_RadioButton.vb">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_StatusStrip.Designer.vb">
+      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_StatusStrip.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CustomControl\GUIDosbox_Textbox.vb">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="frmApplicationSettings.Designer.vb">
       <DependentUpon>frmApplicationSettings.vb</DependentUpon>
@@ -164,8 +197,15 @@
     <Compile Include="frmBatToExe.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="frmGUIDBLoader.Designer.vb">
+      <DependentUpon>frmGUIDBLoader.vb</DependentUpon>
+    </Compile>
+    <Compile Include="frmGUIDBLoader.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Module\GUIDosboxBatchFile.vb" />
     <Compile Include="Module\GUIDosboxFlashLoader.vb" />
+    <Compile Include="Module\GUIDosboxFunction.vb" />
     <Compile Include="Module\GUIDosboxManageSettings.vb" />
     <Compile Include="Module\GUIDosboxPrivileges.vb" />
     <Compile Include="Module\GUIDosboxUpdater.vb" />
@@ -214,39 +254,6 @@
     <Compile Include="CP.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Button.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Checkbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Combobox.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Console.Designer.vb">
-      <DependentUpon>GUIDosbox_Console.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Console.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Groupbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Label.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_RadioButton.vb">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_StatusStrip.Designer.vb">
-      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_StatusStrip.vb">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="CustomControl\GUIDosbox_Textbox.vb">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Tools\CompactApp.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -256,7 +263,6 @@
     <Compile Include="frmNeedUserPrivilege.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Module\GUIDosboxFunction.vb" />
     <Compile Include="Tools\HelpApp.Designer.vb">
       <DependentUpon>HelpApp.vb</DependentUpon>
     </Compile>
@@ -334,8 +340,25 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_Button.resx">
+      <DependentUpon>GUIDosbox_Button.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_Console.resx">
+      <DependentUpon>GUIDosbox_Console.vb</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_Groupbox.resx">
+      <DependentUpon>GUIDosbox_Groupbox.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_Label.resx">
+      <DependentUpon>GUIDosbox_Label.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CustomControl\GUIDosbox_ProgressBar.resx">
       <DependentUpon>GUIDosbox_ProgressBar.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CustomControl\GUIDosbox_StatusStrip.resx">
+      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmApplicationSettings.resx">
       <DependentUpon>frmApplicationSettings.vb</DependentUpon>
@@ -345,6 +368,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBatToExe.resx">
       <DependentUpon>frmBatToExe.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGUIDBLoader.resx">
+      <DependentUpon>frmGUIDBLoader.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Tools\AssocApp.resx">
       <DependentUpon>AssocApp.vb</DependentUpon>
@@ -370,23 +396,6 @@
     <EmbeddedResource Include="CP.resx">
       <DependentUpon>CP.vb</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_Button.resx">
-      <DependentUpon>GUIDosbox_Button.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_Console.resx">
-      <DependentUpon>GUIDosbox_Console.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_Groupbox.resx">
-      <DependentUpon>GUIDosbox_Groupbox.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_Label.resx">
-      <DependentUpon>GUIDosbox_Label.vb</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="CustomControl\GUIDosbox_StatusStrip.resx">
-      <DependentUpon>GUIDosbox_StatusStrip.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmNeedUserPrivilege.resx">
       <DependentUpon>frmNeedUserPrivilege.vb</DependentUpon>
@@ -437,25 +446,11 @@
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
     </None>
-    <None Include="My Project\DataSources\AttribApp.datasource" />
-    <None Include="My Project\DataSources\ControlPanel.datasource" />
-    <None Include="My Project\DataSources\GUIDosbox.My.MyApplication.datasource" />
-    <None Include="My Project\DataSources\GUIDosbox.My.MySettings.datasource" />
     <None Include="My Project\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="AxShockwaveFlashObjects">
-      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>0</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>aximp</WrapperTool>
-      <Isolated>False</Isolated>
-    </COMReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\style2.css" />
@@ -572,11 +567,37 @@
     <EmbeddedResource Include="Resources\delete_icon&amp;16.png" />
     <EmbeddedResource Include="Resources\doc_lines_stright_icon&amp;16.png" />
     <EmbeddedResource Include="Resources\eye_icon&amp;16.png" />
-    <None Include="Resources\wrench_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\wrench_icon&amp;16.png" />
+    <EmbeddedResource Include="Resources\fpax.exe" />
+    <EmbeddedResource Include="Resources\fpp.exe" />
+    <EmbeddedResource Include="Resources\Flash11.png" />
+    <EmbeddedResource Include="Resources\btnClose.png" />
+    <EmbeddedResource Include="Resources\btnClose_Over.png" />
+    <EmbeddedResource Include="Resources\btnMinimize.png" />
+    <EmbeddedResource Include="Resources\btnMinimize_Over.png" />
     <Content Include="TODO.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DLL\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="ShockwaveFlashObjects">
+      <Guid>{D27CDB6B-AE6D-11CF-96B8-444553540000}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
